@@ -1,0 +1,1683 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ini",
+				"initialMapView"
+			],
+			[
+				"post",
+				"positionMap"
+			],
+			[
+				"map",
+				"mapcenter"
+			],
+			[
+				"ce",
+				"center"
+			],
+			[
+				"co",
+				"collection"
+			],
+			[
+				"mo",
+				"modals"
+			],
+			[
+				"pl",
+				"plmap"
+			],
+			[
+				"sho",
+				"showInfowindowFormAtLocation"
+			],
+			[
+				"plac",
+				"placeholder"
+			],
+			[
+				"M",
+				"Modernizr"
+			],
+			[
+				"Ma",
+				"MapFilterView"
+			],
+			[
+				"id",
+				"isFiltered"
+			],
+			[
+				"se",
+				"selectMapView"
+			],
+			[
+				"s",
+				"showModal"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"in",
+				"indexOf"
+			],
+			[
+				"query",
+				"querymodal"
+			],
+			[
+				"geocode",
+				"geocodeInput"
+			],
+			[
+				"de",
+				"default_value"
+			],
+			[
+				"ma",
+				"maxTerrainZoom"
+			],
+			[
+				"get",
+				"getZoom"
+			],
+			[
+				"upd",
+				"updatedMapOptions"
+			],
+			[
+				"lo",
+				"location"
+			],
+			[
+				"search",
+				"searchLocation"
+			],
+			[
+				"reload",
+				"reloadToLocatedMap"
+			],
+			[
+				"su",
+				"suggestAuthors"
+			],
+			[
+				"author",
+				"authorInput"
+			],
+			[
+				"ci",
+				"citySearch"
+			],
+			[
+				"l",
+				"location"
+			],
+			[
+				"g",
+				"geocoder"
+			],
+			[
+				"el",
+				"elements"
+			],
+			[
+				"c",
+				"cityInput"
+			],
+			[
+				"f",
+				"for"
+			],
+			[
+				"count",
+				"count_query	statement"
+			],
+			[
+				"st",
+				"stats	module"
+			],
+			[
+				"d",
+				"db	import"
+			],
+			[
+				"a",
+				"appengine	module"
+			],
+			[
+				"N",
+				"NearbyPlacesHandler	class"
+			],
+			[
+				"cen",
+				"centerGeoPt"
+			],
+			[
+				"_",
+				"_do_query	function"
+			],
+			[
+				"so",
+				"sorted_location_query	function"
+			],
+			[
+				"res",
+				"result_limit	statement"
+			],
+			[
+				"di",
+				"distance_sort	statement"
+			],
+			[
+				"S",
+				"SortOptions	import"
+			],
+			[
+				"ex",
+				"expression"
+			],
+			[
+				"Q",
+				"QueryOptions	import"
+			],
+			[
+				"defaul",
+				"default_value	param"
+			],
+			[
+				"loc",
+				"location_sort_expr	statement"
+			],
+			[
+				"qu",
+				"query_sort_opts	statement"
+			],
+			[
+				"quer",
+				"query_sort_expr	statement"
+			],
+			[
+				"la",
+				"latitude"
+			],
+			[
+				"result",
+				"result_limit"
+			],
+			[
+				"df",
+				"default_distance	statement"
+			],
+			[
+				"ind",
+				"index_name	param"
+			],
+			[
+				"han",
+				"handleViewportChange"
+			],
+			[
+				"sc",
+				"scene_id	param"
+			],
+			[
+				"q",
+				"query_string	statement"
+			],
+			[
+				"do",
+				"doc_id	function"
+			],
+			[
+				"phot",
+				"photo_id	statement"
+			],
+			[
+				"photo",
+				"photo_id"
+			],
+			[
+				"scene_",
+				"scene_id	param"
+			],
+			[
+				"ph",
+				"photo_id"
+			],
+			[
+				"place",
+				"place_dict	statement"
+			],
+			[
+				"reu",
+				"return	keyword"
+			],
+			[
+				"scene",
+				"scene_id"
+			],
+			[
+				"scen",
+				"scene_key"
+			],
+			[
+				"or",
+				"owner_id	statement"
+			],
+			[
+				"db",
+				"db_key	statement"
+			],
+			[
+				"P",
+				"PLscene"
+			],
+			[
+				"pho",
+				"photo_index	import"
+			],
+			[
+				"p",
+				"put_multi	function"
+			],
+			[
+				"api",
+				"api_url	statement"
+			],
+			[
+				"to",
+				"to_put	statement"
+			],
+			[
+				"F",
+				"from_old_key	function"
+			],
+			[
+				"pa",
+				"panoramio_data	statement"
+			],
+			[
+				"sce",
+				"scene_key"
+			],
+			[
+				"ge",
+				"get_panoramio_photo	function"
+			],
+			[
+				"b",
+				"build_url_for_scene	function"
+			],
+			[
+				"w",
+				"webapp	import"
+			],
+			[
+				"na",
+				"name	function"
+			],
+			[
+				"Phot",
+				"EmptyPhotoIndexHandler"
+			],
+			[
+				"E",
+				"EmptyPhotoIndexHandler	class"
+			],
+			[
+				"R",
+				"RequestHandler	class"
+			],
+			[
+				"scene_id",
+				"scene_id	statement"
+			],
+			[
+				"n",
+				"number_found	function"
+			],
+			[
+				"D",
+				"Document	import"
+			],
+			[
+				"scn",
+				"scene_id"
+			],
+			[
+				"retu",
+				"returned_fields	None"
+			],
+			[
+				"up",
+				"update_scene_index	function"
+			],
+			[
+				"sn",
+				"scene_index	import"
+			],
+			[
+				"nu",
+				"number_of_docs_returned	statement"
+			],
+			[
+				"reut",
+				"results	statement"
+			],
+			[
+				"ser",
+				"search	import"
+			],
+			[
+				"loca",
+				"location_query"
+			],
+			[
+				"cls",
+				"classmethod	class"
+			],
+			[
+				"lon",
+				"longitude	param"
+			],
+			[
+				"lat",
+				"latitude	param"
+			],
+			[
+				"inde",
+				"indices	statement"
+			],
+			[
+				"In",
+				"IndexInfoHandler	class"
+			],
+			[
+				"unic",
+				"unicode	class"
+			],
+			[
+				"t",
+				"title	statement"
+			],
+			[
+				"long",
+				"longitude"
+			],
+			[
+				"Ind",
+				"IndexHandler	class"
+			],
+			[
+				"class",
+				"classes	import"
+			],
+			[
+				"B",
+				"BaseAppHandler"
+			],
+			[
+				"docu",
+				"document	statement"
+			],
+			[
+				"may",
+				"may_updates"
+			],
+			[
+				"Pl",
+				"PlacedLit	class"
+			],
+			[
+				"i",
+				"iteritems	function"
+			],
+			[
+				"au",
+				"authors	statement"
+			],
+			[
+				"key",
+				"key_name	statement"
+			],
+			[
+				"ed",
+				"editImage"
+			],
+			[
+				"app",
+				"appendChild"
+			],
+			[
+				"te",
+				"textContent"
+			],
+			[
+				"update",
+				"updated_data	param"
+			],
+			[
+				"updat",
+				"updated_data	param"
+			],
+			[
+				"r",
+				"request	statement"
+			],
+			[
+				"pro",
+				"promise"
+			],
+			[
+				"dr",
+				"draggable"
+			],
+			[
+				"ng-c",
+				"ng-controller	AngularJS"
+			],
+			[
+				"O",
+				"OAUTH_TOKEN"
+			],
+			[
+				"CON",
+				"CONSUMER_KEY"
+			],
+			[
+				"tw",
+				"tw_keys	statement"
+			],
+			[
+				"ke",
+				"keys"
+			],
+			[
+				"get_",
+				"get_place_from_id	function"
+			],
+			[
+				"fiel",
+				"field_labels"
+			],
+			[
+				"form",
+				"formContent"
+			],
+			[
+				"fie",
+				"field"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "static/scripts/src/app.coffee",
+			"settings":
+			{
+				"buffer_size": 26983,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "static/scripts/src/allscenes.coffee",
+			"settings":
+			{
+				"buffer_size": 1349,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/home.tmpl",
+			"settings":
+			{
+				"buffer_size": 7350,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app.yaml",
+			"settings":
+			{
+				"buffer_size": 3260,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/steven/Desktop/rails/bonvoyaging_website/app/assets/javascripts/application/itinerary/itinerary_app.coffee",
+			"settings":
+			{
+				"buffer_size": 913,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pl_gae-isbn.sublime-project",
+			"settings":
+			{
+				"buffer_size": 157,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"ssp",
+				"Set Syntax: Python"
+			],
+			[
+				"ss",
+				"Set Syntax: Python"
+			],
+			[
+				"ssy",
+				"Set Syntax: YAML"
+			],
+			[
+				"en",
+				"Package Control: Enable Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"di",
+				"Package Control: Disable Package"
+			],
+			[
+				"sw",
+				"Color Switch: Install Scheme"
+			],
+			[
+				"swi",
+				"Color Switch: Install Scheme"
+			],
+			[
+				"enab",
+				"Package Control: Enable Package"
+			],
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"ssh",
+				"Set Syntax: HTML"
+			],
+			[
+				"ssa",
+				"Set Syntax: HTML (Angular.js)"
+			],
+			[
+				"ssc",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"ind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Anaconda: Show error list"
+			],
+			[
+				"e",
+				"Anaconda: Show error list"
+			],
+			[
+				"er",
+				"Anaconda: Show error list"
+			],
+			[
+				"err",
+				"Anaconda: Show error list"
+			],
+			[
+				"show",
+				"Anaconda: Show error list"
+			],
+			[
+				"disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"rin",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"sspy",
+				"Set Syntax: Python"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"sepy",
+				"Set Syntax: Python"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"term",
+				"Preferences: Terminal Settings – User"
+			],
+			[
+				"pac",
+				"Preferences: Package Control Settings – User"
+			]
+		],
+		"width": 489.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+			"view.encoding()",
+			"sublime.message_dialog(view.encoding())",
+			"view",
+			"view.endcoding()",
+			"import numpy as np",
+			"import sys",
+			"import dyd",
+			"exit",
+			"quit()",
+			"exit()",
+			"detach(os)",
+			"dir(os)",
+			"import os",
+			"insertCharacters 'hello'",
+			"insertCharacters('hello')",
+			"insertCharacters \"Hello World!\\n\"",
+			"dir(window)",
+			"dir(view)",
+			"dir()",
+			"dir",
+			"ls",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/steven/Desktop/placelit2/compiled/index.html",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/app.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/app.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/placelit.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/home.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/placinglit.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/home2.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/map.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/home.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/styles/bootstrap.css",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/styles/dashboard.css",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/styles/placelit.css",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/styles/bootstrap-responsive.css",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/styles/placelit2.scss",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/styles/placelit-start.css",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/allscenes.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/allscenes.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/home.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/home_refactor.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/books.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/collections.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/.gitignore",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/home.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/place.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/new_scene.py",
+		"/Users/steven/curl-time-format.txt",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/location_index.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/placedlit.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/location_index.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/photo_index.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/abstracts/baseapp.py",
+		"/usr/local/google_appengine/google/appengine/ext/webapp/_webapp25.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/panoramio.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/update_schema.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/panoramio.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/user_request.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/scene_index.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/scene_index.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/update_scenes.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/places.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/shell.html",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/export.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/cron.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/may_updates.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/export.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/admin.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/edit.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/styles/placelit.scss",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/abstracts/keys.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/controllers/scenes.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/controllers/leafletmap.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/services/scenes.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/views/map.html",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/twitter/__init__.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/main.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/app.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/test/spec/controllers/sceneSpec.js",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/steven/Desktop/gae/placingliterature/utils/json/added_scenes.json",
+		"/Users/steven/Desktop/gae/placingliterature/placinglit.sublime-project",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/collections.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/site_users.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/user_checkin.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/users.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/pl_gae-isbn.sublime-project",
+		"/Users/steven/Desktop/gae/placingliterature/utils/json/missing_books.json",
+		"/Users/steven/Desktop/seeclickfix/web_authentication.py",
+		"/Users/steven/Desktop/gae/placingliterature/utils/csv_import.py",
+		"/Users/steven/Desktop/gae/placingliterature/utils/csv/catalan-import-3.csv",
+		"/Users/steven/Desktop/gae/placingliterature/utils/json/live.json",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/map.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/current/utils/isbn_import.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/libs/markerclusterer.js",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/isbn_query.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/isbn-requests",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/app.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/qld-txt.csv",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/json/dump.json",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/placedlit.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/csv_import.py",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/collections.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/qld2.csv",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/qld.csv",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/sample_scene_importer.py",
+		"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/isbn_import.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/isbn.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/authors.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/json/authors.json",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/places.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/static/scripts/src/app.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts/src/app.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/update_schema.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/books.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/json/book/data/a_confederacy_of_dunces.json",
+		"/usr/local/google_appengine/google/appengine/ext/db/__init__.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/isbndb.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/isbn-app.yaml",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Pylinter.sublime-settings",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/importer.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/pl_gae-isbn.sublime-project",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/placelit_gae.sublime-project",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/templates/map.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts/src/placelit.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/static/styles/placelit.scss",
+		"/Users/steven/Desktop/Preferences.sublime-settings",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/templates/home.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts/src/home.coffee",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/.gitignore",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/app.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/handlers/home.py",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/handlers/places.py",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/classes/placedlit.py",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/templates/home2.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/templates/funding.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/templates/about.tmpl",
+		"/Users/steven/Desktop/room pics/I'm Steve.",
+		"/Users/steven/bin/ae-tr",
+		"/Users/steven/bin/s",
+		"/Users/steven/Desktop/seeclickfix/usage_data/sample reports url",
+		"/Users/steven/Desktop/gae/placingliterature/jan2014/classes/books.py",
+		"/Users/steven/experimental/appengine/placelit/app.yaml",
+		"/Users/steven/experimental/appengine/placelit/handlers/place.py",
+		"/Users/steven/experimental/appengine/placelit/classes/placedlit.py",
+		"/Users/steven/experimental/appengine/placelit/handlers/books.py"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/steven/Desktop/gae/placingliterature/current/static/scripts",
+			"/Users/steven/Desktop/gae/placingliterature/current/static",
+			"/Users/steven/Desktop/gae/placingliterature/current",
+			"/Users/steven/Desktop/gae/placingliterature/current/, *.py",
+			"/Users/steven/Desktop/gae/placingliterature/current",
+			"may_updates.py",
+			"",
+			"/Users/steven/Desktop/gae/placingliterature/current",
+			"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src",
+			"/Users/steven/Desktop/gae/placingliterature/current",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts/src",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static/*.coffee",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/handlers",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/templates",
+			"<project>",
+			"/Users/steven/Desktop/pl2/pl2client/app",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app/",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app/scripts/controllers",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app",
+			"<project>,<open files>, *.js",
+			"<project>",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app/scripts",
+			"<project>",
+			"<project>,-*.sql",
+			"<project>",
+			"tweets.json",
+			"<project>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"collection:",
+			"collection",
+			"@mapW",
+			"mapWithMarkers",
+			"render",
+			"initialize",
+			"initiali",
+			"geocoderSe",
+			"attachS",
+			"geocode",
+			"15",
+			"handleView",
+			"mapT",
+			"mapTy",
+			"mapTyp",
+			"handleV",
+			"maxZ",
+			"@googlemap",
+			"maxZoom",
+			"cluster",
+			"minZoom",
+			"^(.*)$",
+			"near",
+			"getC",
+			"zoomC",
+			"coding",
+			"getPlaceLink",
+			"Blob",
+			"event",
+			"get_pano",
+			"update_photo_data",
+			"location_index",
+			"SceneIndex",
+			"buildM",
+			"cluster",
+			"marker",
+			"icon",
+			"image_",
+			"''",
+			"\\\", '",
+			"Wool",
+			"\\\", '",
+			", \\\"",
+			"', '",
+			"setattr",
+			"memcache",
+			"place",
+			"self.request.get",
+			"markers",
+			"key",
+			"TwitterStream",
+			"get",
+			"infowindowC",
+			"infoWindow",
+			"buildIn",
+			"infoW",
+			"infow",
+			"infowindowC",
+			"top",
+			"Tale",
+			"tales",
+			"users",
+			"mapEven",
+			"mapEve",
+			"get",
+			"add_",
+			"@mapE",
+			"closeInfowindows",
+			"closeInfoWindows",
+			"closeInfowindows",
+			"closeInfoWindows",
+			"userMapsMarker",
+			"handleC",
+			"handle",
+			"handleC",
+			"check",
+			"getPosition",
+			"isUserLoggedIn",
+			"mapE",
+			"import users",
+			"mapEven",
+			"Even",
+			"pass",
+			"console",
+			"@mapEv",
+			"conso",
+			"mapEv",
+			"event",
+			"event.c",
+			"event",
+			"mapEvent",
+			"mapeventtracking",
+			"value",
+			"guidelines",
+			"user",
+			"visited",
+			"visit",
+			"count",
+			"checkin",
+			"checking",
+			"UserRequest",
+			"\\n\\n",
+			",,,,,,",
+			"openInfowindow",
+			"openInfoWindow",
+			"CENTER",
+			"center",
+			"placeinfo",
+			"placeinfowindow",
+			"infowindow",
+			"console.log",
+			"console",
+			"80",
+			"listener",
+			"liste",
+			"buildMarker",
+			"dropMarkerforStored",
+			"delay",
+			"carpentaria",
+			"vital signs",
+			"kiet",
+			"button",
+			" '",
+			"add_book",
+			"get_author(",
+			"importing",
+			")\n",
+			"result"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"'",
+			"\\\",\\n'",
+			"',\\n\\\"",
+			"',\\n'",
+			"\\n",
+			"",
+			"all rights",
+			"funding provided",
+			"handlers.places.app",
+			"book",
+			"  title=book_data['title'],\n      author=book_data['author'],\n      isbn10=book_data['isbn10'],\n      isbn13=book_data['isbn13'],\n      lcc_number=book_data['lcc_number']\n    ",
+			"form-control",
+			"div",
+			"'",
+			"",
+			"\\n"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "static/scripts/src/app.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26983,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								26983,
+								26983
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close"
+							],
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 11782.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "static/scripts/src/allscenes.coffee",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1349,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close"
+							],
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "templates/home.tmpl",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7350,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1611,
+								1611
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 367.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app.yaml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3260,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								48,
+								48
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close"
+							],
+							"syntax": "Packages/YAML/YAML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "/Users/steven/Desktop/rails/bonvoyaging_website/app/assets/javascripts/application/itinerary/itinerary_app.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 913,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close"
+							],
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "pl_gae-isbn.sublime-project",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 157,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								74,
+								156
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close"
+							],
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.anaconda_documentation":
+	{
+		"height": 226.0
+	},
+	"output.exec":
+	{
+		"height": 102.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 102.0
+	},
+	"project": "pl_gae-isbn.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"t",
+				"tweet_dbi.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+		],
+		"width": 444.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 266.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

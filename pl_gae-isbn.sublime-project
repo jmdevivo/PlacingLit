@@ -1,0 +1,14 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		}
+	],
+  "settings": {
+    "extra_paths":[
+      "/usr/local/google_appengine"
+    ]
+  },
+}

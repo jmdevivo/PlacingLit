@@ -1,0 +1,1655 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"serv",
+				"services"
+			],
+			[
+				"stat",
+				"static_dir"
+			],
+			[
+				"place",
+				"place_json	statement"
+			],
+			[
+				"la",
+				"latitude"
+			],
+			[
+				"att",
+				"setAttribute"
+			],
+			[
+				"deb",
+				"debug	False"
+			],
+			[
+				"S",
+				"SceneCollectionHandler	class"
+			],
+			[
+				"co",
+				"collections"
+			],
+			[
+				"scene_",
+				"scene_keys	statement"
+			],
+			[
+				"s",
+				"scene	forflow"
+			],
+			[
+				"plac",
+				"placedlit	import"
+			],
+			[
+				"cl",
+				"classes	import"
+			],
+			[
+				"con",
+				"collection_name"
+			],
+			[
+				"query",
+				"query_term	statement"
+			],
+			[
+				"qu",
+				"query_term	statement"
+			],
+			[
+				"QU",
+				"query_term	statement"
+			],
+			[
+				"c",
+				"close	function"
+			],
+			[
+				"req",
+				"request_list	statement"
+			],
+			[
+				"for",
+				"format"
+			],
+			[
+				"f",
+				"format  (function)"
+			],
+			[
+				"quer",
+				"query_term"
+			],
+			[
+				"fo",
+				"format	function"
+			],
+			[
+				"pl",
+				"place_key"
+			],
+			[
+				"sc",
+				"scene"
+			],
+			[
+				"app",
+				"append"
+			],
+			[
+				"get",
+				"get_or_insert	function"
+			],
+			[
+				"key_",
+				"key_name	param"
+			],
+			[
+				"a",
+				"add_scene_to_collection	function"
+			],
+			[
+				"k",
+				"key_name	statement"
+			],
+			[
+				"get_by",
+				"get_by_key_name	function"
+			],
+			[
+				"g",
+				"get_or_insert	function"
+			],
+			[
+				"key",
+				"key_name	param"
+			],
+			[
+				"pla",
+				"place_key	statement"
+			],
+			[
+				"re",
+				"request  (variable)"
+			],
+			[
+				"url",
+				"urlencode	function"
+			],
+			[
+				"CS",
+				"CSV_IMPORT_URL	statement"
+			],
+			[
+				"impo",
+				"import_url"
+			],
+			[
+				"de",
+				"description"
+			],
+			[
+				"d",
+				"description"
+			],
+			[
+				"AU",
+				"Author"
+			],
+			[
+				"qld",
+				"qld_reader	statement"
+			],
+			[
+				"import",
+				"import_file	statement"
+			],
+			[
+				"r",
+				"reader	import"
+			],
+			[
+				"if",
+				"ifmain	if __name__ == '__main__'"
+			],
+			[
+				"L",
+				"LinkProperty	class"
+			],
+			[
+				"e",
+				"exists"
+			],
+			[
+				"b",
+				"book_id	forflow"
+			],
+			[
+				"boo",
+				"book_already_cached	function"
+			],
+			[
+				"file",
+				"filename	statement"
+			],
+			[
+				"p",
+				"path	import"
+			],
+			[
+				"write",
+				"write_response_to_disk	function"
+			],
+			[
+				"q",
+				"query_isbndb	function"
+			],
+			[
+				"json",
+				"json_data	statement"
+			],
+			[
+				"book",
+				"book_id	forflow"
+			],
+			[
+				"author",
+				"author_id"
+			],
+			[
+				"auth",
+				"author_id"
+			],
+			[
+				"autho",
+				"author_json	param"
+			],
+			[
+				"buy_",
+				"buy_books"
+			],
+			[
+				"buy",
+				"buy_url"
+			],
+			[
+				"ma",
+				"matching_books"
+			],
+			[
+				"mat",
+				"matching_books	statement"
+			],
+			[
+				"query_",
+				"query_author"
+			],
+			[
+				"su",
+				"source"
+			],
+			[
+				"ge",
+				"get_by_id	function"
+			],
+			[
+				"aut",
+				"author_key"
+			],
+			[
+				"author_",
+				"author_key	statement"
+			],
+			[
+				"au",
+				"author	forflow"
+			],
+			[
+				"bo",
+				"book_key	param"
+			],
+			[
+				"se",
+				"self"
+			],
+			[
+				"in",
+				"info	function"
+			],
+			[
+				"fi",
+				"filter"
+			],
+			[
+				"G",
+				"GqlQuery	class"
+			],
+			[
+				"auh",
+				"authors"
+			],
+			[
+				"l",
+				"logging	import"
+			],
+			[
+				"res",
+				"result	forflow"
+			],
+			[
+				"ex",
+				"except	keyword"
+			],
+			[
+				"book_",
+				"book_id"
+			],
+			[
+				"di",
+				"display_name	param"
+			],
+			[
+				"dis",
+				"display_name"
+			],
+			[
+				"last",
+				"last_name"
+			],
+			[
+				"lo",
+				"loads	function"
+			],
+			[
+				"first",
+				"first_name"
+			],
+			[
+				"firs",
+				"first_name"
+			],
+			[
+				"an",
+				"author_name"
+			],
+			[
+				"ca",
+				"capwords"
+			],
+			[
+				"cap",
+				"capwords  (function)"
+			],
+			[
+				"up",
+				"update_author"
+			],
+			[
+				"dat",
+				"data_source	param"
+			],
+			[
+				"Li",
+				"ListProperty	class"
+			],
+			[
+				"_",
+				"__init__	function"
+			],
+			[
+				"isbn",
+				"isbndb	import"
+			],
+			[
+				"isn",
+				"isbndb	import"
+			],
+			[
+				"aria-",
+				"aria-labelledby=  (attribute)"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"alert",
+				"alertMessage"
+			],
+			[
+				"mee",
+				"messageDiv"
+			],
+			[
+				"me",
+				"messageContent"
+			],
+			[
+				"al",
+				"alertMessage"
+			],
+			[
+				"loc",
+				"loc_json	statement"
+			],
+			[
+				"authro",
+				"authorbutton"
+			],
+			[
+				"all",
+				"allbydate"
+			],
+			[
+				"du",
+				"dumps	function"
+			],
+			[
+				"bas",
+				"baseapp	import"
+			],
+			[
+				"urlun",
+				"urlunsplit	function"
+			],
+			[
+				"image",
+				"image_url	statement"
+			],
+			[
+				"u",
+				"urlparse"
+			],
+			[
+				"im",
+				"image_url	statement"
+			],
+			[
+				"ia",
+				"image_url"
+			],
+			[
+				"urlp",
+				"urlparse  (function)"
+			],
+			[
+				"ur",
+				"urlparse	import"
+			],
+			[
+				"retu",
+				"return	keyword"
+			],
+			[
+				"pu",
+				"put	function"
+			],
+			[
+				"class",
+				"classmethod	class"
+			],
+			[
+				"R",
+				"ReferenceProperty	class"
+			],
+			[
+				"M",
+				"Model	class"
+			],
+			[
+				"loggin",
+				"logging	import"
+			],
+			[
+				"m",
+				"memcache	import"
+			],
+			[
+				"go",
+				"google	import"
+			],
+			[
+				"unic",
+				"unicode"
+			],
+			[
+				"print",
+				"print_query_title"
+			],
+			[
+				"ti",
+				"title_json_exists	function"
+			],
+			[
+				"sel",
+				"self	param"
+			],
+			[
+				"pr",
+				"print_isbn_title_data	function"
+			],
+			[
+				"is",
+				"isbndb"
+			],
+			[
+				"title_",
+				"title_json_filename"
+			],
+			[
+				"open",
+				"open	function"
+			],
+			[
+				"t",
+				"title"
+			],
+			[
+				"Uni",
+				"UnicodeEncodeError	class"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "define(['controllers/controllers'],\n  function(controllers){\n    controllers.controller('EditCtrl', function ($scope) {\n      $scope.awesomeThings = [\n        'HTML5 Boilerplate',\n        'AngularJS',\n        'Karma'               \n      ];\n    });\n  }\n);\n",
+			"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/app/scripts/controllers/edit.js",
+			"file_size": 241,
+			"file_write_time": 130406185640000000,
+			"settings":
+			{
+				"buffer_size": 256,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/app/scripts/services/scenes.js",
+			"settings":
+			{
+				"buffer_size": 356,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/app/scripts/services/pagination.js",
+			"settings":
+			{
+				"buffer_size": 1342,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/test/spec/controllers/leafletmapSpec.js",
+			"settings":
+			{
+				"buffer_size": 2933,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/test/spec/services/paginationSpec.js",
+			"settings":
+			{
+				"buffer_size": 1612,
+				"line_ending": "Unix",
+				"name": "describe('Paginator Service', function() {"
+			}
+		},
+		{
+			"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/test/spec/controllers/mainSpec.js",
+			"settings":
+			{
+				"buffer_size": 599,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 313.0,
+		"selected_items":
+		[
+			[
+				"ssj",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"jac",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"ss",
+				"Set Syntax: Python"
+			],
+			[
+				"en",
+				"Package Control: Enable Package"
+			],
+			[
+				"di",
+				"Package Control: Disable Package"
+			],
+			[
+				"sw",
+				"Color Switch: Install Scheme"
+			],
+			[
+				"swi",
+				"Color Switch: Install Scheme"
+			],
+			[
+				"enab",
+				"Package Control: Enable Package"
+			],
+			[
+				"ssp",
+				"Set Syntax: Python"
+			],
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"ssh",
+				"Set Syntax: HTML"
+			],
+			[
+				"ssa",
+				"Set Syntax: HTML (Angular.js)"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"ssc",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"ind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Anaconda: Show error list"
+			],
+			[
+				"e",
+				"Anaconda: Show error list"
+			],
+			[
+				"er",
+				"Anaconda: Show error list"
+			],
+			[
+				"err",
+				"Anaconda: Show error list"
+			],
+			[
+				"show",
+				"Anaconda: Show error list"
+			],
+			[
+				"disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"rin",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"sspy",
+				"Set Syntax: Python"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"sepy",
+				"Set Syntax: Python"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"term",
+				"Preferences: Terminal Settings – User"
+			],
+			[
+				"pac",
+				"Preferences: Package Control Settings – User"
+			]
+		],
+		"width": 487.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+			"view.encoding()",
+			"sublime.message_dialog(view.encoding())",
+			"view",
+			"view.endcoding()",
+			"import numpy as np",
+			"import sys",
+			"import dyd",
+			"exit",
+			"quit()",
+			"exit()",
+			"detach(os)",
+			"dir(os)",
+			"import os",
+			"insertCharacters 'hello'",
+			"insertCharacters('hello')",
+			"insertCharacters \"Hello World!\\n\"",
+			"dir(window)",
+			"dir(view)",
+			"dir()",
+			"dir",
+			"ls",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/steven/Desktop/gae/placingliterature/experimental/static/app/scripts/main.js",
+		"/Users/steven/Desktop/gae/placingliterature/experimental/app.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/experimental/handlers/abstracts/baseapp.py",
+		"/Users/steven/Desktop/gae/placingliterature/experimental/handlers/home.py",
+		"/Users/steven/Desktop/gae/placingliterature/experimental/static/app/views/home.html",
+		"/Users/steven/Desktop/gae/placingliterature/experimental/static/app/styles/main.css",
+		"/Users/steven/Desktop/gae/placingliterature/experimental/ng-client/styles/main.css",
+		"/Users/steven/Desktop/gae/placingliterature/utils/csv_import.py",
+		"/Users/steven/Desktop/gae/placingliterature/utils/csv/catalan-import-3.csv",
+		"/Users/steven/Desktop/gae/placingliterature/utils/json/live.json",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/update_scenes.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/update_schema.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/app.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/styles/placelit2.scss",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/map.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/current/utils/isbn_import.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/app.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/libs/markerclusterer.js",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/isbn_query.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/isbn-requests",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/app.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/qld-txt.csv",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/json/dump.json",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/placedlit.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/csv_import.py",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/export.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/collections.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/qld2.csv",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/qld.csv",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/sample_scene_importer.py",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/isbn_import.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/isbn.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/authors.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/json/authors.json",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/places.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/static/scripts/src/app.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts/src/app.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/update_schema.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/books.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/json/book/data/a_confederacy_of_dunces.json",
+		"/usr/local/google_appengine/google/appengine/ext/db/__init__.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/isbndb.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/isbn-app.yaml",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Pylinter.sublime-settings",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/importer.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/pl_gae-isbn.sublime-project",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/placelit_gae.sublime-project",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/templates/map.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts/src/placelit.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/static/styles/placelit.scss",
+		"/Users/steven/Desktop/Preferences.sublime-settings",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/templates/home.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts/src/home.coffee",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/.gitignore",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/app.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/handlers/home.py",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/handlers/places.py",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/classes/placedlit.py",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/templates/home2.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/templates/funding.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/templates/about.tmpl",
+		"/Users/steven/Desktop/room pics/I'm Steve.",
+		"/Users/steven/bin/ae-tr",
+		"/Users/steven/bin/s",
+		"/Users/steven/Desktop/seeclickfix/usage_data/sample reports url",
+		"/Users/steven/Desktop/gae/placingliterature/jan2014/classes/books.py",
+		"/Users/steven/experimental/appengine/placelit/app.yaml",
+		"/Users/steven/experimental/appengine/placelit/handlers/place.py",
+		"/Users/steven/experimental/appengine/placelit/classes/placedlit.py",
+		"/Users/steven/experimental/appengine/placelit/handlers/books.py",
+		"/Users/steven/experimental/appengine/placelit/classes/blogposts.py",
+		"/Users/steven/experimental/appengine/placelit/classes/books.py",
+		"/Users/steven/experimental/appengine/placelit/placelit.komodoproject",
+		"/Users/steven/experimental/appengine/placelit/placelit_gae.sublime-project",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+		"/Users/steven/experimental/appengine/placelit/classes/user_request.py",
+		"/Users/steven/experimental/appengine/placelit/.codeintel/config",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/SublimeCodeIntel.sublime-settings",
+		"/Users/steven/Desktop/pl2/ISBNdb/titles0.json",
+		"/Users/steven/Desktop/pl2/ISBNdb/ISBNdb.py",
+		"/Users/steven/Desktop/wikipedia_topics/blei lda.py",
+		"/Users/steven/Desktop/1400OS_Code/1400OS_04_Codes/blei_lda.py",
+		"/Users/steven/Desktop/planning_neighborhoods/index.html",
+		"/Users/steven/Desktop/planning_neighborhoods/sfhoods.json",
+		"/Users/steven/Desktop/pl2/pl2client/app/scripts/app.js",
+		"/Users/steven/Desktop/pl2/pl2client/app/scripts/controllers/leafletmap.js",
+		"/Users/steven/Desktop/pl2/pl2client/app/scripts/vendor/angular-leaflet-directive.js",
+		"/Users/steven/Desktop/pl2/pl2client/app/scripts/main.js",
+		"/Users/steven/Desktop/pl2/pl2client/app/scripts/controllers/googlemap.js",
+		"/Users/steven/Desktop/pl2/pl2client/app/views/main.html",
+		"/Users/steven/Desktop/pl2/pl2client/test/spec/controllers/leafletmapSpec.js",
+		"/Users/steven/Desktop/pl2/pl2client/app/styles/main.scss",
+		"/Users/steven/Desktop/pl2/pl2client/app/index.html",
+		"/Users/steven/Desktop/pl2/pl2client/app/views/map.html",
+		"/Users/steven/Desktop/pl2/pl2client/app/views/placeform.html",
+		"/Users/steven/Desktop/pl2/pl2client/app/scripts/controllers/main.js",
+		"/Users/steven/Desktop/pl2/pl2client/app/scripts/directives/leaflet.js",
+		"/Users/steven/Desktop/pl2/pl2client/app/scripts/vendor/angular-leaflet-directive,js",
+		"/Users/steven/Desktop/pl2/pl2client/app/scripts/directives/directives.js",
+		"/Users/steven/Desktop/pl2/pl2client/test/spec/controllers/mainSpec.js",
+		"/Users/steven/Desktop/pl2/pl2client/test/spec/main.js",
+		"/Users/steven/Desktop/presently/app/views/settings.html",
+		"/Users/steven/Desktop/presently/app/wunderground.json",
+		"/Users/steven/Desktop/presently/app/styles/main.css",
+		"/Users/steven/Desktop/presently/app/tab.html",
+		"/Users/steven/Desktop/presently/app/views/main.html",
+		"/Users/steven/Desktop/presently/app/scripts/app.js",
+		"/Users/steven/Desktop/presently/app/index.html",
+		"/Users/steven/Desktop/presently/manifest.json",
+		"/Users/steven/Desktop/presently/app/views/dummy.html",
+		"/Users/steven/Desktop/presently/bower.json",
+		"/Users/steven/Desktop/presently/app/manifest.json",
+		"/Users/steven/Desktop/presently/app/bower_components/angular-scenario/angular-scenario.js",
+		"/Users/steven/Desktop/presently/package.json",
+		"/Users/steven/Desktop/chromeapp/app/scripts/presently.js",
+		"/Users/steven/Desktop/chromeapp/app/views/main.html",
+		"/Users/steven/Desktop/chromeapp/app/scripts/controllers/main.js",
+		"/Users/steven/Desktop/chromeapp/app/bower_components/angular/angular.js",
+		"/Users/steven/Desktop/chromeapp/app/scripts/app.js",
+		"/Users/steven/Desktop/chromeapp/app/bower_components/bootstrap-sass/img/glyphicons-halflings-white.png",
+		"/Users/steven/Desktop/chromeapp/app/manifest.json",
+		"/Users/steven/Desktop/chromeapp/app/tab.html",
+		"/Users/steven/Desktop/eyeballschool/eyeballschool/app/views/search.html",
+		"/Users/steven/Desktop/eyeballschool/eyeballschool/app/scripts/controllers/search.js"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/steven/Desktop/gae/placingliterature/experimental/static/app",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts/src",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static/*.coffee",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/handlers",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/templates",
+			"<project>",
+			"/Users/steven/Desktop/pl2/pl2client/app",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app/",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app/scripts/controllers",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app",
+			"<project>,<open files>, *.js",
+			"<project>",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app/scripts",
+			"<project>",
+			"<project>,-*.sql",
+			"<project>",
+			"tweets.json",
+			"<project>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"leafletmaps",
+			"leafliem",
+			"yeoman",
+			"\\n\\n",
+			",,,,,,",
+			"openInfowindow",
+			"openInfoWindow",
+			"CENTER",
+			"center",
+			"placeinfo",
+			"placeinfowindow",
+			"infowindow",
+			"console.log",
+			"console",
+			"80",
+			"listener",
+			"liste",
+			"buildMarker",
+			"dropMarkerforStored",
+			"delay",
+			"carpentaria",
+			"vital signs",
+			"kiet",
+			"button",
+			" '",
+			"add_book",
+			"get_author(",
+			"importing",
+			")\n",
+			"result",
+			"key",
+			"get_by",
+			"represented",
+			"recent",
+			"alertMessage",
+			"  <h3>- Be brief and specific in the Place field</h3>\n    <h3>- Use Autofill where possible</h3>\n    <h3>- Double check spelling and grammar</h3>\n    <h3>- Reserve opinions, comments and asides for the Notes field</h3>\n    <h3>- Let us know if you make or see an error</h3>\n  ",
+			"modal",
+			"alert",
+			"Alert",
+			"dropM",
+			"tab",
+			"logging",
+			"loggin",
+			"all",
+			"dump",
+			"CENTER",
+			"filter",
+			"zoom",
+			"attachS",
+			"All rights",
+			"Funding provided",
+			"suggestAuthors",
+			"complete",
+			"author",
+			"memcache",
+			"handlers.place.app",
+			"book_data",
+			"memcache.set",
+			"memcache.add",
+			"query_title",
+			", ",
+			"jshint",
+			"leafletData",
+			"compile",
+			"leaflet",
+			"input-block-level",
+			"span",
+			"$routeProvider",
+			"ngRoute",
+			"Main",
+			"livereload",
+			"media",
+			"PlacesCtrl",
+			"\n  ",
+			"recipe",
+			"recip",
+			"ngResource",
+			"livere",
+			"coffee:",
+			"domReady",
+			"clean:",
+			".tmp/scripts",
+			".tmp/scr",
+			"mocha",
+			"moca",
+			"jasmine",
+			"mocha",
+			"watch",
+			"'clean'",
+			"server",
+			"InfoH",
+			"clean",
+			"connect:",
+			"start",
+			"?",
+			"geo",
+			"attac",
+			"geocoderSearch",
+			"attachSearchH",
+			"sho",
+			"book_title",
+			"fetch",
+			"mapWith",
+			"Metadata",
+			"initialize",
+			"plpage",
+			"videow",
+			"video",
+			"hplower",
+			"videowr",
+			"drop",
+			"googlemap(",
+			"googlemap((",
+			"infowindow",
+			"googlemap",
+			"MetaData",
+			"insert",
+			"run_this",
+			"session",
+			"maketrans",
+			"mapper",
+			"status",
+			"metadata",
+			"pyplot",
+			"223769",
+			"223768",
+			"places/show",
+			"collection"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\\n",
+			"",
+			"all rights",
+			"funding provided",
+			"handlers.places.app",
+			"book",
+			"  title=book_data['title'],\n      author=book_data['author'],\n      isbn10=book_data['isbn10'],\n      isbn13=book_data['isbn13'],\n      lcc_number=book_data['lcc_number']\n    ",
+			"form-control",
+			"div",
+			"'",
+			"",
+			"\\n"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/app/scripts/controllers/edit.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 256,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								231,
+								231
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/app/scripts/services/scenes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 356,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								29,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": true,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/app/scripts/services/pagination.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1342,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": true,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/test/spec/controllers/leafletmapSpec.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2933,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 729.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/test/spec/services/paginationSpec.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1612,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								167,
+								167
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": true,
+							"auto_name": "describe('Paginator Service', function() {",
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/steven/Desktop/gae/placingliterature/experimental/static/test/spec/controllers/mainSpec.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 599,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.anaconda_documentation":
+	{
+		"height": 226.0
+	},
+	"output.exec":
+	{
+		"height": 102.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 102.0
+	},
+	"project": "pl-experiment.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"t",
+				"tweet_dbi.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+		],
+		"width": 444.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 242.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

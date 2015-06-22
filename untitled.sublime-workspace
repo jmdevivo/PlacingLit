@@ -1,0 +1,1256 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"count",
+				"count_query	statement"
+			],
+			[
+				"a",
+				"appengine"
+			],
+			[
+				"s",
+				"stats"
+			],
+			[
+				"assertT",
+				"assertTemplateUsed	function"
+			],
+			[
+				"re",
+				"request	param"
+			],
+			[
+				"em",
+				"expected_html	statement"
+			],
+			[
+				"r",
+				"render_to_string	function"
+			],
+			[
+				"te",
+				"template	module"
+			],
+			[
+				"h",
+				"http	module"
+			],
+			[
+				"ass",
+				"assertEqual	function"
+			],
+			[
+				"T",
+				"TestCase	class"
+			],
+			[
+				"c",
+				"core	module"
+			],
+			[
+				"atu",
+				"authorfield"
+			],
+			[
+				"auth",
+				"authorq"
+			],
+			[
+				"addLi",
+				"addListenerOnce"
+			],
+			[
+				"e",
+				"event"
+			],
+			[
+				"C",
+				"CORNER_DISTANCE	statement"
+			],
+			[
+				"sc",
+				"scene"
+			],
+			[
+				"wnd",
+				"windowOptions"
+			],
+			[
+				"dro",
+				"dropMarkerForStoredLocation"
+			],
+			[
+				"user",
+				"userMapsMarker"
+			],
+			[
+				"open",
+				"openInfowindowForPlace"
+			],
+			[
+				"add",
+				"addListener"
+			],
+			[
+				"windo",
+				"windowOptions"
+			],
+			[
+				"setC",
+				"setCenter"
+			],
+			[
+				"le",
+				"leafletMapView"
+			],
+			[
+				"bl",
+				"blog_data	statement"
+			],
+			[
+				"pub",
+				"pub_date	statement"
+			],
+			[
+				"blo",
+				"blogposts	module"
+			],
+			[
+				"de",
+				"description"
+			],
+			[
+				"bo",
+				"blog_data"
+			],
+			[
+				"an",
+				"angular-googlemaps"
+			],
+			[
+				"lo",
+				"location"
+			],
+			[
+				"B",
+				"BaseAppHandler	class"
+			],
+			[
+				"initial",
+				"initialMapLoad"
+			],
+			[
+				"buy",
+				"buy_url"
+			],
+			[
+				"update",
+				"updated_collection"
+			],
+			[
+				"cu",
+				"current_collection"
+			],
+			[
+				"coll",
+				"collection"
+			],
+			[
+				"mar",
+				"markerArrayFromCollection"
+			],
+			[
+				"all",
+				"allMarkers"
+			],
+			[
+				"map",
+				"mapOptions"
+			],
+			[
+				"co",
+				"collection"
+			],
+			[
+				"suc",
+				"success"
+			],
+			[
+				"new",
+				"new_markers"
+			],
+			[
+				"L",
+				"Locations"
+			],
+			[
+				"initi",
+				"initialMapView"
+			],
+			[
+				"in",
+				"initialize"
+			],
+			[
+				"init",
+				"initialMapView"
+			],
+			[
+				"d",
+				"dumps	function"
+			],
+			[
+				"retn",
+				"return	keyword"
+			],
+			[
+				"get",
+				"get_nearby_places	function"
+			],
+			[
+				"place",
+				"places	statement"
+			],
+			[
+				"ma",
+				"matching_updates	statement"
+			],
+			[
+				"st",
+				"status_text	statement"
+			],
+			[
+				"do",
+				"do_twitter_post"
+			],
+			[
+				"i",
+				"is_duplicate_update	function"
+			],
+			[
+				"S",
+				"StatusUpdate	class"
+			],
+			[
+				"D",
+				"DateTimeProperty	class"
+			],
+			[
+				"clas",
+				"classmethod	class"
+			],
+			[
+				"M",
+				"Model	class"
+			],
+			[
+				"title",
+				"title_list	statement"
+			],
+			[
+				"au",
+				"author"
+			],
+			[
+				"is",
+				"isbndb_titles	statement"
+			],
+			[
+				"boo",
+				"book_query	statement"
+			],
+			[
+				"pl",
+				"pl_query"
+			],
+			[
+				"ay",
+				"author_query	statement"
+			],
+			[
+				"up",
+				"update_status_update	function"
+			],
+			[
+				"q",
+				"query	statement"
+			],
+			[
+				"qu",
+				"query_string	statement"
+			],
+			[
+				"Q",
+				"Query	import"
+			],
+			[
+				"sta",
+				"status	param"
+			],
+			[
+				"cr",
+				"create_update_doc_for_status	function"
+			],
+			[
+				"fie",
+				"fields	param"
+			],
+			[
+				"en",
+				"empty_scene_index	function"
+			],
+			[
+				"A",
+				"Allscenes"
+			],
+			[
+				"Lo",
+				"Locations"
+			],
+			[
+				"cluster",
+				"clusteredMarkers"
+			],
+			[
+				"location",
+				"locations"
+			],
+			[
+				"upd",
+				"updateMarkersOnMapChange"
+			],
+			[
+				"col",
+				"collections"
+			],
+			[
+				"P",
+				"PlacingLit"
+			],
+			[
+				"curr",
+				"currentZoom"
+			],
+			[
+				"z",
+				"zoomLevel"
+			],
+			[
+				"loc",
+				"location	param"
+			],
+			[
+				"pos",
+				"positionMap"
+			],
+			[
+				"fo",
+				"format_location_index_results"
+			],
+			[
+				"scene",
+				"scenes"
+			],
+			[
+				"scen",
+				"scene_doc	statement"
+			],
+			[
+				"sen",
+				"scene_id	param"
+			],
+			[
+				"I",
+				"INDEX_NAME	statement"
+			],
+			[
+				"nam",
+				"name"
+			],
+			[
+				"_",
+				"_do_query	function"
+			],
+			[
+				"so",
+				"sorted_location_query	function"
+			],
+			[
+				"res",
+				"result_limit	statement"
+			],
+			[
+				"di",
+				"distance_sort	statement"
+			],
+			[
+				"query",
+				"query_sort_expr	statement"
+			],
+			[
+				"ex",
+				"expression"
+			],
+			[
+				"defaul",
+				"default_value	param"
+			],
+			[
+				"quer",
+				"query_sort_expr	statement"
+			],
+			[
+				"se",
+				"search	import"
+			],
+			[
+				"l",
+				"lng"
+			],
+			[
+				"la",
+				"latitude"
+			],
+			[
+				"result",
+				"result_limit"
+			],
+			[
+				"df",
+				"default_distance	statement"
+			],
+			[
+				"ind",
+				"index_name	param"
+			],
+			[
+				"g",
+				"gmap"
+			],
+			[
+				"han",
+				"handleViewportChange"
+			],
+			[
+				"f",
+				"from_path	function"
+			],
+			[
+				"phot",
+				"photo_id	statement"
+			],
+			[
+				"photo",
+				"photo_id"
+			],
+			[
+				"scene_",
+				"scene_id	param"
+			],
+			[
+				"ph",
+				"photo_id"
+			],
+			[
+				"reu",
+				"return	keyword"
+			],
+			[
+				"or",
+				"owner_id	statement"
+			],
+			[
+				"db",
+				"db_key	statement"
+			],
+			[
+				"pho",
+				"photo_index	import"
+			],
+			[
+				"p",
+				"put_multi	function"
+			],
+			[
+				"api",
+				"api_url	statement"
+			],
+			[
+				"to",
+				"to_put	statement"
+			],
+			[
+				"F",
+				"from_old_key	function"
+			],
+			[
+				"pa",
+				"panoramio_data	statement"
+			],
+			[
+				"sce",
+				"scene_key"
+			],
+			[
+				"ge",
+				"get_panoramio_photo	function"
+			],
+			[
+				"b",
+				"build_url_for_scene	function"
+			],
+			[
+				"w",
+				"webapp	import"
+			],
+			[
+				"na",
+				"name	function"
+			],
+			[
+				"Phot",
+				"EmptyPhotoIndexHandler"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "class MessageValidator\n\n  constructor: ->\n    valid_chars = 'abcdefghilZM'",
+			"settings":
+			{
+				"buffer_size": 74,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"ssc",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"ssj",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ssp",
+				"Set Syntax: Python"
+			],
+			[
+				"ss",
+				"Set Syntax: Python"
+			],
+			[
+				"ssy",
+				"Set Syntax: YAML"
+			],
+			[
+				"en",
+				"Package Control: Enable Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"di",
+				"Package Control: Disable Package"
+			],
+			[
+				"sw",
+				"Color Switch: Install Scheme"
+			],
+			[
+				"swi",
+				"Color Switch: Install Scheme"
+			],
+			[
+				"enab",
+				"Package Control: Enable Package"
+			],
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"ssh",
+				"Set Syntax: HTML"
+			],
+			[
+				"ssa",
+				"Set Syntax: HTML (Angular.js)"
+			],
+			[
+				"ind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Anaconda: Show error list"
+			],
+			[
+				"e",
+				"Anaconda: Show error list"
+			],
+			[
+				"er",
+				"Anaconda: Show error list"
+			],
+			[
+				"err",
+				"Anaconda: Show error list"
+			],
+			[
+				"show",
+				"Anaconda: Show error list"
+			],
+			[
+				"disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"rin",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"sspy",
+				"Set Syntax: Python"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"sepy",
+				"Set Syntax: Python"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"term",
+				"Preferences: Terminal Settings – User"
+			],
+			[
+				"pac",
+				"Preferences: Package Control Settings – User"
+			]
+		],
+		"width": 516.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+			"view.encoding()",
+			"sublime.message_dialog(view.encoding())",
+			"view",
+			"view.endcoding()",
+			"import numpy as np",
+			"import sys",
+			"import dyd",
+			"exit",
+			"quit()",
+			"exit()",
+			"detach(os)",
+			"dir(os)",
+			"import os",
+			"insertCharacters 'hello'",
+			"insertCharacters('hello')",
+			"insertCharacters \"Hello World!\\n\"",
+			"dir(window)",
+			"dir(view)",
+			"dir()",
+			"dir",
+			"ls",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/placedlit.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/home.tmpl",
+		"/Users/steven/tmp/npm-25550-Wzudp3jz/1406407852270-0.9649268270004541/package/src/august.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/app.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/current/pl_gae-isbn.sublime-workspace",
+		"/Users/steven/Desktop/stevenyoung.github.io/index.html",
+		"/Users/steven/Desktop/django/placelit/placelit/settings.py",
+		"/Users/steven/Desktop/django/placelit/placelit/urls.py",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/steven/Desktop/django/placelit/chromedriver.log",
+		"/Library/Python/2.7/site-packages/django/http/request.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/controllers/googlemap.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/authors.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/test/spec/controllers/googlemapSpec.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/test/spec/controllers/homeSpec.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/controllers/home.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/placinglit.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/boostrap-example-fluid.html",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/placelit.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/home.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/app.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/panoramio.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/panoramio.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/new_scene.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/styles/placelit.scss",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/base.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/featured/classes/placedlit.py",
+		"/Users/steven/Desktop/gae/placingliterature/launch/app.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/launch/classes/placedlit.py",
+		"/Users/steven/Desktop/placing literature - aces demo",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/test/spec/controllers/leafletmapSpec.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/home.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/blogposts.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/main.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/default.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/leaflet-widget.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/media/williams-andrew-2.mp3",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/export.py",
+		"/Users/steven/Desktop/716d13872c3b063c60aabed1e63c62ed2d270499.csv",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/scenes.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/map.tmpl",
+		"/Users/steven/Desktop/rails/ebs/test/models/media_test.rb",
+		"/Users/steven/Desktop/rails/ebs/db/seeds.rb",
+		"/Users/steven/Desktop/rails/ebs/test/controllers/media_controller_test.rb",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/abstracts/keys.py",
+		"/Users/steven/Desktop/gae/placingliterature/june2014/static/scripts/src/app.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/abstracts/baseapp.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/may_updates.py",
+		"/Users/steven/Desktop/gae/placingliterature/utils/json/dump.json",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/location_index.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/status_updates.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/photo_index.py",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/Users/steven/Desktop/gae/placingliterature/github/README.md",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/update_schema.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/admin.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/places.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/edit.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/allscenes.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/placinglit.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src/map.coffee",
+		"/Users/steven/Desktop/seeclickfix/new_accounts.txt",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/location_index.py",
+		"/usr/local/google_appengine/google/appengine/ext/webapp/_webapp25.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/user_request.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/scene_index.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/scene_index.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/update_scenes.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/templates/shell.html",
+		"/Users/steven/Desktop/gae/placingliterature/current/cron.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/export.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/controllers/scenes.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/controllers/leafletmap.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/services/scenes.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/views/map.html",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/twitter/__init__.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/app/scripts/app.js",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/test/spec/controllers/sceneSpec.js",
+		"/Users/steven/Desktop/gae/placingliterature/utils/json/added_scenes.json",
+		"/Users/steven/Desktop/gae/placingliterature/placinglit.sublime-project",
+		"/Users/steven/Desktop/gae/placingliterature/current/handlers/collections.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/site_users.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/collections.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/user_checkin.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/classes/users.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/pl_gae-isbn.sublime-project",
+		"/Users/steven/Desktop/gae/placingliterature/utils/json/missing_books.json",
+		"/Users/steven/Desktop/seeclickfix/web_authentication.py",
+		"/Users/steven/Desktop/gae/placingliterature/utils/csv_import.py",
+		"/Users/steven/Desktop/gae/placingliterature/utils/csv/catalan-import-3.csv",
+		"/Users/steven/Desktop/gae/placingliterature/utils/json/live.json",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/styles/placelit2.scss",
+		"/Users/steven/Desktop/gae/placingliterature/current/utils/isbn_import.py",
+		"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/libs/markerclusterer.js",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/isbn_query.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/isbn-requests",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/app.yaml",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/qld-txt.csv",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/json/dump.json",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/placedlit.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/csv_import.py",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/collections.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/qld2.csv",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/qld.csv",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/sample_scene_importer.py",
+		"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/isbn_import.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/isbn.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/authors.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/json/authors.json",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/places.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/static/scripts/src/app.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts/src/app.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/update_schema.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/books.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/utils/json/book/data/a_confederacy_of_dunces.json",
+		"/usr/local/google_appengine/google/appengine/ext/db/__init__.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/classes/isbndb.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/isbn-app.yaml",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Pylinter.sublime-settings",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/handlers/importer.py",
+		"/Users/steven/Desktop/gae/placingliterature/mar2014/pl_gae-isbn.sublime-project",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/placelit_gae.sublime-project",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/templates/map.tmpl",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts/src/placelit.coffee",
+		"/Users/steven/Desktop/gae/placingliterature/feb2014/static/styles/placelit.scss",
+		"/Users/steven/Desktop/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/steven/Desktop/gae/placingliterature/current",
+			"/Users/steven/Desktop/gae/placingliterature/current/templates",
+			"/Users/steven/Desktop/gae/placingliterature/current/handlers",
+			"app.coffee",
+			"/Users/steven/Desktop/gae/placingliterature/current",
+			"",
+			"<open files>",
+			"/Users/steven/Desktop/gae/placingliterature/current",
+			"may_updates.py",
+			"",
+			"/Users/steven/Desktop/gae/placingliterature/current",
+			"/Users/steven/Desktop/gae/placingliterature/current/static/scripts/src",
+			"/Users/steven/Desktop/gae/placingliterature/current",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts/src",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static/*.coffee",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/static/scripts",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/handlers",
+			"/Users/steven/Desktop/gae/placingliterature/feb2014/templates",
+			"<project>",
+			"/Users/steven/Desktop/pl2/pl2client/app",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app/",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app/scripts/controllers",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app",
+			"<project>,<open files>, *.js",
+			"<project>",
+			"/Users/steven/experimental/appengine/pl-tdd/ng/app/scripts",
+			"<project>",
+			"<project>,-*.sql",
+			"<project>",
+			"tweets.json",
+			"<project>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"count",
+			"image",
+			"app",
+			"edit",
+			"logging",
+			"get_author_n",
+			"geo",
+			"mapW",
+			"            <div class=\"item\">\n              <a href=\"/map/filter/author/Mark%20Twain\">\n                <img src=\"/img/july2014_marktwainhouse.png\" />\n                  <div class=\"carousel-caption\">\n                  <h4>Placing Literature Collections: </h4>\n                  <h5>Mark Twain curated by The Mark Twain House &amp; Museum</h5>\n                  <a target=\"_blank\" class=\"smlink\" href=\"https://soundcloud.com/interviewingauthors/placing-literature-podcast-corban-addison-garden-of-burning-sand\"><img src=\"/img/podcast.png\" height=\"15px\">Interviewing Authors Podcast</a>\n                </div>\n              </a>\n            </div>",
+			"infowindow",
+			"addListenerO",
+			"userMapsM",
+			"form",
+			"openInfowin",
+			"windowO",
+			"setPo",
+			"@buildMarker",
+			"@buildM",
+			"drop",
+			"openInfowindowForPlace",
+			"key",
+			"addListener",
+			"<p/>",
+			"console.log",
+			"addEventListen",
+			"gcf",
+			"#",
+			"$(",
+			"$('#",
+			"@markerArray",
+			"underscore.js",
+			"openInfowindowForPlace",
+			"openInfoWindowForPlace",
+			"buildM",
+			"dropM",
+			"MarkerCl",
+			"handleAdd",
+			"mapWithM",
+			"get_newest_post",
+			"posts_for_display",
+			"get_newest_post",
+			"get_newest",
+			"get_newests",
+			"Cluster",
+			"Cluster		",
+			"Cluster",
+			"markersFor",
+			"gr_book",
+			"positionM",
+			"setM",
+			"initialMap",
+			"success:",
+			"success",
+			"fetch",
+			"success:",
+			"fetch",
+			"render",
+			"mapWi",
+			"initiali",
+			"initialMapView",
+			"mapW",
+			"initi",
+			"initial",
+			"PLACEKEY",
+			"CENTER",
+			"PLACEKEY",
+			"openInfow",
+			"StatusU",
+			"\\}, \\{",
+			"}, {",
+			"zoomLevel.wide",
+			"zoomlevel.wide",
+			"positionMap",
+			"author",
+			"positionMap",
+			"zoom",
+			"image_",
+			"login:",
+			"photo",
+			"index",
+			"Date",
+			"allbu",
+			"get_all",
+			"success:",
+			"fetch",
+			"success:",
+			"success",
+			"NewestLocations",
+			"latest",
+			"\\nActive\\n",
+			"\\nactive\\n",
+			":\\n",
+			"\\nActive\\n",
+			"addTo",
+			"addC",
+			"marker",
+			"markerAr",
+			"add",
+			"cluster",
+			"image",
+			"fetch",
+			"10",
+			"zoom",
+			"mapWithMarkers",
+			"render",
+			"position",
+			"format_location_index_results",
+			"Rafael M",
+			"coding",
+			"getPlaceLink",
+			"Blob",
+			"event",
+			"get_pano",
+			"update_photo_data",
+			"location_index",
+			"SceneIndex",
+			"buildM",
+			"cluster",
+			"marker",
+			"icon",
+			"image_",
+			"''",
+			"\\\", '",
+			"Wool",
+			"\\\", '",
+			", \\\"",
+			"', '",
+			"setattr"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"window.PLACEKEY",
+			"\\},\\n\\{",
+			"  {'db_key': u'5968149115568128', 'latitude': 42.3641135852, u'author': u'Ester Forbes', 'longitude': -71.051223278, u'title': u'Johnny Tremain'}, {'db_key': u'4560774232014848', 'latitude': 42.3638854273, u'author': u'Ester Forbes', 'longitude': -71.0532617569, u'title': u'Johnny Tremain'}, {'db_key': u'4602555673870336', 'latitude': 42.3644826988, u'author': u'Ester Forbes', 'longitude': -71.0511374474, u'title': u'Johnny Tremain'}, {'db_key': u'6619059999211520', 'latitude': 42.363832661, u'author': u'Ester Forbes', 'longitude': -71.0500860214, u'title': u'Johnny Tremain'}, {'db_key': u'6095692464390144', 'latitude': 42.3654748358, u'author': u'Ester Forbes', 'longitude': -71.0514324903, u'title': u'Johnny Tremain'}, {'db_key': u'4903821859880960', 'latitude': 42.3635472765, u'author': u'Ester Forbes', 'longitude': -71.05489254, u'title': u'Johnny Tremain'}, {'db_key': u'5457975720280064', 'latitude': 42.3633817924, u'author': u'Ester Forbes', 'longitude': -71.0484981537, u'title': u'Johnny Tremain'}, {'db_key': u'4719103906414592', 'latitude': 42.3663411159, u'author': u'Ester Forbes', 'longitude': -71.0544419289, u'title': u'Johnny Tremain'}, {'db_key': u'5928566696968192', 'latitude': 42.3599005816, u'author': u'Ester Forbes', 'longitude': -71.0510087013, u'title': u'Johnny Tremain'}, {'db_key': u'6557487348056064', 'latitude': 42.3613803428, u'author': u'Ester Forbes', 'longitude': -71.0563999414, u'title': u'Johnny Tremain'}, {'db_key': u'5420592324935680', 'latitude': 42.361352596, u'author': u'Ester Forbes', 'longitude': -71.0565447807, u'title': u'Johnny Tremain'}, {'db_key': u'6174857301590016', 'latitude': 42.3616288243, u'author': u'Ester Forbes', 'longitude': -71.0567808151, u'title': u'Johnny Tremain'}, {'db_key': u'5330432371458048', 'latitude': 42.3612336812, u'author': u'Ester Forbes', 'longitude': -71.0564643145, u'title': u'Johnny Tremain'}, {'db_key': u'5721858510946304', 'latitude': 42.3600071117, u'author': u'Ester Forbes', 'longitude': -71.0555148125, u'title': u'Johnny Tremain'}, {'db_key': u'5677878045835264', 'latitude': 42.3606617723, u'author': u'Ester Forbes', 'longitude': -71.0570114851, u'title': u'Johnny Tremain'}, {'db_key': u'5308442138902528', 'latitude': 42.3669990547, u'author': u'Ester Forbes', 'longitude': -71.0560619831, u'title': u'Johnny Tremain'}, {'db_key': u'5581121022590976', 'latitude': 42.3677617695, u'author': u'Ester Forbes', 'longitude': -71.0561531782, u'title': u'Johnny Tremain'}, {'db_key': u'5655887813279744', 'latitude': 42.368045401, u'author': u'Ester Forbes', 'longitude': -71.0569953918, u'title': u'Johnny Tremain'}, {'db_key': u'5218282185424896', 'latitude': 42.3674474202, u'author': u'Ester Forbes', 'longitude': -71.0580682755, u'title': u'Johnny Tremain'}, {'db_key': u'5770237022568448', 'latitude': 42.3587800228, u'author': u'Ester Forbes', 'longitude': -71.0573387146, u'title': u'Johnny Tremain'}, {'db_key': u'6465128371322880', 'latitude': 42.3587227927, u'author': u'Ester Forbes', 'longitude': -71.0589694977, u'title': u'Johnny Tremain'}, {'db_key': u'6104488557412352', 'latitude': 42.3572164592, u'author': u'Ester Forbes', 'longitude': -71.0587656498, u'title': u'Johnny Tremain'}, {'db_key': u'5429388417957888', 'latitude': 42.3586321164, u'author': u'Ester Forbes', 'longitude': -71.0636258125, u'title': u'Johnny Tremain'}, {'db_key': u'6531099068989440', 'latitude': 42.3534346101, u'author': u'Ester Forbes', 'longitude': -71.0521674156, u'title': u'Johnny Tremain'}, {'db_key': u'5198490976124928', 'latitude': 42.3719526963, u'author': u'Ester Forbes', 'longitude': -71.0619199276, u'title': u'Johnny Tremain'}, {'db_key': u'4655332232003584', 'latitude': 42.3550802776, u'author': u'Ester Forbes', 'longitude': -71.0639262199, u'title': u'Johnny Tremain'}, {'db_key': u'6060508092301312', 'latitude': 42.3559930321, u'author': u'Ester Forbes', 'longitude': -71.0672950745, u'title': u'Johnny Tremain'}, {'db_key': u'4859841394769920', 'latitude': 42.3440622551, u'author': u'Ester Forbes', 'longitude': -71.0656750202, u'title': u'Johnny Tremain'}, {'db_key': u'5506354231902208', 'latitude': 42.3441222244, u'author': u'Ester Forbes', 'longitude': -71.0660505295, u'title': u'Johnny Tremain'}, {'db_key': u'5858197952790528', 'latitude': 42.3463435254, u'author': u'Chuck Hogan', 'longitude': -71.0983657837, u'title': u'Prince of Thieves'}, {'db_key': u'5015972045914112', 'latitude': 42.3248815428, u'author': u'Hugh Howey', 'longitude': -71.0662651062, u'title': u'Shift'}, {'db_key': u'5541538603991040', 'latitude': 42.3747783611, u'author': u'Terri Giuliano Long', 'longitude': -71.1175060272, u'title': u\"In Leah's Wake\"}, {'db_key': u'4980787673825280', 'latitude': 42.4158654214, u'author': u'Ester Forbes', 'longitude': -71.1541342735, u'title': u'Johnny Tremain'}, {'db_key': u'5339228464480256', 'latitude': 42.2658627778, u'author': u'Ester Forbes', 'longitude': -71.065363884, u'title': u'Johnny Tremain'}, {'db_key': u'5959353022545920', 'latitude': 42.4493296311, u'author': u'Ester Forbes', 'longitude': -71.2306845188, u'title': u'Johnny Tremain'}, {'db_key': u'5455776697024512', 'latitude': 42.4974154873, u'author': u'Terri Giuliano Long', 'longitude': -71.1982727051, u'title': u\"In Leah's Wake\"}, {'db_key': u'4908219906392064', 'latitude': 42.4689877541, u'author': u'Ester Forbes', 'longitude': -71.3503217697, u'title': u'Johnny Tremain'}, {'db_key': u'5211685115658240', 'latitude': 42.6662807056, u'author': u'Terri Giuliano Long', 'longitude': -71.4015197754, u'title': u\"In Leah's Wake\"}, {'db_key': u'5051156418002944', 'latitude': 42.4893146572, u'author': u'Terri Giuliano Long', 'longitude': -71.5745544434, u'title': u\"In Leah's Wake\"}, {'db_key': u'5902178417901568', 'latitude': 42.4923525914, u'author': u'Terri Giuliano Long', 'longitude': -71.5827941895, u'title': u\"In Leah's Wake\"}, {'db_key': u'4928011115692032', 'latitude': 42.4872892857, u'author': u'Terri Giuliano Long', 'longitude': -71.5855407715, u'title': u\"In Leah's Wake\"}, {'db_key': u'4963195487780864', 'latitude': 41.9561711009, u'author': u'Tara Fox Hall', 'longitude': -70.6777954102, u'title': u'Immortal Confessions'}, {'db_key': u'5862595999301632', 'latitude': 43.0711626449, u'author': u'Ester Forbes', 'longitude': -70.7092523575, u'title': u'Johnny Tremain'}, {'db_key': u'4569570325037056', 'latitude': 41.3964009931, u'author': u'Corban Addison', 'longitude': -70.5106186867, u'title': u'The Garden of Burning Sand'}, {'db_key': u'5638295627235328', 'latitude': 41.3754882392, u'author': u'Corban Addison', 'longitude': -70.4500865936, u'title': u'The Garden of Burning Sand'}, {'db_key': u'6352978185289728', 'latitude': 41.3763375986, u'author': u'Susan Kietzman', 'longitude': -71.8311667442, u'title': u'A Changing Marriage'}, {'db_key': u'4965394511036416', 'latitude': 41.3381432026, u'author': u'Susan Kietzman', 'longitude': -71.9015774131, u'title': u'A Changing Marriage'}, {'db_key': u'5273257766813696', 'latitude': 41.3558653507, u'author': u'Susan Kietzman', 'longitude': -71.9760704041, u'title': u'A Changing Marriage'}, {'db_key': u'5383208929591296', 'latitude': 41.3499620276, u'author': u'Susan Kietzman', 'longitude': -71.9834947586, u'title': u'A Changing Marriage'}, {'db_key': u'5288650929602560', 'latitude': 41.3274955132, u'author': u'Susan Kietzman', 'longitude': -71.9892024994, u'title': u'A Changing Marriage'}, {'db_key': u'6491516650389504', 'latitude': 41.3826168791, u'author': u'Susan Kietzman', 'longitude': -72.1080136299, u'title': u'A Changing Marriage'}, {'db_key': u'4604754697125888', 'latitude': 41.3812503822, u'author': u'Susan Kietzman', 'longitude': -72.10755229, u'title': u'A Changing Marriage'}, {'db_key': u'5013773022658560', 'latitude': 41.3778672228, u'author': u'Susan Kietzman', 'longitude': -72.1054601669, u'title': u'A Changing Marriage'}, {'db_key': u'5471169859813376', 'latitude': 41.3774002887, u'author': u'Susan Kietzman', 'longitude': -72.1071982384, u'title': u'A Changing Marriage'}, {'db_key': u'5334830417969152', 'latitude': 41.3542556409, u'author': u'Wally Lamb', 'longitude': -72.0931863785, u'title': u\"Wishin' and Hopin'\"}, {'db_key': u'4639939069214720', 'latitude': 41.3364278675, u'author': u'Susan Kietzman', 'longitude': -72.0747220516, u'title': u'A Changing Marriage'}, {'db_key': u'4622346883170304', 'latitude': 41.3367098159, u'author': u'Susan Kietzman', 'longitude': -72.1049880981, u'title': u'A Changing Marriage'}, {'db_key': u'6451934231789568', 'latitude': 41.7590064327, u'author': u'Mark Twain', 'longitude': -72.6657629013, u'title': u\"A Connecticut Yankee in King Arthur's Court\"}, {'db_key': u'5774635069079552', 'latitude': 41.7011787623, u'author': u'Kitty Burns Florey', 'longitude': -72.6264953613, u'title': u'The Writing Master'}, {'db_key': u'5534941534224384', 'latitude': 43.5714533713, u'author': u'Alicia Butcher Ehrhardt', 'longitude': -72.1039581299, u'title': u\"Pride's Children\"}, {'db_key': u'4895025766858752', 'latitude': 41.3815099987, u'author': u'Kitty Burns Florey', 'longitude': -72.8778076172, u'title': u'The Writing Master'}, {'db_key': u'5092937859858432', 'latitude': 41.317323021, u'author': u'Joseph Payne Brennan', 'longitude': -72.9012930393, u'title': u'The House at 1248'}, {'db_key': u'5669081952813056', 'latitude': 41.3180301109, u'author': u'Kitty Burns Florey', 'longitude': -72.9146718979, u'title': u'Duet'}, {'db_key': u'5044559348236288', 'latitude': 41.3131216206, u'author': u'Kitty Burns Florey', 'longitude': -72.9185342789, u'title': u'The Writing Master'}, {'db_key': u'5490961069113344', 'latitude': 41.3090070882, u'author': u'Kitty Burns Florey', 'longitude': -72.9222142696, u'title': u'The Writing Master'}, {'db_key': u'6315594789945344', 'latitude': 41.3028612491, u'author': u'Thomas Pynchon', 'longitude': -72.9183626175, u'title': u'Against the Day'}, {'db_key': u'5757042883035136', 'latitude': 41.3038143177, u'author': u'Kitty Burns Florey', 'longitude': -72.9205083847, u'title': u'Duet'}, {'db_key': u'6599268789911552', 'latitude': 41.3084565502, u'author': u'Kitty Burns Florey', 'longitude': -72.9260015488, u'title': u'The Writing Master'}, {'db_key': u'4551978138992640', 'latitude': 41.3109135356, u'author': u'Kitty Burns Florey', 'longitude': -72.9319667816, u'title': u'The Writing Master'}, {'db_key': u'4635541022703616', 'latitude': 41.3059883905, u'author': u'Thomas Pynchon', 'longitude': -72.9274177551, u'title': u'Against the Day'}, {'db_key': u'5413995255169024', 'latitude': 41.3072063634, u'author': u'Kitty Burns Florey', 'longitude': -72.9290270805, u'title': u'Vigil for a Stranger'}, {'db_key': u'4732298045947904', 'latitude': 41.3080928803, u'author': u'Kitty Burns Florey', 'longitude': -72.9317951202, u'title': u'The Writing Master'}, {'db_key': u'4881831627325440', 'latitude': 41.3043764806, u'author': u'Thomas Pynchon', 'longitude': -72.9287052155, u'title': u'Against the Day'}, {'db_key': u'5616305394679808', 'latitude': 41.2989969469, u'author': u'Kitty Burns Florey', 'longitude': -72.926248312, u'title': u'Vigil for a Stranger'}, {'db_key': u'6438740092256256', 'latitude': 41.3205224913, u'author': u'Kitty Burns Florey', 'longitude': -72.9651939869, u'title': u'Vigil for a Stranger'}, {'db_key': u'5853799906279424', 'latitude': 44.1398413074, u'author': u'Terri Giuliano Long', 'longitude': -71.1749267578, u'title': u\"In Leah's Wake\"}, {'db_key': u'5948357906268160', 'latitude': 43.8926080536, u'author': u'Ester Forbes', 'longitude': -69.6280860901, u'title': u'Johnny Tremain'}, {'db_key': u'6302400650412032', 'latitude': 42.6484409847, u'author': u'Paul Levinson', 'longitude': -73.7519073486, u'title': u'The Consciousness Plague'}, {'db_key': u'5537140557479936', 'latitude': 41.1304292753, u'author': u'Bianca Turetsky', 'longitude': -73.2348632603, u'title': u'The Time-Traveling Fashionista '}, {'db_key': u'5194092929613824', 'latitude': 41.1598361273, u'author': u'Bianca Turetsky', 'longitude': -73.2705688477, u'title': u'The Time-Traveling Fashionista '}, {'db_key': u'6126478789967872', 'latitude': 41.1401887323, u'author': u'Bianca Turetsky', 'longitude': -73.2568359375, u'title': u'The Time-Traveling Fashionista '}, {'db_key': u'5282053859835904', 'latitude': 41.1297809839, u'author': u'Susan Kietzman', 'longitude': -73.2760620117, u'title': u'A Changing Marriage'}, {'db_key': u'5561329813291008', 'latitude': 42.0761553259, u'author': u'David Vinjamuri', 'longitude': -73.9519250393, u'title': u'Operator'}, {'db_key': u'5464572790046720', 'latitude': 41.7760484931, u'author': u'Lindy Moone', 'longitude': -73.920135498, u'title': u\"Hyperlink from Hell: A Couch Potato's Guide to the Afterlife\"}, {'db_key': u'6152867069034496', 'latitude': 43.5754165363, u'author': u'James Fenimore Cooper', 'longitude': -73.5974121094, u'title': u'The Deerslayer'}, {'db_key': u'5578921999335424', 'latitude': 42.0844871199, u'author': u'David Vinjamuri', 'longitude': -74.0997469425, u'title': u'Operator'}, {'db_key': u'5510752278413312', 'latitude': 42.0410871667, u'author': u'David Vinjamuri', 'longitude': -74.1185170412, u'title': u'Operator'}, {'db_key': u'6729011161989120', 'latitude': 40.8151855539, u'author': u'Saul Tanpepper', 'longitude': -73.4248065948, u'title': u'Gameland'}, {'db_key': u'5158908557524992', 'latitude': 44.7774484844, u'author': u'Terri Giuliano Long', 'longitude': -71.1357879639, u'title': u\"In Leah's Wake\"}, {'db_key': u'6564084417822720', 'latitude': 42.0831409481, u'author': u'David Vinjamuri', 'longitude': -74.3148440123, u'title': u'Operator'}, {'db_key': u'6632254138744832', 'latitude': 44.4241836141, u'author': u'Elizabeth Strout', 'longitude': -69.0148472786, u'title': u'Olive Kitteridge'}, {'db_key': u'4822457999425536', 'latitude': 44.4255015134, u'author': u'Elizabeth Strout', 'longitude': -69.0070366859, u'title': u'Olive Kitteridge'}, {'db_key': u'5077544697069568', 'latitude': 44.4209653633, u'author': u'Elizabeth Strout', 'longitude': -68.998196125, u'title': u'Olive Kitteridge'}, {'db_key': u'6680632650366976', 'latitude': 44.4285816038, u'author': u'Elizabeth Strout', 'longitude': -69.0035820007, u'title': u'Olive Kitteridge'}, {'db_key': u'5209486092402688', 'latitude': 40.80804379, u'author': u'J. S. Cooper', 'longitude': -73.9651107788, u'title': u'The Ex Games'}, {'db_key': u'4754288278503424', 'latitude': 40.7901960083, u'author': u'Harry Groome', 'longitude': -73.9591026306, u'title': u'Wing Walking'}, {'db_key': u'6487118603878400', 'latitude': 40.7728511153, u'author': u'Truman Capote', 'longitude': -73.9586734746, u'title': u\"Breakfast at Tiffany's \"}, {'db_key': u'6381565487611904', 'latitude': 40.7693577271, u'author': u'Robert Ludlum', 'longitude': -73.9617848396, u'title': u'The Bourne Identity'}, {'db_key': u'6073702231834624', 'latitude': 40.7698565078, u'author': u'Robert Ludlum', 'longitude': -73.9628966153, u'title': u'The Bourne Identity'}, {'db_key': u'5317238231924736', 'latitude': 40.7561322838, u'author': u'Patricia Highsmith', 'longitude': -73.9698314667, u'title': u'The Talented Mr. Ripley'}, {'db_key': u'5295247999369216', 'latitude': 40.7650876797, u'author': u'Mark Haskell Smith', 'longitude': -73.9822983742, u'title': u'Raw: A Love Story'}, {'db_key': u'6311196743434240', 'latitude': 40.7230297206, u'author': u'Adelle Waldman', 'longitude': -73.9449834824, u'title': u'The Love Affairs of Nathaniel P.'}, {'db_key': u'5004976929636352', 'latitude': 40.7549619796, u'author': u'J. S. Cooper', 'longitude': -73.9833068848, u'title': u'The Private Club'}, {'db_key': u'5743848743501824', 'latitude': 40.7480210022, u'author': u'Paul Levinson', 'longitude': -73.9846801758, u'title': u'The Plot to Save Socrates'}, {'db_key': u'5260063627280384', 'latitude': 40.7002760699, u'author': u'Mark Haskell Smith', 'longitude': -73.950240612, u'title': u'Raw: A Love Story'}, {'db_key': u'4547580092481536', 'latitude': 41.9684010724, u'author': u'Michael Bunker', 'longitude': -74.7108078003, u'title': u'The WICK Omnibus'}, {'db_key': u'6407953766678528', 'latitude': 40.7420607919, u'author': u'David Vinjamuri', 'longitude': -74.0078034997, u'title': u'Operator'}, {'db_key': u'5963751069057024', 'latitude': 40.7302832706, u'author': u'Elizabeth Strout', 'longitude': -74.0049362183, u'title': u'Olive Kitteridge'}, {'db_key': u'6715817022455808', 'latitude': 40.6696198621, u'author': u'Elizabeth Strout', 'longitude': -73.9776090425, u'title': u'The Burgess Boys'}, {'db_key': u'6344182092267520', 'latitude': 44.2338648588, u'author': u'Harry Groome', 'longitude': -74.0698242188, u'title': u'Tales for the Trail'}, {'db_key': u'4646536138981376', 'latitude': 41.572515256, u'author': u'Michael Bunker', 'longitude': -75.5028533936, u'title': u'The WICK Omnibus'}, {'db_key': u'6500312743411712', 'latitude': 44.8497840916, u'author': u'Tara Fox Hall', 'longitude': -74.2964172363, u'title': u'Revenge'}, {'db_key': u'4798268743614464', 'latitude': 39.82743799, u'author': u'Harry Groome', 'longitude': -74.2236328125, u'title': u'Wing Walking'}, {'db_key': u'5084141766836224', 'latitude': 40.0412660422, u'author': u'Cora Buhlert', 'longitude': -74.5837783813, u'title': u'Flying Bombs'}, {'db_key': u'4899423813369856', 'latitude': 42.2130080156, u'author': u'Tara Fox Hall', 'longitude': -75.8358764648, u'title': u'Promise Me'}, {'db_key': u'4672924418048000', 'latitude': 42.2130080156, u'author': u'Tara Fox Hall', 'longitude': -75.8372497559, u'title': u'Taken For His Own'}, {'db_key': u'6341983069011968', 'latitude': 41.4249016938, u'author': u'Arthur Conan Doyle', 'longitude': -75.7521057129, u'title': u'The Valley of Fear'}, {'db_key': u'5842804790001664', 'latitude': 42.0901815336, u'author': u'Tara Fox Hall', 'longitude': -75.9678840637, u'title': u'Stalking You'}, {'db_key': u'5040161301725184', 'latitude': 40.1356444523, u'author': u'Scott Marmorstein', 'longitude': -75.0675415993, u'title': u'Pursuit'}, {'db_key': u'4996180836614144', 'latitude': 39.9497534077, u'author': u'Julie Ann Dawson', 'longitude': -75.1533508301, u'title': u'A Game of Blood'}, {'db_key': u'6100090510901248', 'latitude': 42.4475280987, u'author': u'Tara Fox Hall', 'longitude': -76.4950561523, u'title': u'Promise Me'}, {'db_key': u'5851600883023872', 'latitude': 42.4414477301, u'author': u'Tara Fox Hall', 'longitude': -76.5005493164, u'title': u'Promise Me'}, {'db_key': u'6236429952745472', 'latitude': 39.7414648459, u'author': u'Paul Levinson', 'longitude': -75.5653381348, u'title': u'The Pixel Eye'}, {'db_key': u'6071503208579072', 'latitude': 42.835896927, u'author': u'Sheila Myers', 'longitude': -76.989440918, u'title': u'Ephemeral Summer'}, {'db_key': u'6157265115545600', 'latitude': 39.9765610329, u'author': u'Paul Levinson', 'longitude': -76.1819458008, u'title': u'The Silk Code'}, {'db_key': u'6737807255011328', 'latitude': 42.8370383799, u'author': u'Sheila Myers', 'longitude': -77.2448730469, u'title': u'Ephemeral Summer'}, {'db_key': u'6113284650434560', 'latitude': 40.2782160525, u'author': u'Tara Fox Hall', 'longitude': -76.8617248535, u'title': u'Shadow Man'}, {'db_key': u'5605310278402048', 'latitude': 42.59327988, u'author': u'Tara Fox Hall', 'longitude': -78.0249023437, u'title': u'Promise Me'}, {'db_key': u'6249624092278784', 'latitude': 42.599345492, u'author': u'Tara Fox Hall', 'longitude': -78.0317687988, u'title': u'Point of No Return'}, {'db_key': u'5998935441145856', 'latitude': 46.2424754867, u'author': u'Harry Groome', 'longitude': -66.0498046875, u'title': u'Fresh Fiction for Fresh Water Fishing'}, {'db_key': u'4969792557547520', 'latitude': 39.9293265171, u'author': u'V. J. Chambers', 'longitude': -77.6486206055, u'title': u'The Killing Moon'}, {'db_key': u'6711418975944704', 'latitude': 38.8922353167, u'author': u'Corban Addison', 'longitude': -77.0056092739, u'title': u'The Garden of Burning Sand'}, {'db_key': u'5893382324879360', 'latitude': 38.8928773933, u'author': u'Hugh Howey', 'longitude': -77.0063066483, u'title': u'Shift'}, {'db_key': u'4749890231992320', 'latitude': 38.8873241066, u'author': u'Hugh Howey', 'longitude': -77.0069181919, u'title': u'Shift'}, {'db_key': u'5119326138925056', 'latitude': 38.9107159544, u'author': u'Hugh Howey', 'longitude': -77.0437502861, u'title': u'Shift'}, {'db_key': u'6016527627190272', 'latitude': 38.9031716155, u'author': u'Robert Ludlum', 'longitude': -77.0362508297, u'title': u'The Bourne Identity'}, {'db_key': u'6183653394612224', 'latitude': 38.8202591287, u'author': u'Lynne Cantwell', 'longitude': -77.1265339851, u'title': u'Crosswind'}, {'db_key': u'5695470231879680', 'latitude': 43.6487713036, u'author': u'Tim McGregor', 'longitude': -79.428126812, u'title': u'Old Flames, Burned Hands'}, {'db_key': u'5156709534269440', 'latitude': 45.7389362527, u'author': u'Sheila Myers', 'longitude': -78.4039306641, u'title': u'Ephemeral Summer'}, {'db_key': u'5660285859790848', 'latitude': 44.0013487435, u'author': u'Susan Kietzman', 'longitude': -79.4590902328, u'title': u'A Changing Marriage'}, {'db_key': u'5845003813257216', 'latitude': 46.4650776189, u'author': u'Lucy Maud Montgomery', 'longitude': -63.5113423391, u'title': u'Anne of Green Gables'}, {'db_key': u'5594315162124288', 'latitude': 46.5312919174, u'author': u'Lucy Maud Montgomery', 'longitude': -63.5440421104, u'title': u'Anne of Green Gables'}, {'db_key': u'4824657022681088', 'latitude': 36.7043935951, u'author': u'Judi Coltman', 'longitude': -75.9265136719, u'title': u'In The Name of The Father'}, {'db_key': u'6319992836456448', 'latitude': 46.492011756, u'author': u'Lucy Maud Montgomery', 'longitude': -63.3793970923, u'title': u'Anne of Green Gables'}, {'db_key': u'6368371348078592', 'latitude': 39.1483274776, u'author': u'V. J. Chambers', 'longitude': -79.4967269897, u'title': u'Slow Burn'}];",
+			"\\},\\n\\{",
+			"},\\n{",
+			"\\n",
+			":",
+			"\\n",
+			"'",
+			"\\\",\\n'",
+			"',\\n\\\"",
+			"',\\n'",
+			"\\n",
+			"",
+			"all rights",
+			"funding provided",
+			"handlers.places.app",
+			"book",
+			"  title=book_data['title'],\n      author=book_data['author'],\n      isbn10=book_data['isbn10'],\n      isbn13=book_data['isbn13'],\n      lcc_number=book_data['lcc_number']\n    ",
+			"form-control",
+			"div",
+			"'",
+			"",
+			"\\n"
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/Users/steven/Desktop/gae/placingliterature/current"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 74,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								73,
+								73
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": true,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close"
+							],
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.anaconda_documentation":
+	{
+		"height": 226.0
+	},
+	"output.exec":
+	{
+		"height": 102.0
+	},
+	"output.find_results":
+	{
+		"height": 132.0
+	},
+	"output.git":
+	{
+		"height": 102.0
+	},
+	"project": "",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"t",
+				"tweet_dbi.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+		],
+		"width": 444.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 299.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
