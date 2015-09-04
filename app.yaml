@@ -1,5 +1,5 @@
-application: placingliterature
-version: may2015
+application: placing-literature
+version: next
 runtime: python27
 api_version: 1
 threadsafe: yes
@@ -48,6 +48,12 @@ handlers:
 - url: /about
   script: handlers.home.app
 
+- url: /authorspotlight
+  script: handlers.home.app
+
+- url: /collections
+  script: handlers.home.app
+
 - url: /funding
   script: handlers.home.app
 
@@ -94,6 +100,12 @@ handlers:
   script: handlers.places.app
 
 - url: /places/titles
+  script: handlers.places.app
+
+- url: /places/authors/(.*)
+  script: handlers.places.app
+
+- url: /places/titles/(.*)
   script: handlers.places.app
 
 - url: /places/dump
@@ -182,6 +194,9 @@ handlers:
   script: handlers.location_index.app
 
 - url: .*
+  script: handlers.home.app
+
+- url: /useragent
   script: handlers.home.app
 
 libraries:

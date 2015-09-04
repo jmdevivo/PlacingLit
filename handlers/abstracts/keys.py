@@ -11,4 +11,4 @@ tw_keys['OAUTH_TOKEN_SECRET'] = 'dRHsKiz26KHCuGqq1g70tjxXMCLVEDdov7fvEwWaZ4f1i'
 # https://www.goodreads.com/api/keys
 goodreads_keys = dict()
 
-gmaps_api_key = 'AIzaSyAfZEGsGgY8zGqt4pUVK5a_whmUbCtVaZo'
+gmaps_api_key = 'AIzaSyDoUdoSAkilkO38Sge7PH2_9CVcbArypVo'

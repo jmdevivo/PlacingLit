@@ -1,3 +1,6 @@
+<script src="/js/libs/jquery-1.11.0.min.js"></script>
+<script src="js/src/rssGrab.js"></script>
+
 {% extends 'base.tmpl' %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
@@ -79,10 +82,24 @@
         <!-- <li id="allscenes"><a href="#">see all places</a></li> -->
         <li id="allscenes"><a id='allscenes-text' href="/map">Explore</a></li>
         <li>
-          <form id="geocodersearch">
-            <input type="text" id="gcf" placeholder="search location" class="search-query"/>
-            <span id="search" class="btn">search</span>
-          </form>
+          <div id="geocodersearch">
+            <input type="text" id="gcf" autocomplete="off" placeholder="Place / Author / Title" class="search-query author-query title-query"/>
+            <img id="search" src='/img/searchLight.png'></img>
+            <div class='geosearchResults'>
+              <div class='searchResultSection'>
+                <h6 class='geosearchHeader'>Locations</h3>
+                <ul id='locationsSearchList'></ul>
+              </div>
+              <div class='searchResultSection'>
+                <h6 class='geosearchHeader'>Authors</h3>
+                <ul id='authorsSearchList'></ul>
+              </div>
+              <div class='searchResultSection'>
+                <h6 class='geosearchHeader'>Books</h3>
+                <ul id='bookSearchList'></ul>
+              </div>
+            </div>
+          </div>
         </li>
         <!--
         <li class="divider-vertical"></li>
@@ -90,13 +107,14 @@
         <li class="divider-vertical"></li>
       -->
       </ul>
+      
     </div>
   </div>
   <div id="mapcontainer">
     
     <div id='mapOverlay'class='overlay'>
-      <div class='fluid-container'>
-        <div class='row'>
+      <div class='fluid-container clearfix'>
+        <div>
           <div class='col-md-5 vanishing-col '>
             <div class='map-window left-window'>
               <div class='standard-entry-header'>Author Spotlight</div>
@@ -136,7 +154,8 @@
           <div class='col-md-4 window-container middle-window-div vanishing-col'>
             <div class='wide-map-window'>
               <div class="long-entry-header">Recent Blog Posts</div>
-              <div class='window-info'>
+              <div class='window-info' id="recent-blog">
+				 
                 <div class="long-entry-title-text">Indie Reader Author Spotlight: Samantha Towle</div>
                 <div class="long-entry-text">Sex, Drugs, Rock &amp; Roll, and... Literature? Yes!</div>
                 <div class="long-entry-text continue-reading">(Click to Continue Reading....)</div>
@@ -160,22 +179,105 @@
                 <div class='tall-entry-text'>Click below to go to map view. You can find our other content at the bar on the bottom of your screen.</div>
                 <div id='get-started-button' class='get-started-button'>GET STARTED</div>
                 <div class='tall-entry-text tall-entry-text-center'>Places added to date:</div>
-                <div id='num-places-added'>####</div>
+                <div id='num-places-added'>{{count}} </div>
                 <div class='tall-entry-text tall-entry-text-center'>Most recent additions:<br>Platform 9 &frac34; -Harry Potter Series</div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div id="addscenebutton"><i class="icon-plus-sign icon-white"></i>
+      add scene
+      </div>
+    <div id='info-overlay'>
+      <div class='tab-content'>
+  
+        <div id='entry-image'></div>
+        <div class='entry' id='scene_entry'>
+          
+          <h2 class="entry-title" id='entry-scene-title'>Places</h2>
+          <div class="entry-body" id='entry-scene-place-name'></div>
+          <div class="entry-body" id='entry-scene-description'></div>
+        </div>
+        <div class='entry' id='place_entry'>
+          <h2 class="entry-title" id='entry-place-title'>Place</h2>
+          <div class="entry-body" id='entry-place-place-name'></div>
+          <div class="entry-body" id='entry-place-body'></div>
+          <div class='entry-body learn-more'>Learn more about <span id='entry-place-location-name'></span>:</div>
+          <div class='actionContainer'>
+              <a id='wikiActionLink' class='actionAnchor' href='#'><img src='/img/wikipedia.jpg'/></a>
+              <button class='searchGoogle'>Search
+                <a id='googleActionLink' href='#'><img class='actionAnchor searchGoogleImage' src='/img/google.png'/></a>
+              </button>
+            </div>
+        </div>
+        <div class='entry' id='actions_entry'>
+          <h2 class="entry-title" id='entry-actions-title'>Actions</h2>
+          <div class="entry-body" id='entry-actions-place-name'></div>
+          <div class="entry-body" id='entry-actions-body'>
+            <div id="checkin">Have you ever been here? <input type='checkbox' class='beenHereCheckbox' name='beenHere'></input></div>
+            <div class='actionContainer'>
+              <a id='ibActionLink' class='actionAnchor' href='#'><img src="/img/ib.png"/></a>
+              <a id='grActionLink' class='actionAnchor' href='#'><img src='/img/goodrd.png'/></a>
+              <a id='wikiActionLink2' class='actionAnchor' href='#'><img src='/img/wikipedia.jpg'/></a>
+              <a id='googleActionLink2' class='actionAnchor' href='#'><button>Search The Web</button></a>
+              <a id='shareActionLink' class='actionAnchor' href='#'><img src='/img/share.jpg'/></a>
 
-    <div id="map_canvas">
-      <h3 class="alert alert-info">loading places...</h3>
-      <img class="loading" src="/img/loading.gif"/>
+            </div>
+            <a class='reportSceneError' href='mailto:info@placingliterature.com?Subject=Scene%20Error' target="_top">Report a Scene Error</a>
+            
+            <div class='actionContainer hiddenActionContainer'>
+              <label class='share_url_label'>Map link: </label>
+              <input id='share_url'class='share_url'></input>
+              <a id='facebookActionLink' class='actionAnchor' href='#'><img class='socialMediaActionLink'src='/img/facebook.jpg'/></a>
+              <a id='twitterActionLink' class='actionAnchor' href='#'><img class='socialMediaActionLink' src='/img/twitter.jpg'/></a>  
+            </div>
+          
+          </div>
+        </div>
+        <div class='entry' id='new_entry'>
+          <div id='new_scene_form'>
+            <p class='leave_new_scene_form'>&#x2715;</p>
+            <div class='new_scene_section' id='new_scene_book_info'>
+              <div><div class='new_scene_field_text'>What is the title of the book?</div><input id='new_scene_title' name='title' type='text'></input></div>
+              <div><div class='new_scene_field_text'>Who is the author of the book?</div><input id='new_scene_author' name='author' type='text'></input></div>
+              <button class='nextSceneFieldBtn' data-next='#new_scene_descrip'>Continue</button>
+            </div>
+            <div class='new_scene_section' id='new_scene_descrip'>
+              <div><div class='new_scene_field_text'>What happens in this particular scene?</div><textarea  rows='4' cols='40'  id='new_scene_notes'name='notes' type='text'></textarea></div>
+              <button class='nextSceneFieldBtn' data-next='#new_scene_place_info'>Continue</button>
+            </div>
+            <div class='new_scene_section' id='new_scene_place_info'>
+              <div><div class='new_scene_field_text'>What is the name of this place?</div><input id='new_scene_place_name' name='place_name' type='text'></input></div>
+              <div><div class='new_scene_field_text'>Tell us something about this place. Can’t think of anything to say? <a id='new_scene_wiki_link' href='https://en.wikipedia.org/w/index.php?search='>Try Wikipedia </a></div><textarea rows='4' cols='40' id='new_scene_scene' name='scene' type='text'></textarea></div>
+              <button class='nextSceneFieldBtn' data-next='#new_scene_personal_info'>Continue</button>
+            </div>
+            <div class='new_scene_section' id='new_scene_personal_info'>
+              <div><span class='new_scene_span'>Have you ever been to this location?</span><input id='new_scene_check_in' class='new_scene_checkbox' name='check_in' type='checkbox'></input></div>
+              <div><span class='new_scene_span'>Would you recommend other people visit this place?</span><input class='new_scene_checkbox' name='recommend' type='checkbox'></input></div>
+              <button class='nextSceneFieldBtn' data-next='#new_scene_submit'>Continue</button>
+            </div>
+            <div class='new_scene_section' id='new_scene_submit'>
+              <button id='new_scene_submit_btn'>Submit</button>
+            </div>
+          </div>
+          <ul class='new_entry_nav'>
+            <li  class='activeNav' data-section='new_scene_book_info'></li>
+            <li data-section='new_scene_descrip'></li>
+            <li data-section='new_scene_place_info'></li>
+            <li data-section='new_scene_personal_info'></li>
+            <li  data-section='new_scene_submit'></li>
+          </ul>
+        </div>
+      </div>
+      <nav id='tabs'> 
+        <a class='tab' id='scene_tab'data-entry='#scene_entry'>Scene</a>
+        <a class='tab' data-entry='#place_entry'>Place</a>
+        <a class='tab' data-entry='#actions_entry'>Actions</a>
+      </nav>
     </div>
-  </div>
-
-  <div id="addscenebutton"><i class="icon-plus-sign icon-white"></i>
-    add scene
+    <div id="map_canvas">
+    </div>
   </div>
   <!--
   <div id="lowernav">
@@ -201,7 +303,6 @@
       </li>
     </ul>
     <div id='footer-social'>
-      <a class="socialicon rss" href="https://soundcloud.com/interviewingauthors" title="RSS Feed" rel="nofollow" target="_blank"><i class="fa fa-rss-square"></i></a>
       <a class="socialicon facebook" href="https://www.facebook.com/PlacingLiterature" title="Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook-square"></i></a>
       <a class="socialicon twitter" href="https://twitter.com/placinglit" title="Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter-square"></i></a>
     </div>
@@ -216,29 +317,20 @@
         <a class="navLink" target="_blank" href="https://placingliterature.wordpress.com/">Blog</a>
       </div>
       <div class="linkSurround">
-        <a class="navLink" href="podcasts">Podcasts</a>
+        <a class="navLink" target="_blank" href="https://soundcloud.com/placingliterature/">Podcasts</a>
       </div>
       <div class="linkSurround">
-        <a class="navLink" href="author-spotlight">Author Spotlight</a>
+        <a class="navLink" href="authorspotlight">Author Spotlight</a>
       </div>
       <div class="linkSurround">
         <a class="navLink" href="collections">Collections</a>
       </div>
       <div class="linkSurround">
-        <a class="navLink lastLink" href="contact">Contact Us</a>
+        <a class="navLink lastLink" href="http://www.google.com">Mobile</a>
       </div>
   </div>
-  <script>
-    var hideOverlay = function(){
-      var overlay = document.getElementById("mapOverlay");
-      overlay.style.display = 'none';
-    }
-    var startBtn = document.getElementById("get-started-button");
-    startBtn.addEventListener("click", hideOverlay);
 
-
-
-  </script>
+  
   <!--
   <div class='row'>
     <div class='col-md-1 map-activator-btn'>+Buttons</div>
@@ -306,6 +398,7 @@
 
   </div>
 </div>
+
 {% endblock %}
 {% block scripts %}
 {% if center %}
@@ -319,4 +412,75 @@
 {% endif %}
 <script type="text/javascript" src="/js/src/app.js"></script>
 <script type="text/javascript" src="/js/src/placelit.js"></script>
+
+<script>
+
+    var hideOverlay = function(){
+      var overlay = document.getElementById("mapOverlay");
+      overlay.style.display = 'none';
+    }
+
+    $('#featContent').click(function(){
+      if($('#mapOverlay').css('display') == 'none'){
+        $('.info-overlay').hide();
+        $('#mapOverlay').show();
+      }
+      else {
+        $('.info-overlay').show();
+        $('#mapOverlay').hide();
+      }
+    })
+    var hideEntries = function(el){
+      $('.entry').each(function(e){
+        e.hide();
+      });
+      $(el).show();
+    }
+    $('.new_entry_nav li').click(function(){
+      $('.new_scene_section').hide();
+      $('.new_entry_nav li').removeClass('activeNav');
+      $(this).addClass('activeNav');
+      $('#' + this.getAttribute('data-section')).show();
+    });
+    (function(){      
+      var tabs = [];
+      $('.new_entry_nav li').each(function(){
+        tabs.push($(this));
+      });
+      $('.nextSceneFieldBtn').click(function(){        
+        var len = tabs.length;
+        for(var i=0; i<len;i++){
+          if(tabs[i].hasClass('activeNav')){            
+            tabs[i+1].click();
+            break;
+          }
+        }
+      });
+    })();
+    $('#new_scene_wiki_link').click(function(e){
+      e.preventDefault();
+
+      window.open($(this).attr('href') +$('#new_scene_place_name').val().replace(' ', "%20"));
+    });
+    $('#shareActionLink').click(function(){
+      $('.hiddenActionContainer').show();
+    });
+    $('.tab').click(function(){
+      $('.entry').hide();
+      $('.hiddenActionContainer').hide();
+      $('.tab').removeClass('activeTab');
+      $(this).addClass('activeTab')
+      $(this.getAttribute('data-entry')).show();
+    });
+    var startBtn = document.getElementById("get-started-button");
+    startBtn.addEventListener("click", hideOverlay);
+    $('html').click(function(){
+      $('.geosearchResults').hide();
+    });
+
+    $('.geosearchResults').click(function(event){
+      event.stopPropagation();
+    });
+
+  </script>
 {% endblock %}

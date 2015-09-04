@@ -19,6 +19,7 @@ class Home
     @elements.cityInput.on 'keydown', (event) =>
       if (event.which == @ENTER_KEY) || (event.keyCode == @ENTER_KEY)
         event.preventDefault()
+        console.log "This is affecting the javascript being executed"
         @geocoderSearch()
         .then(@useGeocodedLocation)
 

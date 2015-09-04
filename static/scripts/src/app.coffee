@@ -17,7 +17,6 @@ class PlacingLit.Models.Metadata extends Backbone.Model
 
   initialize: ->
 
-
 class PlacingLit.Collections.Locations extends Backbone.Collection
   model: PlacingLit.Models.Location
 
@@ -62,7 +61,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
   settings:
     zoomLevel:
       'wide' : 4
-      'default': 10
+      'default': 5
       'close': 14
       'tight' : 21
       'increment' : 1
@@ -76,13 +75,13 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
   mapOptions:
     #TODO styled maps?
     #https://developers.google.com/maps/documentation/javascript/styling#creating_a_styledmaptype
-    zoom: 4
+    zoom: 8
     #google.maps.MapTypeId.SATELLITE | ROADMAP | HYBRID
-    mapTypeId: google.maps.MapTypeId.TERRAIN
+    mapTypeId: google.maps.MapTypeId.ROADMAP
     mapTypeControlOptions:
       style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
       position: google.maps.ControlPosition.TOP_RIGHT
-    maxZoom: 25
+    maxZoom: 20
     minZoom: 2
     zoomControl: true
     zoomControlOptions:
@@ -93,12 +92,16 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       # position: google.maps.ControlPosition.TOP_LEFT
       position: google.maps.ControlPosition.LEFT_CENTER
 
+
   initialize: (scenes) ->
     @collection ?= new PlacingLit.Collections.Locations()
     @listenTo @collection, 'all', @render
     @collection.fetch()
     # setup handler for geocoder searches
+    @suggestAuthors()
+    @attachNewSceneHandler()
     @attachSearchHandler()
+
 
   render: (event) ->
     @mapWithMarkers() if event is 'sync'
@@ -120,6 +123,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @gmap.setMapTypeId(google.maps.MapTypeId.ROADMAP)
     else
       @gmap.setMapTypeId(google.maps.MapTypeId.TERRAIN)
+
+  closeNewEntry: () ->
+    console.log "closeNewEntry is firing"
+    $('#new_entry').hide()
 
   updateCollection: (event) ->
     center = @gmap.getCenter()
@@ -184,10 +191,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
   showInfowindowFormAtLocation: (map, marker, location) ->
     @closeInfowindows()
-    @userInfowindow = @infowindow()
-    @userInfowindow.setContent(document.getElementById('iwcontainer').innerHTML)
-    @userInfowindow.setPosition(location)
-    @userInfowindow.open(map, @userMapsMarker)
+    #@userInfowindow = @infowindow()
+    #@userInfowindow.setContent(document.getElementById('iwcontainer').innerHTML)
+    #@userInfowindow.setPosition(location)
+    #@userInfowindow.open(map, @userMapsMarker)
     if not Modernizr.input.placeholder
       google.maps.event.addListener(@userInfowindow, 'domready', () =>
       @clearPlaceholders()
@@ -213,29 +220,55 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     marker.setMap(null)
     marker = null
 
-  suggestTitles: () ->
-    title_data = []
-    $.ajax
-      url: "/places/titles"
-      success: (data) ->
-        $.each data, (key, value) ->
-          title_data.push(value.title.toString())
-        $('#map_canvas').find('#title').typeahead({source: title_data})
+  suggestTitles: (title_data) ->
+    parent = document.getElementById('bookSearchList')
+    $(parent).empty()
+    $(parent).show()
+    searchTxt = $('#gcf').val()
+    if searchTxt != ""
+      for title in title_data
+        if title.indexOf(searchTxt) > -1
+          li = document.createElement('li')
+          li.className = 'searchResultText searchResultTitleText'
+          li.innerHTML = title
+          parent.appendChild(li)
+          if $(parent).children().length > 5
+            break;
+      $('.searchResultTitleText').click(() ->
+        windowLoc = window.location.protocol + '//' + window.location.host 
+        window.location.href = (windowLoc + "/map/filter/title/" + @innerHTML)
+        )
 
-  suggestAuthors: () ->
-    author_data = []
-    $.ajax
-      url: "/places/authors"
-      success: (data) ->
-        $.each data, (key, value) ->
-          author_data.push(value.author.toString())
-        $('#map_canvas').find('#author').typeahead({source: author_data})
+  suggestAuthors: (author_data) ->
+    parent = document.getElementById('authorsSearchList')
+    $(parent).empty()
+    $(parent).show()
+    searchTxt = $('#gcf').val()
+    if searchTxt != ""
+      for author in author_data
+        if author.indexOf(searchTxt) > -1
+          li = document.createElement('li')
+          li.className = 'searchResultText'
+          li.innerHTML = author
+          parent.appendChild(li)
+          if $(parent).children().length > 5
+            break;
+      $('.searchResultText').click(() ->
+        windowLoc = window.location.protocol + '//' + window.location.host 
+        window.location.href = (windowLoc + "/map/filter/author/" + @innerHTML)
+        )
+
+    #$('#map_canvas').find('#author').typeahead({source: author_data})
 
   markersForEachScene: (markers) ->
     markers.each (model) => @dropMarkerForStoredLocation(model)
 
   markerArrayFromCollection: (collection) ->
     return (@buildMarkerFromLocation(model) for model in collection.models)
+
+
+  updateInfoOverlay: (info) ->
+
 
   markerClustersForScenes: (locations) ->
     cluster_options =
@@ -254,8 +287,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     # @markersForEachScene(@collection)
     @markerClustersForScenes(@allMarkers)
     @positionMap()
-    $('#addscenebutton').on('click', @handleAddSceneButtonClick)
-    $('#addscenebutton').show()
+    @isUserLoggedIn( =>
+      $('#addscenebutton').on('click', @handleAddSceneButtonClick)
+      $('#addscenebutton').show()
+    )
 
     # $('#hidemarkers').on('click', @hideMarkers)
     # $('#showmarkers').on('click', @showMarkers)
@@ -275,8 +310,16 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         lat: 39.8282
         lng: -98.5795
       usacenter = new google.maps.LatLng(usaCoords.lat, usaCoords.lng)
-      @gmap.setCenter(usacenter)
-      @gmap.setZoom(2)
+      if navigator.geolocation
+        navigator.geolocation.getCurrentPosition((position) =>
+          userCoords =
+            lat: position.coords.latitude
+            lng: position.coords.longitude
+          @gmap.setCenter(userCoords)
+        )
+      else
+        @gmap.setCenter(usacenter)
+      @gmap.setZoom(8)
     if window.PLACEKEY?
       windowOptions = position: mapcenter
       @openInfowindowForPlace(window.PLACEKEY, windowOptions)
@@ -286,8 +329,19 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @setUserMapMarker(@gmap, event.latLng)
 
   handleAddSceneButtonClick: =>
-    @closeInfowindows() if @infowindows.length
+    #@closeInfowindows() if @infowindows.length
+
+    $('#entry-image').hide()
+    $('.entry').hide()
+    $('#tabs').hide()
+    $('.new_scene_section').hide()
+    $('#new_scene_book_info').show()
     @setUserMapMarker(@gmap, @gmap.getCenter())
+    $('#info-overlay').show()
+    $('#new_entry').show()
+    $('.leave_new_scene_form').click(()-> 
+      $('#info-overlay').hide()
+      $('.entry').hide())
     # $('#addscenebutton').hide()
     # console.log('all markers', @allMarkers)
     # marker.setMap(null) for marker in @allMarkers
@@ -322,9 +376,9 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       success: (data) =>
         if data.status == 'logged in'
           callback.call(this)
-        else
-          @showLoginInfoWindow()
-
+        else  
+          $('#addscenebutton').click(() -> window.location.href = $('#loginlink').attr('href'))
+          
   showLoginInfoWindow: () ->
     if @userMapsMarker
       loginWindowPosition = @userMapsMarker.getPosition()
@@ -348,13 +402,14 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @showInfowindowFormAtLocation(@gmap, @userMapsMarker, location)
     @setUserPlaceFromLocation(location)
     @handleInfowindowButtonClick()
-    @suggestTitles()
-    @suggestAuthors()
+    #@suggestTitles()
+    #@suggestAuthors()
+
 
   updateInfowindowWithMessage: (infowindow, response, refresh) ->
     console.log('new marker', response, refresh)
     textcontainer = '<div id="thankswindow">' + response.message + '</div>'
-    infowindow.setContent(textcontainer)
+    $('#new_scene_submit').append(textcontainer)
     if refresh
       google.maps.event.addListenerOnce infowindow, 'closeclick', () =>
         @userMapsMarker.setMap(null)
@@ -367,24 +422,25 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     maps = new MapCanvasView
 
   handleInfowindowButtonClick : ()->
-    $addPlaceButton = $('#map_canvas .infowindowform').find('#addplacebutton')
+    $addPlaceButton = $('#new_scene_submit_btn')
     $addPlaceButton.on('click', @addPlace) if $addPlaceButton?
 
   getFormValues: () ->
-    $form = $('#map_canvas .infowindowform')
+    $form = $('#new_scene_form')
     form_data =
-      title: $form.find('#title').val()
-      author: $form.find('#author').val()
-      place_name: $form.find('#place_name').val()
+      title: $form.find('#new_scene_title').val()
+      author: $form.find('#new_scene_author').val()
+      place_name: $form.find('#new_scene_place_name').val()
       # date: $('#date').val()
       # actors: $('#actors').val()
       # symbols: $('#symbols').val()
-      scene: $form.find('#scene').val()
-      notes: $form.find('#notes').val()
+      scene: $form.find('#new_scene_scene').val()
+      notes: $form.find('#new_scene_notes').val()
       image_url: $form.find('#image_url').val()
-      check_in: $form.find('#check_in').prop('checked')
+      check_in: $form.find('#new_scene_check_in').prop('checked')
     form_data.latitude = @userPlace.lat()
     form_data.longitude = @userPlace.lng()
+    console.log form_data
     return form_data
 
   isFormComplete: (form_data) ->
@@ -401,6 +457,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     return completed_entry
 
   addPlace: () =>
+    console.log "addplace is firing"
     form_data = @getFormValues()
     if @isFormComplete(form_data)
       msg = '<span>adding... please wait...</span>'
@@ -422,6 +479,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @updateInfowindowWithMessage(@userInfowindow, response, false)
       return false
 
+
+
   geocoderSearch: () ->
     address = document.getElementById('gcf').value
     if address
@@ -436,14 +495,133 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
           alert("geocode was not successful: " + status)
       )
 
-  attachSearchHandler: ->
-    $('#gcf').on('keydown', (event) =>
-        if (event.which == 13 || event.keyCode == 13)
-          event.preventDefault()
-          @geocoderSearch()
+  populateSuggestedSearches: (authors, titles) ->
+    @hideOverlay()
+    searchTxt = document.getElementById('gcf').value
+    #@populateSuggestedAuthors(searchTxt)
+    #@populateSuggestedTitles(searchTxt)
+    if searchTxt
+      geocoder = new google.maps.Geocoder()
+      geocoder.geocode({'address': searchTxt}, (results, status) =>
+        if(status == google.maps.GeocoderStatus.OK)
+          parent = document.getElementById('locationsSearchList')
+          $(parent).empty()
+          numRes = if results.length > 5 then 4 else results.length
+          for i in [0 .. numRes]
+            child = @createSearchElement(results[i])
+            parent.appendChild(child)
+        else if(status == google.maps.GeocoderStatus.ZERO_RESULTS)
+          console.log "No Locations found, try rephrasing search"
+        else
+          alert("geocode was not successful: " + status)
       )
-    $('#search').on 'click', (event) =>
-      @geocoderSearch()
+
+  hideOverlay: () ->
+      overlay = document.getElementById("mapOverlay")
+      overlay.style.display = 'none'
+
+  populateSuggestedAuthors: (searchTxt) ->
+    if searchTxt
+      query = searchTxt.replace(/ /, "%20")
+      $.ajax
+        url: "/places/authors/" + query
+        success: (data) =>
+          parent = document.getElementById('authorsSearchList')
+          $(parent).empty
+          i=0
+          for author in data
+            if i > 5 
+              break
+            location = new google.maps.LatLng(author.scene_location.latitude, author.scene_location.longitude)
+            name = author.author
+            li = document.createElement('li')
+            li.className = 'searchResultText'
+            li.innerHTML = name
+            li.data-location = location
+            li.addEventListener('click', () =>
+              @collection.fetch()
+              @gmap.setCenter(location)
+              @gmap.setZoom(@settings.zoomLevel.default)
+            )
+            parent.appendChild(li)
+            i++
+
+        error: (err) ->
+          console.log err
+  populateSuggestedTitles: (searchTxt) ->
+    if searchTxt
+      query = searchTxt.replace(/ /, "")
+      $.ajax
+        url: "/places/titles/" + query
+        success: (data) =>
+          parent = document.getElementById('bookSearchList')
+          console.log "PopulateSuggestedTitles is firing"
+          $(parent).empty
+          i=0
+          for title in data
+            if i > 5 
+              break
+            li = document.createElement('li')
+            li.className = 'searchResultText'
+            location = new google.maps.LatLng(title.latitude, title.longitude)
+            li.innerHTML = title.title
+            li.addEventListener('click', () =>
+              @gmap.setCenter(location)
+              @gmap.setZoom(@settings.zoomLevel.default)
+            );
+            parent.appendChild(li)
+            i++
+
+
+        error: (err) ->
+          console.log err
+
+  createSearchElement: (element) ->
+    location = element.geometry.location
+    console.log location
+    name = element.formatted_address
+    li = document.createElement('li')
+    li.innerHTML = name
+    li.data-location = location
+    li.addEventListener('click', () =>
+      @gmap.setCenter(location)
+      @gmap.setZoom(@settings.zoomLevel.default)
+    )
+    li
+
+  attachSearchHandler: ->
+    $.ajax
+      url: "/places/authors"
+      success: (authors) =>
+        $.ajax
+          url: "/places/titles"
+          success: (titles) =>
+            $('#gcf').on('keydown', (event) =>
+                  author_data = []
+                  title_data = []
+                  console.log titles
+                  $.each authors, (key, value) =>
+                    author_data.push(value.author.toString())
+                  $.each titles, (key, value) =>
+                    title_data.push(value.title.toString())
+                  @hideOverlay()
+                  $('.geosearchResults').show()
+                  #$('#info-overlay').show()
+                  @suggestAuthors(author_data)
+                  @suggestTitles(title_data)
+                  @populateSuggestedSearches(authors, titles)
+              )
+            $('#search').on 'click', (event) =>
+              #$('#info-overlay').show()
+              @populateSuggestedSearches()
+
+  attachNewSceneHandler: ->
+    console.log "The attach new scene handler is firing"
+    $('#new_scene_submit_btn').click( () =>
+      console.log("new scene button action listenr is assigned")
+      @addPlace()
+      )
+
 
   sceneFieldsTemplate: ->
     field_format = '<br><span class="pllabel"><%= label %></span>'
@@ -469,17 +647,83 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     return _.template(img)
 
   sceneAPIImageTemplate: ->
-    img = '<a target="_blank" href="//www.panoramio.com/photo/<%= image_id %>">'
-    img += '<img class="infopic" src="//mw2.google.com/mw-panoramio/photos/'
-    img += 'small/<%= image_id %>.jpg"></a>'
+    console.log "sceneAPIImageTemplate is firing"
+    img = '<a target="_blank" href="//www.panoramio.com/photo/<%= image_id %>"
+    class="panoramio-image" 
+    style="background-image:url(http://static2.bareka.com/photos/medium/<%= image_id %>.jpg);"></a>'
     return _.template(img)
 
   sceneTitleTemplate: ->
     return _.template('<span class="lead"><%= title %> by <%= author %></span>')
 
   buildInfowindow: (data, updateButton) ->
+    $('#tabs').show()
     @clearInfowindowClickEvents()
+    console.log "The database key is:" + data.id
     content = '<div class="plinfowindow">'
+    $('#entry-image').show()
+    console.log 'data.image_data is:' + data.image_data
+    if !!data.image_data
+      console.log "Entry image should be populated with the panoramio image"
+      $('#entry-image').html(@sceneAPIImageTemplate()(image_id: data.image_data.photo_id))
+    $('#entry-scene-title').html(data.title + "<br />" +"<span>by "+ data.author + '</span>')
+    $('#entry-place-title').html(data.title + "<br />" +"<span>by "+ data.author + '</span>')
+    $('#entry-actions-title').html(data.title + "<br />" +"<span>by "+ data.author + '</span>')
+    $('#entry-scene-place-name').html(data.place_name)
+    $('#entry-place-place-name').html(data.place_name)
+    $('#entry-place-location-name').html(data.place_name)
+    $('#entry-actions-place-name').html(data.place_name)
+    $('#learn-more-place-name').html(data.place_name)
+    $('#entry-scene-description').html(data.description)
+    $('#entry-characters-body').html(data.characters)
+    $('#entry-symbols-body').html(data.symbols)
+    $('#entry-place-body').html(data.notes)
+    $('#entry-visits-body').html(data.visits)    
+    $("#ibActionLink").click((e) =>
+      e.preventDefault()
+      window.open("http://www.rjjulia.com/book/"+ data.isbn)
+      )
+    $("#grActionLink").click((e) => 
+      e.preventDefault()
+      window.open("https://www.goodreads.com/book/isbn/"+ data.isbn)
+      )
+    console.log "setting google action listener"
+    $("#googleActionLink").click((e) =>
+      e.preventDefault()
+      window.open("https://www.google.com/search?q="+ data.title)
+      )
+    $("#googleActionLink2").click((e) =>
+      e.preventDefault()
+      window.open("https://www.google.com/search?q="+ data.title)
+      )
+    $("#wikiActionLink").click((e) =>
+      e.preventDefault()
+      window.open("https://en.wikipedia.org/w/index.php?search="+ data.title)
+      )
+    $("#wikiActionLink2").click((e) =>
+      e.preventDefault()
+      window.open("https://en.wikipedia.org/w/index.php?search="+ data.title)
+      )
+    $("#ibActionLink").click((e) =>
+      e.preventDefault()
+      window.open("http://www.rjjulia.com/book/"+ data.isbn)
+      )
+    #$('#entry-image').attr("src", "//mw2.google.com/mw-panoramio/photos/small/" +data.id +".jpg")
+    $('#entry-symbols-body').html(data.symbols)
+    $('#entry-place-body').html(data.notes)
+    $('#entry-visits-body').html(data.visits)
+
+    twitterlink = "https://twitter.com/intent/tweet?text=Check%20out%20"+data.title+"%20at%20"+data.place_name+"%20by%20visiting%20placing-literature.appspot.com/map/filter/id/"+data.id+"%20#getlit"
+    $('#twitterActionLink').click((e) =>
+      e.preventDefault()
+      window.open(twitterlink)
+      )
+    $('#facebookActionLink').click((e) =>
+      e.preventDefault()
+      window.open('http://www.facebook.com/share.php?u=http://www.placing-literature.appspot.com/map/filter/id/'+data.id)
+      )
+    $('#share_url').val('placing-literature.appspot.com/map/filter/id/'+data.id)
+
 
     if !!data.image_url
       content += @sceneUserImageTemplate()(image_url: data.image_url)
@@ -494,15 +738,29 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         content += @sceneFieldsTemplate()({label: label, content:data[field]})
     if updateButton
       content += @sceneCheckinButtonTemplate()(place_id: data.id)
-      @handleCheckinButtonClick()
+      #@handleCheckinButtonClick()
     if !!data.isbn
       content += @sceneButtonTemplate()(gr_isbn: data.isbn, buy_isbn: data.isbn)
       @handleInfowindowButtonEvents()
     content += '</div>'
     return content
+    
 
   openInfowindowForPlace: (place_key, windowOptions) ->
     console.log('open', windowOptions)
+    console.log("Hello World the updated info overlay code is running")
+    $('#info-overlay').animate {
+        left: '-=1000'
+      },700, () ->  
+        $('.entry').hide()
+        $('#info-overlay').show()
+        $('#scene_entry').show()
+        $('#tabs').show()
+        $('.tab').removeClass('activeTab')
+        $('#scene_tab').addClass('activeTab')
+        $('#info-overlay').animate {
+          left: '+=1000'
+        },700
     # this can be triggered by a deep link or map marker click
     # TODO: marker clicks are tracked as events, deep links as pages- RESOLVE
     url = '/places/info/' + place_key
@@ -517,15 +775,18 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @mapEventTracking(tracking)
     $.getJSON url, (data) =>
       @placeInfowindow.close() if @placeInfowindow?
-      iw = @infowindow()
-      iw.setContent(@buildInfowindow(data, true))
+      #iw = @infowindow()
+      console.log(windowOptions.marker.position)
+      @buildInfowindow(data, true)
       if windowOptions.position
+        console.log(typeof windowOptions.position)
+        console.log(windowOptions.position)
         iw.setPosition(windowOptions.position)
         iw.open(@gmap)
         @gmap.setCenter(windowOptions.position)
-      else
-        iw.open(@gmap, windowOptions.marker)
-      @placeInfowindow = iw
+      #else
+        #iw.open(@gmap, windowOptions.marker)
+      #@placeInfowindow = iw
 
       @handleCheckinButtonClick
 
@@ -619,6 +880,7 @@ class PlacingLit.Views.RecentPlaces extends Backbone.View
 
   getPlaceLink: (place) ->
     li = document.createElement('li')
+    li.className = 'searchResultText'
     li.id = place.get('db_key')
     link = document.createElement('a')
     link.href = '/map/' + place.get('latitude') + ',' + place.get('longitude')
@@ -711,6 +973,7 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
           alert("geocode was not successful: " + status)
 
   attachFilteredViewSearchHandler: ->
+    document.getElementById("mapOverlay").style.display = 'none'
     $('#gcf').on('keydown',
       (event) =>
         if (event.which == 13 || event.keyCode == 13)
@@ -720,22 +983,26 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     $('#search').on 'click', (event) =>
       @filteredViewGeocoderSearch()
 
+
   initialize: (scenes) ->
     # console.log('filtered view', scenes)
     @collection ?= new PlacingLit.Collections.Locations()
     @listenTo @collection, 'all', @render
+    @collection.fetch()
     @collection.reset(scenes)
+    @authors = @suggestAuthors()
 
   render: (event) ->
     @gmap ?= @googlemap()
     @allMarkers = @markerArrayFromCollection(@collection)
     @markerClustersForScenes(@allMarkers)
     # @markersForEachScene(@collection)
-    @attachFilteredViewSearchHandler()
+    @attachSearchHandler()
     mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
     @gmap.setCenter(mapcenter)
     # console.log('zoom', @gmap.getZoom())
     @gmap.setZoom(@settings.zoomLevel.wide)
+    console.log "This print statement is running in the render method"
     $('#addscenebutton').on('click', @handleAddSceneButtonClick)
     $('#addscenebutton').show()
 

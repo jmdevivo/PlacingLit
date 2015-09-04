@@ -6,10 +6,13 @@ import datetime
 import logging
 
 from string import capwords
+from datetime import datetime
 
 from google.appengine.ext import webapp
 from google.appengine.api import users
 from google.appengine.api import memcache
+from google.appengine.api import search
+
 
 from handlers.abstracts import baseapp
 from classes import placedlit
@@ -37,6 +40,22 @@ class GetPlacesHandler(baseapp.BaseAppHandler):
     # loc_json = [self.export_place_fields(place) for place in places]
     self.output_json(loc_json)
 
+class GetPlacesByTitleHandler(baseapp.BaseAppHandler):
+  """Get places by title"""
+  def get(self, title):
+    places = placedlit.PlacedLit.get_all_places()
+    loc_json = []
+    for place in places:
+      if place.title and title in place.title:
+        place_dict = {
+          'latitude': place.location.lat,
+          'longitude': place.location.lon,
+          'db_key': place.key().id(),
+          'title': place.title,
+          'author': place.author
+        }
+        loc_json.append(place_dict)
+    self.output_json(loc_json)
 
 class GetPlacesByDateHandler(baseapp.BaseAppHandler):
   """ get all places sorted by date return as list of json objects"""
@@ -160,6 +179,24 @@ class PlacesTitles(baseapp.BaseAppHandler):
     #   title_json.append({'title': places.title.replace('\"', '')})
     self.output_json(titles)
 
+class GetAuthorByNameHandler(baseapp.BaseAppHandler):
+  """ get an author by name"""
+  def get(self, name):
+    data = placedlit.PlacedLit.places_by_query('author',name)
+    respArray = []
+    for res in data.results:
+      resp = {}
+      for field in res.fields:
+        if str(type(field.value)) == "<class 'google.appengine.api.search.search.GeoPoint'>":
+          entry = {
+            'latitude': field.value.latitude,
+            'longitude': field.value.longitude
+          }
+          resp[field.name] = entry
+        else:
+          resp[field.name] = str(field.value)
+        respArray.append(resp)
+    self.output_json(respArray)
 
 urls = [
   ('/places/show', GetPlacesHandler),
@@ -171,6 +208,8 @@ urls = [
   ('/places/authors', PlacesAuthors),
   ('/places/titles', PlacesTitles),
   ('/places/allbydate', GetPlacesByDateHandler),
+  ('/places/authors/(.*)', GetAuthorByNameHandler),
+  ('/places/titles/(.*)', GetPlacesByTitleHandler),
 ]
 
 app = webapp.WSGIApplication(urls, debug=True)

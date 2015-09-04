@@ -3,10 +3,12 @@
   <head>
     <title>{% block title %}Set a Title{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
     {% block styles %}
     <!-- <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
     <link href="/css/placelit.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     {% endblock %}
     <script>
@@ -83,6 +85,8 @@
       <h3 id="plpagetitle"><img id="weblogo" src="/img/webicon.png">Placing Literature: Where Your Book Meets the Map</h3>
     </div>
   -->
+    <a id="loginlink" href="{{ url }}">{{ url_text }}</a></li>
+    
     {% block content %}
       Put some stuff here.
     {% endblock %}

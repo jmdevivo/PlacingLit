@@ -12,6 +12,7 @@ from handlers.abstracts import baseapp
 
 import blogposts
 
+import smtplib
 
 class HomeHandler(baseapp.BaseAppHandler):
   def get(self):
@@ -28,7 +29,18 @@ class AboutHandler(baseapp.BaseAppHandler):
   def get(self):
     template_values = self.basic_template_content()
     template_values['title'] = 'About'
-    self.render_template('about.tmpl', template_values)
+    self.render_template('about_page.tmpl', template_values)
+
+  """def post(self):
+    sender = self.request.get('name')
+    subject = 'Placing Lit Contact Form'
+    text = self.request.get('message')
+    server = smtplib.SMTP("Server")
+    server.sendmail(sender, "laurenbeecher@gmail.com", text)
+    server.quit()
+    template_values = self.basic_template_content()
+    template_values['title'] = 'About'
+    self.render_template('about_page.tmpl', template_values)"""
 
 
 class FundingHandler(baseapp.BaseAppHandler):
@@ -40,14 +52,20 @@ class FundingHandler(baseapp.BaseAppHandler):
 
 class MapHandler(baseapp.BaseAppHandler):
   def get(self, location=None, key=None):
-    template_values = self.basic_template_content()
-    template_values['title'] = 'Map'
-    if location and ',' in location:
-      (lat, lng) = location.replace('/', '').split(',')
-      template_values['center'] = '{lat:%s,lng:%s}' % (lat, lng)
-    if self.request.get('key'):
-      template_values['key'] = self.request.get('key')
-    self.render_template('map.tmpl', template_values)
+    if "Mobi" in self.request.headers.get('User-Agent'):
+      template_values = self.basic_template_content()
+      template_values['title'] = 'Map'
+      self.render_template('mobile-map.tmpl', template_values)
+    else:
+      template_values = self.basic_template_content()
+      template_values['title'] = 'Map'
+      template_values['count'] = placedlit.PlacedLit.count()
+      if location and ',' in location:
+        (lat, lng) = location.replace('/', '').split(',')
+        template_values['center'] = '{lat:%s,lng:%s}' % (lat, lng)
+      if self.request.get('key'):
+        template_values['key'] = self.request.get('key')
+      self.render_template('map.tmpl', template_values)
 
 
 class IndexedSceneMapHandler(baseapp.BaseAppHandler):
@@ -148,10 +166,11 @@ class MapFilterHandler(baseapp.BaseAppHandler):
   def get(self, field=None, term=None):
     template_values = self.basic_template_content()
     template_values['title'] = 'Map'
+    template_values['count'] = placedlit.PlacedLit.count()
     places = placedlit.PlacedLit.places_by_query(field, term)
     loc_json = []
     if places:
-      if field == 'author':
+      if field == 'author' or field == 'title':
         loc_json = self.format_location_index_results(places)
       else:
         loc_json = [self.export_place_fields(place) for place in places]
@@ -160,6 +179,7 @@ class MapFilterHandler(baseapp.BaseAppHandler):
       template_values['center'] = '{{lat:{}, lng:{}}}'.format(
         some_scene['latitude'], some_scene['longitude'])
     template_values['scenes'] = json.dumps(loc_json)
+    template_values['log'] = json.dumps(loc_json)
     self.render_template('map.tmpl', template_values)
 
 
@@ -169,10 +189,22 @@ class AdminMenuHandler(baseapp.BaseAppHandler):
     template_values['title'] = 'Admin Menu'
     self.render_template('admin.tmpl', template_values)
 
+class AuthorSpotlightHandler(baseapp.BaseAppHandler):
+  def get(self):
+    template_values = self.basic_template_content()
+    template_values['title'] = 'Author Spotlight'
+    self.render_template('author-spotlight.tmpl', template_values)
+
+class CollectionsHandler(baseapp.BaseAppHandler):
+  def get(self):
+    template_values = self.basic_template_content()
+    template_values['title'] = 'Collections'
+    self.render_template('collections.tmpl', template_values)
 
 urls = [
   ('/about', AboutHandler),
   ('/all', AllscenesHandler),
+  ('/authorspotlight', AuthorSpotlightHandler),
   ('/funding', FundingHandler),
   ('/home', HomeHandler),
   ('/map/filter/(.*)/(.*)', MapFilterHandler),
@@ -183,6 +215,7 @@ urls = [
   ('/admin/edit', AdminEditSceneHandler),
   ('/admin/menu', AdminMenuHandler),
   ('/oldhome', HomeHandler),
+  ('/collections', CollectionsHandler)
 ]
 
 app = webapp.WSGIApplication(urls, debug=True)

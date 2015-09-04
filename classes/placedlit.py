@@ -11,6 +11,7 @@ import urlparse
 from google.appengine.ext import db
 from google.appengine.api import memcache
 
+
 ALL_PLACES_LOCATION_KEY = 'show_all_places'
 
 import books
@@ -113,6 +114,16 @@ class PlacedLit(db.Model):
     return all_places
 
   @classmethod
+  def get_place_by_title(cls, title):
+    """ Get a place given its title"""
+    all_places = memcache.get(ALL_PLACES_LOCATION_KEY)
+    if all_places is None:
+      all_places = cls.all()
+      memcache.add(ALL_PLACES_LOCATION_KEY, all_places)
+    data = [place for place in all_places if title in place.title]
+    return data
+
+  @classmethod
   def get_newest_places(cls, limit=5):
     """ What's new? """
     return cls.all().order('-ts').run(limit=limit)
@@ -155,6 +166,8 @@ class PlacedLit(db.Model):
     except:
       raise
 
+  
+
   @classmethod
   def get_all_titles(cls):
     """" Get all titles. """
@@ -175,6 +188,12 @@ class PlacedLit(db.Model):
     """ Get scenes matching an arbitrary query. """
     if field == 'author':
       places = location_index.author_query(author_name=term)
+    elif field == 'title':
+      places = location_index.title_query(title=term)
+    elif field == 'id':
+      k = cls.get_by_id(int(term))
+      place_query = cls.all().filter('__key__',k)
+      places = place_query.run()
     else:
       try:
         place_query = cls.all().filter(field, term)
@@ -185,6 +204,18 @@ class PlacedLit(db.Model):
         place_query = cls.all().filter(field, term.decode('iso-8859-1'))
         places = place_query.run()
     return places
+
+  @classmethod
+  def places_by_title(cls, title):
+    try:
+      pl_query = db.GqlQuery('"""SELECT * FROM PlacedLit WHERE title= \' {} \' '.format(title.replace('%20', ' ')))
+      isbndb_titles = pl_query.run()
+      title_list = list()
+      for res in isbndb_titles:
+        title_list.append({'title': res.title,})
+      return isbndb_titles
+    except:
+      raise
 
   @classmethod
   def get_all_unresolved_places(cls):

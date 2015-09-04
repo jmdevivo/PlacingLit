@@ -6,6 +6,7 @@ import logging
 
 from google.appengine.api import search
 from google.appengine.ext import deferred
+from google.appengine.ext import db
 
 import placedlit
 
@@ -25,6 +26,22 @@ def author_query(author_name=None):
   results = doc_index.search(query)
   return results
 
+def title_query(title=None):
+  query_string = 'title = \"{}\"'.format(title)
+  doc_index = search.Index(name=INDEX_NAME)
+  options = search.QueryOptions(limit=result_limit)
+  query = search.Query(query_string=query_string, options=options)
+  results = doc_index.search(query)
+  return results
+
+def id_query(key=None):
+  prepKey = 'KEY(\"PlacedLit\",{})'.format(key)
+  query_string = '__key__ ={}'.format(prepKey)
+  doc_index = search.Index(name=INDEX_NAME)
+  options = search.QueryOptions(limit=1)
+  query = search.Query(query_string=query_string, options=options)
+  results = doc_index.search(query)
+  return results
 
 def get_index_info():
   indices = list()

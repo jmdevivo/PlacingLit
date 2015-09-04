@@ -21,8 +21,8 @@ import keys
 TEMPLATE_DIRS = os.path.join(os.path.dirname(__file__), '..', '..', 'templates')
 
 FILE_UPLOAD_MAX_MEMORY_SIZE = 1048576  # 1 MB
-GM3_SSL_API_URL = 'https://maps-api-ssl.google.com/maps/api/js?v=3&sensor=true'
-GM3_API_URL = 'http://maps.google.com/maps/api/js?sensor=true'
+GM3_SSL_API_URL = 'https://maps-api-ssl.google.com/maps/api/js?v=3&sensor=true&z=5'
+GM3_API_URL = 'http://maps.google.com/maps/api/js?sensor=true&zoom=20'
 JSON_XSSI_PREFIX = None
 GM3_API_KEY = keys.gmaps_api_key
 
@@ -82,11 +82,7 @@ class BaseAppHandler(webapp.RequestHandler):
 
   def maps_api_url(self):
     server = self.request.headers.get('host', 'no host')
-    if (
-      server.startswith('www.placingliterature') or
-      server.startswith('placingliterature') or
-      server.endswith('appspot.com')
-    ):
+    if server.endswith('placing-literature.appspot.com'):
       return GM3_API_URL + '&key=' + GM3_API_KEY
     else:
       return GM3_API_URL
