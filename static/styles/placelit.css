@@ -4962,7 +4962,8 @@ body {
   background: #404040 none repeat scroll 0% 0%;
   color: #FFF;
   padding: 0px 15px;
-  border-radius: 0px; }
+  border-radius: 0px;
+  cursor: pointer; }
 
 .fa-plus::before {
   content: ""; }
@@ -5379,3 +5380,5 @@ body {
   height: 17px;
   opacity: .6;
   margin-top: 4px; }
+
+/*# sourceMappingURL=placelit.css.map */
