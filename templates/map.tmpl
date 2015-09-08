@@ -298,13 +298,17 @@
       <li>
         <a id="featContent">
           <i class='fa fa-plus'></i>
-          Featured Content
+          <p id="featContentText"> Hide Featured Content </p>
         </a>
       </li>
     </ul>
     <div id='footer-social'>
-      <a class="socialicon facebook" href="https://www.facebook.com/PlacingLiterature" title="Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook-square"></i></a>
-      <a class="socialicon twitter" href="https://twitter.com/placinglit" title="Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter-square"></i></a>
+      <a class="socialicon facebook" href="https://www.facebook.com/PlacingLiterature" title="Facebook" rel="nofollow" target="_blank">
+        <i class="fa fa-facebook-square fa-2x" id="facebook-square-icon"></i>
+      </a>
+      <a class="socialicon twitter" href="https://twitter.com/placinglit" title="Twitter" rel="nofollow" target="_blank">
+        <i class="fa fa-twitter-square fa-2x" id="twitter-square-icon"></i>
+      </a>
     </div>
     <div id='copyright'>Placing Literature © 2012-2015. All Rights Reserved.</div>
   </div>
@@ -426,10 +430,12 @@
       if($('#mapOverlay').css('display') == 'none'){
         $('.info-overlay').hide();
         $('#mapOverlay').show();
+        $('#featContentText').text("Hide Featured Content");
       }
       else {
         $('.info-overlay').show();
         $('#mapOverlay').hide();
+        $('#featContentText').text("View Featured Content");
       }
     })
     var hideEntries = function(el){

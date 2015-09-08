@@ -575,7 +575,7 @@ body { height: $full; margin:0%; padding:0; }
 }
 #footer *{
   box-sizing: border-box;
-  font-size: 12px;
+
 }
 .nav > li {
     position: relative;
@@ -592,8 +592,9 @@ body { height: $full; margin:0%; padding:0; }
     border-width: 0px 1px;
     background: #404040 none repeat scroll 0% 0%;
     color: #FFF;
-    padding: 0px 15px;
+    padding: 8px 15px;
     border-radius: 0px;
+    cursor: pointer;
 }
 .fa-plus::before {
     content: "";
@@ -1042,4 +1043,35 @@ body { height: $full; margin:0%; padding:0; }
   height: 17px;
   opacity: .6;
   margin-top: 4px;
+}
+
+#new_scene_place_name {
+  height: 25px;
+}
+
+#new_scene_title {
+  height: 25px;
+}
+
+#new_scene_author {
+  height: 25px;
+}
+
+#featContentText {
+  display: inline-block;
+  font-size: 12px;
+
+
+}
+
+#footer > p {
+  margin:  0px 0px 0ox 0px;
+}
+
+#facebook-square-icon {
+  font-size: 30px;
+}
+
+#twitter-square-icon {
+  font-size: 30px;
 }
