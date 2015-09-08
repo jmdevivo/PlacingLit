@@ -11,9 +11,19 @@
 <script type="text/javascript" src="{{ gears_api }}"></script>
 <script type="text/javascript" src="/static/scripts/mapdemo.js"></script>
 </head>
+
 <body onload="initialize()">
+
+  <!-- Edit @uthor: Will Acheson
+    I moved the code that loads #map_canvas above
+    the code which runs the body content,
+    {{ body }}
+    In hopes to make the map load first on the page,
+    then all the IO heavy database work to fetch
+    scenes.
+    -->
+
   <a href="{{ url }}">{{ url_linktext }}</a>
-  {{ body }}
   <div id="location_info"></div>
   <form action="/locate/share" method="post">
     <input type="hidden" name="latitude" id="latitude" value=""/>
@@ -23,5 +33,6 @@
     {% endif %}
   </form>
   <div id="map_canvas"></div>
+  {{ body }}
 </body>
 </html>

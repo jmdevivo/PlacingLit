@@ -49,7 +49,7 @@ class FundingHandler(baseapp.BaseAppHandler):
     template_values['title'] = 'Funding'
     self.render_template('funding.tmpl', template_values)
 
-
+# Handler for loading the map
 class MapHandler(baseapp.BaseAppHandler):
   def get(self, location=None, key=None):
     if "Mobi" in self.request.headers.get('User-Agent'):
@@ -65,6 +65,9 @@ class MapHandler(baseapp.BaseAppHandler):
         template_values['center'] = '{lat:%s,lng:%s}' % (lat, lng)
       if self.request.get('key'):
         template_values['key'] = self.request.get('key')
+
+      # if this line is commented out, nothing subsequent happens
+      # todo: trace code execution  from here
       self.render_template('map.tmpl', template_values)
 
 
