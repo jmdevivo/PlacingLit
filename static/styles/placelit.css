@@ -4904,7 +4904,8 @@ body {
   position: relative; }
 
 .new_scene_section textarea {
-  width: 100%; }
+  width: 100%;
+  margin-top: 25px; }
 
 .new_entry_nav .activeNav {
   background-color: black;
@@ -5024,7 +5025,6 @@ body {
   z-index: 1;
   position: relative;
   font-size: 16px;
-  line-height: 40px;
   color: #FFF; }
 
 .pull-right {
@@ -5052,8 +5052,7 @@ body {
   background: #333 none repeat scroll 0% 0%; }
 
 #footer .nav-pills {
-  float: left;
-  padding: 10px; }
+  float: left; }
 
 .clearfix {
   clear: both; }
@@ -5139,14 +5138,14 @@ body {
   width: 100%;
   height: 45px;
   color: #FFF;
-  line-height: 45px; }
+  line-height: 45spx; }
 
 .long-entry-title-text {
-  padding-top: 5px;
+  padding-top: 10px;
   color: #FFF;
-  text-decoration: underline;
   padding-left: 2.5%;
-  font-size: 12px; }
+  font-size: 12px;
+  text-align: left; }
 
 .long-entry-text {
   color: #FFF;
@@ -5397,9 +5396,29 @@ body {
   margin: 0px 0px 0ox 0px; }
 
 #facebook-square-icon {
-  font-size: 30px; }
+  font-size: 20px; }
 
 #twitter-square-icon {
-  font-size: 30px; }
+  font-size: 20px; }
+
+input[type="checkbox"], input[type="radio"] {
+  line-height: normal;
+  margin: 4px 0px 10px; }
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: #FFF !important;
+  background-color: #5a5a5a;
+  padding: 7px 19px;
+  border: none;
+  border-radius: 5px; }
+
+#recent-blog-post-title {
+  font-weight: bold; }
+
+#recent-blog-post-published-author {
+  font-style: italic; }
 
 /*# sourceMappingURL=placelit.css.map */

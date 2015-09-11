@@ -532,6 +532,7 @@ body { height: $full; margin:0%; padding:0; }
 }
 .new_scene_section textarea{
   width: 100%;
+  margin-top:25px
 }
 .new_entry_nav .activeNav{
   background-color: black;
@@ -659,7 +660,6 @@ body { height: $full; margin:0%; padding:0; }
     z-index: 1;
     position: relative;
     font-size: 16px;
-    line-height: 40px;
     color: #FFF;
 }
 .pull-right {
@@ -689,7 +689,6 @@ body { height: $full; margin:0%; padding:0; }
 }
 #footer .nav-pills{
   float: left;
-  padding: 10px;
 }
 
 .clearfix{
@@ -785,14 +784,14 @@ body { height: $full; margin:0%; padding:0; }
     width: 100%;
     height: 45px;
     color: #FFF;
-    line-height: 45px;
+    line-height: 45spx;
 }
 .long-entry-title-text {
-    padding-top: 5px;
+    padding-top: 10px;
     color: #FFF;
-    text-decoration: underline;
     padding-left: 2.5%;
     font-size: 12px;
+    text-align: left;
 }
 .long-entry-text {
     color: #FFF;
@@ -1061,7 +1060,6 @@ body { height: $full; margin:0%; padding:0; }
   display: inline-block;
   font-size: 12px;
 
-
 }
 
 #footer > p {
@@ -1069,9 +1067,33 @@ body { height: $full; margin:0%; padding:0; }
 }
 
 #facebook-square-icon {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 #twitter-square-icon {
-  font-size: 30px;
+  font-size: 20px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    line-height: normal;
+    margin: 4px 0px 10px;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: #FFF !important;
+    background-color: #5a5a5a;
+    padding: 7px 19px;
+    border: none;
+    border-radius: 5px;
+}
+
+#recent-blog-post-title {
+    font-weight: bold;
+}
+
+#recent-blog-post-published-author {
+    font-style: italic;
 }

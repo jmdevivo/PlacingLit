@@ -153,12 +153,12 @@
           </div>
           <div class='col-md-4 window-container middle-window-div vanishing-col'>
             <div class='wide-map-window'>
-              <div class="long-entry-header">Recent Blog Posts</div>
+              <div class="long-entry-header"> Recent Blog Posts  </div>
               <div class='window-info' id="recent-blog">
-				 
-                <div class="long-entry-title-text">Indie Reader Author Spotlight: Samantha Towle</div>
-                <div class="long-entry-text">Sex, Drugs, Rock &amp; Roll, and... Literature? Yes!</div>
-                <div class="long-entry-text continue-reading">(Click to Continue Reading....)</div>
+				 <div class="long-entry-title-text" id="recent-blog-post-title"> {{ recent_blog_title }}</div>
+                 <div class="long-entry-title-text" id="recent-blog-post-published-author"> Posted by {{recent_blog_author}} at {{ recent_blog_published }}</div>
+                <div class="long-entry-title-text" id="recent-blog-post-summary"> {{ recent_blog_summary }}</div>
+                <div class="long-entry-text continue-reading"><a target="_blank" href={{recent_blog_link}}> Read Full Article </a></div>
               </div>
             </div>
             <div class='wide-map-window'>

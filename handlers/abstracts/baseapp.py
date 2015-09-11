@@ -7,6 +7,7 @@ Created on Nov 19, 2012
 
 __author__ = 'steven@eyeballschool.com (Steven)'
 
+
 import json
 import os
 
@@ -35,7 +36,6 @@ class BaseAppHandler(webapp.RequestHandler):
     template_path = '%s/%s' % (TEMPLATE_DIRS, template_file)
     self.response.headers['Content-Type'] = 'text/html'
     self.response.out.write(template.render(template_path, template_values))
-
 
 
   def basic_template_content(self):

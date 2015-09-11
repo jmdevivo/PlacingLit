@@ -1,5 +1,16 @@
 """ home page request handlers """
 # pylint
+import sys
+import os.path
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '../static/python_modules/feedparser'))
+
+import feedparser
+import datetime
+import re
+from HTMLParser import HTMLParser
+
+
 import json
 import logging
 import random
@@ -12,7 +23,6 @@ from handlers.abstracts import baseapp
 
 import blogposts
 
-import smtplib
 
 class HomeHandler(baseapp.BaseAppHandler):
   def get(self):
@@ -21,6 +31,7 @@ class HomeHandler(baseapp.BaseAppHandler):
     posts = blogposts.BlogpostsHandler.posts_for_display()
     bloglinks = [{'title': post.title, 'link': post.link} for post in posts]
     template_values['posts'] = bloglinks
+
     template_values['remote_addr'] = self.request.remote_addr
     self.render_template('home.tmpl', template_values)
 
@@ -66,9 +77,99 @@ class MapHandler(baseapp.BaseAppHandler):
       if self.request.get('key'):
         template_values['key'] = self.request.get('key')
 
-      # if this line is commented out, nothing subsequent happens
-      # todo: trace code execution  from here
+
+
+      '''blog_getter = BlogHandler()
+      recent_blog = blog_getter.getRecentBlogPost()
+      print "decoupled recent blog data =========================="
+      print recent_blog'''
+
+
+      # TODO Make this not digusting.  Put blog loading in its own handler function
+      # TODO Dynamic Blog Loading via XML
+      # NOTE: The structure of the RSS feed is different when requesting from Python
+      #   than what it looks like on a browser...
+      placing_lit_blog_rss = 'http://placingliterature.wordpress.com/feed/'
+      blog_feed = feedparser.parse(placing_lit_blog_rss)
+      #.strftime('%b %d, %Y ')
+
+      recent_blog_title =  blog_feed.entries[0].title
+      recent_blog_summary = blog_feed.entries[0].summary
+      recent_blog_link = blog_feed.entries[0].links[0].href
+      recent_blog_published = blog_feed.entries[0].published
+      recent_blog_author = blog_feed.entries[0].author
+
+      # Hacky regex method of formating the date,  will grab everything up until the
+      # 4 digit YEAR (2015)
+      pubdate_regex = re.compile('.* [0-9]{4}')
+      pubdate_re_match = pubdate_regex.match(recent_blog_published)
+      if (pubdate_re_match):
+        recent_blog_published = pubdate_re_match.group(0)
+
+      # Pretty good method of HTML stripping
+
+      recent_blog_summary = self.strip_tags(recent_blog_summary)
+      recent_blog_summary = recent_blog_summary[:-3]
+      recent_blog_summary = recent_blog_summary + "..."
+
+      print "\nRecent Blog Post!"
+      print "Title: " + recent_blog_title + "\n =============================="
+      print "Summary: " + recent_blog_summary + "\n =============================="
+      print "Link: " + str(recent_blog_link) + "\n =============================="
+      print "\n"
+
+      # load up template with blog values for display in the featured content pane
+      template_values['recent_blog_title'] = recent_blog_title
+      # TODO format blog content to remove code
+      template_values['recent_blog_summary'] = recent_blog_summary
+      template_values['recent_blog_link'] = recent_blog_link
+
+      template_values['recent_blog_published'] = recent_blog_published
+      template_values['recent_blog_author'] = recent_blog_author
+
       self.render_template('map.tmpl', template_values)
+
+  def strip_tags(self, html):
+      s = HTMLStripper()
+      s.feed(html)
+      return s.get_data()
+
+
+
+class HTMLStripper(HTMLParser):
+  def __init__(self):
+    self.reset()
+    self.fed = []
+  def handle_data(self, data):
+    # data is the string to parse HTML out of
+    self.fed.append(data)
+  def get_data(self):
+    return ''.join(self.fed)
+
+class BlogHandler(baseapp.BaseAppHandler):
+  # Gets the RSS feed of Placing Lits'blog using feedparser.parse
+
+  def __init__(self):
+    self.placing_lit_blog_rss = 'http://placingliterature.wordpress.com/feed/'
+
+  def getRecentBlogPost(self):
+    # returns necessary data for display on placing lit's featured content
+    # section
+
+    blog_feed = feedparser.parse(self.placing_lit_blog_rss)
+    recent_blog = dict()
+    recent_blog['recent_blog_title'] =  blog_feed.entries[0].title
+    recent_blog['recent_blog_summary'] = blog_feed.entries[0].summary
+    recent_blog['recent_blog_link'] = blog_feed.entries[0].links[0].href
+    recent_blog['recent_blog_published'] = blog_feed.entries[0].published
+    recent_blog['recent_blog_author'] = blog_feed.entries[0].author
+
+    return recent_blog
+
+  def stripHtmlTags(self, html):
+    stripper = HTMLStripper()
+    stripper.handle_data(html)
+    return stripper.get_data()
 
 
 class IndexedSceneMapHandler(baseapp.BaseAppHandler):

@@ -68,7 +68,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     markerDefaults:
       draggable: false
       animation: google.maps.Animation.DROP
-      icon : '/img/book.png'
+      icon :'/img/redpin.png'
     maxTerrainZoom: 15
 
 
@@ -235,7 +235,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
           if $(parent).children().length > 5
             break;
       $('.searchResultTitleText').click(() ->
-        windowLoc = window.location.protocol + '//' + window.location.host 
+        windowLoc = window.location.protocol + '//' + window.location.host
         window.location.href = (windowLoc + "/map/filter/title/" + @innerHTML)
         )
 
@@ -254,7 +254,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
           if $(parent).children().length > 5
             break;
       $('.searchResultText').click(() ->
-        windowLoc = window.location.protocol + '//' + window.location.host 
+        windowLoc = window.location.protocol + '//' + window.location.host
         window.location.href = (windowLoc + "/map/filter/author/" + @innerHTML)
         )
 
@@ -339,7 +339,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @setUserMapMarker(@gmap, @gmap.getCenter())
     $('#info-overlay').show()
     $('#new_entry').show()
-    $('.leave_new_scene_form').click(()-> 
+    $('.leave_new_scene_form').click(()->
       $('#info-overlay').hide()
       $('.entry').hide())
     # $('#addscenebutton').hide()
@@ -376,9 +376,9 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       success: (data) =>
         if data.status == 'logged in'
           callback.call(this)
-        else  
+        else
           $('#addscenebutton').click(() -> window.location.href = $('#loginlink').attr('href'))
-          
+
   showLoginInfoWindow: () ->
     if @userMapsMarker
       loginWindowPosition = @userMapsMarker.getPosition()
@@ -530,7 +530,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
           $(parent).empty
           i=0
           for author in data
-            if i > 5 
+            if i > 5
               break
             location = new google.maps.LatLng(author.scene_location.latitude, author.scene_location.longitude)
             name = author.author
@@ -559,7 +559,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
           $(parent).empty
           i=0
           for title in data
-            if i > 5 
+            if i > 5
               break
             li = document.createElement('li')
             li.className = 'searchResultText'
@@ -649,7 +649,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
   sceneAPIImageTemplate: ->
     console.log "sceneAPIImageTemplate is firing"
     img = '<a target="_blank" href="//www.panoramio.com/photo/<%= image_id %>"
-    class="panoramio-image" 
+    class="panoramio-image"
     style="background-image:url(http://static2.bareka.com/photos/medium/<%= image_id %>.jpg);"></a>'
     return _.template(img)
 
@@ -678,12 +678,12 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     $('#entry-characters-body').html(data.characters)
     $('#entry-symbols-body').html(data.symbols)
     $('#entry-place-body').html(data.notes)
-    $('#entry-visits-body').html(data.visits)    
+    $('#entry-visits-body').html(data.visits)
     $("#ibActionLink").click((e) =>
       e.preventDefault()
       window.open("http://www.rjjulia.com/book/"+ data.isbn)
       )
-    $("#grActionLink").click((e) => 
+    $("#grActionLink").click((e) =>
       e.preventDefault()
       window.open("https://www.goodreads.com/book/isbn/"+ data.isbn)
       )
@@ -744,14 +744,14 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @handleInfowindowButtonEvents()
     content += '</div>'
     return content
-    
+
 
   openInfowindowForPlace: (place_key, windowOptions) ->
     console.log('open', windowOptions)
     console.log("Hello World the updated info overlay code is running")
     $('#info-overlay').animate {
         left: '-=1000'
-      },700, () ->  
+      },700, () ->
         $('.entry').hide()
         $('#info-overlay').show()
         $('#scene_entry').show()
@@ -1055,4 +1055,3 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
         error: (collection, response, options) =>
           console.log('error', collection, response, options)
         )
-
