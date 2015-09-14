@@ -6,7 +6,6 @@ import os.path
 sys.path.append(os.path.join(os.path.dirname(__file__), '../static/python_modules/feedparser'))
 
 import feedparser
-import datetime
 import re
 from HTMLParser import HTMLParser
 
@@ -16,6 +15,8 @@ import logging
 import random
 
 from google.appengine.ext import webapp
+from google.appengine.ext import db
+from google.appengine.ext import deferred
 
 from classes import placedlit
 
@@ -127,6 +128,16 @@ class MapHandler(baseapp.BaseAppHandler):
       template_values['recent_blog_published'] = recent_blog_published
       template_values['recent_blog_author'] = recent_blog_author
 
+      recent_scene = self.get_most_recent_scene()
+      try:
+        template_values['most_recent_scene_author'] = recent_scene['author']
+        template_values['most_recent_scene_title'] = recent_scene['title']
+        template_values['most_recent_scene_scenelocation'] = recent_scene['scenelocation']
+      except:
+        template_values['most_recent_scene_author'] = "local null"
+        template_values['most_recent_scene_title'] = "local null"
+        template_values['most_recent_scene_scenelocation'] = "local null"
+
       self.render_template('map.tmpl', template_values)
 
   def strip_tags(self, html):
@@ -134,7 +145,22 @@ class MapHandler(baseapp.BaseAppHandler):
       s.feed(html)
       return s.get_data()
 
-
+  def get_most_recent_scene(self):
+    print "Tryna get some new scenes XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    try:
+      gql_query = db.GqlQuery("SELECT * FROM PlacedLit ORDER BY ts DESC LIMIT 1")
+    except Exception:
+      print "Error yo"
+      query_result = "Null"
+    if gql_query:
+      for scene in gql_query:
+        print 'gql query ========================================'
+        print scene
+        recent_scene = dict()
+        recent_scene['author'] = scene.author
+        recent_scene['title'] =  scene.title
+        recent_scene['scenelocation'] = scene.scenelocation
+        return recent_scene
 
 class HTMLStripper(HTMLParser):
   def __init__(self):

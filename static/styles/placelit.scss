@@ -474,6 +474,7 @@ body { height: $full; margin:0%; padding:0; }
 }
 .new_scene_span{
   margin-right: 6px;
+  line-height: 1.8em;
 }
 .new_scene_checkbox{
   margin-bottom: 2px;
@@ -507,6 +508,8 @@ body { height: $full; margin:0%; padding:0; }
   margin-left: auto;
   margin-right: auto;
   display: block;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .new_entry_nav li{
   display: inline-block;
@@ -520,8 +523,8 @@ body { height: $full; margin:0%; padding:0; }
 }
 .leave_new_scene_form{
   position: absolute;
-  top: -15px;
-  right: 0;
+  top: -11px;
+  right: -6px;
   cursor: pointer;
   &:hover{
     color: red;
@@ -785,6 +788,7 @@ body { height: $full; margin:0%; padding:0; }
     height: 45px;
     color: #FFF;
     line-height: 45spx;
+    line-height: 44px;
 }
 .long-entry-title-text {
     padding-top: 10px;
@@ -884,7 +888,7 @@ body { height: $full; margin:0%; padding:0; }
 }
 .tall-entry-text-center {
     text-align: center;
-    margin-bottom: 10px;
+
 }
 #num-places-added {
     font-weight: 400;
@@ -1076,7 +1080,7 @@ body { height: $full; margin:0%; padding:0; }
 
 input[type="checkbox"], input[type="radio"] {
     line-height: normal;
-    margin: 4px 0px 10px;
+
 }
 
 button {
@@ -1088,6 +1092,7 @@ button {
     padding: 7px 19px;
     border: none;
     border-radius: 5px;
+    margin-top: 10px !important;
 }
 
 #recent-blog-post-title {
@@ -1096,4 +1101,7 @@ button {
 
 #recent-blog-post-published-author {
     font-style: italic;
+}
+.new_scene_span {
+  margin-left: 0px;
 }

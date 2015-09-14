@@ -4847,7 +4847,8 @@ body {
   display: none; }
 
 .new_scene_span {
-  margin-right: 6px; }
+  margin-right: 6px;
+  line-height: 1.8em; }
 
 .new_scene_checkbox {
   margin-bottom: 2px; }
@@ -4880,7 +4881,9 @@ body {
 #new_scene_submit_btn {
   margin-left: auto;
   margin-right: auto;
-  display: block; }
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 30px; }
 
 .new_entry_nav li {
   display: inline-block;
@@ -4894,8 +4897,8 @@ body {
 
 .leave_new_scene_form {
   position: absolute;
-  top: -15px;
-  right: 0;
+  top: -11px;
+  right: -6px;
   cursor: pointer; }
   .leave_new_scene_form:hover {
     color: red; }
@@ -5138,7 +5141,8 @@ body {
   width: 100%;
   height: 45px;
   color: #FFF;
-  line-height: 45spx; }
+  line-height: 45spx;
+  line-height: 44px; }
 
 .long-entry-title-text {
   padding-top: 10px;
@@ -5231,8 +5235,7 @@ body {
   cursor: pointer; }
 
 .tall-entry-text-center {
-  text-align: center;
-  margin-bottom: 10px; }
+  text-align: center; }
 
 #num-places-added {
   font-weight: 400;
@@ -5402,8 +5405,7 @@ body {
   font-size: 20px; }
 
 input[type="checkbox"], input[type="radio"] {
-  line-height: normal;
-  margin: 4px 0px 10px; }
+  line-height: normal; }
 
 button {
   font-family: inherit;
@@ -5413,12 +5415,16 @@ button {
   background-color: #5a5a5a;
   padding: 7px 19px;
   border: none;
-  border-radius: 5px; }
+  border-radius: 5px;
+  margin-top: 10px !important; }
 
 #recent-blog-post-title {
   font-weight: bold; }
 
 #recent-blog-post-published-author {
   font-style: italic; }
+
+.new_scene_span {
+  margin-left: 0px; }
 
 /*# sourceMappingURL=placelit.css.map */

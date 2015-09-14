@@ -180,7 +180,9 @@
                 <div id='get-started-button' class='get-started-button'>GET STARTED</div>
                 <div class='tall-entry-text tall-entry-text-center'>Places added to date:</div>
                 <div id='num-places-added'>{{count}} </div>
-                <div class='tall-entry-text tall-entry-text-center'>Most recent additions:<br>Platform 9 &frac34; -Harry Potter Series</div>
+                <!-- TODO: dynamically get the most recently added scene from the DB -->
+                <div class='tall-entry-text tall-entry-text-center' id="newest_scene_div">Newest Place Added:  </div>
+                <div class='tall-entry-text tall-entry-text-center' id="newest_scene">{{most_recent_scene_title}} by {{most_recent_scene_author}} </div>
             </div>
           </div>
         </div>
@@ -489,6 +491,8 @@
     $('.geosearchResults').click(function(event){
       event.stopPropagation();
     });
+
+    console.log(" ' " + {{most_recent_scene_author}} + " ' ")
 
   </script>
 {% endblock %}
