@@ -50,6 +50,8 @@
       return Locations.__super__.constructor.apply(this, arguments);
     }
 
+    console.log('placingLit.Collections.Locations model utilized:  /places/show route');
+
     Locations.prototype.model = PlacingLit.Models.Location;
 
     Locations.prototype.url = '/places/show';
@@ -167,6 +169,7 @@
     };
 
     MapCanvasView.prototype.initialize = function(scenes) {
+      console.log('MapCanvasView.initialize(scenes) executed.');
       if (this.collection == null) {
         this.collection = new PlacingLit.Collections.Locations();
       }
@@ -178,6 +181,7 @@
     };
 
     MapCanvasView.prototype.render = function(event) {
+      console.log("MapCanvasView..render(event) executed");
       if (event === 'sync') {
         return this.mapWithMarkers();
       }
@@ -197,6 +201,7 @@
 
     MapCanvasView.prototype.handleViewportChange = function(event) {
       var center, centerGeoPt;
+      console.log("MapCanvasView.handleViewportChange(event) was executed");
       center = this.gmap.getCenter();
       centerGeoPt = {
         lat: center[Object.keys(center)[0]],
@@ -246,6 +251,7 @@
     };
 
     MapCanvasView.prototype.marker = function() {
+      console.log("marker");
       if (this.placeInfowindow != null) {
         this.placeInfowindow.close();
       }
@@ -274,11 +280,15 @@
     };
 
     MapCanvasView.prototype.mappoint = function(latitude, longitude) {
+      console.log("MapCanvasView called");
+      console.log("--lat: " + latitude);
+      console.log("--lng: " + longitude);
       return new google.maps.LatLng(latitude, longitude);
     };
 
     MapCanvasView.prototype.markerFromMapLocation = function(map, location) {
       var markerSettings;
+      console.log("markerFromMapLocation");
       markerSettings = {
         position: location,
         map: map,
@@ -298,8 +308,17 @@
     };
 
     MapCanvasView.prototype.setUserPlaceFromLocation = function(location) {
-      return this.userPlace = location;
+      console.log("MapCanvasView.setuserPlaceFromLocation(location) executed");
+      console.log("--location: " + location);
+      return this.userPlace = locationclass(extend(PlacingLit.Models.Location, Backbone.Model));
     };
+
+    MapCanvasView.prototype.defaults = {
+      title: 'Put Title Here',
+      author: 'Someone\'s Name goes here'
+    };
+
+    MapCanvasView.prototype.url = '/places/add';
 
     MapCanvasView.prototype.showInfowindowFormAtLocation = function(map, marker, location) {
       this.closeInfowindows();
@@ -384,6 +403,7 @@
 
     MapCanvasView.prototype.suggestAuthors = function(author_data) {
       var author, j, len, li, parent, searchTxt;
+      console.log("app.coffee :: suggestAutors " + author_data);
       parent = document.getElementById('authorsSearchList');
       $(parent).empty();
       $(parent).show();
@@ -480,6 +500,7 @@
 
     MapCanvasView.prototype.positionMap = function() {
       var mapcenter, usaCoords, usacenter, windowOptions;
+      console.log("MapCanvasView.positionMap() called");
       if (window.CENTER != null) {
         mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
         this.gmap.setCenter(mapcenter);
@@ -505,10 +526,14 @@
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
               };
-              return _this.gmap.setCenter(userCoords);
+              _this.gmap.setCenter(userCoords);
+              console.log("app.coffee :: positionMap() User coordinates!!  ");
+              return console.log('lat: ' + position.coords.latitude + ' long: ' + position.coords.longitude);
             };
           })(this));
         } else {
+          console.log("Else condition, position: ");
+          console.log(usacenter);
           this.gmap.setCenter(usacenter);
         }
         this.gmap.setZoom(8);
@@ -961,7 +986,7 @@
     MapCanvasView.prototype.sceneAPIImageTemplate = function() {
       var img;
       console.log("sceneAPIImageTemplate is firing");
-      img = '<a target="_blank" href="//www.panoramio.com/photo/<%= image_id %>" class="panoramio-image" style="background-image:url(http://static2.bareka.com/photos/medium/<%= image_id %>.jpg);"></a>';
+      img = '<a target="_blank" href="//www.panoramio.com/photo/<%= image_id %>" class = "panoramio-image" style = "background-image:url(http://static2.bareka.com/photos/medium/<%= image_id %>.jpg);"></a>';
       return _.template(img);
     };
 
@@ -971,6 +996,7 @@
 
     MapCanvasView.prototype.buildInfowindow = function(data, updateButton) {
       var content, field, label, twitterlink;
+      console.log('buildInfowindow');
       $('#tabs').show();
       this.clearInfowindowClickEvents();
       console.log("The database key is:" + data.id);
@@ -1098,7 +1124,7 @@
     MapCanvasView.prototype.openInfowindowForPlace = function(place_key, windowOptions) {
       var tracking, url;
       console.log('open', windowOptions);
-      console.log("Hello World the updated info overlay code is running");
+      console.log("updated info overlay code is running");
       $('#info-overlay').animate({
         left: '-=1000'
       }, 700, function() {
@@ -1199,6 +1225,7 @@
 
     MapCanvasView.prototype.buildMarkerFromLocation = function(location) {
       var author, lat, lng, marker, markerParams, title;
+      console.log("buildMarkerFromLocation");
       lat = location.get('latitude');
       lng = location.get('longitude');
       title = location.get('title');

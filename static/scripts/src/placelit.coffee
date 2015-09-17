@@ -5,10 +5,12 @@ class PLMap
       modals:
         mapmodal: $('#mapmodal')
         querymodal: $('#querymodal')
-    @path = window.location.pathname
+    @path = window.location.pathname # intially = '/'
 
     @search = @parseQuery(window.location.search)
+    console.log('placelit.coffee :: search object: ' + JSON.stringify(@search))
     @scenes = window.SCENES
+    console.log('placelit.coffee :: scenes: ' + @scenes)
 
   showModal: (element) ->
     element.modal()
@@ -23,7 +25,9 @@ class PLMap
 
   selectMapView: ->
     if @isFiltered() and @hasScenes()
+      # This means the view is the result of a search
       return new PlacingLit.Views.MapFilterView(@scenes)
+      # This means the view is a default map view
     return new PlacingLit.Views.MapCanvasView
 
   closeFeatContent: ->
@@ -49,6 +53,7 @@ class PLMap
 $ ->
   plmap = new PLMap()
   view = plmap.selectMapView()
+  console.log('placelit.coffee :: view created: ' + view.constructor.name )
   if location.search is '?modal=1'
     plmap.showModal(plmap.elements.modals.mapmodal)
   else if plmap.isFiltered()

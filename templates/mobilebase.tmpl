@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{% block title %}Set a Title{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Placing Literature Mobile{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset='UTF-8'>
     {% block styles %}
 
     <!-- <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
-    <link href="/css/placelit.css" rel="stylesheet" type="text/css" />
+    <!-- TODO: serve placelit.css if desktop, mobileplacelit.css if mobile -->
+    <link href="/css/mobileplacelit.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -23,6 +24,9 @@
   </script>
     {% block libraries %}
     {% if maps_api %}
+    <script>
+        console.log(' {{maps_api}} ');
+    </script>
     <script type="text/javascript" src="{{ maps_api }}"></script>
     <script src="/js/libs/markerclusterer.js"></script>
 <!--
@@ -87,13 +91,12 @@
     </div>
   -->
     <a id="loginlink" href="{{ url }}">{{ url_text }}</a></li>
-    
+
     {% block content %}
       Put some stuff here.
     {% endblock %}
     {% block scripts %}
     <script type="text/javascript" src="/js/src/models/location.js"></script>
-
     {% endblock %}
   </body>
 </html>

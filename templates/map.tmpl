@@ -1,5 +1,6 @@
 <script src="/js/libs/jquery-1.11.0.min.js"></script>
 <script src="js/src/rssGrab.js"></script>
+<script type="text/javascript" src="http://www.panoramio.com/wapi/wapi.js?v=1&amp;hl=fr"></script>
 
 {% extends 'base.tmpl' %}
 {% block title %}{{ title }}{% endblock %}
@@ -7,7 +8,7 @@
 <div id='map-page-container'>
   <div id="iwcontainer">
     <div class="infowindowform">
-      
+
       <span id="formtitle">Enter Place Information: </span>
       <span>(* required fields)</span>
       <span id="guidelines"><a href="#">guidelines</a></span>
@@ -101,17 +102,11 @@
             </div>
           </div>
         </li>
-        <!--
-        <li class="divider-vertical"></li>
-        <li><a href="#maphelp" data-toggle="modal">help</a></li>
-        <li class="divider-vertical"></li>
-      -->
       </ul>
-      
     </div>
   </div>
   <div id="mapcontainer">
-    
+
     <div id='mapOverlay'class='overlay'>
       <div class='fluid-container clearfix'>
         <div>
@@ -166,7 +161,7 @@
               <div class='window-info'>
                 <div class='long-entry-podcast'>
                   <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/187336082&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false" scrolling="auto" frameborder="0"
-                  height="100px" allowtransparency="no" 
+                  height="100px" allowtransparency="no"
                   ></iframe>
                 </div>
               </div>
@@ -193,10 +188,10 @@
       </div>
     <div id='info-overlay'>
       <div class='tab-content'>
-  
+
         <div id='entry-image'></div>
         <div class='entry' id='scene_entry'>
-          
+
           <h2 class="entry-title" id='entry-scene-title'>Places</h2>
           <div class="entry-body" id='entry-scene-place-name'></div>
           <div class="entry-body" id='entry-scene-description'></div>
@@ -227,14 +222,14 @@
 
             </div>
             <a class='reportSceneError' href='mailto:info@placingliterature.com?Subject=Scene%20Error' target="_top">Report a Scene Error</a>
-            
+
             <div class='actionContainer hiddenActionContainer'>
               <label class='share_url_label'>Map link: </label>
               <input id='share_url'class='share_url'></input>
               <a id='facebookActionLink' class='actionAnchor' href='#'><img class='socialMediaActionLink'src='/img/facebook.jpg'/></a>
-              <a id='twitterActionLink' class='actionAnchor' href='#'><img class='socialMediaActionLink' src='/img/twitter.jpg'/></a>  
+              <a id='twitterActionLink' class='actionAnchor' href='#'><img class='socialMediaActionLink' src='/img/twitter.jpg'/></a>
             </div>
-          
+
           </div>
         </div>
         <div class='entry' id='new_entry'>
@@ -272,13 +267,14 @@
           </ul>
         </div>
       </div>
-      <nav id='tabs'> 
+      <nav id='tabs'>
         <a class='tab' id='scene_tab'data-entry='#scene_entry'>Scene</a>
         <a class='tab' data-entry='#place_entry'>Place</a>
         <a class='tab' data-entry='#actions_entry'>Actions</a>
       </nav>
     </div>
     <div id="map_canvas">
+
     </div>
   </div>
   <!--
@@ -287,7 +283,7 @@
     <span> | </span>
     <span id="showmarkers">show</span>
     <span> | </span>
- 
+
     <span>
       <a href="mailto:info@placingliterature.com">contact us</a> | <a href="/funding">funding provided by the Arts Council of Greater New Haven</a> | </span>
     <span>&copy; 2014. all rights reserved</span>
@@ -315,7 +311,7 @@
     <div id='copyright'>Placing Literature © 2012-2015. All Rights Reserved.</div>
   </div>
   <div class='pull-right'>
-  
+
       <div class="linkSurround">
         <a class="navLink" href="about">About</a>
       </div>
@@ -336,7 +332,7 @@
       </div>
   </div>
 
-  
+
   <!--
   <div class='row'>
     <div class='col-md-1 map-activator-btn'>+Buttons</div>
@@ -398,7 +394,7 @@
     <div class="linkSurround">
     <a class="navLink lastLink" href="contact.html">Contact Us</a>
     </div>
-    
+
     </div>
     -->
 
@@ -422,6 +418,8 @@
 <script>
 
 // this is frontend controlling javascript code!!
+
+
 
     var hideOverlay = function(){
       var overlay = document.getElementById("mapOverlay");
@@ -452,15 +450,15 @@
       $(this).addClass('activeNav');
       $('#' + this.getAttribute('data-section')).show();
     });
-    (function(){      
+    (function(){
       var tabs = [];
       $('.new_entry_nav li').each(function(){
         tabs.push($(this));
       });
-      $('.nextSceneFieldBtn').click(function(){        
+      $('.nextSceneFieldBtn').click(function(){
         var len = tabs.length;
         for(var i=0; i<len;i++){
-          if(tabs[i].hasClass('activeNav')){            
+          if(tabs[i].hasClass('activeNav')){
             tabs[i+1].click();
             break;
           }
@@ -492,7 +490,6 @@
       event.stopPropagation();
     });
 
-    console.log(" ' " + {{most_recent_scene_author}} + " ' ")
 
   </script>
 {% endblock %}

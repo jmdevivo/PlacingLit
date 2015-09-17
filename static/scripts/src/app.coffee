@@ -18,6 +18,7 @@ class PlacingLit.Models.Metadata extends Backbone.Model
   initialize: ->
 
 class PlacingLit.Collections.Locations extends Backbone.Collection
+  console.log('placingLit.Collections.Locations model utilized:  /places/show route')
   model: PlacingLit.Models.Location
 
   url: '/places/show'
@@ -93,7 +94,9 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       position: google.maps.ControlPosition.LEFT_CENTER
 
 
+
   initialize: (scenes) ->
+    console.log('MapCanvasView.initialize(scenes) executed.')
     @collection ?= new PlacingLit.Collections.Locations()
     @listenTo @collection, 'all', @render
     @collection.fetch()
@@ -104,6 +107,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
 
   render: (event) ->
+    console.log("MapCanvasView..render(event) executed")
     @mapWithMarkers() if event is 'sync'
 
   googlemap: ()->
@@ -115,6 +119,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     return @gmap
 
   handleViewportChange: (event) =>
+    console.log("MapCanvasView.handleViewportChange(event) was executed")
     center = @gmap.getCenter()
     centerGeoPt =
       lat: center[Object.keys(center)[0]]
@@ -143,6 +148,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       window.CENTER = centerGeoPt
 
     query = '?lat=' + centerGeoPt.lat + '&lon=' + centerGeoPt.lng
+    # collection_url seems like it may be how you call the /places/near route
     collection_url = '/places/near' + query
     update = false
     if Math.abs(window.CENTER.lat - centerGeoPt.lat) > 5
@@ -156,6 +162,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @collection.reset(collection_url)
 
   marker: ->
+    console.log("marker")
     @placeInfowindow.close() if @placeInfowindow?
     return new google.maps.Marker()
 
@@ -170,9 +177,14 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     iw.close() for iw in @infowindows
 
   mappoint: (latitude, longitude)->
+    console.log("MapCanvasView called")
+    console.log("--lat: " + latitude)
+    console.log("--lng: " + longitude)
+
     return new google.maps.LatLng(latitude, longitude)
 
   markerFromMapLocation: (map, location)->
+    console.log("markerFromMapLocation")
     markerSettings =
       position: location
       map: map
@@ -187,7 +199,14 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     infowindow.open(map)
 
   setUserPlaceFromLocation: (location) ->
-    @userPlace = location
+    console.log("MapCanvasView.setuserPlaceFromLocation(location) executed")
+    console.log("--location: " + location)
+    @userPlace = locationclass PlacingLit.Models.Location extends Backbone.Model
+  defaults:
+    title: 'Put Title Here'
+    author: 'Someone\'s Name goes here'
+
+  url: '/places/add'
 
   showInfowindowFormAtLocation: (map, marker, location) ->
     @closeInfowindows()
@@ -240,6 +259,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         )
 
   suggestAuthors: (author_data) ->
+    console.log("app.coffee :: suggestAutors " + author_data)
     parent = document.getElementById('authorsSearchList')
     $(parent).empty()
     $(parent).show()
@@ -296,6 +316,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     # $('#showmarkers').on('click', @showMarkers)
 
   positionMap: () ->
+    console.log("MapCanvasView.positionMap() called")
     if window.CENTER?
       mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
       @gmap.setCenter(mapcenter)
@@ -312,12 +333,17 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       usacenter = new google.maps.LatLng(usaCoords.lat, usaCoords.lng)
       if navigator.geolocation
         navigator.geolocation.getCurrentPosition((position) =>
+
           userCoords =
             lat: position.coords.latitude
             lng: position.coords.longitude
           @gmap.setCenter(userCoords)
+          console.log("app.coffee :: positionMap() User coordinates!!  ")
+          console.log('lat: ' + position.coords.latitude + ' long: ' + position.coords.longitude)
         )
       else
+        console.log("Else condition, position: ")
+        console.log(usacenter)
         @gmap.setCenter(usacenter)
       @gmap.setZoom(8)
     if window.PLACEKEY?
@@ -648,15 +674,20 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
   sceneAPIImageTemplate: ->
     console.log "sceneAPIImageTemplate is firing"
+    # TODO maybe rewite this panoramio thing so that it can be configurable more easily
+    # http://www.panoramio.com/api/widget/api.html
     img = '<a target="_blank" href="//www.panoramio.com/photo/<%= image_id %>"
-    class="panoramio-image"
-    style="background-image:url(http://static2.bareka.com/photos/medium/<%= image_id %>.jpg);"></a>'
+    class = "panoramio-image"
+    style = "background-image:url(http://static2.bareka.com/photos/medium/<%= image_id %>.jpg);"></a>'
+
+
     return _.template(img)
 
   sceneTitleTemplate: ->
     return _.template('<span class="lead"><%= title %> by <%= author %></span>')
 
   buildInfowindow: (data, updateButton) ->
+    console.log('buildInfowindow')
     $('#tabs').show()
     @clearInfowindowClickEvents()
     console.log "The database key is:" + data.id
@@ -696,6 +727,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       e.preventDefault()
       window.open("https://www.google.com/search?q="+ data.title)
       )
+    # TODO: this is where the wiki link is built, make sure it works right
+    # On scene cards when u click the wiki link, if you have visited multiple
+    # scene cards, the wiki link will only take you to the first scene card
+    # you clicked on.
     $("#wikiActionLink").click((e) =>
       e.preventDefault()
       window.open("https://en.wikipedia.org/w/index.php?search="+ data.title)
@@ -748,7 +783,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
   openInfowindowForPlace: (place_key, windowOptions) ->
     console.log('open', windowOptions)
-    console.log("Hello World the updated info overlay code is running")
+    console.log("updated info overlay code is running")
     $('#info-overlay').animate {
         left: '-=1000'
       },700, () ->
@@ -827,6 +862,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       )
 
   buildMarkerFromLocation: (location) ->
+    console.log("buildMarkerFromLocation")
     lat = location.get('latitude')
     lng = location.get('longitude')
     title = location.get('title')
