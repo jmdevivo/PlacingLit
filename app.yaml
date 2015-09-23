@@ -199,6 +199,12 @@ handlers:
 - url: /useragent
   script: handlers.home.app
 
+- url: /mobile
+  script: handlers.
+
+- url: /mobile/closeby
+  script: handlers.home.app
+
 libraries:
 - name: webapp2
   version: "2.5.1"

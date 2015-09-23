@@ -49,6 +49,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
   model: PlacingLit.Models.Location
   el: 'map_canvas'
 
+  location: null
+
   gmap: null
   infowindows: []
   locations: null
@@ -76,7 +78,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       'tight' : 21
       'increment' : 1
     markerDefaults:
-      draggable: false
+      draggable: true
       animation: google.maps.Animation.DROP
       icon :'/img/redpin.png'
     maxTerrainZoom: 15
@@ -89,19 +91,22 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     zoom: 8
     #google.maps.MapTypeId.SATELLITE | ROADMAP | HYBRID
     mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeControl: true
     mapTypeControlOptions:
       style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
       position: google.maps.ControlPosition.TOP_RIGHT
+    draggable: true
     maxZoom: 20
     minZoom: 2
     zoomControl: true
     zoomControlOptions:
       style: google.maps.ZoomControlStyle.DEFAULT
-      # position: google.maps.ControlPosition.TOP_LEFT
+       # position: google.maps.ControlPosition.TOP_LEFT
       position: google.maps.ControlPosition.LEFT_CENTER
     panControlOptions:
-      # position: google.maps.ControlPosition.TOP_LEFT
-      position: google.maps.ControlPosition.LEFT_CENTER
+       # position: google.maps.ControlPosition.TOP_LEFT
+      position: google.maps.ControlPosition.RIGHT_CENTER
+
 
   # TODO: we know this is called, but what next?
   console.log('MapCanvasView class called')
@@ -113,23 +118,41 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @listenTo @collection, 'all', @render
     @collection.fetch()
     # setup handler for geocoder searches
-    @suggestAuthors()
+    #@suggestAuthors()
+    @googlemap()
+    @positionMap()
     @attachNewSceneHandler()
     @attachSearchHandler()
 
 
+    render: (event) ->
+      console.log("MapCanvasView..render(event) executed")
+      @mapWithMarkers() if event is 'sync'
 
 
   googlemap: ()->
     return @gmap if @gmap?
     map_elem = document.getElementById(@$el.selector)
+    console.log("mobapp:: googlemap() mapOptions: " + JSON.stringify(@mapOptions))
     @gmap = new google.maps.Map(map_elem, @mapOptions)
     @mapCenter = @gmap.getCenter()
-    google.maps.event.addListener(@gmap, 'bounds_changed', @handleViewportChange)
+    #google.maps.event.addListener(@gmap, 'bounds_changed', @handleViewportChange)
+    #@gmap.MapOptions.draggable = true
     return @gmap
 
+  handleViewportChange: (event) =>
+    console.log("MapCanvasView.handleViewportChange(event) was executed")
+    center = @gmap.getCenter()
+    centerGeoPt =
+      lat: center[Object.keys(center)[0]]
+      lon: center[Object.keys(center)[1]]
+    if @gmap.getZoom() >= @settings.maxTerrainZoom
+      @gmap.setMapTypeId(google.maps.MapTypeId.ROADMAP)
+    else
+      @gmap.setMapTypeId(google.maps.MapTypeId.TERRAIN)
+
   positionMap: () ->
-    console.log("MapCanvasView.positionMap() called")
+    console.log("mobileapp positionMap is called")
     if window.CENTER?
       mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
       @gmap.setCenter(mapcenter)
@@ -151,12 +174,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
             lat: position.coords.latitude
             lng: position.coords.longitude
           @gmap.setCenter(userCoords)
-          console.log("User coordinates!!  ")
           console.log('mobileapp.js :: positionMap() lat: ' + position.coords.latitude + ' long: ' + position.coords.longitude)
+          @location = userCoords
         )
       else
-        console.log("Else condition, position: ")
-        console.log(usacenter)
         @gmap.setCenter(usacenter)
       @gmap.setZoom(8)
     if window.PLACEKEY?
@@ -164,16 +185,22 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @openInfowindowForPlace(window.PLACEKEY, windowOptions)
     @initialMapView = false
 
+  handleMapClick: (event) ->
+    @setUserMapMarker(@gmap, event.latLng)
 
   setUserPlaceFromLocation: (location) ->
     console.log("MapCanvasView.setuserPlaceFromLocation(location) executed")
     console.log("--location: " + location)
-    @userPlace = locationclass PlacingLit.Models.Location extends Backbone.Model
+    #@userPlace = locationclass PlacingLit.Models.Location extends Backbone.Model
+    @userPlace = PlacingLit.Models.Location extends Backbone.Model
     defaults:
       title: 'Put Title Here'
       author: 'Someone\'s Name goes here'
     url: '/places/add'
 
+  # This populates suggestions for authors
+  # during searches, unsure why it is included in MapCanvasView
+  # TODO: provide necessary elements on the front end to support this related to Search Handler
   suggestAuthors: (author_data) ->
     parent = document.getElementById('authorsSearchList')
     $(parent).empty()
@@ -192,3 +219,65 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         windowLoc = window.location.protocol + '//' + window.location.host
         window.location.href = (windowLoc + "/map/filter/author/" + @innerHTML)
         )
+
+
+  # TODO: provide necessary elements on the front end to support this Search Handler
+  attachSearchHandler: ->
+    $.ajax
+      url: "/places/authors"
+      success: (authors) =>
+        $.ajax
+          url: "/places/titles"
+          success: (titles) =>
+            $('#gcf').on('keydown', (event) =>
+                  author_data = []
+                  title_data = []
+                  console.log titles
+                  $.each authors, (key, value) =>
+                    author_data.push(value.author.toString())
+                  $.each titles, (key, value) =>
+                    title_data.push(value.title.toString())
+                  @hideOverlay()
+                  $('.geosearchResults').show()
+                  #$('#info-overlay').show()
+                  @suggestAuthors(author_data)
+                  @suggestTitles(title_data)
+                  @populateSuggestedSearches(authors, titles)
+              )
+            $('#search').on 'click', (event) =>
+              #$('#info-overlay').show()
+              @populateSuggestedSearches()
+
+  # This defines the action of the add scene button
+  # TODO: provide necessary elements on the front end to support this add scene handler
+  attachNewSceneHandler: ->
+    console.log "The attach new scene handler is firing"
+    $('#new_scene_submit_btn').click( () =>
+      console.log("new scene button action listenr is assigned")
+      @addPlace()
+      )
+  showInfowindowFormAtLocation: (map, marker, location) ->
+    @closeInfowindows()
+    #@userInfowindow = @infowindow()
+    #@userInfowindow.setContent(document.getElementById('iwcontainer').innerHTML)
+    #@userInfowindow.setPosition(location)
+    #@userInfowindow.open(map, @userMapsMarker)
+    if not Modernizr.input.placeholder
+      google.maps.event.addListener(@userInfowindow, 'domready', () =>
+      @clearPlaceholders()
+      )
+    $('#map_canvas').find('#guidelines').on 'click', (event) =>
+      $('#helpmodal').modal()
+    google.maps.event.addListenerOnce @userInfowindow, 'closeclick', () =>
+      @userMapsMarker.setMap(null)
+
+  closeInfowindows: ->
+    iw.close() for iw in @infowindows
+
+  reportUserLocationToServer: ->
+    console.log("Tryna talk to the server!")
+    $.ajax
+      url: '/mobile/closeby'
+      data: @location
+      success: (data) =>
+        console.log(data)

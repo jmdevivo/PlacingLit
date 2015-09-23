@@ -17,7 +17,8 @@
 
 (function() {
   var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    hasProp = {}.hasOwnProperty;
+    hasProp = {}.hasOwnProperty,
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   window.PlacingLit = {
     Models: {},
@@ -80,12 +81,15 @@
     extend(MapCanvasView, superClass);
 
     function MapCanvasView() {
+      this.handleViewportChange = bind(this.handleViewportChange, this);
       return MapCanvasView.__super__.constructor.apply(this, arguments);
     }
 
     MapCanvasView.prototype.model = PlacingLit.Models.Location;
 
     MapCanvasView.prototype.el = 'map_canvas';
+
+    MapCanvasView.prototype.location = null;
 
     MapCanvasView.prototype.gmap = null;
 
@@ -123,7 +127,7 @@
         'increment': 1
       },
       markerDefaults: {
-        draggable: false,
+        draggable: true,
         animation: google.maps.Animation.DROP,
         icon: '/img/redpin.png'
       },
@@ -133,10 +137,12 @@
     MapCanvasView.prototype.mapOptions = {
       zoom: 8,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeControl: true,
       mapTypeControlOptions: {
         style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
         position: google.maps.ControlPosition.TOP_RIGHT
       },
+      draggable: true,
       maxZoom: 20,
       minZoom: 2,
       zoomControl: true,
@@ -145,7 +151,7 @@
         position: google.maps.ControlPosition.LEFT_CENTER
       },
       panControlOptions: {
-        position: google.maps.ControlPosition.LEFT_CENTER
+        position: google.maps.ControlPosition.RIGHT_CENTER
       }
     };
 
@@ -158,9 +164,18 @@
       }
       this.listenTo(this.collection, 'all', this.render);
       this.collection.fetch();
-      this.suggestAuthors();
+      this.googlemap();
+      this.positionMap();
       this.attachNewSceneHandler();
-      return this.attachSearchHandler();
+      this.attachSearchHandler();
+      return {
+        render: function(event) {
+          console.log("MapCanvasView..render(event) executed");
+          if (event === 'sync') {
+            return this.mapWithMarkers();
+          }
+        }
+      };
     };
 
     MapCanvasView.prototype.googlemap = function() {
@@ -169,15 +184,30 @@
         return this.gmap;
       }
       map_elem = document.getElementById(this.$el.selector);
+      console.log("mobapp:: googlemap() mapOptions: " + JSON.stringify(this.mapOptions));
       this.gmap = new google.maps.Map(map_elem, this.mapOptions);
       this.mapCenter = this.gmap.getCenter();
-      google.maps.event.addListener(this.gmap, 'bounds_changed', this.handleViewportChange);
       return this.gmap;
+    };
+
+    MapCanvasView.prototype.handleViewportChange = function(event) {
+      var center, centerGeoPt;
+      console.log("MapCanvasView.handleViewportChange(event) was executed");
+      center = this.gmap.getCenter();
+      centerGeoPt = {
+        lat: center[Object.keys(center)[0]],
+        lon: center[Object.keys(center)[1]]
+      };
+      if (this.gmap.getZoom() >= this.settings.maxTerrainZoom) {
+        return this.gmap.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+      } else {
+        return this.gmap.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+      }
     };
 
     MapCanvasView.prototype.positionMap = function() {
       var mapcenter, usaCoords, usacenter, windowOptions;
-      console.log("MapCanvasView.positionMap() called");
+      console.log("mobileapp positionMap is called");
       if (window.CENTER != null) {
         mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
         this.gmap.setCenter(mapcenter);
@@ -204,13 +234,11 @@
                 lng: position.coords.longitude
               };
               _this.gmap.setCenter(userCoords);
-              console.log("User coordinates!!  ");
-              return console.log('mobileapp.js :: positionMap() lat: ' + position.coords.latitude + ' long: ' + position.coords.longitude);
+              console.log('mobileapp.js :: positionMap() lat: ' + position.coords.latitude + ' long: ' + position.coords.longitude);
+              return _this.location = userCoords;
             };
           })(this));
         } else {
-          console.log("Else condition, position: ");
-          console.log(usacenter);
           this.gmap.setCenter(usacenter);
         }
         this.gmap.setZoom(8);
@@ -224,10 +252,14 @@
       return this.initialMapView = false;
     };
 
+    MapCanvasView.prototype.handleMapClick = function(event) {
+      return this.setUserMapMarker(this.gmap, event.latLng);
+    };
+
     MapCanvasView.prototype.setUserPlaceFromLocation = function(location) {
       console.log("MapCanvasView.setuserPlaceFromLocation(location) executed");
       console.log("--location: " + location);
-      this.userPlace = locationclass(extend(PlacingLit.Models.Location, Backbone.Model));
+      this.userPlace = extend(PlacingLit.Models.Location, Backbone.Model);
       return {
         defaults: {
           title: 'Put Title Here',
@@ -262,6 +294,94 @@
           return window.location.href = windowLoc + "/map/filter/author/" + this.innerHTML;
         });
       }
+    };
+
+    MapCanvasView.prototype.attachSearchHandler = function() {
+      return $.ajax({
+        url: "/places/authors",
+        success: (function(_this) {
+          return function(authors) {
+            return $.ajax({
+              url: "/places/titles",
+              success: function(titles) {
+                $('#gcf').on('keydown', function(event) {
+                  var author_data, title_data;
+                  author_data = [];
+                  title_data = [];
+                  console.log(titles);
+                  $.each(authors, function(key, value) {
+                    return author_data.push(value.author.toString());
+                  });
+                  $.each(titles, function(key, value) {
+                    return title_data.push(value.title.toString());
+                  });
+                  _this.hideOverlay();
+                  $('.geosearchResults').show();
+                  _this.suggestAuthors(author_data);
+                  _this.suggestTitles(title_data);
+                  return _this.populateSuggestedSearches(authors, titles);
+                });
+                return $('#search').on('click', function(event) {
+                  return _this.populateSuggestedSearches();
+                });
+              }
+            });
+          };
+        })(this)
+      });
+    };
+
+    MapCanvasView.prototype.attachNewSceneHandler = function() {
+      console.log("The attach new scene handler is firing");
+      return $('#new_scene_submit_btn').click((function(_this) {
+        return function() {
+          console.log("new scene button action listenr is assigned");
+          return _this.addPlace();
+        };
+      })(this));
+    };
+
+    MapCanvasView.prototype.showInfowindowFormAtLocation = function(map, marker, location) {
+      this.closeInfowindows();
+      if (!Modernizr.input.placeholder) {
+        google.maps.event.addListener(this.userInfowindow, 'domready', (function(_this) {
+          return function() {};
+        })(this), this.clearPlaceholders());
+      }
+      $('#map_canvas').find('#guidelines').on('click', (function(_this) {
+        return function(event) {
+          return $('#helpmodal').modal();
+        };
+      })(this));
+      return google.maps.event.addListenerOnce(this.userInfowindow, 'closeclick', (function(_this) {
+        return function() {
+          return _this.userMapsMarker.setMap(null);
+        };
+      })(this));
+    };
+
+    MapCanvasView.prototype.closeInfowindows = function() {
+      var i, iw, len, ref, results;
+      ref = this.infowindows;
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        iw = ref[i];
+        results.push(iw.close());
+      }
+      return results;
+    };
+
+    MapCanvasView.prototype.reportUserLocationToServer = function() {
+      console.log("Tryna talk to the server!");
+      return $.ajax({
+        url: '/mobile/closeby',
+        data: this.location,
+        success: (function(_this) {
+          return function(data) {
+            return console.log(data);
+          };
+        })(this)
+      });
     };
 
     return MapCanvasView;

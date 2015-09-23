@@ -67,6 +67,37 @@ class MapHandler(baseapp.BaseAppHandler):
     if "Mobi" in self.request.headers.get('User-Agent'):
       template_values = self.basic_template_content()
       template_values['title'] = 'Map'
+
+      # TODO write GQL query for locations:
+
+      dber = IndexedSceneMapHandler()
+      #  location to test with -38.6644021364,178.020658493
+      #close_locs = dber.get_nearby_places_json(-83.153, 178.020)
+      close_locs = dber.get_nearby_places_json(-37.8116826244, 144.953956604)
+
+      ''' author @ Will Acheson
+        TODO:  The idea here is to get the user's location in coord and then query big desk via
+          dber.get_nearby_places_json to get the close by locations.
+        Then those locations go into close_locs as a list of jsons
+        Then they are displayed in the bootstrap list-group on the mobile app
+        XD
+
+      '''
+      template_values['close_locs'] = close_locs
+      template_values['test_val'] = ["This is where Locations go.",
+                                     "More locations...",
+                                     "More locations...",
+                                     "More locations...",
+                                     "More locations...",
+                                     "More locations...",
+                                     "More locations...",
+                                     "More locations...",
+                                     "More locations...",
+                                     "More locations...",
+                                     "More locations...",]
+
+      #  gives mobile-map.tmpl the data stored in template_values
+      # for rendering on the mobile site
       self.render_template('mobile-map.tmpl', template_values)
     else:
       template_values = self.basic_template_content()
@@ -77,14 +108,6 @@ class MapHandler(baseapp.BaseAppHandler):
         template_values['center'] = '{lat:%s,lng:%s}' % (lat, lng)
       if self.request.get('key'):
         template_values['key'] = self.request.get('key')
-
-
-
-      '''blog_getter = BlogHandler()
-      recent_blog = blog_getter.getRecentBlogPost()
-      print "decoupled recent blog data =========================="
-      print recent_blog'''
-
 
       # TODO Make this not digusting.  Put blog loading in its own handler function
       # TODO Dynamic Blog Loading via XML
@@ -138,20 +161,36 @@ class MapHandler(baseapp.BaseAppHandler):
         template_values['most_recent_scene_title'] = "local null"
         template_values['most_recent_scene_scenelocation'] = "local null"
 
+      #  gives map.tmpl the data stored in template_values
+      # for rendering on the desktop site
       self.render_template('map.tmpl', template_values)
-
+  '''
+    author @ will Acheson
+    strip_tags()
+      input: html - string containing html to be removed
+      output: s.get_data() - original string without the
+        html elements
+  '''
   def strip_tags(self, html):
       s = HTMLStripper()
       s.feed(html)
       return s.get_data()
 
+  '''
+    author @ will Acheson
+    get_most_recent_scene
+      input: self (map handler)
+      output: recent_scene - most recent scene added to
+        Big Table Database
+  '''
   def get_most_recent_scene(self):
     print "Tryna get some new scenes XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     try:
       gql_query = db.GqlQuery("SELECT * FROM PlacedLit ORDER BY ts DESC LIMIT 1")
     except Exception:
-      print "Error yo"
-      query_result = "Null"
+      print "Error in GQL query: "
+      print Exception.message
+      gql_query = "Null"
     if gql_query:
       for scene in gql_query:
         print 'gql query ========================================'
@@ -162,6 +201,10 @@ class MapHandler(baseapp.BaseAppHandler):
         recent_scene['scenelocation'] = scene.scenelocation
         return recent_scene
 
+'''
+  author @ Will Acheson
+  HTML Stripper removes html elements from a given string
+'''
 class HTMLStripper(HTMLParser):
   def __init__(self):
     self.reset()
@@ -172,6 +215,14 @@ class HTMLStripper(HTMLParser):
   def get_data(self):
     return ''.join(self.fed)
 
+
+'''
+  author @ Will Acheson
+  BlogHandler fetches blog posts from the offical RSS feed
+  from PlacingLit
+
+  TODO Remains to be implimented cleanly
+'''
 class BlogHandler(baseapp.BaseAppHandler):
   # Gets the RSS feed of Placing Lits'blog using feedparser.parse
 
@@ -233,8 +284,11 @@ class IndexedSceneMapHandler(baseapp.BaseAppHandler):
       template_values['key'] = key
     self.render_template('map.tmpl', template_values)
 
+  # TODO: figure out if this works, read the code from it
   def get_nearby_places_json(self, lat=None, lng=None):
-    places = placedlit.get_nearby_places(lat, lng, sorted=True)
+    # TODO sorted is broken, will fix (mayb)
+    #places = placedlit.get_nearby_places(lat, lng, sorted=True)
+    places = placedlit.get_nearby_places(lat, lng)
     if places:
       return json.dumps(self.format_location_index_results(places))
     else:
@@ -331,6 +385,19 @@ class CollectionsHandler(baseapp.BaseAppHandler):
     template_values['title'] = 'Collections'
     self.render_template('collections.tmpl', template_values)
 
+class CloseByHandler(baseapp.BaseAppHandler):
+  def get(self, location = None):
+    response = dict()
+    if location:
+      print "Client location: " + location
+      response['location'] = location
+      response['message'] = "Everything's clear."
+      return response
+    else:
+      response['message'] = "Houston we have a problem"
+      return response
+
+
 urls = [
   ('/about', AboutHandler),
   ('/all', AllscenesHandler),
@@ -345,7 +412,8 @@ urls = [
   ('/admin/edit', AdminEditSceneHandler),
   ('/admin/menu', AdminMenuHandler),
   ('/oldhome', HomeHandler),
-  ('/collections', CollectionsHandler)
+  ('/collections', CollectionsHandler),
+  ('/mobile/closeby', CloseByHandler)
 ]
 
 app = webapp.WSGIApplication(urls, debug=True)
