@@ -50,8 +50,6 @@
       return Locations.__super__.constructor.apply(this, arguments);
     }
 
-    console.log('placingLit.Collections.Locations model utilized:  /places/show route');
-
     Locations.prototype.model = PlacingLit.Models.Location;
 
     Locations.prototype.url = '/places/show';
@@ -201,7 +199,6 @@
 
     MapCanvasView.prototype.handleViewportChange = function(event) {
       var center, centerGeoPt;
-      console.log("MapCanvasView.handleViewportChange(event) was executed");
       center = this.gmap.getCenter();
       centerGeoPt = {
         lat: center[Object.keys(center)[0]],
@@ -403,7 +400,6 @@
 
     MapCanvasView.prototype.suggestAuthors = function(author_data) {
       var author, j, len, li, parent, searchTxt;
-      console.log("app.coffee :: suggestAutors " + author_data);
       parent = document.getElementById('authorsSearchList');
       $(parent).empty();
       $(parent).show();
@@ -500,7 +496,6 @@
 
     MapCanvasView.prototype.positionMap = function() {
       var mapcenter, usaCoords, usacenter, windowOptions;
-      console.log("MapCanvasView.positionMap() called");
       if (window.CENTER != null) {
         mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
         this.gmap.setCenter(mapcenter);
@@ -526,14 +521,10 @@
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
               };
-              _this.gmap.setCenter(userCoords);
-              console.log("app.coffee :: positionMap() User coordinates!!  ");
-              return console.log('lat: ' + position.coords.latitude + ' long: ' + position.coords.longitude);
+              return _this.gmap.setCenter(userCoords);
             };
           })(this));
         } else {
-          console.log("Else condition, position: ");
-          console.log(usacenter);
           this.gmap.setCenter(usacenter);
         }
         this.gmap.setZoom(8);
@@ -1038,25 +1029,31 @@
       $("#googleActionLink").click((function(_this) {
         return function(e) {
           e.preventDefault();
-          return window.open("https://www.google.com/search?q=" + data.title);
+          return window.open("https://www.google.com/search?q=" + data.place_name);
         };
       })(this));
       $("#googleActionLink2").click((function(_this) {
         return function(e) {
           e.preventDefault();
-          return window.open("https://www.google.com/search?q=" + data.title);
+          return window.open("https://www.google.com/search?q=" + data.place_name);
+        };
+      })(this));
+      $('.searchGoogle').click((function(_this) {
+        return function(e) {
+          e.preventDefault();
+          return window.open("https://www.google.com/search?q=" + data.place_name);
         };
       })(this));
       $("#wikiActionLink").click((function(_this) {
         return function(e) {
           e.preventDefault();
-          return window.open("https://en.wikipedia.org/w/index.php?search=" + data.title);
+          return window.open("https://en.wikipedia.org/w/index.php?search=" + data.place_name);
         };
       })(this));
       $("#wikiActionLink2").click((function(_this) {
         return function(e) {
           e.preventDefault();
-          return window.open("https://en.wikipedia.org/w/index.php?search=" + data.title);
+          return window.open("https://en.wikipedia.org/w/index.php?search=" + data.place_name);
         };
       })(this));
       $("#ibActionLink").click((function(_this) {

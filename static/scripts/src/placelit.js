@@ -12,7 +12,7 @@
       };
       this.path = window.location.pathname;
       this.search = this.parseQuery(window.location.search);
-      console.log('placelit.coffee :: search: ' + JSON.stringify(this.search));
+      console.log('placelit.coffee :: search object: ' + JSON.stringify(this.search));
       this.scenes = window.SCENES;
       console.log('placelit.coffee :: scenes: ' + this.scenes);
     }
@@ -91,6 +91,22 @@
       view.handleInputAttributes();
     }
     return view.showInfowindowFormAtLocation();
+  });
+
+  $.ajax({
+    url: "/blog/latest",
+    success: (function(_this) {
+      return function(data) {
+        console.log("This is the latest blog resource handler output");
+        return console.log(data);
+      };
+    })(this),
+    error: (function(_this) {
+      return function(err) {
+        console.log("error requesting newest blog from server");
+        return console.log(err);
+      };
+    })(this)
   });
 
 }).call(this);

@@ -52,8 +52,17 @@ class BlogpostsHandler(baseapp.BaseAppHandler):
     return posts
 
 
+class BlogpostsNewestHandler(baseapp.BaseAppHandler):
+    def get(self):
+        newest_post = blogspots.get_newest_posts(1)
+        print "this is the newest blog post"
+        print newest_post
+        self.response.out.write(newest_post)
+
+
 urls = [
   ('/blog/update', BlogpostsHandler),
+  ('/blog/latest', BlogpostsNewestHandler)
 ]
 
 

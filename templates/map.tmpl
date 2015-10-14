@@ -111,37 +111,42 @@
       <div class='fluid-container clearfix'>
         <div>
           <div class='col-md-5 vanishing-col '>
+            <!-- TODO Top Left -->
             <div class='map-window left-window'>
               <div class='standard-entry-header'>Author Spotlight</div>
               <div class='window-info'>
-                <img class='standard-entry-image' src='/img/jan.png'/>
+                <img class='standard-entry-image artist-img' id="top-left-artist-img" src='/img/jan.png' " />
                 <div class='standard-entry-text standard-entry-intro-text'>RJ Julia Author Spotlight: </div>
-                <div class='standard-entry-text'>Steven Simmons,</div>
+                <div id="top-left-artist-name" class='standard-entry-text artist_name' style="cursor: pointer;">Steven Simmons,</div>
                 <div class='standard-entry-text standard-entry-text-italics'>Body Blows</div>
               </div>
             </div>
+            <!-- TODO Top Right -->
             <div class='map-window right-window'>
               <div class='standard-entry-header'>Author Spotlight</div>
               <div class='window-info'>
-                <img class='standard-entry-image' src='/img/jan-1.png'/>
+                <img class='standard-entry-image artist-img' id="top-right-artist-img" src='/img/jan-1.png'/>
                 <div class='standard-entry-text standard-entry-intro-text'>IndieReader Author Spotlight: </div>
-                <div class='standard-entry-text'>Samantha Towle,</div>
+                <div id="top-right-artist-name" class='standard-entry-text artist_name' style="cursor: pointer;">Samantha Towle,</div>
                 <div class='standard-entry-text standard-entry-text-italics'>The Mighty Storm</div>
               </div>
             </div>
+            <!-- TODO Bottom Left -->
             <div class='map-window left-window'>
                 <div class='standard-entry-header'>Collections</div>
                 <div class='window-info'>
-                  <img class='standard-entry-image' src="/img/july2014_marktwainhouse.png"/>
+                  <img class='standard-entry-image artist-img' id="bottom-left-artist-img" src="/img/july2014_marktwainhouse.png"/>
                   <div class='standard-entry-text standard-entry-intro-text'>Placing Literature Collections: </div>
-                  <div class='standard-entry-text standard-entry-text-italics'>Mark Twain curated by the Mark Twain House and Museum</div>
+                  <div id="bottom-left-artist-name" class="artist_name standard-entry-text standard-entry-text-italics" style="display:inline; cursor: pointer;"> Mark Twain, </div>
+                  <div class='standard-entry-text standard-entry-text-italics'>Curated by the Mark Twain House and Museum</div>
                 </div>
             </div>
+            <!-- TODO Bottom Right  -->
             <div class='map-window right-window'>
               <div class='standard-entry-header'>Featured Author</div>
-              <div class='window-info'>
-                <img class='standard-entry-image' src='/img/hemingway.jpg'/>
-                <div class='standard-entry-text standard-entry-intro-text'>Ernest Hemingway: </div>
+              <div class='window-info' >
+                <img class='standard-entry-image artist-img' id="bottom-right-artist-img" src='/img/hemingway.jpg' />
+                <div id="bottom-right-artist-name" class='artist_name standard-entry-text standard-entry-intro-text' style="cursor: pointer;">Ernest Hemingway: </div>
                 <div class='standard-entry-text standard-entry-text-italics'>A Farewell to Arms, For Whom the Bell Tolls, and more...</div>
               </div>
             </div>
@@ -177,7 +182,7 @@
                 <div id='num-places-added'>{{count}} </div>
                 <!-- TODO: dynamically get the most recently added scene from the DB -->
                 <div class='tall-entry-text tall-entry-text-center' id="newest_scene_div">Newest Place Added:  </div>
-                <div class='tall-entry-text tall-entry-text-center' id="newest_scene">{{most_recent_scene_title}} by {{most_recent_scene_author}} </div>
+                <div class='tall-entry-text tall-entry-text-center' id="newest_scene">{{recent_scene_title}} by {{recent_scene_author}} at {{recent_scene_location}} </div>
             </div>
           </div>
         </div>
@@ -217,7 +222,9 @@
               <a id='ibActionLink' class='actionAnchor' href='#'><img src="/img/ib.png"/></a>
               <a id='grActionLink' class='actionAnchor' href='#'><img src='/img/goodrd.png'/></a>
               <a id='wikiActionLink2' class='actionAnchor' href='#'><img src='/img/wikipedia.jpg'/></a>
-              <a id='googleActionLink2' class='actionAnchor' href='#'><button>Search The Web</button></a>
+              <button class="searchGoogle" id="searchGoogleAlt">Search
+                <a id='googleActionLink2' href='#'><img class='actionAnchor searchGoogleImage2' src='/img/google.png'/></a>
+              </button>
               <a id='shareActionLink' class='actionAnchor' href='#'><img src='/img/share.jpg'/></a>
 
             </div>
@@ -238,24 +245,24 @@
             <div class='new_scene_section' id='new_scene_book_info'>
               <div><div class='new_scene_field_text'>What is the title of the book?</div><input id='new_scene_title' name='title' type='text'></input></div>
               <div><div class='new_scene_field_text'>Who is the author of the book?</div><input id='new_scene_author' name='author' type='text'></input></div>
-              <button class='nextSceneFieldBtn' data-next='#new_scene_descrip'>Continue</button>
+              <button class='nextSceneFieldBtn nextSceneButton' data-next='#new_scene_descrip'>Continue</button>
             </div>
             <div class='new_scene_section' id='new_scene_descrip'>
               <div><div class='new_scene_field_text'>What happens in this particular scene?</div><textarea  rows='4' cols='40'  id='new_scene_notes'name='notes' type='text'></textarea></div>
-              <button class='nextSceneFieldBtn' data-next='#new_scene_place_info'>Continue</button>
+              <button class='nextSceneFieldBtn nextSceneButton' data-next='#new_scene_place_info'>Continue</button>
             </div>
             <div class='new_scene_section' id='new_scene_place_info'>
               <div><div class='new_scene_field_text'>What is the name of this place?</div><input id='new_scene_place_name' name='place_name' type='text'></input></div>
               <div><div class='new_scene_field_text'>Tell us something about this place. Can’t think of anything to say? <a id='new_scene_wiki_link' href='https://en.wikipedia.org/w/index.php?search='>Try Wikipedia </a></div><textarea rows='4' cols='40' id='new_scene_scene' name='scene' type='text'></textarea></div>
-              <button class='nextSceneFieldBtn' data-next='#new_scene_personal_info'>Continue</button>
+              <button class='nextSceneFieldBtn nextSceneButton' data-next='#new_scene_personal_info'>Continue</button>
             </div>
             <div class='new_scene_section' id='new_scene_personal_info'>
               <div><span class='new_scene_span'>Have you ever been to this location?</span><input id='new_scene_check_in' class='new_scene_checkbox' name='check_in' type='checkbox'></input></div>
               <div><span class='new_scene_span'>Would you recommend other people visit this place?</span><input class='new_scene_checkbox' name='recommend' type='checkbox'></input></div>
-              <button class='nextSceneFieldBtn' data-next='#new_scene_submit'>Continue</button>
+              <button class='nextSceneFieldBtn nextSceneButton' data-next='#new_scene_submit'>Continue</button>
             </div>
             <div class='new_scene_section' id='new_scene_submit'>
-              <button id='new_scene_submit_btn'>Submit</button>
+              <button id='new_scene_submit_btn' class="nextSceneButton">Submit</button>
             </div>
           </div>
           <ul class='new_entry_nav'>
@@ -416,10 +423,12 @@
 <script type="text/javascript" src="/js/src/placelit.js"></script>
 
 <script>
+ 'use strict';
 
 // this is frontend controlling javascript code!!
 
 
+    //console.log("Newest Scene" + {{recent_scene}});
 
     var hideOverlay = function(){
       var overlay = document.getElementById("mapOverlay");
@@ -489,6 +498,93 @@
     $('.geosearchResults').click(function(event){
       event.stopPropagation();
     });
+
+    function featured_map_redirect_TL(){
+
+      console.log("Artist name: "  + document.getElementById('top-left-artist-name').innerHTML );
+
+      var artist_name = document.getElementById('top-left-artist-name').innerHTML;
+
+      console.log("clicked: " + artist_name + '\'s featured box.');
+
+      if (typeof artist_name == 'string'){
+        artist_name = artist_name.replace('[!.,/:;-_|\\]', ''); // repalce any punctuation with nothing
+        artist_name = artist_name.replace(' ', '%20'); // replace space with %20
+
+        var redirect_uri = '/map/filter/author/' + artist_name
+        window.location.href = redirect_uri
+      }
+    }
+
+    function featured_map_redirect_TR(){
+
+      console.log("Artist name: "  + document.getElementById('top-right-artist-name').innerHTML );
+
+      var artist_name = document.getElementById('top-right-artist-name').innerHTML;
+
+      console.log("clicked: " + artist_name + '\'s featured box.');
+
+      if (typeof artist_name == 'string'){
+        artist_name = artist_name.replace('[!.,/:;-_|\\]', ''); // repalce any punctuation with nothing
+        artist_name = artist_name.replace(' ', '%20'); // replace space with %20
+        var redirect_uri = '/map/filter/author/' + artist_name
+        window.location.href = redirect_uri
+      }
+    }
+
+    function featured_map_redirect_BL(){
+
+      var artist_name = document.getElementById('bottom-left-artist-name').innerHTML;
+      console.log("clicked: " + artist_name + '\'s featured box.');
+
+      if (typeof artist_name == 'string'){
+        artist_name = artist_name.replace('[!.,/:;-_|\\]', ''); // repalce any punctuation with nothing
+        artist_name = artist_name.replace(' ', '%20'); // replace space with %20
+        var redirect_uri = '/map/filter/author/' + artist_name
+        window.location.href = redirect_uri
+      }
+    }
+
+    function featured_map_redirect_BR(){
+
+      var artist_name = document.getElementById('bottom-right-artist-name').innerHTML;
+      console.log("clicked: " + artist_name + '\'s featured box.');
+
+      if (typeof artist_name == 'string'){
+        artist_name = artist_name.replace('[!.,/:;-_|\\]', ''); // repalce any punctuation with nothing
+        artist_name = artist_name.replace(' ', '%20'); // replace space with %20
+        var redirect_uri = '/map/filter/author/' + artist_name
+        window.location.href = redirect_uri
+      }
+    }
+
+    // set up all the EventListeners on the featured author boxes
+
+    // TL Author Spotlight
+    var tl_redirect = document.getElementById("top-left-artist-name");
+    tl_redirect.addEventListener("click", featured_map_redirect_TL);
+    var tl_img_redirect = document.getElementById("top-left-artist-img");
+    tl_img_redirect.addEventListener("click", featured_map_redirect_TL);
+
+    // TR Author Spotlight
+    var tr_redirect = document.getElementById("top-right-artist-name");
+    tr_redirect.addEventListener("click", featured_map_redirect_TR);
+    var tr_img_redirect = document.getElementById("top-right-artist-img");
+    tr_img_redirect.addEventListener("click", featured_map_redirect_TR);
+
+    // BL  Collection
+    var bl_redirect = document.getElementById("bottom-left-artist-name");
+    bl_redirect.addEventListener("click", featured_map_redirect_BL);
+    var bl_img_redirect = document.getElementById("bottom-left-artist-img");
+    bl_img_redirect.addEventListener("click", featured_map_redirect_BL);
+
+    // BR Featured Author
+    var br_redirect = document.getElementById("bottom-right-artist-name");
+    br_redirect.addEventListener("click", featured_map_redirect_BR);
+    var br_img_redirect = document.getElementById("bottom-right-artist-img");
+    br_img_redirect.addEventListener("click", featured_map_redirect_BR);
+
+
 
 
   </script>

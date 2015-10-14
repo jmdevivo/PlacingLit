@@ -1,3 +1,4 @@
+
 window.PlacingLit =
   Models: {}
   Collections: {}
@@ -18,7 +19,7 @@ class PlacingLit.Models.Metadata extends Backbone.Model
   initialize: ->
 
 class PlacingLit.Collections.Locations extends Backbone.Collection
-  console.log('placingLit.Collections.Locations model utilized:  /places/show route')
+  #console.log('placingLit.Collections.Locations model utilized:  /places/show route')
   model: PlacingLit.Models.Location
 
   url: '/places/show'
@@ -119,7 +120,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     return @gmap
 
   handleViewportChange: (event) =>
-    console.log("MapCanvasView.handleViewportChange(event) was executed")
+    #console.log("MapCanvasView.handleViewportChange(event) was executed")
     center = @gmap.getCenter()
     centerGeoPt =
       lat: center[Object.keys(center)[0]]
@@ -259,7 +260,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         )
 
   suggestAuthors: (author_data) ->
-    console.log("app.coffee :: suggestAutors " + author_data)
     parent = document.getElementById('authorsSearchList')
     $(parent).empty()
     $(parent).show()
@@ -316,7 +316,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     # $('#showmarkers').on('click', @showMarkers)
 
   positionMap: () ->
-    console.log("MapCanvasView.positionMap() called")
     if window.CENTER?
       mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
       @gmap.setCenter(mapcenter)
@@ -338,12 +337,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
             lat: position.coords.latitude
             lng: position.coords.longitude
           @gmap.setCenter(userCoords)
-          console.log("app.coffee :: positionMap() User coordinates!!  ")
-          console.log('lat: ' + position.coords.latitude + ' long: ' + position.coords.longitude)
+          #console.log("app.coffee :: positionMap() User coordinates!!  ")
+          #console.log('lat: ' + position.coords.latitude + ' long: ' + position.coords.longitude)
         )
       else
-        console.log("Else condition, position: ")
-        console.log(usacenter)
         @gmap.setCenter(usacenter)
       @gmap.setZoom(8)
     if window.PLACEKEY?
@@ -619,6 +616,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     $.ajax
       url: "/places/authors"
       success: (authors) =>
+        #console.log('ajax debug statement search result: ' + authors)
         $.ajax
           url: "/places/titles"
           success: (titles) =>
@@ -721,11 +719,15 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     console.log "setting google action listener"
     $("#googleActionLink").click((e) =>
       e.preventDefault()
-      window.open("https://www.google.com/search?q="+ data.title)
+      window.open("https://www.google.com/search?q="+ data.place_name)
       )
     $("#googleActionLink2").click((e) =>
       e.preventDefault()
-      window.open("https://www.google.com/search?q="+ data.title)
+      window.open("https://www.google.com/search?q="+ data.place_name)
+      )
+    $('.searchGoogle').click((e) =>
+      e.preventDefault()
+      window.open("https://www.google.com/search?q="+ data.place_name)
       )
     # TODO: this is where the wiki link is built, make sure it works right
     # On scene cards when u click the wiki link, if you have visited multiple
@@ -733,11 +735,11 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     # you clicked on.
     $("#wikiActionLink").click((e) =>
       e.preventDefault()
-      window.open("https://en.wikipedia.org/w/index.php?search="+ data.title)
+      window.open("https://en.wikipedia.org/w/index.php?search="+ data.place_name)
       )
     $("#wikiActionLink2").click((e) =>
       e.preventDefault()
-      window.open("https://en.wikipedia.org/w/index.php?search="+ data.title)
+      window.open("https://en.wikipedia.org/w/index.php?search="+ data.place_name)
       )
     $("#ibActionLink").click((e) =>
       e.preventDefault()

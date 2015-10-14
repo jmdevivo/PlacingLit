@@ -126,6 +126,10 @@ handlers:
   script: handlers.blogposts.app
   login: admin
 
+- url: /blog/latest
+  script: handlers.blogposts.app
+  login: admin
+
 - url: /user/status
   script: handlers.home.app
 
@@ -202,7 +206,7 @@ handlers:
 - url: /mobile
   script: handlers.
 
-- url: /mobile/closeby
+- url: /mobile/closeby(.*)
   script: handlers.home.app
 
 libraries:

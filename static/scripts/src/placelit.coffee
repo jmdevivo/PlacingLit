@@ -67,3 +67,12 @@ $ ->
         history.replaceState(null,null,'/')
   view.handleInputAttributes() if not Modernizr.input.placeholder
   view.showInfowindowFormAtLocation()
+  # testing /blog/latest URI
+$.ajax
+  url: "/blog/latest",
+  success: (data) =>
+    console.log("This is the latest blog resource handler output")
+    console.log(data)
+  error: (err) =>
+    console.log("error requesting newest blog from server")
+    console.log(err)
