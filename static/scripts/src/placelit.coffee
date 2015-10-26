@@ -68,11 +68,37 @@ $ ->
   view.handleInputAttributes() if not Modernizr.input.placeholder
   view.showInfowindowFormAtLocation()
   # testing /blog/latest URI
+
+
 $.ajax
   url: "/blog/latest",
   success: (data) =>
-    console.log("This is the latest blog resource handler output")
-    console.log(data)
+    data = JSON.parse(data)
+    $('#recent-blog-post-summary').html(data['newest_post_description'])
+    $('#recent-blog-post-link').attr('href', data['newest_post_link'])
+    $('#recent-blog-post-title').html(data['newest_post_title'])
   error: (err) =>
     console.log("error requesting newest blog from server")
     console.log(err)
+
+
+$.ajax
+  url: "/places/recent",
+  dataType: "json",
+  success: (data) =>
+    #console.log("/places/recent: " + JSON.stringify(data[0]))
+    $('#newest_scene').html("<b>" + data[0]['location'] + "</b> from <i> " + data[0]['title'] + "</i> by " + data[0]['author'])
+  error: (err) =>
+    console.log("error: /places/recent - " + err )
+
+'''
+$.ajax
+  url: "/places/near/1",
+  dataType: "json",
+  success: (data) =>
+    console.log("Success!  ")
+    console.log(data)
+    console.log(JSON.stringify(data))
+  error: (err) =>
+    console.log('Error: ' + err)
+    '''

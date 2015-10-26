@@ -36,6 +36,12 @@ class PlacingLit.Collections.NewestLocationsByDate extends Backbone.Collection
 
   url :'/places/allbydate'
 
+# Added by Will Acheson for map speedup, limited place loading
+class PlacingLit.Collections.LocationsNear extends Backbone.Collection
+  model: PlacingLit.Models.Location
+
+  url:'/places/near'
+
 
 class PlacingLit.Views.MapCanvasView extends Backbone.View
   model: PlacingLit.Models.Location
@@ -97,9 +103,18 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
 
   initialize: (scenes) ->
-    console.log('MapCanvasView.initialize(scenes) executed.')
     @collection ?= new PlacingLit.Collections.Locations()
     @listenTo @collection, 'all', @render
+
+    if navigator.geolocation
+      position = navigator.geolocation.getCurrentPosition(@getPlacesNearController)
+
+    '''
+    #Added by Will Acheson for map speedup, limited place loading
+    @collection ?= new PlacingLit.Collections.LocationsNear()
+    @listenTo @collection, 'all', @render
+    '''
+
     @collection.fetch()
     # setup handler for geocoder searches
     @suggestAuthors()
@@ -107,8 +122,25 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @attachSearchHandler()
 
 
+  getPlacesNearController: (position) =>
+    console.log("lat: " + position.coords.latitude)
+    console.log("lng: " + position.coords.longitude)
+
+    console.log("requesting: " + '/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude)
+
+    $.ajax
+      url:'/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude
+      dataType:"json"
+      success: (data) =>
+        console.log("call to /places/near successful")
+        console.log("places/near:  " + JSON.stringify(data))
+        console.log(data)
+        console.log("data, length" )
+      error: (err) =>
+        console.log("call to /places/near failed")
+        console.log("error: " + err)
+
   render: (event) ->
-    console.log("MapCanvasView..render(event) executed")
     @mapWithMarkers() if event is 'sync'
 
   googlemap: ()->
@@ -120,7 +152,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     return @gmap
 
   handleViewportChange: (event) =>
-    #console.log("MapCanvasView.handleViewportChange(event) was executed")
     center = @gmap.getCenter()
     centerGeoPt =
       lat: center[Object.keys(center)[0]]
@@ -131,7 +162,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @gmap.setMapTypeId(google.maps.MapTypeId.TERRAIN)
 
   closeNewEntry: () ->
-    console.log "closeNewEntry is firing"
+
     $('#new_entry').hide()
 
   updateCollection: (event) ->
@@ -163,7 +194,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @collection.reset(collection_url)
 
   marker: ->
-    console.log("marker")
     @placeInfowindow.close() if @placeInfowindow?
     return new google.maps.Marker()
 
@@ -304,6 +334,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
   mapWithMarkers: () ->
     @gmap ?= @googlemap()
     @allMarkers = @markerArrayFromCollection(@collection)
+
+    console.log("all markers!!!!!"  + @allMarkers)
     # @markersForEachScene(@collection)
     @markerClustersForScenes(@allMarkers)
     @positionMap()
@@ -366,7 +398,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       $('#info-overlay').hide()
       $('.entry').hide())
     # $('#addscenebutton').hide()
-    # console.log('all markers', @allMarkers)
     # marker.setMap(null) for marker in @allMarkers
 
   setUserMapMarker: (map, location) ->
@@ -463,7 +494,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       check_in: $form.find('#new_scene_check_in').prop('checked')
     form_data.latitude = @userPlace.lat()
     form_data.longitude = @userPlace.lng()
-    console.log form_data
+    #console.log form_data
     return form_data
 
   isFormComplete: (form_data) ->
@@ -601,7 +632,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
   createSearchElement: (element) ->
     location = element.geometry.location
-    console.log location
     name = element.formatted_address
     li = document.createElement('li')
     li.innerHTML = name
@@ -623,7 +653,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
             $('#gcf').on('keydown', (event) =>
                   author_data = []
                   title_data = []
-                  console.log titles
                   $.each authors, (key, value) =>
                     author_data.push(value.author.toString())
                   $.each titles, (key, value) =>
@@ -640,9 +669,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
               @populateSuggestedSearches()
 
   attachNewSceneHandler: ->
-    console.log "The attach new scene handler is firing"
     $('#new_scene_submit_btn').click( () =>
-      console.log("new scene button action listenr is assigned")
       @addPlace()
       )
 
@@ -688,10 +715,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     console.log('buildInfowindow')
     $('#tabs').show()
     @clearInfowindowClickEvents()
-    console.log "The database key is:" + data.id
+    #console.log "The database key is:" + data.id
     content = '<div class="plinfowindow">'
     $('#entry-image').show()
-    console.log 'data.image_data is:' + data.image_data
+    #console.log 'data.image_data is:' + data.image_data
     if !!data.image_data
       console.log "Entry image should be populated with the panoramio image"
       $('#entry-image').html(@sceneAPIImageTemplate()(image_id: data.image_data.photo_id))
@@ -716,7 +743,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       e.preventDefault()
       window.open("https://www.goodreads.com/book/isbn/"+ data.isbn)
       )
-    console.log "setting google action listener"
+    #console.log "setting google action listener"
     $("#googleActionLink").click((e) =>
       e.preventDefault()
       window.open("https://www.google.com/search?q="+ data.place_name)
@@ -816,8 +843,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       console.log(windowOptions.marker.position)
       @buildInfowindow(data, true)
       if windowOptions.position
-        console.log(typeof windowOptions.position)
-        console.log(windowOptions.position)
+        #console.log(typeof windowOptions.position)
+        #console.log(windowOptions.position)
         iw.setPosition(windowOptions.position)
         iw.open(@gmap)
         @gmap.setCenter(windowOptions.position)
@@ -1040,7 +1067,6 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     @gmap.setCenter(mapcenter)
     # console.log('zoom', @gmap.getZoom())
     @gmap.setZoom(@settings.zoomLevel.wide)
-    console.log "This print statement is running in the render method"
     $('#addscenebutton').on('click', @handleAddSceneButtonClick)
     $('#addscenebutton').show()
 
