@@ -88,15 +88,32 @@
 
   })(Backbone.Collection);
 
+  PlacingLit.Collections.LocationsNear = (function(superClass) {
+    extend(LocationsNear, superClass);
+
+    function LocationsNear() {
+      return LocationsNear.__super__.constructor.apply(this, arguments);
+    }
+
+    LocationsNear.prototype.model = PlacingLit.Models.Location;
+
+    LocationsNear.prototype.url = '/places/near';
+
+    return LocationsNear;
+
+  })(Backbone.Collection);
+
   PlacingLit.Views.MapCanvasView = (function(superClass) {
     extend(MapCanvasView, superClass);
 
     function MapCanvasView() {
+      this.null_function = bind(this.null_function, this);
       this.addPlace = bind(this.addPlace, this);
       this.handleAddSceneButtonClick = bind(this.handleAddSceneButtonClick, this);
       this.showMarkers = bind(this.showMarkers, this);
       this.hideMarkers = bind(this.hideMarkers, this);
       this.handleViewportChange = bind(this.handleViewportChange, this);
+      this.getPlacesNearController = bind(this.getPlacesNearController, this);
       return MapCanvasView.__super__.constructor.apply(this, arguments);
     }
 
@@ -167,19 +184,38 @@
     };
 
     MapCanvasView.prototype.initialize = function(scenes) {
-      console.log('MapCanvasView.initialize(scenes) executed.');
       if (this.collection == null) {
         this.collection = new PlacingLit.Collections.Locations();
       }
       this.listenTo(this.collection, 'all', this.render);
+      '#Added by Will Acheson for map speedup, limited place loading\n@collection ?= new PlacingLit.Collections.LocationsNear()\n@listenTo @collection, \'all\', @render';
       this.collection.fetch();
       this.suggestAuthors();
       this.attachNewSceneHandler();
       return this.attachSearchHandler();
     };
 
+    MapCanvasView.prototype.getPlacesNearController = function(position) {
+      console.log("requesting: " + '/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude);
+      return $.ajax({
+        url: '/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude,
+        dataType: "json",
+        success: (function(_this) {
+          return function(data) {
+            console.log("call to /places/near successful");
+            return console.log("data, length");
+          };
+        })(this),
+        error: (function(_this) {
+          return function(err) {
+            console.log("call to /places/near failed");
+            return console.log("error: " + err);
+          };
+        })(this)
+      });
+    };
+
     MapCanvasView.prototype.render = function(event) {
-      console.log("MapCanvasView..render(event) executed");
       if (event === 'sync') {
         return this.mapWithMarkers();
       }
@@ -212,7 +248,6 @@
     };
 
     MapCanvasView.prototype.closeNewEntry = function() {
-      console.log("closeNewEntry is firing");
       return $('#new_entry').hide();
     };
 
@@ -248,7 +283,6 @@
     };
 
     MapCanvasView.prototype.marker = function() {
-      console.log("marker");
       if (this.placeInfowindow != null) {
         this.placeInfowindow.close();
       }
@@ -373,6 +407,7 @@
 
     MapCanvasView.prototype.suggestTitles = function(title_data) {
       var j, len, li, parent, searchTxt, title;
+      console.log("suggestTitles");
       parent = document.getElementById('bookSearchList');
       $(parent).empty();
       $(parent).show();
@@ -400,6 +435,7 @@
 
     MapCanvasView.prototype.suggestAuthors = function(author_data) {
       var author, j, len, li, parent, searchTxt;
+      console.log("suggestAuthors");
       parent = document.getElementById('authorsSearchList');
       $(parent).empty();
       $(parent).show();
@@ -426,6 +462,7 @@
     };
 
     MapCanvasView.prototype.markersForEachScene = function(markers) {
+      console.log("markersForEachScene");
       return markers.each((function(_this) {
         return function(model) {
           return _this.dropMarkerForStoredLocation(model);
@@ -688,7 +725,6 @@
       };
       form_data.latitude = this.userPlace.lat();
       form_data.longitude = this.userPlace.lng();
-      console.log(form_data);
       return form_data;
     };
 
@@ -764,6 +800,7 @@
 
     MapCanvasView.prototype.populateSuggestedSearches = function(authors, titles) {
       var geocoder, searchTxt;
+      console.log("populateSuggestedSearches");
       this.hideOverlay();
       searchTxt = document.getElementById('gcf').value;
       if (searchTxt) {
@@ -774,6 +811,9 @@
           return function(results, status) {
             var child, i, j, numRes, parent, ref, results1;
             if (status === google.maps.GeocoderStatus.OK) {
+              console.log("how many results are returned? ");
+              console.log("results type: " + typeof results);
+              console.log("length of results: " + _.size(results));
               parent = document.getElementById('locationsSearchList');
               $(parent).empty();
               numRes = results.length > 5 ? 4 : results.length;
@@ -801,6 +841,7 @@
 
     MapCanvasView.prototype.populateSuggestedAuthors = function(searchTxt) {
       var query;
+      console.log("Populate Suggested Authors: ", searchTxt);
       if (searchTxt) {
         query = searchTxt.replace(/ /, "%20");
         return $.ajax({
@@ -881,10 +922,14 @@
       }
     };
 
+    MapCanvasView.prototype.null_function = function() {
+      return null;
+    };
+
     MapCanvasView.prototype.createSearchElement = function(element) {
       var li, location, name;
+      console.log("CreateSearchElement");
       location = element.geometry.location;
-      console.log(location);
       name = element.formatted_address;
       li = document.createElement('li');
       li.innerHTML = name;
@@ -906,22 +951,24 @@
             return $.ajax({
               url: "/places/titles",
               success: function(titles) {
-                $('#gcf').on('keydown', function(event) {
+                $('#gcf').on('keydown', function(keycode, event) {
                   var author_data, title_data;
-                  author_data = [];
-                  title_data = [];
-                  console.log(titles);
-                  $.each(authors, function(key, value) {
-                    return author_data.push(value.author.toString());
-                  });
-                  $.each(titles, function(key, value) {
-                    return title_data.push(value.title.toString());
-                  });
-                  _this.hideOverlay();
-                  $('.geosearchResults').show();
-                  _this.suggestAuthors(author_data);
-                  _this.suggestTitles(title_data);
-                  return _this.populateSuggestedSearches(authors, titles);
+                  if (keycode.which === 13) {
+                    console.log("Enter key pressed in #gcf");
+                    author_data = [];
+                    title_data = [];
+                    $.each(authors, function(key, value) {
+                      return author_data.push(value.author.toString());
+                    });
+                    $.each(titles, function(key, value) {
+                      return title_data.push(value.title.toString());
+                    });
+                    _this.hideOverlay();
+                    $('.geosearchResults').show();
+                    _this.suggestAuthors(author_data);
+                    _this.suggestTitles(title_data);
+                    return _this.populateSuggestedSearches(authors, titles);
+                  }
                 });
                 return $('#search').on('click', function(event) {
                   return _this.populateSuggestedSearches();
@@ -933,11 +980,11 @@
       });
     };
 
+    ' New attach search handler, trying to fix super query issue"\n# initial function that handles author / place searches\nattachSearchHandler: ->\n  $(\'#gcf\').on(\'keydown\', (keycode, event) =>\n    if keycode.which==13\n      console.log("Enter key pressed in #gcf")\n      $.ajax\n        url: "/places/authors"\n        success: (authors) =>\n          #console.log(\'ajax debug statement search result: \' + authors)\n          $.ajax\n            url: "/places/titles"\n            success: (titles) =>\n                  author_data = []\n                  title_data = []\n                  $.each authors, (key, value) =>\n                    author_data.push(value.author.toString())\n                  $.each titles, (key, value) =>\n                    title_data.push(value.title.toString())\n                  @hideOverlay()\n                  $(\'.geosearchResults\').show()\n                  #$(\'#info-overlay\').show()\n                  @suggestAuthors(author_data)\n                  @suggestTitles(title_data)\n                  @populateSuggestedSearches(authors, titles)\n                )\n  $(\'#search\').on \'click\', (event) =>\n    #$(\'#info-overlay\').show()\n    @populateSuggestedSearches()';
+
     MapCanvasView.prototype.attachNewSceneHandler = function() {
-      console.log("The attach new scene handler is firing");
       return $('#new_scene_submit_btn').click((function(_this) {
         return function() {
-          console.log("new scene button action listenr is assigned");
           return _this.addPlace();
         };
       })(this));
@@ -974,9 +1021,15 @@
       return _.template(img);
     };
 
-    MapCanvasView.prototype.sceneAPIImageTemplate = function() {
+    MapCanvasView.prototype.sceneAPIImageTemplate = function(data_image_data) {
       var img;
       console.log("sceneAPIImageTemplate is firing");
+      if (data_image_data && data_image_data.photo_id) {
+        console.log("data_image_data:" + JSON.stringify(data_image_data));
+        console.log("photo_id: " + data_image_data.photo_id);
+      } else {
+        console.log("data_image_data is missing");
+      }
       img = '<a target="_blank" href="//www.panoramio.com/photo/<%= image_id %>" class = "panoramio-image" style = "background-image:url(http://static2.bareka.com/photos/medium/<%= image_id %>.jpg);"></a>';
       return _.template(img);
     };
@@ -986,17 +1039,20 @@
     };
 
     MapCanvasView.prototype.buildInfowindow = function(data, updateButton) {
-      var content, field, label, twitterlink;
+      var content, field, img, label, twitterlink;
       console.log('buildInfowindow');
       $('#tabs').show();
       this.clearInfowindowClickEvents();
       console.log("The database key is:" + data.id);
       content = '<div class="plinfowindow">';
       $('#entry-image').show();
-      console.log('data.image_data is:' + data.image_data);
+      if (!data.image_data || !data.image_data.photo_id) {
+        img = '<img src="/img/placingLitNoImageFound.png" />';
+        $('#entry-image').html(img);
+      }
       if (!!data.image_data) {
         console.log("Entry image should be populated with the panoramio image");
-        $('#entry-image').html(this.sceneAPIImageTemplate()({
+        $('#entry-image').html(this.sceneAPIImageTemplate(data.image_data)({
           image_id: data.image_data.photo_id
         }));
       }
@@ -1025,7 +1081,6 @@
           return window.open("https://www.goodreads.com/book/isbn/" + data.isbn);
         };
       })(this));
-      console.log("setting google action listener");
       $("#googleActionLink").click((function(_this) {
         return function(e) {
           e.preventDefault();
@@ -1079,11 +1134,7 @@
         };
       })(this));
       $('#share_url').val('placing-literature.appspot.com/map/filter/id/' + data.id);
-      if (!!data.image_url) {
-        content += this.sceneUserImageTemplate()({
-          image_url: data.image_url
-        });
-      }
+      '  temprorary comment by Will Acheson\nif !!data.image_url\n  content += @sceneUserImageTemplate()(image_url: data.image_url)';
       if (!!data.image_data) {
         content += this.sceneAPIImageTemplate()({
           image_id: data.image_data.photo_id
@@ -1154,8 +1205,6 @@
           console.log(windowOptions.marker.position);
           _this.buildInfowindow(data, true);
           if (windowOptions.position) {
-            console.log(typeof windowOptions.position);
-            console.log(windowOptions.position);
             iw.setPosition(windowOptions.position);
             iw.open(_this.gmap);
             _this.gmap.setCenter(windowOptions.position);
@@ -1250,6 +1299,7 @@
 
     MapCanvasView.prototype.dropMarkerForStoredLocation = function(location) {
       var marker;
+      console.log("dropMarkerForStoredLocation");
       marker = this.buildMarkerFromLocation(location);
       return marker.setMap(this.gmap);
     };
@@ -1452,6 +1502,7 @@
 
     MapFilterView.prototype.filteredViewGeocoderSearch = function() {
       var address, geocoder;
+      console.log("filteredViewGeocoderSearch ");
       address = document.getElementById('gcf').value;
       if (address) {
         geocoder = new google.maps.Geocoder();
@@ -1513,7 +1564,6 @@
       mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
       this.gmap.setCenter(mapcenter);
       this.gmap.setZoom(this.settings.zoomLevel.wide);
-      console.log("This print statement is running in the render method");
       $('#addscenebutton').on('click', this.handleAddSceneButtonClick);
       return $('#addscenebutton').show();
     };

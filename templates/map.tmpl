@@ -75,7 +75,7 @@
       <h4>To see all available places for every author click 'see all places'</h4>
     </div>
   </div>
-   <img class='placing-lit-logo' src='/img/logo@2x.png'/>
+   <img class='placing-lit-logo' src='/img/logo@2x.png' onclick="home_redirect()"/>
   <div id="mapsearchcontainer" class="navbar">
 
     <div id="maponly">
@@ -115,7 +115,7 @@
             <div class='map-window left-window'>
               <div class='standard-entry-header'>Author Spotlight</div>
               <div class='window-info'>
-                <img class='standard-entry-image artist-img' id="top-left-artist-img" src='/img/jan.png' " />
+                <img class='standard-entry-image artist-img' id="top-left-artist-img" src='/img/jan.png' />
                 <div class='standard-entry-text standard-entry-intro-text'>RJ Julia Author Spotlight: </div>
                 <div id="top-left-artist-name" class='standard-entry-text artist_name' style="cursor: pointer;">Steven Simmons,</div>
                 <div class='standard-entry-text standard-entry-text-italics'>Body Blows</div>
@@ -156,9 +156,9 @@
               <div class="long-entry-header"> Recent Blog Posts  </div>
               <div class='window-info' id="recent-blog">
 				 <div class="long-entry-title-text" id="recent-blog-post-title"> {{ recent_blog_title }}</div>
-                 <div class="long-entry-title-text" id="recent-blog-post-published-author"> Posted by {{recent_blog_author}} at {{ recent_blog_published }}</div>
+                 <div class="long-entry-title-text" id="recent-blog-post-published-author"> placeholder </div>
                 <div class="long-entry-title-text" id="recent-blog-post-summary"> {{ recent_blog_summary }}</div>
-                <div class="long-entry-text continue-reading"><a target="_blank" href={{recent_blog_link}}> Read Full Article </a></div>
+                <div class="long-entry-text continue-reading"><a id="recent-blog-post-link" target="_blank" href=''> Read Full Article </a></div>
               </div>
             </div>
             <div class='wide-map-window'>
@@ -182,7 +182,7 @@
                 <div id='num-places-added'>{{count}} </div>
                 <!-- TODO: dynamically get the most recently added scene from the DB -->
                 <div class='tall-entry-text tall-entry-text-center' id="newest_scene_div">Newest Place Added:  </div>
-                <div class='tall-entry-text tall-entry-text-center' id="newest_scene">{{recent_scene_title}} by {{recent_scene_author}} at {{recent_scene_location}} </div>
+                <div class='tall-entry-text tall-entry-text-center' id="newest_scene"> </div>
             </div>
           </div>
         </div>
@@ -498,6 +498,10 @@
     $('.geosearchResults').click(function(event){
       event.stopPropagation();
     });
+
+    function home_redirect(){
+      window.location.assign("/")
+    }
 
     function featured_map_redirect_TL(){
 

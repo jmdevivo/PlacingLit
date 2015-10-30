@@ -98,7 +98,15 @@
     success: (function(_this) {
       return function(data) {
         console.log("This is the latest blog resource handler output");
-        return console.log(data);
+        console.log("data typeof:     " + typeof data);
+        data = JSON.parse(data);
+        console.log("data:     " + JSON.stringify(data));
+        console.log("description   " + data['newest_post_description']);
+        $('#recent-blog-post-summary').html(data['newest_post_description']);
+        console.log("link:    " + data['newest_post_link']);
+        $('#recent-blog-post-link').attr('href', data['newest_post_link']);
+        console.log("title    " + data['newest_post_title']);
+        return $('#recent-blog-post-title').html(data['newest_post_title']);
       };
     })(this),
     error: (function(_this) {
@@ -108,5 +116,22 @@
       };
     })(this)
   });
+
+  $.ajax({
+    url: "/places/recent",
+    dataType: "json",
+    success: (function(_this) {
+      return function(data) {
+        return $('#newest_scene').html("<b>" + data[0]['location'] + "</b> from <i> " + data[0]['title'] + "</i> by " + data[0]['author']);
+      };
+    })(this),
+    error: (function(_this) {
+      return function(err) {
+        return console.log("error: /places/recent - " + err);
+      };
+    })(this)
+  });
+
+  '$.ajax\n  url: "/places/near/1",\n  dataType: "json",\n  success: (data) =>\n    console.log("Success!  ")\n    console.log(data)\n    console.log(JSON.stringify(data))\n  error: (err) =>\n    console.log(\'Error: \' + err)';
 
 }).call(this);
