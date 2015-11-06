@@ -109,11 +109,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     #if navigator.geolocation
       #position = navigator.geolocation.getCurrentPosition(@getPlacesNearController)
 
-    '''
-    #Added by Will Acheson for map speedup, limited place loading
-    @collection ?= new PlacingLit.Collections.LocationsNear()
-    @listenTo @collection, 'all', @render
-    '''
 
     @collection.fetch()
     # setup handler for geocoder searches
@@ -314,7 +309,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     console.log("markersForEachScene")
     markers.each (model) => @dropMarkerForStoredLocation(model)
 
-#TODO: uncomment this maybe
+#TODO: Ask Steven about
   markerArrayFromCollection: (collection) ->
     return (@buildMarkerFromLocation(model) for model in collection.models)
 
@@ -535,8 +530,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @updateInfowindowWithMessage(@userInfowindow, response, false)
       return false
 
-
-
   geocoderSearch: () ->
     address = document.getElementById('gcf').value
     if address
@@ -645,9 +638,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
     console.log("CreateSearchElement")
 
-    # added by Will Acheson, method to fix
-    # QUERY OVER LIMIT search bug
-
     location = element.geometry.location
     name = element.formatted_address
     li = document.createElement('li')
@@ -664,7 +654,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     $.ajax
       url: "/places/authors"
       success: (authors) =>
-        #console.log('ajax debug statement search result: ' + authors)
         $.ajax
           url: "/places/titles"
           success: (titles) =>
@@ -678,8 +667,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
                 $.each titles, (key, value) =>
                   title_data.push(value.title.toString())
                 @hideOverlay()
-                $('.geosearchResults').show()
-                #$('#info-overlay').show()
+                $('.geosearchResults').show() # this is the search suggestsion dropdown
                 @suggestAuthors(author_data)
                 @suggestTitles(title_data)
                 @populateSuggestedSearches(authors, titles)
@@ -689,42 +677,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
               #$('#info-overlay').show()
               @populateSuggestedSearches()
 
-
-  ''' New attach search handler, trying to fix super query issue"
-  # initial function that handles author / place searches
-  attachSearchHandler: ->
-    $('#gcf').on('keydown', (keycode, event) =>
-      if keycode.which==13
-        console.log("Enter key pressed in #gcf")
-        $.ajax
-          url: "/places/authors"
-          success: (authors) =>
-            #console.log('ajax debug statement search result: ' + authors)
-            $.ajax
-              url: "/places/titles"
-              success: (titles) =>
-                    author_data = []
-                    title_data = []
-                    $.each authors, (key, value) =>
-                      author_data.push(value.author.toString())
-                    $.each titles, (key, value) =>
-                      title_data.push(value.title.toString())
-                    @hideOverlay()
-                    $('.geosearchResults').show()
-                    #$('#info-overlay').show()
-                    @suggestAuthors(author_data)
-                    @suggestTitles(title_data)
-                    @populateSuggestedSearches(authors, titles)
-                  )
-    $('#search').on 'click', (event) =>
-      #$('#info-overlay').show()
-      @populateSuggestedSearches()
-  '''
   attachNewSceneHandler: ->
     $('#new_scene_submit_btn').click( () =>
       @addPlace()
       )
-
 
   sceneFieldsTemplate: ->
     field_format = '<br><span class="pllabel"><%= label %></span>'
@@ -760,11 +716,9 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     else
       console.log("data_image_data is missing")
 
-
     img = '<a target="_blank" href="//www.panoramio.com/photo/<%= image_id %>"
     class = "panoramio-image"
     style = "background-image:url(http://static2.bareka.com/photos/medium/<%= image_id %>.jpg);"></a>'
-
 
     return _.template(img)
 
@@ -908,6 +862,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       #iw = @infowindow()
       console.log(windowOptions.marker.position)
       @buildInfowindow(data, true)
+      console.log("openInfowindowForPlace() Location Data: " + data)
       if windowOptions.position
         #console.log(typeof windowOptions.position)
         #console.log(windowOptions.position)

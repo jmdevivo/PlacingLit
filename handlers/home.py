@@ -3,11 +3,10 @@
 import sys
 import os.path
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '../static/python_modules/feedparser'))
 
-import feedparser
 import re
 from HTMLParser import HTMLParser
+import location_index
 
 
 import json
@@ -64,42 +63,6 @@ class FundingHandler(baseapp.BaseAppHandler):
 # Handler for loading the map
 class MapHandler(baseapp.BaseAppHandler):
   def get(self, location=None, key=None):
-    if "Mobi" in self.request.headers.get('User-Agent'):
-      template_values = self.basic_template_content()
-      template_values['title'] = 'Map'
-
-      # TODO write GQL query for locations:
-
-      dber = IndexedSceneMapHandler()
-      #  location to test with -38.6644021364,178.020658493
-      #close_locs = dber.get_nearby_places_json(-83.153, 178.020)
-      close_locs = dber.get_nearby_places_json(-37.8116826244, 144.953956604)
-
-      ''' author @ Will Acheson
-        TODO:  The idea here is to get the user's location in coord and then query big desk via
-          dber.get_nearby_places_json to get the close by locations.
-        Then those locations go into close_locs as a list of jsons
-        Then they are displayed in the bootstrap list-group on the mobile app
-        XD
-
-      '''
-      template_values['close_locs'] = close_locs
-      template_values['test_val'] = ["This is where Locations go.",
-                                     "More locations...",
-                                     "More locations...",
-                                     "More locations...",
-                                     "More locations...",
-                                     "More locations...",
-                                     "More locations...",
-                                     "More locations...",
-                                     "More locations...",
-                                     "More locations...",
-                                     "More locations...",]
-
-      #  gives mobile-map.tmpl the data stored in template_values
-      # for rendering on the mobile site
-      self.render_template('mobile-map.tmpl', template_values)
-    else:
       template_values = self.basic_template_content()
       template_values['title'] = 'Map'
       template_values['count'] = placedlit.PlacedLit.count()
@@ -109,145 +72,9 @@ class MapHandler(baseapp.BaseAppHandler):
       if self.request.get('key'):
         template_values['key'] = self.request.get('key')
 
-      # TODO Make this not digusting.  Put blog loading in its own handler function
-      # TODO Dynamic Blog Loading via XML
-      # NOTE: The structure of the RSS feed is different when requesting from Python
-      #   than what it looks like on a browser...
-      placing_lit_blog_rss = 'http://placingliterature.wordpress.com/feed/'
-      blog_feed = feedparser.parse(placing_lit_blog_rss)
-      #.strftime('%b %d, %Y ')
-
-      recent_blog_title =  blog_feed.entries[0].title
-      recent_blog_summary = blog_feed.entries[0].summary
-      recent_blog_link = blog_feed.entries[0].links[0].href
-      recent_blog_published = blog_feed.entries[0].published
-      recent_blog_author = blog_feed.entries[0].author
-
-      # Hacky regex method of formating the date,  will grab everything up until the
-      # 4 digit YEAR (2015)
-      pubdate_regex = re.compile('.* [0-9]{4}')
-      pubdate_re_match = pubdate_regex.match(recent_blog_published)
-      if (pubdate_re_match):
-        recent_blog_published = pubdate_re_match.group(0)
-
-      # Pretty good method of HTML stripping
-
-      recent_blog_summary = self.strip_tags(recent_blog_summary)
-      recent_blog_summary = recent_blog_summary[:-3]
-      recent_blog_summary = recent_blog_summary + "..."
-
-      print "\nRecent Blog Post!"
-      print "Title: " + recent_blog_title + "\n =============================="
-      print "Summary: " + recent_blog_summary + "\n =============================="
-      print "Link: " + str(recent_blog_link) + "\n =============================="
-      print "\n"
-
-      # load up template with blog values for display in the featured content pane
-      template_values['recent_blog_title'] = recent_blog_title
-      # TODO format blog content to remove code
-      template_values['recent_blog_summary'] = recent_blog_summary
-      template_values['recent_blog_link'] = recent_blog_link
-
-      template_values['recent_blog_published'] = recent_blog_published
-      template_values['recent_blog_author'] = recent_blog_author
-
-      recent_scene = self.get_most_recent_scene()
-      try:
-        template_values['most_recent_scene_author'] = recent_scene['author']
-        template_values['most_recent_scene_title'] = recent_scene['title']
-        template_values['most_recent_scene_scenelocation'] = recent_scene['scenelocation']
-      except:
-        template_values['most_recent_scene_author'] = "local null"
-        template_values['most_recent_scene_title'] = "local null"
-        template_values['most_recent_scene_scenelocation'] = "local null"
-
       #  gives map.tmpl the data stored in template_values
       # for rendering on the desktop site
       self.render_template('map.tmpl', template_values)
-  '''
-    author @ will Acheson
-    strip_tags()
-      input: html - string containing html to be removed
-      output: s.get_data() - original string without the
-        html elements
-  '''
-  def strip_tags(self, html):
-      s = HTMLStripper()
-      s.feed(html)
-      return s.get_data()
-
-  '''
-    author @ will Acheson
-    get_most_recent_scene
-      input: self (map handler)
-      output: recent_scene - most recent scene added to
-        Big Table Database
-  '''
-  def get_most_recent_scene(self):
-    print "Tryna get some new scenes XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    try:
-      gql_query = db.GqlQuery("SELECT * FROM PlacedLit ORDER BY ts DESC LIMIT 1")
-    except Exception:
-      print "Error in GQL query: "
-      print Exception.message
-      gql_query = "Null"
-    if gql_query:
-      for scene in gql_query:
-        print 'gql query ========================================'
-        print scene
-        recent_scene = dict()
-        recent_scene['author'] = scene.author
-        recent_scene['title'] =  scene.title
-        recent_scene['scenelocation'] = scene.scenelocation
-        return recent_scene
-
-'''
-  author @ Will Acheson
-  HTML Stripper removes html elements from a given string
-'''
-class HTMLStripper(HTMLParser):
-  def __init__(self):
-    self.reset()
-    self.fed = []
-  def handle_data(self, data):
-    # data is the string to parse HTML out of
-    self.fed.append(data)
-  def get_data(self):
-    return ''.join(self.fed)
-
-
-'''
-  author @ Will Acheson
-  BlogHandler fetches blog posts from the offical RSS feed
-  from PlacingLit
-
-  TODO Remains to be implimented cleanly
-'''
-class BlogHandler(baseapp.BaseAppHandler):
-  # Gets the RSS feed of Placing Lits'blog using feedparser.parse
-
-  def __init__(self):
-    self.placing_lit_blog_rss = 'http://placingliterature.wordpress.com/feed/'
-
-  def getRecentBlogPost(self):
-    # returns necessary data for display on placing lit's featured content
-    # section
-
-    blog_feed = feedparser.parse(self.placing_lit_blog_rss)
-    recent_blog = dict()
-    recent_blog['recent_blog_title'] =  blog_feed.entries[0].title
-    recent_blog['recent_blog_summary'] = blog_feed.entries[0].summary
-    recent_blog['recent_blog_link'] = blog_feed.entries[0].links[0].href
-    recent_blog['recent_blog_published'] = blog_feed.entries[0].published
-    recent_blog['recent_blog_author'] = blog_feed.entries[0].author
-
-    return recent_blog
-
-  def stripHtmlTags(self, html):
-    stripper = HTMLStripper()
-    stripper.handle_data(html)
-    return stripper.get_data()
-
 
 class IndexedSceneMapHandler(baseapp.BaseAppHandler):
   def get(self, location=None, key=None):
@@ -385,17 +212,44 @@ class CollectionsHandler(baseapp.BaseAppHandler):
     template_values['title'] = 'Collections'
     self.render_template('collections.tmpl', template_values)
 
-class CloseByHandler(baseapp.BaseAppHandler):
-  def get(self, location = None):
-    response = dict()
-    if location:
-      print "Client location: " + location
-      response['location'] = location
-      response['message'] = "Everything's clear."
-      return response
-    else:
-      response['message'] = "Houston we have a problem"
-      return response
+class CloseByHandler(webapp.RequestHandler):
+  def get(self):
+
+    client_lat = self.request.GET.get('lat', '')
+    client_lng = self.request.GET.get('lng', '')
+
+    if client_lng and client_lat:
+      # Search for scenes near client_location
+
+      location = dict(
+        lat = client_lat,
+        lng = client_lng
+      )
+
+      nearby_places = self.run_proximity_query(location['lat'], location['lng'])
+
+      nearby_places_json = json.dumps(nearby_places)
+      location_json = json.dumps(location)
+
+      self.response.headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      self.response.write(nearby_places_json)
+      print " "
+      print "Client Location -  lat: " + client_lat + " long " + client_lng
+
+
+  def run_proximity_query(self, lat, long, distance = 80450 ):
+    local_scenes = location_index.\
+      location_index.\
+      sorted_location_query(lat, long, 80450) # 50 mile distance for now
+
+    print "results of proximity query: " + str(local_scenes)
+    for scene in local_scenes:
+      print scene + '\n'
+
+
+
+    return local_scenes
 
 
 urls = [

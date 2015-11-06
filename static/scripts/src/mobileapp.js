@@ -167,15 +167,14 @@
       this.googlemap();
       this.positionMap();
       this.attachNewSceneHandler();
-      this.attachSearchHandler();
-      return {
-        render: function(event) {
-          console.log("MapCanvasView..render(event) executed");
-          if (event === 'sync') {
-            return this.mapWithMarkers();
-          }
-        }
-      };
+      return this.attachSearchHandler();
+    };
+
+    MapCanvasView.prototype.render = function(event) {
+      console.log("MapCanvasView..render(event) executed");
+      if (event === 'sync') {
+        return this.mapWithMarkers();
+      }
     };
 
     MapCanvasView.prototype.googlemap = function() {
@@ -372,16 +371,44 @@
     };
 
     MapCanvasView.prototype.reportUserLocationToServer = function() {
-      console.log("Tryna talk to the server!");
-      return $.ajax({
-        url: '/mobile/closeby',
-        data: this.location,
-        success: (function(_this) {
-          return function(data) {
-            return console.log(data);
+      var location, usaCoords;
+      location = null;
+      if (navigator.geolocation) {
+        return navigator.geolocation.getCurrentPosition((function(_this) {
+          return function(position) {
+            var userCoords;
+            userCoords = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            location = userCoords;
+            console.log("true location: " + location.lat + " " + location.lng);
+            return $.ajax({
+              url: '/mobile/closeby',
+              data: location,
+              success: function(data) {
+                return console.log("Nearby Places: ", data);
+              }
+            });
           };
-        })(this)
-      });
+        })(this));
+      } else {
+        usaCoords = {
+          lat: 39.8282,
+          lng: -98.5795
+        };
+        location = usaCoords;
+        console.log("standard location: " + location);
+        return $.ajax({
+          url: '/mobile/closeby',
+          data: location,
+          success: (function(_this) {
+            return function(data) {
+              return console.log(data);
+            };
+          })(this)
+        });
+      }
     };
 
     return MapCanvasView;

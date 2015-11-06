@@ -12,7 +12,7 @@ from google.appengine.api import urlfetch
 
 from handlers.abstracts import baseapp
 from classes import blogposts
-
+import json, time, datetime
 
 POST_COUNT = blogposts.DEFAULT_LIMIT  # number of posts to display
 BLOG_FEED_URL = 'http://placingliterature.wordpress.com/feed/'
@@ -54,10 +54,27 @@ class BlogpostsHandler(baseapp.BaseAppHandler):
 
 class BlogpostsNewestHandler(baseapp.BaseAppHandler):
     def get(self):
-        newest_post = blogspots.get_newest_posts(1)
+        newest_post = blogposts.Blogpost.get_newest_posts(1)
         print "this is the newest blog post"
         print newest_post
-        self.response.out.write(newest_post)
+        newest_post = newest_post.next()
+
+        newest_post_json = json.dumps({"newest_post_title": newest_post.title,
+                            "newest_post_link": newest_post.link,
+                            #"newest_post_pub_date": newest_post.pub_date)
+                            #"newest_post_pub_date": datetime.datetime.strptime(newest_post.pub_date, "%m-%j-%Y"),
+                            #"newest_post_pub_date": time.strftime("%m-%j-%Y", newest_post.pub_date),
+                            "newest_post_description": newest_post.description})
+        '''
+        newest_post_values = ["newest_post_title": newest_post.title,
+                            "newest_post_pub_date": newest_post.pub_date,
+                            "newest_post_description": newest_post.description,
+                            ]
+        '''
+        #newest_post_json = json.dumps(newest_post_values)
+
+        self.response.out.write(newest_post_json)
+
 
 
 urls = [

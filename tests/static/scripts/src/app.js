@@ -287,7 +287,7 @@
         position: pos,
         draggable: false,
         animation: google.maps.Animation.DROP,
-        icon: '/img/book.png',
+        icon: '/img/redpin.png',
         title: "" + location.title + " by " + location.author
       };
       marker = new google.maps.Marker(markerParams);
@@ -640,7 +640,7 @@
         position: pos,
         draggable: false,
         animation: google.maps.Animation.DROP,
-        icon: '/img/book.png',
+        icon: '/img/redpin.png',
         title: "" + (model.get('title')) + " by " + (model.get('author'))
       };
       marker = new google.maps.Marker(markerParams);

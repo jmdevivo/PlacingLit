@@ -111,6 +111,11 @@ class PlacedLit(db.Model):
     if all_places is None:
       all_places = cls.all()
       memcache.add(ALL_PLACES_LOCATION_KEY, all_places)
+
+    # todo print all_places and see what functions called it
+    print "all_places from  placedlit.py"
+    print all_places
+
     return all_places
 
   @classmethod

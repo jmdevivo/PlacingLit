@@ -7,6 +7,8 @@ from handlers.abstracts import baseapp
 from classes import location_index
 from classes import placedlit
 
+import logging
+
 
 class BatchUpdateLocationsIndexHandler(webapp.RequestHandler):
   """ add all scenes to the index. """
@@ -42,6 +44,7 @@ class NearbyPlacesHandler(baseapp.BaseAppHandler):
   def get(self, query=None):
     lat = self.request.get('lat')
     lon = self.request.get('lon')
+    #logging.info("User Location for nearby places: lat - " + str(lat) + " long: " + str(lon)
     places = location_index.sorted_location_query(lat, lon)
     formatted_results = self.format_location_index_results(places)
     self.output_json(formatted_results)

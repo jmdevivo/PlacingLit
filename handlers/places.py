@@ -40,6 +40,38 @@ class GetPlacesHandler(baseapp.BaseAppHandler):
     # loc_json = [self.export_place_fields(place) for place in places]
     self.output_json(loc_json)
 
+class GetPlacesNearHandler(baseapp.BaseAppHandler):
+    ''' get 300 nearby places, called every time the map loads or changes view'''
+    def get(self, location):
+        print ("GetPlacesNearHandler !!!!!!!!!!!!!!!!!!")
+        location = location.split('&')
+        for loc in location:
+            print "loc: " + loc
+
+        lat = location[0]
+        lng = location[1]
+
+        #print ("This is the client location: " + location)
+
+        ''' verify we have the client's location '''
+        if (lat and lng):
+            places_near = placedlit.get_nearby_places(lat, lng, False)
+            loc_json = []
+            for place in places_near:
+                place_dict = {
+                  'latitude': place.location.lat,
+                  'longitude': place.location.lon,
+                  'db_key': place.key().id(),
+                  'title': place.title,
+                  'author': place.author
+                }
+                loc_json.append(place_dict)
+            #self.output_json(loc_json)
+            self.response.out.write(places_near)
+        else:
+            self.response.out.write("error: location data error")
+
+
 class GetPlacesByTitleHandler(baseapp.BaseAppHandler):
   """Get places by title"""
   def get(self, title):
@@ -200,6 +232,7 @@ class GetAuthorByNameHandler(baseapp.BaseAppHandler):
 
 urls = [
   ('/places/show', GetPlacesHandler),
+  ('/places/near/(\-?\d*\.\d*\&\-?\d*\.\d*)', GetPlacesNearHandler),
   ('/places/info/(.*)', InfoHandler),
   ('/places/visit/(.*)', PlacesVisitHandler),
   ('/places/recent', RecentPlacesHandler),

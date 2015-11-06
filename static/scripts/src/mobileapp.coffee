@@ -125,9 +125,9 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @attachSearchHandler()
 
 
-    render: (event) ->
-      console.log("MapCanvasView..render(event) executed")
-      @mapWithMarkers() if event is 'sync'
+  render: (event) ->
+    console.log("MapCanvasView..render(event) executed")
+    @mapWithMarkers() if event is 'sync'
 
 
   googlemap: ()->
@@ -275,9 +275,35 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     iw.close() for iw in @infowindows
 
   reportUserLocationToServer: ->
-    console.log("Tryna talk to the server!")
-    $.ajax
-      url: '/mobile/closeby'
-      data: @location
-      success: (data) =>
-        console.log(data)
+
+    location = null
+
+    if navigator.geolocation
+      navigator.geolocation.getCurrentPosition((position) =>
+
+        userCoords =
+          lat: position.coords.latitude
+          lng: position.coords.longitude
+        location = userCoords
+        console.log("true location: " + location.lat + " " + location.lng)
+
+        $.ajax
+          url: '/mobile/closeby'
+          #type: "POST"
+          data: location
+          success: (data) =>
+            console.log("Nearby Places: " , data)
+      )
+    else
+      usaCoords =
+        lat: 39.8282
+        lng: -98.5795
+      location = usaCoords
+      console.log("standard location: " + location)
+
+      $.ajax
+        url: '/mobile/closeby'
+        #type: "POST"
+        data: location
+        success: (data) =>
+          console.log(data)

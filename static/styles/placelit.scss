@@ -24,10 +24,10 @@ $breakmed: 1600px;
   flex:  $values;
 }
 @mixin order($val) {
-  -webkit-box-ordinal-group: $val;  
-  -moz-box-ordinal-group: $val;     
-  -ms-flex-order: $val;     
-  -webkit-order: $val;  
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
   order: $val;
 }
 @mixin centered($width) {
@@ -48,16 +48,18 @@ body { height: $full; margin:0%; padding:0; }
   }
 }
 
-.vanishing-col{
-  @media screen and (max-width: $breaksmall){
-    width: 0px;
-  }
+.vanishing-col {
+    min-width: 446px !important;
+    max-width: 541px !important
 }
+
 .left-map-window-div{
-  @media screen and (max-width: $breaksmall){
-    width: 100%;
-  }
+    position: absolute !important;
+    right: -14px;
+    top: 0px;
+    width: 33% !important;
 }
+
 .standard-entry-header {
     background-color: #1F1F1F;
     font-size: 16px;
@@ -134,14 +136,10 @@ body { height: $full; margin:0%; padding:0; }
   }
 }
 #mapsearchcontainer {
-  @extend .container;
-  margin-right: auto;
-  margin-left: auto;
-  width: 42em;
-  margin-top: 0.5%;
-  margin-bottom: 0.5%;
-  position: relative;
-  min-height: 0px;
+    margin: 0% 44%;
+    width: 431px;
+    min-height: 0px;
+    position: relative;
 }
 #geocodersearch, #plauthorsearch {
   margin-bottom: 1%;
@@ -548,6 +546,12 @@ body { height: $full; margin:0%; padding:0; }
   width: 300px;
 }
 
+
+
+.placing-lit-logo:hover {
+  cursor: pointer;
+}
+
 #maplinks {
   margin-top: -47px;
   font-size: 20px;
@@ -709,12 +713,12 @@ body { height: $full; margin:0%; padding:0; }
   height: 100%;
   z-index: 10;
   @media screen and (max-width: $breaksmall){
-    
+
     margin: 0px;
     margin-top: 30px;
 
   }
-  
+
 }
 #info-overlay{
   position: absolute;
@@ -765,10 +769,11 @@ body { height: $full; margin:0%; padding:0; }
 }
 .left-window{
   float: left;
-  margin-left: 30px;
+  margin-left: 4%;
 }
 .right-window{
-  float: right;
+    margin-left: 6%;
+    float: left;
 }
 .long-entry-podcast {
     overflow: hidden;
@@ -815,6 +820,7 @@ body { height: $full; margin:0%; padding:0; }
   display: inline-block;
   box-sizing: border-box;
   background-color: #333;
+  min-width: 170px !important;
   @media screen and (max-width: $breaksmall){
     display: none;
   }
@@ -827,7 +833,8 @@ body { height: $full; margin:0%; padding:0; }
     padding: 0px 5px;
 }
 .window-container{
-
+  width: 33.3333%;
+  min-width: 425px;
   text-align: center;
 }
 .tall-map-window{
@@ -846,12 +853,6 @@ body { height: $full; margin:0%; padding:0; }
   padding-bottom: 8px;
 }
 
-.wide-map-window{
-  @extend .map-window;
-  width: 100%;
-  margin-left: 20px;
-
-}
 .tall-entry-logo {
   display: block;
   margin: 5px auto 8px;
@@ -945,6 +946,33 @@ body { height: $full; margin:0%; padding:0; }
   font-weight: bold;
   font-size: 16px;
 }
+.searchGoogle {
+    padding: 5px 8px;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    background-color: #F0F0F0 !important;
+    color: black !important;
+    margin-top: 0px !important;
+    font-size: 12px;
+}
+
+#searchGoogleAlt{
+    margin-top: 10px;
+    margin-right: 3px;
+}
+
+.nextSceneButton{
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: #FFF !important;
+    background-color: #5a5a5a;
+    padding: 7px 19px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px !important;
+
+}
 #entry-place-place-name{
   font-weight: bold;
   font-size: 16px;
@@ -966,6 +994,11 @@ body { height: $full; margin:0%; padding:0; }
   margin: 0;
   padding-left: 3px;
 }
+.searchGoogleImage2{
+  height: 12px;
+  margin: 0;
+  padding-left: 3px;
+}
 #entry-actions-body{
   margin-bottom: 10px;
 }
@@ -978,14 +1011,14 @@ body { height: $full; margin:0%; padding:0; }
   border-top-color: #fff;
   background-color: #fff;
 }
-#tabs a:hover{ 
+#tabs a:hover{
   background-color: #eee;
 }
 #tabs .activeTab{
   border: 1px solid #ddd;
   border-top: 1px solid #fff;
   margin-top: -3px;
-  border-bottom: transparent; 
+  border-bottom: transparent;
   background-color: #fff;
 }
 
@@ -1006,7 +1039,7 @@ body { height: $full; margin:0%; padding:0; }
 
 .actionAnchor *{
   height: 23px;
-  margin-right: 2px; 
+  margin-right: 2px;
   font-size: 11px;
 }
 .socialMediaActionLink{
@@ -1083,20 +1116,9 @@ input[type="checkbox"], input[type="radio"] {
 
 }
 
-button {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    color: #FFF !important;
-    background-color: #5a5a5a;
-    padding: 7px 19px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px !important;
-}
-
 #recent-blog-post-title {
     font-weight: bold;
+    font-size: 14px;
 }
 
 #recent-blog-post-published-author {
@@ -1104,4 +1126,62 @@ button {
 }
 .new_scene_span {
   margin-left: 0px;
+}
+
+.fluid-container {
+    min-height: 540px;
+    width: 77% !important;
+}
+
+.map-window, .tall-map-window, .wide-map-window {
+    margin-top: 30px;
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: #333;
+}
+
+.tall-map-window {
+    height: 500px;
+    width: 45%;
+    min-width: 180px;
+}
+
+.window-container {
+    width: 33.3333%;
+    min-width: 425px;
+}
+
+.wide-map-window {
+    width: 100%;
+    min-width: 366px !important;
+}
+
+@media screen and (max-width: 1165px) {
+
+  .left-map-window-div {
+    position: absolute !important;
+    left: 58% !important;
+    top: 0px;
+}
+
+  .wide-map-window {
+      margin-left: 4% !important;
+  }
+}
+
+.artist_name {
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.artist_name:hover {
+  cursor: pointer;
+  font-weight: 500;
+  color: #7BB0DE;
+  line-height: 18px;
+}
+
+.artist-img:hover {
+  cursor: pointer;
+
 }

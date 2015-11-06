@@ -678,7 +678,7 @@ a:focus {
 }
 
 .lastLink {
-	border-right:			1px solid black;	
+	border-right:			1px solid black;
 }
 
 .linkSurround:hover {
@@ -715,7 +715,7 @@ body {
     background-repeat: 		no-repeat;
     background-attachment: 	fixed !important;
     background:				fixed;
-    
+
 	/* Actual Gradient */
 	background:				no-repeat;
 	background: 			rgba(255,255,255,1);
@@ -757,7 +757,7 @@ body {
 	padding-left: 			12px;
 	padding-right: 			12px;
 	margin-top:				20px;
-	
+
 }
 #teamDiv {
 	display:				inline-block;
@@ -839,9 +839,9 @@ body {
 }
 .greyLink {
 	color:					#696969;
-	font-size:				1.2em;	
+	font-size:				1.2em;
 	-webkit-transition: 	color .5s; /* For Safari 3.1 to 6.0 */
-    transition: 			color .5s;			
+    transition: 			color .5s;
 }
 .greyLink:hover {
 	color:					black;
@@ -890,7 +890,7 @@ body {
 			.collectionSpotlightTitle {
 				font-size:				1.05em;
 			}
-			
+
 }
 @media (max-width: 664px) {
 			.collectionSpotlightText {
@@ -901,13 +901,13 @@ body {
 @media (max-width: 1138px) {
 			#spotlightContent{
 				width:					60%;
-			}	
+			}
 }
 
 @media (max-width: 1048px) {
 			#spotlightContent{
 				width:					80%;
-			}	
+			}
 }
 
 @media (max-width: 720px) {
@@ -920,7 +920,7 @@ body {
 }
 @media (max-width: 628px) {
 			.spotlightImg {
-				
+
 				margin:					0px auto;
 			}
 			.spotlightItem {
@@ -928,7 +928,7 @@ body {
 				clear:					both;
 				margin-right:			25px;
 			}
-			
+
 			.spotlightText {
 				clear:					left;
 				margin:					0px auto;
@@ -940,7 +940,7 @@ body {
 			.spotlightContent {
 				text-align:				center;
 				display:				block;
-				
+
 			}
 			.links {
 				margin-left:			auto;
@@ -949,7 +949,7 @@ body {
 				margin-bottom:			-10px;
 				font-size:				.85em;
 			}
-			
+
 }
 
 @media (max-width: 475px ) {
@@ -965,9 +965,14 @@ body {
 
 
 
+.placing-lit-logo-collection {
+    margin-top: -11px;
+    width: 280px;
+    margin-left: -31px;
+}
 
-
-
-
-
-
+#loginlink{
+  float: right;
+	color: #337ab7;
+	text-decoration: none;
+}

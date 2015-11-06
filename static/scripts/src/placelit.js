@@ -97,15 +97,9 @@
     url: "/blog/latest",
     success: (function(_this) {
       return function(data) {
-        console.log("This is the latest blog resource handler output");
-        console.log("data typeof:     " + typeof data);
         data = JSON.parse(data);
-        console.log("data:     " + JSON.stringify(data));
-        console.log("description   " + data['newest_post_description']);
         $('#recent-blog-post-summary').html(data['newest_post_description']);
-        console.log("link:    " + data['newest_post_link']);
         $('#recent-blog-post-link').attr('href', data['newest_post_link']);
-        console.log("title    " + data['newest_post_title']);
         return $('#recent-blog-post-title').html(data['newest_post_title']);
       };
     })(this),

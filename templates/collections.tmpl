@@ -11,9 +11,9 @@
         <meta name="application-name" content="Placing Literature"/>
 
         <link media="all" type="text/css" rel="stylesheet" href="css/about.css">
-		
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		
+
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -39,19 +39,11 @@
 
 <nav id="navbar" class="navbar navbar-inverse">
 
-    <a href="/" id="logo" class="navbar-brand"></a>
-
-    
-
-    <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-    </form>
+    <a href="/" id="logo" class="navbar-brand" >
+    <img class='placing-lit-logo-collection' src="/img/logo@2x.png"/> </a>
 
     <div class="navbar-profile">
-        <a href="#">Sign in</a>
-        <a class="btn btn-primary btn-sm" href="#">Sign up</a>
+        <a id="loginlink" href="{{ url }}">Sign In</a>
     </div>
 
 </nav>
@@ -70,11 +62,44 @@
 	<!-- About page image -->
 	<span class="authorSpotlightTitle">COLLECTIONS</span>
 	<div id="redLine"> </div>
-	
+
 	<div id="spotLightBelow">
 	<!-- ----------------------------------------------------------------------------- -->
 	<!-- SPOTLIGHT DIV -->
 		<div class="spotlightItem">
+			<!-- IMAGE (FLOAT LEFT) (.spotlightImage) -->
+			<div class="spotlightImage">
+				<img class="spotlightImg" src="img/sl-queensland-slide.png">
+			</div>
+			<!-- TEXT (FLOAT RIGHT) (.spotlightText) -->
+			<div class="spotlightText collectionSpotlightText">
+				<p class="spotlightTitle collectionSpotlightTitle">Queensland, Australia
+				<br>curated by The State Library of Queensland </p>
+
+				<p class="links">
+					<a class="greyLink" href="#">View on map</a>
+					<span class="redLineVert"> </span>
+					<a class="greyLink" href="https://placingliterature.wordpress.com/2014/04/01/placing-literature-launches-collection-of-novels-by-place-enabling-author-discovery-by-location/" target="_blank">Go to blog post</a>
+				</p>
+			</div>
+		</div>
+			<div class="spotlightItem">
+			<!-- IMAGE (FLOAT LEFT) (.spotlightImage) -->
+			<div class="spotlightImage">
+				<img class="spotlightImg" src="img/espais-escrits-slide.png">
+			</div>
+			<!-- TEXT (FLOAT RIGHT) (.spotlightText) -->
+			<div class="spotlightText collectionSpotlightText">
+				<p class="spotlightTitle collectionSpotlightTitle">Catalan Literature
+				<br>curated by Espais Escrits </p>
+				<p class="links">
+					<a class="greyLink" href="#">View on map</a>
+					<span class="redLineVert"> </span>
+					<a class="greyLink" href="https://placingliterature.wordpress.com/2014/04/01/placing-literature-launches-collection-of-novels-by-place-enabling-author-discovery-by-location/" target="_blank">Go to blog post</a>
+				</p>
+			</div>
+		</div>
+			<div class="spotlightItem">
 			<!-- IMAGE (FLOAT LEFT) (.spotlightImage) -->
 			<div class="spotlightImage">
 				<img class="spotlightImg" src="img/july2014_marktwainhouse.png">
@@ -83,24 +108,104 @@
 			<div class="spotlightText collectionSpotlightText">
 				<p class="spotlightTitle collectionSpotlightTitle">Mark Twain
 				<br>curated by The Mark Twain House & Museum </p>
-				
+
 				<p class="links">
 					<a class="greyLink" href="#">View on map</a>
 					<span class="redLineVert"> </span>
 					<a class="greyLink" href="https://placingliterature.wordpress.com/2014/07/01/placing-literature-launches-collection-of-mark-twain-literature/" target="_blank">Go to blog post</a>
 				</p>
 			</div>
-		</div> 
+		</div>
+			<div class="spotlightItem">
+			<!-- IMAGE (FLOAT LEFT) (.spotlightImage) -->
+			<div class="spotlightImage">
+				<img class="spotlightImg" src="img/doonesbury-slide.png">
+			</div>
+			<!-- TEXT (FLOAT RIGHT) (.spotlightText) -->
+			<div class="spotlightText collectionSpotlightText">
+				<p class="spotlightTitle collectionSpotlightTitle">Doonesbury
+				<br>curated by ??? </p>
+				<p class="links">
+					<a class="greyLink" href="#">View on map</a>
+					<span class="redLineVert"> </span>
+					<a class="greyLink" href="https://placingliterature.wordpress.com/" target="_blank">Go to blog post</a>
+				</p>
+			</div>
+		</div>
+			<div class="spotlightItem">
+			<!-- IMAGE (FLOAT LEFT) (.spotlightImage) -->
+			<div class="spotlightImage">
+				<img class="spotlightImg" src="img/weaver-press-slide.png">
+			</div>
+			<!-- TEXT (FLOAT RIGHT) (.spotlightText) -->
+			<div class="spotlightText collectionSpotlightText">
+				<p class="spotlightTitle collectionSpotlightTitle">Zimbabwe
+				<br>curated by Weaver Press </p>
+				<p class="links">
+					<a class="greyLink" href="#">View on map</a>
+					<span class="redLineVert"> </span>
+					<a class="greyLink" href="https://placingliterature.wordpress.com/" target="_blank">Go to blog post</a>
+				</p>
+			</div>
+		</div>
+			<div class="spotlightItem">
+			<!-- IMAGE (FLOAT LEFT) (.spotlightImage) -->
+			<div class="spotlightImage">
+				<img class="spotlightImg" src="img/st-thomas-moore-chapel-slide.png">
+			</div>
+			<!-- TEXT (FLOAT RIGHT) (.spotlightText) -->
+			<div class="spotlightText collectionSpotlightText">
+				<p class="spotlightTitle collectionSpotlightTitle">Christian Literature
+				<br>created by user: slwoodford1815 </p>
+				<p class="links">
+					<a class="greyLink" href="#">View on map</a>
+					<span class="redLineVert"> </span>
+					<a class="greyLink" href="https://placingliterature.wordpress.com/" target="_blank">Go to blog post</a>
+				</p>
+			</div>
+		</div>
+			<div class="spotlightItem">
+			<!-- IMAGE (FLOAT LEFT) (.spotlightImage) -->
+			<div class="spotlightImage">
+				<img class="spotlightImg" src="img/amistad-center-slide.png">
+			</div>
+			<!-- TEXT (FLOAT RIGHT) (.spotlightText) -->
+			<div class="spotlightText collectionSpotlightText">
+				<p class="spotlightTitle collectionSpotlightTitle">Amistad Center
+				<br>curated by the Amistad Center </p>
+				<p class="links">
+					<a class="greyLink" href="#">View on map</a>
+					<span class="redLineVert"> </span>
+					<a class="greyLink" href="https://placingliterature.wordpress.com/" target="_blank">Go to blog post</a>
+				</p>
+			</div>
+		</div>
+			<div class="spotlightItem">
+			<!-- IMAGE (FLOAT LEFT) (.spotlightImage) -->
+			<div class="spotlightImage">
+				<img class="spotlightImg" src="img/literary-map-nyc-slide.png">
+			</div>
+			<!-- TEXT (FLOAT RIGHT) (.spotlightText) -->
+			<div class="spotlightText collectionSpotlightText">
+				<p class="spotlightTitle collectionSpotlightTitle">New York City
+				<br>curated by LiteraryMap.NYC</p>
+				<p class="links">
+					<a class="greyLink" href="#">View on map</a>
+					<span class="redLineVert"> </span>
+					<a class="greyLink" href="https://placingliterature.wordpress.com/" target="_blank">Go to blog post</a>
+				</p>
+			</div>
+		</div>
 	<!-- ENG SPOTLIGHT DIV -->
 
 <!-- ----------------------------------------------------------------------------- -->
 
 	</div>
-	
-	
-	
-	
-	
+
+
+
+
+
 </div>
 
 
@@ -108,7 +213,7 @@
 <!-- ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~ -->
 <!--				 End Main Content				-->
 <!-- ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~ -->
-     
+
 
 
 
@@ -136,13 +241,13 @@
                 <div id="copyright">
                     Placing Literature &copy; 2012-2015. All Rights Reserved.
                 </div>
-                
+
 
             </div>
 
             <div class="pull-right">
 				<div class="navContainer">
-	                
+
 	      		</div>
 	      		<div class="linkSurround">
 	      			<a class="navLink" href="/about">About</a>
@@ -162,7 +267,7 @@
 		        <div class="linkSurround">
 		          <a class="navLink lastLink" href="http://www.google.com">Mobile</a>
 		        </div>
-	       		
+
             </div>
 
         </div>

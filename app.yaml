@@ -76,6 +76,9 @@ handlers:
 - url: /places/show
   script: handlers.places.app
 
+- url: /places/near/(\-?\d*\.\d*\&\-?\d*\.\d*)
+  script: handlers.places.app
+
 - url: /places/info/(.*)
   script: handlers.places.app
 
@@ -128,7 +131,6 @@ handlers:
 
 - url: /blog/latest
   script: handlers.blogposts.app
-  login: admin
 
 - url: /user/status
   script: handlers.home.app

@@ -206,7 +206,7 @@ a:hover, a:focus {
   min-height: 1px;
   margin-left: 20px; }
 
-.container, #homecontainer, #plpageheader, #uppernavcontainer, #mapnavcontainer, #staticnavcontainer, #basenavcontainer, #mapsearchcontainer, .navbar-static-top .container, .navbar-static-top #homecontainer, .navbar-static-top #plpageheader, .navbar-static-top #uppernavcontainer, .navbar-static-top #mapnavcontainer, .navbar-static-top #staticnavcontainer, .navbar-static-top #basenavcontainer, .navbar-static-top #mapsearchcontainer, .navbar-fixed-top .container, .navbar-fixed-top #homecontainer, .navbar-fixed-top #plpageheader, .navbar-fixed-top #uppernavcontainer, .navbar-fixed-top #mapnavcontainer, .navbar-fixed-top #staticnavcontainer, .navbar-fixed-top #basenavcontainer, .navbar-fixed-top #mapsearchcontainer, .navbar-fixed-bottom .container, .navbar-fixed-bottom #homecontainer, .navbar-fixed-bottom #plpageheader, .navbar-fixed-bottom #uppernavcontainer, .navbar-fixed-bottom #mapnavcontainer, .navbar-fixed-bottom #staticnavcontainer, .navbar-fixed-bottom #basenavcontainer, .navbar-fixed-bottom #mapsearchcontainer {
+.container, #homecontainer, #plpageheader, #uppernavcontainer, #mapnavcontainer, #staticnavcontainer, #basenavcontainer, .navbar-static-top .container, .navbar-static-top #homecontainer, .navbar-static-top #plpageheader, .navbar-static-top #uppernavcontainer, .navbar-static-top #mapnavcontainer, .navbar-static-top #staticnavcontainer, .navbar-static-top #basenavcontainer, .navbar-fixed-top .container, .navbar-fixed-top #homecontainer, .navbar-fixed-top #plpageheader, .navbar-fixed-top #uppernavcontainer, .navbar-fixed-top #mapnavcontainer, .navbar-fixed-top #staticnavcontainer, .navbar-fixed-top #basenavcontainer, .navbar-fixed-bottom .container, .navbar-fixed-bottom #homecontainer, .navbar-fixed-bottom #plpageheader, .navbar-fixed-bottom #uppernavcontainer, .navbar-fixed-bottom #mapnavcontainer, .navbar-fixed-bottom #staticnavcontainer, .navbar-fixed-bottom #basenavcontainer {
   width: 940px; }
 
 .span12 {
@@ -460,17 +460,17 @@ a:hover, a:focus {
 [class*="span"].pull-right, .row-fluid [class*="span"].pull-right, #contentcontainer #hpcontent [class*="span"].pull-right, #contentcontainer #hplower [class*="span"].pull-right {
   float: right; }
 
-.container, #homecontainer, #plpageheader, #uppernavcontainer, #mapnavcontainer, #staticnavcontainer, #basenavcontainer, #mapsearchcontainer {
+.container, #homecontainer, #plpageheader, #uppernavcontainer, #mapnavcontainer, #staticnavcontainer, #basenavcontainer {
   margin-right: auto;
   margin-left: auto;
   *zoom: 1; }
 
-.container:before, #homecontainer:before, #plpageheader:before, #uppernavcontainer:before, #mapnavcontainer:before, #staticnavcontainer:before, #basenavcontainer:before, #mapsearchcontainer:before, .container:after, #homecontainer:after, #plpageheader:after, #uppernavcontainer:after, #mapnavcontainer:after, #staticnavcontainer:after, #basenavcontainer:after, #mapsearchcontainer:after {
+.container:before, #homecontainer:before, #plpageheader:before, #uppernavcontainer:before, #mapnavcontainer:before, #staticnavcontainer:before, #basenavcontainer:before, .container:after, #homecontainer:after, #plpageheader:after, #uppernavcontainer:after, #mapnavcontainer:after, #staticnavcontainer:after, #basenavcontainer:after {
   display: table;
   line-height: 0;
   content: ""; }
 
-.container:after, #homecontainer:after, #plpageheader:after, #uppernavcontainer:after, #mapnavcontainer:after, #staticnavcontainer:after, #basenavcontainer:after, #mapsearchcontainer:after {
+.container:after, #homecontainer:after, #plpageheader:after, #uppernavcontainer:after, #mapnavcontainer:after, #staticnavcontainer:after, #basenavcontainer:after {
   clear: both; }
 
 .container-fluid {
@@ -3119,7 +3119,7 @@ button.btn.btn-mini, #usermarker button.btn-mini, button.btn-mini#addscenebutton
 .navbar-inner:after, #sitelinks:after {
   clear: both; }
 
-.navbar .container, #uppernav .container, .navbar #homecontainer, #uppernav #homecontainer, .navbar #plpageheader, #uppernav #plpageheader, .navbar #uppernavcontainer, #uppernav #uppernavcontainer, .navbar #mapnavcontainer, #uppernav #mapnavcontainer, .navbar #staticnavcontainer, #uppernav #staticnavcontainer, .navbar #basenavcontainer, #uppernav #basenavcontainer, .navbar #mapsearchcontainer, #uppernav #mapsearchcontainer {
+.navbar .container, #uppernav .container, .navbar #homecontainer, #uppernav #homecontainer, .navbar #plpageheader, #uppernav #plpageheader, .navbar #uppernavcontainer, #uppernav #uppernavcontainer, .navbar #mapnavcontainer, #uppernav #mapnavcontainer, .navbar #staticnavcontainer, #uppernav #staticnavcontainer, .navbar #basenavcontainer, #uppernav #basenavcontainer {
   width: auto; }
 
 .nav-collapse.collapse {
@@ -3237,7 +3237,7 @@ button.btn.btn-mini, #usermarker button.btn-mini, button.btn-mini#addscenebutton
   -moz-border-radius: 0;
   border-radius: 0; }
 
-.navbar-static-top .container, .navbar-static-top #homecontainer, .navbar-static-top #plpageheader, .navbar-static-top #uppernavcontainer, .navbar-static-top #mapnavcontainer, .navbar-static-top #staticnavcontainer, .navbar-static-top #basenavcontainer, .navbar-static-top #mapsearchcontainer, .navbar-fixed-top .container, .navbar-fixed-top #homecontainer, .navbar-fixed-top #plpageheader, .navbar-fixed-top #uppernavcontainer, .navbar-fixed-top #mapnavcontainer, .navbar-fixed-top #staticnavcontainer, .navbar-fixed-top #basenavcontainer, .navbar-fixed-top #mapsearchcontainer, .navbar-fixed-bottom .container, .navbar-fixed-bottom #homecontainer, .navbar-fixed-bottom #plpageheader, .navbar-fixed-bottom #uppernavcontainer, .navbar-fixed-bottom #mapnavcontainer, .navbar-fixed-bottom #staticnavcontainer, .navbar-fixed-bottom #basenavcontainer, .navbar-fixed-bottom #mapsearchcontainer {
+.navbar-static-top .container, .navbar-static-top #homecontainer, .navbar-static-top #plpageheader, .navbar-static-top #uppernavcontainer, .navbar-static-top #mapnavcontainer, .navbar-static-top #staticnavcontainer, .navbar-static-top #basenavcontainer, .navbar-fixed-top .container, .navbar-fixed-top #homecontainer, .navbar-fixed-top #plpageheader, .navbar-fixed-top #uppernavcontainer, .navbar-fixed-top #mapnavcontainer, .navbar-fixed-top #staticnavcontainer, .navbar-fixed-top #basenavcontainer, .navbar-fixed-bottom .container, .navbar-fixed-bottom #homecontainer, .navbar-fixed-bottom #plpageheader, .navbar-fixed-bottom #uppernavcontainer, .navbar-fixed-bottom #mapnavcontainer, .navbar-fixed-bottom #staticnavcontainer, .navbar-fixed-bottom #basenavcontainer {
   width: 940px; }
 
 .navbar-fixed-top {
@@ -4507,13 +4507,15 @@ body {
   #plpageheader h3 {
     margin: 0 0; }
 
-@media screen and (max-width: 1200px) {
-  .vanishing-col {
-    width: 0px; } }
+.vanishing-col {
+  min-width: 446px !important;
+  max-width: 541px !important; }
 
-@media screen and (max-width: 1200px) {
-  .left-map-window-div {
-    width: 100%; } }
+.left-map-window-div {
+  position: absolute !important;
+  right: -14px;
+  top: 0px;
+  width: 33% !important; }
 
 .standard-entry-header {
   background-color: #1F1F1F;
@@ -4584,13 +4586,10 @@ body {
   border-width: 0px; }
 
 #mapsearchcontainer {
-  margin-right: auto;
-  margin-left: auto;
-  width: 42em;
-  margin-top: 0.5%;
-  margin-bottom: 0.5%;
-  position: relative;
-  min-height: 0px; }
+  margin: 0% 44%;
+  width: 431px;
+  min-height: 0px;
+  position: relative; }
 
 #geocodersearch, #plauthorsearch {
   margin-bottom: 1%; }
@@ -4920,6 +4919,9 @@ body {
   padding-left: 20px;
   width: 300px; }
 
+.placing-lit-logo:hover {
+  cursor: pointer; }
+
 #maplinks {
   margin-top: -47px;
   font-size: 20px;
@@ -5119,10 +5121,11 @@ body {
 
 .left-window {
   float: left;
-  margin-left: 30px; }
+  margin-left: 4%; }
 
 .right-window {
-  float: right; }
+  margin-left: 6%;
+  float: left; }
 
 .long-entry-podcast {
   overflow: hidden;
@@ -5163,14 +5166,15 @@ body {
 .standard-entry-image {
   padding: 10px 5px; }
 
-.map-window, .tall-map-window, .wide-map-window {
+.map-window, .tall-map-window {
   margin-top: 30px;
   width: 45%;
   display: inline-block;
   box-sizing: border-box;
-  background-color: #333; }
+  background-color: #333;
+  min-width: 170px !important; }
   @media screen and (max-width: 1200px) {
-    .map-window, .tall-map-window, .wide-map-window {
+    .map-window, .tall-map-window {
       display: none; } }
 
 .standard-entry-text {
@@ -5181,6 +5185,8 @@ body {
   padding: 0px 5px; }
 
 .window-container {
+  width: 33.3333%;
+  min-width: 425px;
   text-align: center; }
 
 .tall-map-window {
@@ -5195,10 +5201,6 @@ body {
 .window-info {
   padding: 0px 8px;
   padding-bottom: 8px; }
-
-.wide-map-window {
-  width: 100%;
-  margin-left: 20px; }
 
 .tall-entry-logo {
   display: block;
@@ -5287,6 +5289,30 @@ body {
   font-weight: bold;
   font-size: 16px; }
 
+.searchGoogle {
+  padding: 5px 8px;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  background-color: #F0F0F0 !important;
+  color: black !important;
+  margin-top: 0px !important;
+  font-size: 12px; }
+
+#searchGoogleAlt {
+  margin-top: 10px;
+  margin-right: 3px; }
+
+.nextSceneButton {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: #FFF !important;
+  background-color: #5a5a5a;
+  padding: 7px 19px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px !important; }
+
 #entry-place-place-name {
   font-weight: bold;
   font-size: 16px; }
@@ -5304,6 +5330,11 @@ body {
   margin-bottom: 10px; }
 
 .searchGoogleImage {
+  height: 12px;
+  margin: 0;
+  padding-left: 3px; }
+
+.searchGoogleImage2 {
   height: 12px;
   margin: 0;
   padding-left: 3px; }
@@ -5407,24 +5438,58 @@ body {
 input[type="checkbox"], input[type="radio"] {
   line-height: normal; }
 
-button {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: #FFF !important;
-  background-color: #5a5a5a;
-  padding: 7px 19px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 10px !important; }
-
 #recent-blog-post-title {
-  font-weight: bold; }
+  font-weight: bold;
+  font-size: 14px; }
 
 #recent-blog-post-published-author {
   font-style: italic; }
 
 .new_scene_span {
   margin-left: 0px; }
+
+.fluid-container {
+  min-height: 540px;
+  width: 77% !important; }
+
+.map-window, .tall-map-window, .tall-map-window, .wide-map-window {
+  margin-top: 30px;
+  display: inline-block;
+  box-sizing: border-box;
+  background-color: #333; }
+
+.tall-map-window {
+  height: 500px;
+  width: 45%;
+  min-width: 180px; }
+
+.window-container {
+  width: 33.3333%;
+  min-width: 425px; }
+
+.wide-map-window {
+  width: 100%;
+  min-width: 366px !important; }
+
+@media screen and (max-width: 1165px) {
+  .left-map-window-div {
+    position: absolute !important;
+    left: 58% !important;
+    top: 0px; }
+
+  .wide-map-window {
+    margin-left: 4% !important; } }
+.artist_name {
+  font-weight: 500;
+  line-height: 18px; }
+
+.artist_name:hover {
+  cursor: pointer;
+  font-weight: 500;
+  color: #7BB0DE;
+  line-height: 18px; }
+
+.artist-img:hover {
+  cursor: pointer; }
 
 /*# sourceMappingURL=placelit.css.map */

@@ -93,6 +93,7 @@ def date_query(index_name=INDEX_NAME):
 def _do_proximity_query(query):
   index = search.Index(name=INDEX_NAME)
   try:
+    print "Query: " + str(query)
     results = index.search(query)
     total_matches = results.number_found
     number_of_docs_returned = len(results.results)
@@ -108,6 +109,7 @@ def location_query(lat, lon, distance=default_distance):
   query_format = 'distance(scene_location, geopoint({}, {})) < {}'
   query_string = query_format.format(lat, lon, distance)
   query_options = search.QueryOptions(limit=result_limit)
+  print "0 query to be Executed: ||| " + query_string + " ||| on index: " + str(search.Index(name=INDEX_NAME))
   query = search.Query(query_string=query_string, options=query_options)
   return _do_proximity_query(query)
 
@@ -125,6 +127,7 @@ def sorted_location_query(lat, lon, distance=default_distance):
                        options=search.QueryOptions(
                         limit=result_limit,
                         sort_options=distance_sort))
+  print "1 Query to be Executed: ||| " + query_string
   return _do_proximity_query(query)
 
 

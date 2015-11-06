@@ -16,3 +16,13 @@ class PlacingLit.Collections.Locations extends Backbone.Collection
   initialize: ->
     this.on 'add', (model)->
       alert 'adding model'
+
+# Added by Will Acheson for Map speedup, limited place loading
+class PlacingLit.Collections.LocationsNear extends Backbone.Collection
+  model: PlacingLit.Models.Location
+
+  url: '/places/near'
+
+  initialize: ->
+    this.on 'add', (model)->
+      alert 'adding model'

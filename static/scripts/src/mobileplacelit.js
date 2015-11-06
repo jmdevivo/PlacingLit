@@ -88,10 +88,7 @@
         }
       }
     }
-    if (!Modernizr.input.placeholder) {
-      view.handleInputAttributes();
-    }
-    view.showInfowindowFormAtLocation();
+    console.log("hi");
     return view.reportUserLocationToServer();
   });
 

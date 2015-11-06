@@ -1047,7 +1047,7 @@
       content = '<div class="plinfowindow">';
       $('#entry-image').show();
       if (!data.image_data || !data.image_data.photo_id) {
-        img = '<img src="/img/placingLitNoImageFound.png" />';
+        img = '<img src="img/placingLitNoImageFound.png" />';
         $('#entry-image').html(img);
       }
       if (!!data.image_data) {
@@ -1204,6 +1204,7 @@
           }
           console.log(windowOptions.marker.position);
           _this.buildInfowindow(data, true);
+          console.log("openInfowindowForPlace() Location Data: " + data);
           if (windowOptions.position) {
             iw.setPosition(windowOptions.position);
             iw.open(_this.gmap);

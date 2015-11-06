@@ -121,7 +121,8 @@ $ ->
       if history
         console.log "history should be cleared"
         history.replaceState(null,null,'/')
-  view.handleInputAttributes() if not Modernizr.input.placeholder
-  view.showInfowindowFormAtLocation()
+  #view.handleInputAttributes() if not Modernizr.input.placeholder
+  #view.showInfowindowFormAtLocation()
   # this is going to test the client -> server -> client comm pattern
+  console.log("hi")
   view.reportUserLocationToServer()

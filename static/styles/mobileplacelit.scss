@@ -96,7 +96,28 @@ li {
 }
 
 .list-group {
-    margin-top: 40px;
+    margin-top: 83px;
+}
+
+#addscenebutton {
+  @extend .btn;
+  @extend .btn-primary;
+  position: absolute;
+  top: 83px;
+  right: 7px;
+  width: 8em;
+  z-index: 8;
+}
+
+#map_canvas {
+    width: 500px;
+    height: 500px;
+}
+
+.searchGoogle {
+    padding: 5px 8px;
+    border: solid 1px #ccc;
+    border-radius: 5px;
 }
 
 /* Media Query */

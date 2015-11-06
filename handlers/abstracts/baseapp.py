@@ -82,7 +82,6 @@ class BaseAppHandler(webapp.RequestHandler):
     output = '%s%s' % (xssi_prefix, json.dumps(values))
     self.response.out.write(output)
 
-# TODO: Figure out why the appspot site requires the &key = GM3_API_KEY (gmail api key)
   def maps_api_url(self):
     server = self.request.headers.get('host', 'no host')
     if server.endswith('placing-literature.appspot.com'):

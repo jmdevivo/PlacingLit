@@ -33,7 +33,7 @@ function initialize() {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-  
+
   // Try W3C Geolocation method (Preferred)
   if(navigator.geolocation) {
     browserSupportFlag = true;
@@ -44,6 +44,7 @@ function initialize() {
       infowindow.setContent(contentString);
       infowindow.setPosition(initialLocation);
       infowindow.open(map);
+      console.log(initialLocation);
     }, function() {
       handleNoGeolocation(browserSupportFlag);
     });
