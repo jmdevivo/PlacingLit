@@ -188,7 +188,6 @@
         this.collection = new PlacingLit.Collections.Locations();
       }
       this.listenTo(this.collection, 'all', this.render);
-      '#Added by Will Acheson for map speedup, limited place loading\n@collection ?= new PlacingLit.Collections.LocationsNear()\n@listenTo @collection, \'all\', @render';
       this.collection.fetch();
       this.suggestAuthors();
       this.attachNewSceneHandler();
@@ -980,8 +979,6 @@
       });
     };
 
-    ' New attach search handler, trying to fix super query issue"\n# initial function that handles author / place searches\nattachSearchHandler: ->\n  $(\'#gcf\').on(\'keydown\', (keycode, event) =>\n    if keycode.which==13\n      console.log("Enter key pressed in #gcf")\n      $.ajax\n        url: "/places/authors"\n        success: (authors) =>\n          #console.log(\'ajax debug statement search result: \' + authors)\n          $.ajax\n            url: "/places/titles"\n            success: (titles) =>\n                  author_data = []\n                  title_data = []\n                  $.each authors, (key, value) =>\n                    author_data.push(value.author.toString())\n                  $.each titles, (key, value) =>\n                    title_data.push(value.title.toString())\n                  @hideOverlay()\n                  $(\'.geosearchResults\').show()\n                  #$(\'#info-overlay\').show()\n                  @suggestAuthors(author_data)\n                  @suggestTitles(title_data)\n                  @populateSuggestedSearches(authors, titles)\n                )\n  $(\'#search\').on \'click\', (event) =>\n    #$(\'#info-overlay\').show()\n    @populateSuggestedSearches()';
-
     MapCanvasView.prototype.attachNewSceneHandler = function() {
       return $('#new_scene_submit_btn').click((function(_this) {
         return function() {
@@ -1545,11 +1542,13 @@
     };
 
     MapFilterView.prototype.initialize = function(scenes) {
+      console.log("map filter view:  scenes ");
+      console.log(typeof scenes);
+      console.log(scenes);
       if (this.collection == null) {
         this.collection = new PlacingLit.Collections.Locations();
       }
       this.listenTo(this.collection, 'all', this.render);
-      this.collection.fetch();
       this.collection.reset(scenes);
       return this.authors = this.suggestAuthors();
     };

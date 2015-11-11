@@ -1072,10 +1072,12 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
 
 
   initialize: (scenes) ->
+    console.log("map filter view:  scenes ")
+    console.log(typeof scenes )
+    console.log(scenes)
     # console.log('filtered view', scenes)
     @collection ?= new PlacingLit.Collections.Locations()
     @listenTo @collection, 'all', @render
-    @collection.fetch()
     @collection.reset(scenes)
     @authors = @suggestAuthors()
 

@@ -12,9 +12,7 @@
       };
       this.path = window.location.pathname;
       this.search = this.parseQuery(window.location.search);
-      console.log('placelit.coffee :: search object: ' + JSON.stringify(this.search));
       this.scenes = window.SCENES;
-      console.log('placelit.coffee :: scenes: ' + this.scenes);
     }
 
     PLMap.prototype.showModal = function(element) {
@@ -34,8 +32,10 @@
 
     PLMap.prototype.selectMapView = function() {
       if (this.isFiltered() && this.hasScenes()) {
+        console.log("this is a search =================");
         return new PlacingLit.Views.MapFilterView(this.scenes);
       }
+      console.log("this is a default view ===============");
       return new PlacingLit.Views.MapCanvasView;
     };
 
@@ -73,12 +73,13 @@
     var plmap, view;
     plmap = new PLMap();
     view = plmap.selectMapView();
-    console.log('placelit.coffee :: view created: ' + view.constructor.name);
+    console.log('view created: ' + view.constructor.name);
     if (location.search === '?modal=1') {
       plmap.showModal(plmap.elements.modals.mapmodal);
     } else if (plmap.isFiltered()) {
       if (plmap.scenes && plmap.scenes.length > 0) {
         plmap.closeFeatContent();
+        plmap.showModal(plmap.elements.modals.querymodal);
       } else {
         plmap.displayEmptyResultsError();
         if (history) {
@@ -125,7 +126,5 @@
       };
     })(this)
   });
-
-  '$.ajax\n  url: "/places/near/1",\n  dataType: "json",\n  success: (data) =>\n    console.log("Success!  ")\n    console.log(data)\n    console.log(JSON.stringify(data))\n  error: (err) =>\n    console.log(\'Error: \' + err)';
 
 }).call(this);

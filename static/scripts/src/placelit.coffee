@@ -25,9 +25,11 @@ class PLMap
 
   selectMapView: ->
     if @isFiltered() and @hasScenes()
+      console.log("this is a search =================")
       # This means the view is the result of a search
       return new PlacingLit.Views.MapFilterView(@scenes)
-      # This means the view is a default map view
+    console.log("this is a default view ===============")
+    # This means the view is a default map view
     return new PlacingLit.Views.MapCanvasView
 
   closeFeatContent: ->
@@ -59,7 +61,7 @@ $ ->
   else if plmap.isFiltered()
     if plmap.scenes and plmap.scenes.length > 0
       plmap.closeFeatContent()
-      #plmap.showModal(plmap.elements.modals.querymodal)
+      plmap.showModal(plmap.elements.modals.querymodal)
     else
       plmap.displayEmptyResultsError()
       if history
@@ -70,6 +72,7 @@ $ ->
   # testing /blog/latest URI
 
 
+# TODO: move to app.coffe function, call in initalization
 $.ajax
   url: "/blog/latest",
   success: (data) =>
@@ -90,15 +93,3 @@ $.ajax
     $('#newest_scene').html("<b>" + data[0]['location'] + "</b> from <i> " + data[0]['title'] + "</i> by " + data[0]['author'])
   error: (err) =>
     console.log("error: /places/recent - " + err )
-
-'''
-$.ajax
-  url: "/places/near/1",
-  dataType: "json",
-  success: (data) =>
-    console.log("Success!  ")
-    console.log(data)
-    console.log(JSON.stringify(data))
-  error: (err) =>
-    console.log('Error: ' + err)
-    '''

@@ -5492,4 +5492,7 @@ input[type="checkbox"], input[type="radio"] {
 .artist-img:hover {
   cursor: pointer; }
 
+.modal-backdrop {
+  display: none; }
+
 /*# sourceMappingURL=placelit.css.map */

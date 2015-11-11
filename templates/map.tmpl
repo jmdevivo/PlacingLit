@@ -1,5 +1,4 @@
 <script src="/js/libs/jquery-1.11.0.min.js"></script>
-<script src="js/src/rssGrab.js"></script>
 <script type="text/javascript" src="http://www.panoramio.com/wapi/wapi.js?v=1&amp;hl=fr"></script>
 
 {% extends 'base.tmpl' %}
@@ -420,6 +419,8 @@
 {% if key %}
   <script type="text/javascript">var PLACEKEY = {{key}};</script>
 {% endif %}
+<!-- this makes the scenes from MapFilterHandler available
+in the window namespace -->
 {% if scenes %}
   <script>window.SCENES = {{scenes|safe}};</script>
 {% endif %}
