@@ -101,7 +101,9 @@
         data = JSON.parse(data);
         $('#recent-blog-post-summary').html(data['newest_post_description']);
         $('#recent-blog-post-link').attr('href', data['newest_post_link']);
-        return $('#recent-blog-post-title').html(data['newest_post_title']);
+        $('#recent-blog-post-title').html(data['newest_post_title']);
+        $('#recent-blog-post-published-date').html(data["newest_post_pub_date"]);
+        return console.log();
       };
     })(this),
     error: (function(_this) {
@@ -123,6 +125,21 @@
     error: (function(_this) {
       return function(err) {
         return console.log("error: /places/recent - " + err);
+      };
+    })(this)
+  });
+
+  $.ajax({
+    url: "/collections/catlan",
+    success: (function(_this) {
+      return function(data) {
+        console.log("catlan collection: ");
+        return console.log(data);
+      };
+    })(this),
+    error: (function(_this) {
+      return function(err) {
+        return console.log("error: /collections/catlan - " + JSON.stringify(err));
       };
     })(this)
   });

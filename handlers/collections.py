@@ -1,13 +1,6 @@
 """ Handle web requests for collections """
 # pylint disable=C0103
 
-import sys
-import os.path
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '../static/python_modules/feedparser'))
-
-import feedparser
-
 import json
 import logging
 
@@ -30,12 +23,11 @@ class SceneCollectionHandler(baseapp.BaseAppHandler):
     template_values = self.basic_template_content()
     template_values['title'] = 'Map'
 
-    ''' TODO test rendering twice to load map initally and then rerender
-    with data
-    self.render_template('map.tmpl', template_values)
-
-    NOTE: this did not work
-    '''
+    """ 11-18-15
+        line below is erring:
+            AttributeError:
+                'NoneType' object has no attribute 'scenes'
+    """
     scene_keys = collections.Collection().get_named(collection_name).scenes
     if 'center' in collections.FEATURED[collection_name]:
       collection_center = collections.FEATURED[collection_name]['center']
@@ -47,10 +39,6 @@ class SceneCollectionHandler(baseapp.BaseAppHandler):
                         placedlit.PlacedLit().get(key)))
     template_values['scenes'] = json.dumps(scenes_json)
 
-    # This appears to be where the scens are loaded
-    # TODO This is not run on localhost, I'm not sure if thats bc
-    # scenes are not run on localhost or if this code just isnt the one
-    # that renders the map with content,
 
     print "template_values from collections.py, right before input to" \
           "map.tmpl"

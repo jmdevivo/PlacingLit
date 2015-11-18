@@ -145,7 +145,7 @@
               <div class='window-info' >
                 <img class='standard-entry-image artist-img' id="bottom-right-artist-img" src='/img/hemingway.jpg' />
                 <div id="bottom-right-artist-name" class='artist_name standard-entry-text standard-entry-intro-text' style="cursor: pointer;">Ernest Hemingway: </div>
-                <div class='standard-entry-text standard-entry-text-italics'>A Farewell to Arms, For Whom the Bell Tolls, and more...</div>
+                <div class='standard-entry-text standard-entry-text-italics'>A Farewell to Arms, For Whom the Bell Tolls....</div>
               </div>
             </div>
           </div>
@@ -153,9 +153,9 @@
             <div class='wide-map-window'>
               <div class="long-entry-header"> Recent Blog Posts  </div>
               <div class='window-info' id="recent-blog">
-				 <div class="long-entry-title-text" id="recent-blog-post-title"> {{ recent_blog_title }}</div>
-                 <div class="long-entry-title-text" id="recent-blog-post-published-author"> placeholder </div>
-                <div class="long-entry-title-text" id="recent-blog-post-summary"> {{ recent_blog_summary }}</div>
+				 <div class="long-entry-title-text" id="recent-blog-post-title"> }</div>
+                 <div class="long-entry-title-text" id="recent-blog-post-published-date">  </div>
+                <div class="long-entry-title-text" id="recent-blog-post-summary"></div>
                 <div class="long-entry-text continue-reading"><a id="recent-blog-post-link" target="_blank" href=''> Read Full Article </a></div>
               </div>
             </div>
@@ -593,7 +593,7 @@ in the window namespace -->
     var br_img_redirect = document.getElementById("bottom-right-artist-img");
     br_img_redirect.addEventListener("click", featured_map_redirect_BR);
 
-
+    console.log({{newest_post_pub_date}});
 
 
   </script>

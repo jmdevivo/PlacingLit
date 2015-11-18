@@ -61,7 +61,7 @@ class BlogpostsNewestHandler(baseapp.BaseAppHandler):
 
         newest_post_json = json.dumps({"newest_post_title": newest_post.title,
                             "newest_post_link": newest_post.link,
-                            #"newest_post_pub_date": newest_post.pub_date)
+                            "newest_post_pub_date": newest_post.pub_date.strftime("%Y-%m-%d %H:%M:%S"),
                             #"newest_post_pub_date": datetime.datetime.strptime(newest_post.pub_date, "%m-%j-%Y"),
                             #"newest_post_pub_date": time.strftime("%m-%j-%Y", newest_post.pub_date),
                             "newest_post_description": newest_post.description})

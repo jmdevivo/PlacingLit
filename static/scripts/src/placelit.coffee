@@ -77,9 +77,11 @@ $.ajax
   url: "/blog/latest",
   success: (data) =>
     data = JSON.parse(data)
-    $('#recent-blog-post-summary').html(data['newest_post_description'])
-    $('#recent-blog-post-link').attr('href', data['newest_post_link'])
-    $('#recent-blog-post-title').html(data['newest_post_title'])
+    $('#recent-blog-post-summary').html(data['newest_post_description']);
+    $('#recent-blog-post-link').attr('href', data['newest_post_link']);
+    $('#recent-blog-post-title').html(data['newest_post_title']);
+    $('#recent-blog-post-published-date').html(data["newest_post_pub_date"]);
+    console.log();
   error: (err) =>
     console.log("error requesting newest blog from server")
     console.log(err)
@@ -93,3 +95,11 @@ $.ajax
     $('#newest_scene').html("<b>" + data[0]['location'] + "</b> from <i> " + data[0]['title'] + "</i> by " + data[0]['author'])
   error: (err) =>
     console.log("error: /places/recent - " + err )
+
+$.ajax
+  url:"/collections/catlan",
+  success: (data) =>
+    console.log("catlan collection: ");
+    console.log(data);
+  error: (err) =>
+    console.log("error: /collections/catlan - " + JSON.stringify(err) )

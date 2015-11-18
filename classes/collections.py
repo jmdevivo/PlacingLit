@@ -1,6 +1,8 @@
 """ Datastore model for scene collections. """
 #  pylint: disable=R0904, W0403
 
+import logging
+
 from google.appengine.ext import db
 
 FEATURED = dict()
@@ -38,4 +40,8 @@ class Collection(db.Model):
 
   def get_named(self, collection_name):
     """ return previously existing collection or None """
+    logging.info('wa_collection:  collection_name: ' + collection_name)
+
+    result = self.get_by_key_name(collection_name)
+    logging.info('wa_collection: self.get_by_key_name(collection_name) returns: '  + result)
     return self.get_by_key_name(collection_name)
