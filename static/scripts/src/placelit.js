@@ -21,8 +21,10 @@
 
     PLMap.prototype.isFiltered = function() {
       if ((this.path.indexOf('collections') === -1) && (this.path.indexOf('author') === -1) && (this.path.indexOf('title') === -1)) {
+        console.log('isFiltered false');
         return false;
       }
+      console.log('isFiltered true');
       return true;
     };
 
@@ -62,7 +64,8 @@
         vals = param.split('=');
         result[vals[0]] = vals[1];
       }
-      return result;
+      result;
+      return console.log('parseQuery result: ' + JSON.stringify(result));
     };
 
     return PLMap;
@@ -129,19 +132,6 @@
     })(this)
   });
 
-  $.ajax({
-    url: "/collections/catlan",
-    success: (function(_this) {
-      return function(data) {
-        console.log("catlan collection: ");
-        return console.log(data);
-      };
-    })(this),
-    error: (function(_this) {
-      return function(err) {
-        return console.log("error: /collections/catlan - " + JSON.stringify(err));
-      };
-    })(this)
-  });
+  '$.ajax\n  url:"/collections/slq",\n  success: (data) =>\n    console.log("slq collection: ");\n    console.log(data);\n  error: (err) =>\n    console.log("error: /collections/slq - " + JSON.stringify(err) )\n';
 
 }).call(this);

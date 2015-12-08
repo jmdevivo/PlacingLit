@@ -821,9 +821,9 @@ body { height: $full; margin:0%; padding:0; }
   box-sizing: border-box;
   background-color: #333;
   min-width: 170px !important;
-  @media screen and (max-width: $breaksmall){
-    display: none;
-  }
+  //@media screen and (max-width: $breaksmall){
+  //  display: none;
+  //}
 }
 .standard-entry-text {
     color: #FFF;
@@ -1043,7 +1043,7 @@ body { height: $full; margin:0%; padding:0; }
   font-size: 11px;
 }
 .socialMediaActionLink{
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 .beenHereCheckbox{
@@ -1079,6 +1079,9 @@ body { height: $full; margin:0%; padding:0; }
   height: 17px;
   opacity: .6;
   margin-top: 4px;
+}
+#search:hover {
+  cursor: pointer;
 }
 
 #new_scene_place_name {
@@ -1188,4 +1191,14 @@ input[type="checkbox"], input[type="radio"] {
 
 .modal-backdrop {
   display: none;
+}
+
+.googleButton {
+  padding: 4px 10px !important;
+  border: 1px solid #CCC !important;
+  font-size: 11px !important;
+}
+
+.googleImage {
+  height: 11px !important;
 }

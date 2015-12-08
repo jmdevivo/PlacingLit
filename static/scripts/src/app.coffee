@@ -106,8 +106,9 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @collection ?= new PlacingLit.Collections.Locations()
     @listenTo @collection, 'all', @render
 
-    #if navigator.geolocation
-      #position = navigator.geolocation.getCurrentPosition(@getPlacesNearController)
+    # testing placesNear
+    if navigator.geolocation
+      position = navigator.geolocation.getCurrentPosition(@getPlacesNearController)
 
 
     @collection.fetch()
@@ -115,20 +116,20 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @suggestAuthors()
     @attachNewSceneHandler()
     @attachSearchHandler()
+    @linkMagnifyClickGcf() # make clicking #search (magnifying glass) press enter in #gcf (search bar)
 
 
   getPlacesNearController: (position) =>
 
-    console.log("requesting: " + '/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude)
-
+    console.log("requesting: " + '/places/near?lat=' + -19.155320 + "&lon=" + 30.013956)
+    #-19.155320 30.013956
     $.ajax
-      url:'/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude
+      #url:'/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude
+      url:'/places/near?lat=' + -19.155320 + "&lon=" + 30.013956
       dataType:"json"
       success: (data) =>
         console.log("call to /places/near successful")
-        #console.log("places/near:  " + JSON.stringify(data))
-        #console.log(data)
-        console.log("data, length" )
+        console.log("near places "  + JSON.stringify(data))
       error: (err) =>
         console.log("call to /places/near failed")
         console.log("error: " + err)
@@ -137,6 +138,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @mapWithMarkers() if event is 'sync'
 
   googlemap: ()->
+    # GoogleMaps API documentation:  Very helpful
+    # https://developers.google.com/maps/documentation/javascript/reference
     return @gmap if @gmap?
     map_elem = document.getElementById(@$el.selector)
     @gmap = new google.maps.Map(map_elem, @mapOptions)
@@ -309,7 +312,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     console.log("markersForEachScene")
     markers.each (model) => @dropMarkerForStoredLocation(model)
 
-#TODO: Ask Steven about
   markerArrayFromCollection: (collection) ->
     return (@buildMarkerFromLocation(model) for model in collection.models)
 
@@ -359,6 +361,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         lat: 39.8282
         lng: -98.5795
       usacenter = new google.maps.LatLng(usaCoords.lat, usaCoords.lng)
+
       if navigator.geolocation
         navigator.geolocation.getCurrentPosition((position) =>
 
@@ -372,10 +375,17 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       else
         @gmap.setCenter(usacenter)
       @gmap.setZoom(8)
+
+      #console.log(JSON.stringify(@gmap));
+
+      # What is this doing?  seems to hav ea global PLACEKEY which could be causing
+      # our problem with non-refreshing scene windows
+    '''
     if window.PLACEKEY?
       windowOptions = position: mapcenter
       @openInfowindowForPlace(window.PLACEKEY, windowOptions)
     @initialMapView = false
+    '''
 
   handleMapClick: (event) ->
     @setUserMapMarker(@gmap, event.latLng)
@@ -603,6 +613,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
         error: (err) ->
           console.log err
+
   populateSuggestedTitles: (searchTxt) ->
     if searchTxt
       query = searchTxt.replace(/ /, "")
@@ -635,9 +646,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     return null
 
   createSearchElement: (element) ->
-
     console.log("CreateSearchElement")
-
     location = element.geometry.location
     name = element.formatted_address
     li = document.createElement('li')
@@ -673,9 +682,17 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
                 @populateSuggestedSearches(authors, titles)
               )
 
-            $('#search').on 'click', (event) =>
+            #$('#search').on 'click', (event) =>
               #$('#info-overlay').show()
-              @populateSuggestedSearches()
+              #@populateSuggestedSearches()
+  linkMagnifyClickGcf: ->
+    # hack way to cause clicking #search to press enter in gcf
+    console.log("linkMagnifyClickGcf executed")
+    enter_press = jQuery.Event('keydown');
+    enter_press.which = 13;
+    $('#search').click ->
+      $('#gcf').trigger(enter_press);
+
 
   attachNewSceneHandler: ->
     $('#new_scene_submit_btn').click( () =>
@@ -706,10 +723,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     return _.template(img)
 
   sceneAPIImageTemplate: (data_image_data) ->
-    console.log "sceneAPIImageTemplate is firing"
-    # TODO maybe rewite this panoramio thing so that it can be configurable more easily
-    # http://www.panoramio.com/api/widget/api.html
-
     if data_image_data and data_image_data.photo_id
       console.log("data_image_data:" + JSON.stringify(data_image_data) )
       console.log("photo_id: " + data_image_data.photo_id)
@@ -735,12 +748,12 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     content = '<div class="plinfowindow">'
     $('#entry-image').show()
 
+    # image not found default image
     if !data.image_data or !data.image_data.photo_id
       img = '<img src="img/placingLitNoImageFound.png" />'
       $('#entry-image').html(img)
 
     if !!data.image_data
-      console.log "Entry image should be populated with the panoramio image"
       $('#entry-image').html(@sceneAPIImageTemplate(data.image_data)(image_id: data.image_data.photo_id))
     $('#entry-scene-title').html(data.title + "<br />" +"<span>by "+ data.author + '</span>')
     $('#entry-place-title').html(data.title + "<br />" +"<span>by "+ data.author + '</span>')
@@ -755,6 +768,26 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     $('#entry-symbols-body').html(data.symbols)
     $('#entry-place-body').html(data.notes)
     $('#entry-visits-body').html(data.visits)
+
+
+
+    # test by Will Acheson to make Wikipedia link correct
+    $('#wikiActionLink').attr('href',"https://en.wikipedia.org/w/index.php?search="+ data.place_name);
+    $('#wikiActionLink2').attr('href',"https://en.wikipedia.org/w/index.php?search="+ data.place_name);
+
+    $("#googleActionLink").attr('href', "https://www.google.com/search?q="+ data.place_name);
+    $("#googleActionLink2").attr('href', "https://www.google.com/search?q="+ data.place_name);
+
+    # getting the google search button to work on mozilla
+    #https://stackoverflow.com/questions/16280684/nesting-a-inside-button-doesnt-work-in-firefox
+
+    $("#googleActionLinkMoz").attr('href', "https://www.google.com/search?q="+ data.place_name);
+    $("#googleActionLinkMoz2").attr('href', "https://www.google.com/search?q="+ data.place_name);
+
+    $('#ibActionLink').attr('href', "http://www.rjjulia.com/book/"+ data.isbn);
+    $('#grActionLink').attr('href', "https://www.goodreads.com/book/isbn/"+ data.isbn);
+
+    '''
     $("#ibActionLink").click((e) =>
       e.preventDefault()
       window.open("http://www.rjjulia.com/book/"+ data.isbn)
@@ -764,23 +797,29 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       window.open("https://www.goodreads.com/book/isbn/"+ data.isbn)
       )
     #console.log "setting google action listener"
+
+
     $("#googleActionLink").click((e) =>
       e.preventDefault()
       window.open("https://www.google.com/search?q="+ data.place_name)
+      console.log('-------------------------buildInfowindow placename: ' + data.place_name)
       )
+
     $("#googleActionLink2").click((e) =>
       e.preventDefault()
       window.open("https://www.google.com/search?q="+ data.place_name)
       )
+
     $('.searchGoogle').click((e) =>
       e.preventDefault()
       window.open("https://www.google.com/search?q="+ data.place_name)
-      )
+      )'''
     # TODO: this is where the wiki link is built, make sure it works right
     # On scene cards when u click the wiki link, if you have visited multiple
     # scene cards, the wiki link will only take you to the first scene card
     # you clicked on.
-    $("#wikiActionLink").click((e) =>
+
+    '''$("#wikiActionLink").click((e) =>
       e.preventDefault()
       window.open("https://en.wikipedia.org/w/index.php?search="+ data.place_name)
       )
@@ -792,6 +831,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       e.preventDefault()
       window.open("http://www.rjjulia.com/book/"+ data.isbn)
       )
+      '''
+
     #$('#entry-image').attr("src", "//mw2.google.com/mw-panoramio/photos/small/" +data.id +".jpg")
     $('#entry-symbols-body').html(data.symbols)
     $('#entry-place-body').html(data.notes)
@@ -832,7 +873,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
   openInfowindowForPlace: (place_key, windowOptions) ->
     console.log('open', windowOptions)
-    console.log("updated info overlay code is running")
     $('#info-overlay').animate {
         left: '-=1000'
       },700, () ->
@@ -848,6 +888,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     # this can be triggered by a deep link or map marker click
     # TODO: marker clicks are tracked as events, deep links as pages- RESOLVE
     url = '/places/info/' + place_key
+    console.log("openInfowindowForPlace place_key: " + place_key);
     window.PLACEKEY = null
     # console.log('open window', windowOptions)
     if windowOptions.marker
@@ -859,10 +900,12 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @mapEventTracking(tracking)
     $.getJSON url, (data) =>
       @placeInfowindow.close() if @placeInfowindow?
+
+
       #iw = @infowindow()
-      console.log(windowOptions.marker.position)
+      #console.log(windowOptions.marker.position)
       @buildInfowindow(data, true)
-      console.log("openInfowindowForPlace() Location Data: " + data)
+      console.log("openInfowindowForPlace() Location Data: " + JSON.stringify(data))
       if windowOptions.position
         #console.log(typeof windowOptions.position)
         #console.log(windowOptions.position)
@@ -913,6 +956,9 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
   buildMarkerFromLocation: (location) ->
     console.log("buildMarkerFromLocation")
+    #console.log("location type: " + typeof(location));
+    #console.log("location: " + JSON.stringify(location));
+
     lat = location.get('latitude')
     lng = location.get('longitude')
     title = location.get('title')
@@ -1070,10 +1116,17 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     $('#search').on 'click', (event) =>
       @filteredViewGeocoderSearch()
 
+  linkMagnifyClickGcf: ->
+    # hack way to cause clicking #search to press enter in gcf
+    enter_press = jQuery.Event('keydown');
+    enter_press.which = 13;
+    $('#search').click ->
+      $('#gcf').trigger(enter_press);
+
 
   initialize: (scenes) ->
     console.log("map filter view:  scenes ")
-    console.log(typeof scenes )
+    console.log("scenes: " + JSON.stringify(scenes) )
     console.log(scenes)
     # console.log('filtered view', scenes)
     @collection ?= new PlacingLit.Collections.Locations()
@@ -1087,6 +1140,7 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     @markerClustersForScenes(@allMarkers)
     # @markersForEachScene(@collection)
     @attachSearchHandler()
+    @linkMagnifyClickGcf() # make clicking magnifying glass icon press enter in search box
     mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
     @gmap.setCenter(mapcenter)
     # console.log('zoom', @gmap.getZoom())

@@ -210,10 +210,17 @@
           <div class="entry-body" id='entry-place-body'></div>
           <div class='entry-body learn-more'>Learn more about <span id='entry-place-location-name'></span>:</div>
           <div class='actionContainer'>
-              <a id='wikiActionLink' class='actionAnchor' href='#'><img src='/img/wikipedia.jpg'/></a>
-              <button class='searchGoogle'>Search
-                <a id='googleActionLink' href='#'><img class='actionAnchor searchGoogleImage' src='/img/google.png'/></a>
-              </button>
+              <a id='wikiActionLink' class='actionAnchor' target="_blank" href='#'><img src='/img/wikipedia.jpg'/></a>
+              <!-- Test 2 <a> styled like a button
+              <a id="googleActionAnchor" href="#" class="linkButton" target="_blank"> Search  </a>
+               Successful!
+              <button class='searchGoogle'>
+                 <a id='googleActionLink' target="_blank"  href='#' style="text-decoration:none; color: black;">Search <img class='actionAnchor searchGoogleImage' src='/img/google.png'/></a>
+                <a id='googleActionLink' target="_blank"  href='#' >Search <img class='actionAnchor searchGoogleImage' src='/img/google.png'/></a>
+              </button> -->
+
+              <a id='googleActionLinkMoz' target="_blank"  href='#' class='btn googleButton'>Search <img src='/img/google.png' class="googleImage"/></a>
+
             </div>
         </div>
         <div class='entry' id='actions_entry'>
@@ -222,12 +229,14 @@
           <div class="entry-body" id='entry-actions-body'>
             <div id="checkin">Have you ever been here? <input type='checkbox' class='beenHereCheckbox' name='beenHere'></input></div>
             <div class='actionContainer'>
-              <a id='ibActionLink' class='actionAnchor' href='#'><img src="/img/ib.png"/></a>
-              <a id='grActionLink' class='actionAnchor' href='#'><img src='/img/goodrd.png'/></a>
-              <a id='wikiActionLink2' class='actionAnchor' href='#'><img src='/img/wikipedia.jpg'/></a>
-              <button class="searchGoogle" id="searchGoogleAlt">Search
-                <a id='googleActionLink2' href='#'><img class='actionAnchor searchGoogleImage2' src='/img/google.png'/></a>
-              </button>
+              <a id='ibActionLink' class='actionAnchor' target="_blank" href='#'><img src="/img/ib.png"/></a>
+              <a id='grActionLink' class='actionAnchor' target="_blank" href='#'><img src='/img/goodrd.png'/></a>
+              <a id='wikiActionLink2' class='actionAnchor' target="_blank" href='#'><img src='/img/wikipedia.jpg'/></a>
+
+              <!-- <button class="searchGoogle" id="searchGoogleAlt">
+                <a id='googleActionLink2' target="_blank"  href='#' style="text-decoration:none; color: black;">Search<img class='actionAnchor searchGoogleImage2' src='/img/google.png'/></a>
+              </button> -->
+              <a id='googleActionLinkMoz2' target="_blank"  href='#' class='btn googleButton'>Search <img src='/img/google.png' class="googleImage"/></a>
               <a id='shareActionLink' class='actionAnchor' href='#'><img src='/img/share.jpg'/></a>
 
             </div>
@@ -332,10 +341,10 @@
         <a class="navLink" target="_blank" href="https://soundcloud.com/placingliterature/">Podcasts</a>
       </div>
       <div class="linkSurround">
-        <a class="navLink" href="authorspotlight">Author Spotlight</a>
+        <a class="navLink" href="/authorspotlight">Author Spotlight</a>
       </div>
       <div class="linkSurround">
-        <a class="navLink" href="collections">Collections</a>
+        <a class="navLink" href="/collections">Collections</a>
       </div>
       <div class="linkSurround">
         <a class="navLink lastLink" href="http://www.google.com">Mobile</a>
@@ -421,9 +430,18 @@
 {% endif %}
 <!-- this makes the scenes from MapFilterHandler available
 in the window namespace -->
+
 {% if scenes %}
-  <script>window.SCENES = {{scenes|safe}};</script>
+  <script>
+    window.SCENES = {{scenes|safe}};
+    // window.PLACESNEAR = {{places_near}};
+    // window.LOCJSON = {{loc_json}};
+  </script>
+
 {% endif %}
+
+
+
 <script type="text/javascript" src="/js/src/app.js"></script>
 <script type="text/javascript" src="/js/src/placelit.js"></script>
 

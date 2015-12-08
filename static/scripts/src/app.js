@@ -184,25 +184,30 @@
     };
 
     MapCanvasView.prototype.initialize = function(scenes) {
+      var position;
       if (this.collection == null) {
         this.collection = new PlacingLit.Collections.Locations();
       }
       this.listenTo(this.collection, 'all', this.render);
+      if (navigator.geolocation) {
+        position = navigator.geolocation.getCurrentPosition(this.getPlacesNearController);
+      }
       this.collection.fetch();
       this.suggestAuthors();
       this.attachNewSceneHandler();
-      return this.attachSearchHandler();
+      this.attachSearchHandler();
+      return this.linkMagnifyClickGcf();
     };
 
     MapCanvasView.prototype.getPlacesNearController = function(position) {
-      console.log("requesting: " + '/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude);
+      console.log("requesting: " + '/places/near?lat=' + -19.155320 + "&lon=" + 30.013956);
       return $.ajax({
-        url: '/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude,
+        url: '/places/near?lat=' + -19.155320 + "&lon=" + 30.013956,
         dataType: "json",
         success: (function(_this) {
           return function(data) {
             console.log("call to /places/near successful");
-            return console.log("data, length");
+            return console.log("near places " + JSON.stringify(data));
           };
         })(this),
         error: (function(_this) {
@@ -531,7 +536,7 @@
     };
 
     MapCanvasView.prototype.positionMap = function() {
-      var mapcenter, usaCoords, usacenter, windowOptions;
+      var mapcenter, usaCoords, usacenter;
       if (window.CENTER != null) {
         mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
         this.gmap.setCenter(mapcenter);
@@ -565,13 +570,7 @@
         }
         this.gmap.setZoom(8);
       }
-      if (window.PLACEKEY != null) {
-        windowOptions = {
-          position: mapcenter
-        };
-        this.openInfowindowForPlace(window.PLACEKEY, windowOptions);
-      }
-      return this.initialMapView = false;
+      return 'if window.PLACEKEY?\n  windowOptions = position: mapcenter\n  @openInfowindowForPlace(window.PLACEKEY, windowOptions)\n@initialMapView = false';
     };
 
     MapCanvasView.prototype.handleMapClick = function(event) {
@@ -950,7 +949,7 @@
             return $.ajax({
               url: "/places/titles",
               success: function(titles) {
-                $('#gcf').on('keydown', function(keycode, event) {
+                return $('#gcf').on('keydown', function(keycode, event) {
                   var author_data, title_data;
                   if (keycode.which === 13) {
                     console.log("Enter key pressed in #gcf");
@@ -969,13 +968,20 @@
                     return _this.populateSuggestedSearches(authors, titles);
                   }
                 });
-                return $('#search').on('click', function(event) {
-                  return _this.populateSuggestedSearches();
-                });
               }
             });
           };
         })(this)
+      });
+    };
+
+    MapCanvasView.prototype.linkMagnifyClickGcf = function() {
+      var enter_press;
+      console.log("linkMagnifyClickGcf executed");
+      enter_press = jQuery.Event('keydown');
+      enter_press.which = 13;
+      return $('#search').click(function() {
+        return $('#gcf').trigger(enter_press);
       });
     };
 
@@ -1020,7 +1026,6 @@
 
     MapCanvasView.prototype.sceneAPIImageTemplate = function(data_image_data) {
       var img;
-      console.log("sceneAPIImageTemplate is firing");
       if (data_image_data && data_image_data.photo_id) {
         console.log("data_image_data:" + JSON.stringify(data_image_data));
         console.log("photo_id: " + data_image_data.photo_id);
@@ -1048,7 +1053,6 @@
         $('#entry-image').html(img);
       }
       if (!!data.image_data) {
-        console.log("Entry image should be populated with the panoramio image");
         $('#entry-image').html(this.sceneAPIImageTemplate(data.image_data)({
           image_id: data.image_data.photo_id
         }));
@@ -1066,54 +1070,16 @@
       $('#entry-symbols-body').html(data.symbols);
       $('#entry-place-body').html(data.notes);
       $('#entry-visits-body').html(data.visits);
-      $("#ibActionLink").click((function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return window.open("http://www.rjjulia.com/book/" + data.isbn);
-        };
-      })(this));
-      $("#grActionLink").click((function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return window.open("https://www.goodreads.com/book/isbn/" + data.isbn);
-        };
-      })(this));
-      $("#googleActionLink").click((function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return window.open("https://www.google.com/search?q=" + data.place_name);
-        };
-      })(this));
-      $("#googleActionLink2").click((function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return window.open("https://www.google.com/search?q=" + data.place_name);
-        };
-      })(this));
-      $('.searchGoogle').click((function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return window.open("https://www.google.com/search?q=" + data.place_name);
-        };
-      })(this));
-      $("#wikiActionLink").click((function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return window.open("https://en.wikipedia.org/w/index.php?search=" + data.place_name);
-        };
-      })(this));
-      $("#wikiActionLink2").click((function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return window.open("https://en.wikipedia.org/w/index.php?search=" + data.place_name);
-        };
-      })(this));
-      $("#ibActionLink").click((function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return window.open("http://www.rjjulia.com/book/" + data.isbn);
-        };
-      })(this));
+      $('#wikiActionLink').attr('href', "https://en.wikipedia.org/w/index.php?search=" + data.place_name);
+      $('#wikiActionLink2').attr('href', "https://en.wikipedia.org/w/index.php?search=" + data.place_name);
+      $("#googleActionLink").attr('href', "https://www.google.com/search?q=" + data.place_name);
+      $("#googleActionLink2").attr('href', "https://www.google.com/search?q=" + data.place_name);
+      $("#googleActionLinkMoz").attr('href', "https://www.google.com/search?q=" + data.place_name);
+      $("#googleActionLinkMoz2").attr('href', "https://www.google.com/search?q=" + data.place_name);
+      $('#ibActionLink').attr('href', "http://www.rjjulia.com/book/" + data.isbn);
+      $('#grActionLink').attr('href', "https://www.goodreads.com/book/isbn/" + data.isbn);
+      '$("#ibActionLink").click((e) =>\n  e.preventDefault()\n  window.open("http://www.rjjulia.com/book/"+ data.isbn)\n  )\n$("#grActionLink").click((e) =>\n  e.preventDefault()\n  window.open("https://www.goodreads.com/book/isbn/"+ data.isbn)\n  )\n#console.log "setting google action listener"\n\n\n$("#googleActionLink").click((e) =>\n  e.preventDefault()\n  window.open("https://www.google.com/search?q="+ data.place_name)\n  console.log(\'-------------------------buildInfowindow placename: \' + data.place_name)\n  )\n\n$("#googleActionLink2").click((e) =>\n  e.preventDefault()\n  window.open("https://www.google.com/search?q="+ data.place_name)\n  )\n\n$(\'.searchGoogle\').click((e) =>\n  e.preventDefault()\n  window.open("https://www.google.com/search?q="+ data.place_name)\n  )';
+      '$("#wikiActionLink").click((e) =>\n  e.preventDefault()\n  window.open("https://en.wikipedia.org/w/index.php?search="+ data.place_name)\n  )\n$("#wikiActionLink2").click((e) =>\n  e.preventDefault()\n  window.open("https://en.wikipedia.org/w/index.php?search="+ data.place_name)\n  )\n$("#ibActionLink").click((e) =>\n  e.preventDefault()\n  window.open("http://www.rjjulia.com/book/"+ data.isbn)\n  )';
       $('#entry-symbols-body').html(data.symbols);
       $('#entry-place-body').html(data.notes);
       $('#entry-visits-body').html(data.visits);
@@ -1169,7 +1135,6 @@
     MapCanvasView.prototype.openInfowindowForPlace = function(place_key, windowOptions) {
       var tracking, url;
       console.log('open', windowOptions);
-      console.log("updated info overlay code is running");
       $('#info-overlay').animate({
         left: '-=1000'
       }, 700, function() {
@@ -1184,6 +1149,7 @@
         }, 700);
       });
       url = '/places/info/' + place_key;
+      console.log("openInfowindowForPlace place_key: " + place_key);
       window.PLACEKEY = null;
       if (windowOptions.marker) {
         tracking = {
@@ -1199,9 +1165,8 @@
           if (_this.placeInfowindow != null) {
             _this.placeInfowindow.close();
           }
-          console.log(windowOptions.marker.position);
           _this.buildInfowindow(data, true);
-          console.log("openInfowindowForPlace() Location Data: " + data);
+          console.log("openInfowindowForPlace() Location Data: " + JSON.stringify(data));
           if (windowOptions.position) {
             iw.setPosition(windowOptions.position);
             iw.open(_this.gmap);
@@ -1541,9 +1506,18 @@
       })(this));
     };
 
+    MapFilterView.prototype.linkMagnifyClickGcf = function() {
+      var enter_press;
+      enter_press = jQuery.Event('keydown');
+      enter_press.which = 13;
+      return $('#search').click(function() {
+        return $('#gcf').trigger(enter_press);
+      });
+    };
+
     MapFilterView.prototype.initialize = function(scenes) {
       console.log("map filter view:  scenes ");
-      console.log(typeof scenes);
+      console.log("scenes: " + JSON.stringify(scenes));
       console.log(scenes);
       if (this.collection == null) {
         this.collection = new PlacingLit.Collections.Locations();
@@ -1561,6 +1535,7 @@
       this.allMarkers = this.markerArrayFromCollection(this.collection);
       this.markerClustersForScenes(this.allMarkers);
       this.attachSearchHandler();
+      this.linkMagnifyClickGcf();
       mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
       this.gmap.setCenter(mapcenter);
       this.gmap.setZoom(this.settings.zoomLevel.wide);

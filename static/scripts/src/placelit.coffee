@@ -10,14 +10,18 @@ class PLMap
     @search = @parseQuery(window.location.search)
     #console.log('placelit.coffee :: search object: ' + JSON.stringify(@search))
     @scenes = window.SCENES
+
     #console.log('placelit.coffee :: scenes: ' + @scenes)
 
   showModal: (element) ->
     element.modal()
 
   isFiltered: ->
+    #if (@path.indexOf('collections') == -1) and (@path.indexOf('author') == -1) and (@path.indexOf('title') == -1) and (@path.indexOf('coordinates') == -1)
     if (@path.indexOf('collections') == -1) and (@path.indexOf('author') == -1) and (@path.indexOf('title') == -1)
+      console.log('isFiltered false');
       return false
+    console.log('isFiltered true');
     return true
 
   hasScenes: ->
@@ -50,6 +54,7 @@ class PLMap
       vals = param.split '='
       result[vals[0]] = vals[1]
     result
+    console.log('parseQuery result: ' + JSON.stringify(result));
 
 
 $ ->
@@ -70,6 +75,7 @@ $ ->
   view.handleInputAttributes() if not Modernizr.input.placeholder
   view.showInfowindowFormAtLocation()
   # testing /blog/latest URI
+
 
 
 # TODO: move to app.coffe function, call in initalization
@@ -96,10 +102,14 @@ $.ajax
   error: (err) =>
     console.log("error: /places/recent - " + err )
 
+
+'''
 $.ajax
-  url:"/collections/catlan",
+  url:"/collections/slq",
   success: (data) =>
-    console.log("catlan collection: ");
+    console.log("slq collection: ");
     console.log(data);
   error: (err) =>
-    console.log("error: /collections/catlan - " + JSON.stringify(err) )
+    console.log("error: /collections/slq - " + JSON.stringify(err) )
+
+'''

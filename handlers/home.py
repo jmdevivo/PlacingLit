@@ -193,6 +193,33 @@ class MapFilterHandler(baseapp.BaseAppHandler):
     template_values['log'] = json.dumps(loc_json)
     self.render_template('map.tmpl', template_values)
 
+# because placedlit.PlacedLit is used in getting "places" in
+# the above method, I think it will be safe to create a new
+# handler that will return nearby places by lng, lat
+# and render a map.
+
+class MapFilterCoordsHandler(baseapp.BaseAppHandler):
+  def get(self, lat, lng):
+    template_values = self.basic_template_content()
+    template_values['title'] = 'Map'
+    template_values['count'] = placedlit.PlacedLit.count()
+    if lat and lng:
+      places_near = placedlit.get_nearby_places(lat, lng, False)
+      loc_json = []
+    if places_near:
+      loc_json = self.format_location_index_results(places_near)
+    if loc_json:
+      some_scene = random.choice(loc_json)
+      template_values['center'] = '{{lat:{}, lng:{}}}'.format(
+        some_scene['latitude'], some_scene['longitude'])
+      template_values['scenes'] = json.dumps(loc_json)
+        # test purposes
+    logging.info('mapFilterCoords template_values' + type(template_values))
+    self.render_template('map.tmpl', template_values)
+
+
+
+
 
 class AdminMenuHandler(baseapp.BaseAppHandler):
   def get(self):
@@ -259,6 +286,7 @@ urls = [
   ('/funding', FundingHandler),
   ('/home', HomeHandler),
   ('/map/filter/(.*)/(.*)', MapFilterHandler),
+  #('/map/filter/coordinates/(.*)/(.*)', MapFilterCoordsHandler),
   ('/map(/?.*)', MapHandler),
   ('/', MapHandler),
   ('/user/status', UserstatusHandler),
