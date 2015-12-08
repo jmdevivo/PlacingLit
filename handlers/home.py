@@ -286,7 +286,7 @@ urls = [
   ('/funding', FundingHandler),
   ('/home', HomeHandler),
   ('/map/filter/(.*)/(.*)', MapFilterHandler),
-  #('/map/filter/coordinates/(.*)/(.*)', MapFilterCoordsHandler),
+  ('/map/filter/coordinates/(.*)/(.*)', MapFilterCoordsHandler),
   ('/map(/?.*)', MapHandler),
   ('/', MapHandler),
   ('/user/status', UserstatusHandler),
