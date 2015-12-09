@@ -199,15 +199,37 @@ class MapFilterHandler(baseapp.BaseAppHandler):
 # and render a map.
 
 class MapFilterCoordsHandler(baseapp.BaseAppHandler):
-  def get(self, lat, lng):
+  def get(self):
     template_values = self.basic_template_content()
     template_values['title'] = 'Map'
     template_values['count'] = placedlit.PlacedLit.count()
-    if lat and lng:
-      places_near = placedlit.get_nearby_places(lat, lng, False)
-      loc_json = []
-    if places_near:
-      loc_json = self.format_location_index_results(places_near)
+
+    lat = self.request.get('lat')
+    lon = self.request.get('lon')
+    #lat = self.request.GET['lat']
+    #lon = self.request.GET['lon']
+
+    logging.info("lat ", lat)
+    logging.info("lon ", lon)
+
+    places_near = placedlit.get_nearby_places(lat, lon, False)
+    template_values['scenes'] = json.dumps(places_near)
+
+    self.render_template('map.tmpl', template_values)
+
+    '''location = location.split('&')
+    for loc in location:
+        print "loc: " + loc
+
+    lat = location[0]
+    lng = location[1]
+
+    if lat and lon:
+      places_near = placedlit.get_nearby_places(lat, lon, False)
+      template_values['scenes'] = json.dumps(places_near)
+     loc_json = []
+    #if places_near:
+    loc_json = self.format_location_index_results(places_near)
     if loc_json:
       some_scene = random.choice(loc_json)
       template_values['center'] = '{{lat:{}, lng:{}}}'.format(
@@ -215,7 +237,7 @@ class MapFilterCoordsHandler(baseapp.BaseAppHandler):
       template_values['scenes'] = json.dumps(loc_json)
         # test purposes
     logging.info('mapFilterCoords template_values' + type(template_values))
-    self.render_template('map.tmpl', template_values)
+    self.render_template('map.tmpl', template_values)'''
 
 
 
@@ -286,7 +308,8 @@ urls = [
   ('/funding', FundingHandler),
   ('/home', HomeHandler),
   ('/map/filter/(.*)/(.*)', MapFilterHandler),
-  ('/map/filter/coordinates/(.*)/(.*)', MapFilterCoordsHandler),
+  #('/map/coords/(\-?\d*\.\d*\&\-?\d*\.\d*)', MapFilterCoordsHandler),
+  ('/map/coords/(.*)', MapFilterCoordsHandler),
   ('/map(/?.*)', MapHandler),
   ('/', MapHandler),
   ('/user/status', UserstatusHandler),
