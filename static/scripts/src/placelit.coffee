@@ -18,7 +18,7 @@ class PLMap
 
   isFiltered: ->
     #if (@path.indexOf('collections') == -1) and (@path.indexOf('author') == -1) and (@path.indexOf('title') == -1) and (@path.indexOf('coordinates') == -1)
-    if (@path.indexOf('collections') == -1) and (@path.indexOf('author') == -1) and (@path.indexOf('title') == -1)
+    if (@path.indexOf('collections') == -1) and (@path.indexOf('author') == -1) and (@path.indexOf('title') == -1) and (@path.indexOf('coords') == -1)
       console.log('isFiltered false');
       return false
     console.log('isFiltered true');

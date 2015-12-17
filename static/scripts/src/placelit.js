@@ -20,7 +20,7 @@
     };
 
     PLMap.prototype.isFiltered = function() {
-      if ((this.path.indexOf('collections') === -1) && (this.path.indexOf('author') === -1) && (this.path.indexOf('title') === -1)) {
+      if ((this.path.indexOf('collections') === -1) && (this.path.indexOf('author') === -1) && (this.path.indexOf('title') === -1) && (this.path.indexOf('coords') === -1)) {
         console.log('isFiltered false');
         return false;
       }

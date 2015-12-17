@@ -199,13 +199,30 @@ class MapFilterHandler(baseapp.BaseAppHandler):
 # and render a map.
 
 class MapFilterCoordsHandler(baseapp.BaseAppHandler):
-  def get(self):
+  def get(self, query=None ):
     template_values = self.basic_template_content()
     template_values['title'] = 'Map'
-    template_values['count'] = placedlit.PlacedLit.count()
+
+    #template_values['count'] = placedlit.PlacedLit.count()
+    '''
+    print "query: " + Query
 
     lat = self.request.get('lat')
     lon = self.request.get('lon')
+
+    print lat
+    print lon
+
+
+    places = location_index.sorted_location_query(lat, lon)
+    formatted_results = self.format_location_index_results(places)
+
+    template_values['scenes'] = json.dumps(formatted_results)'''
+
+    template_values['scenes'] = "1234"
+    self.render_template('map.tmpl', template_values)
+
+    '''
     #lat = self.request.GET['lat']
     #lon = self.request.GET['lon']
 
@@ -215,9 +232,7 @@ class MapFilterCoordsHandler(baseapp.BaseAppHandler):
     places_near = placedlit.get_nearby_places(lat, lon, False)
     template_values['scenes'] = json.dumps(places_near)
 
-    self.render_template('map.tmpl', template_values)
-
-    '''location = location.split('&')
+    location = location.split('&')
     for loc in location:
         print "loc: " + loc
 
@@ -309,7 +324,7 @@ urls = [
   ('/home', HomeHandler),
   ('/map/filter/(.*)/(.*)', MapFilterHandler),
   #('/map/coords/(\-?\d*\.\d*\&\-?\d*\.\d*)', MapFilterCoordsHandler),
-  ('/map/coords/(.*)', MapFilterCoordsHandler),
+  ('/map/coords/(/?.*)', MapFilterCoordsHandler),
   ('/map(/?.*)', MapHandler),
   ('/', MapHandler),
   ('/user/status', UserstatusHandler),

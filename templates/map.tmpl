@@ -437,7 +437,6 @@ in the window namespace -->
     // window.PLACESNEAR = {{places_near}};
     // window.LOCJSON = {{loc_json}};
   </script>
-
 {% endif %}
 
 
@@ -514,9 +513,13 @@ in the window namespace -->
     });
     var startBtn = document.getElementById("get-started-button");
     startBtn.addEventListener("click", hideOverlay);
-    $('html').click(function(){
+
+    
+    $('#mapcontainer').click(function(){
       $('.geosearchResults').hide();
     });
+
+
 
     $('.geosearchResults').click(function(event){
       event.stopPropagation();

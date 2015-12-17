@@ -675,8 +675,13 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
                   author_data.push(value.author.toString())
                 $.each titles, (key, value) =>
                   title_data.push(value.title.toString())
+                console.log("author data: " + author_data);
+                console.log("title data " + title_data );
                 @hideOverlay()
-                $('.geosearchResults').show() # this is the search suggestsion dropdown
+                #$('.geosearchResults').show() # this is the search suggestsion dropdown
+                $('.geosearchResults').attr('style','display: block !important;')
+                $('#mapcontainer').click ->
+                  $('.geosearchResults').hide();
                 @suggestAuthors(author_data)
                 @suggestTitles(title_data)
                 @populateSuggestedSearches(authors, titles)
@@ -685,6 +690,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
             #$('#search').on 'click', (event) =>
               #$('#info-overlay').show()
               #@populateSuggestedSearches()
+
   linkMagnifyClickGcf: ->
     # hack way to cause clicking #search to press enter in gcf
     console.log("linkMagnifyClickGcf executed")
@@ -692,6 +698,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     enter_press.which = 13;
     $('#search').click ->
       $('#gcf').trigger(enter_press);
+      $('.geosearchResults').attr('style','display: block;')
 
 
   attachNewSceneHandler: ->
@@ -1144,7 +1151,7 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
     @gmap.setCenter(mapcenter)
     # console.log('zoom', @gmap.getZoom())
-    @gmap.setZoom(@settings.zoomLevel.wide)
+    @gmap.setZoom(@settings.zoomLevel.tight)
     $('#addscenebutton').on('click', @handleAddSceneButtonClick)
     $('#addscenebutton').show()
 

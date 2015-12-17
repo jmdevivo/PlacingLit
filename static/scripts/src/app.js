@@ -961,8 +961,13 @@
                     $.each(titles, function(key, value) {
                       return title_data.push(value.title.toString());
                     });
+                    console.log("author data: " + author_data);
+                    console.log("title data " + title_data);
                     _this.hideOverlay();
-                    $('.geosearchResults').show();
+                    $('.geosearchResults').attr('style', 'display: block !important;');
+                    $('#mapcontainer').click(function() {
+                      return $('.geosearchResults').hide();
+                    });
                     _this.suggestAuthors(author_data);
                     _this.suggestTitles(title_data);
                     return _this.populateSuggestedSearches(authors, titles);
@@ -981,7 +986,8 @@
       enter_press = jQuery.Event('keydown');
       enter_press.which = 13;
       return $('#search').click(function() {
-        return $('#gcf').trigger(enter_press);
+        $('#gcf').trigger(enter_press);
+        return $('.geosearchResults').attr('style', 'display: block;');
       });
     };
 
@@ -1538,7 +1544,7 @@
       this.linkMagnifyClickGcf();
       mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
       this.gmap.setCenter(mapcenter);
-      this.gmap.setZoom(this.settings.zoomLevel.wide);
+      this.gmap.setZoom(this.settings.zoomLevel.tight);
       $('#addscenebutton').on('click', this.handleAddSceneButtonClick);
       return $('#addscenebutton').show();
     };
