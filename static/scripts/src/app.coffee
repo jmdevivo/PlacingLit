@@ -109,14 +109,22 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     # testing placesNear
     if navigator.geolocation
       position = navigator.geolocation.getCurrentPosition(@getPlacesNearController)
-
-
     @collection.fetch()
     # setup handler for geocoder searches
     @suggestAuthors()
     @attachNewSceneHandler()
     @attachSearchHandler()
     @linkMagnifyClickGcf() # make clicking #search (magnifying glass) press enter in #gcf (search bar)
+    # crazy idea to make share links load to the scene card
+    @isShareLink();
+
+  # if true, then map should load right to this scene card
+  isShareLink: () ->
+    pathname = window.location.pathname;
+    if (pathname.indexOf("map") > -1 and pathname.indexOf("filter") > -1 and pathname.indexOf("id") > -1)
+      mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
+      @gmap.setCenter(mapcenter);
+
 
 
   getPlacesNearController: (position) =>
@@ -879,7 +887,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
 
   openInfowindowForPlace: (place_key, windowOptions) ->
-    console.log('open', windowOptions)
+    #console.log('open', windowOptions)
     $('#info-overlay').animate {
         left: '-=1000'
       },700, () ->
@@ -905,12 +913,14 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         'label': windowOptions.scene.get('title') + ':' + place_key
         'value' : 1
       @mapEventTracking(tracking)
+    console.log("GET /places/info/" + place_key);
+    '''
     $.getJSON url, (data) =>
       @placeInfowindow.close() if @placeInfowindow?
-
-
       #iw = @infowindow()
       #console.log(windowOptions.marker.position)
+
+      console.log('buildInfoWindow:  data: ' + JSON.stringify(data));
       @buildInfowindow(data, true)
       console.log("openInfowindowForPlace() Location Data: " + JSON.stringify(data))
       if windowOptions.position
@@ -922,8 +932,40 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       #else
         #iw.open(@gmap, windowOptions.marker)
       #@placeInfowindow = iw
-
+    (error) =>
+      console.log("info place window error: " + error);
       @handleCheckinButtonClick
+    '''
+    $.ajax
+      url: "/places/info/" + place_key,
+      dataType: "json",
+      success: (data) =>
+        @placeInfowindow.close() if @placeInfowindow?
+        iw = @infowindow()
+        #console.log(windowOptions.marker.position)
+
+        console.log('build info window success:' + this.url)
+
+        console.log('buildInfoWindow:  data: ' + JSON.stringify(data));
+        @buildInfowindow(data, true)
+        console.log("openInfowindowForPlace() Location Data: " + JSON.stringify(data))
+        if windowOptions.position
+          #console.log(typeof windowOptions.position)
+          #console.log(windowOptions.position)
+          iw.setPosition(windowOptions.position)
+          iw.open(@gmap)
+          @gmap.setCenter(windowOptions.position)
+        #else
+          #iw.open(@gmap, windowOptions.marker)
+        #@placeInfowindow = iw
+      error: (err) =>
+        console.log('build info window error:' + url)
+        console.log("err: " + JSON.stringify(err));
+        console.log('buildInfoWindow:  data: ' + JSON.stringify(data));
+
+
+
+
 
   mapEventTracking: (data)->
     ga('send', 'event', data.category, data.action, data.label, data.value)
@@ -965,7 +1007,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     console.log("buildMarkerFromLocation")
     #console.log("location type: " + typeof(location));
     #console.log("location: " + JSON.stringify(location));
-
     lat = location.get('latitude')
     lng = location.get('longitude')
     title = location.get('title')
@@ -978,10 +1019,14 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     return marker
 
   locationMarkerEventHandler: (location, marker) ->
+    #console.log("location marker clicked: " + JSON.stringify(location));
     google.maps.event.addListener marker, 'click', (event) =>
       windowOptions =
         marker: marker
         scene: location
+
+      placeInfo = location.get('db_key');
+      console.log("locMarkEventHandl: placeInfo: " + JSON.stringify(placeInfo));
       @openInfowindowForPlace(location.get('db_key'), windowOptions)
 
   dropMarkerForStoredLocation: (location) ->
@@ -1145,13 +1190,13 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     @gmap ?= @googlemap()
     @allMarkers = @markerArrayFromCollection(@collection)
     @markerClustersForScenes(@allMarkers)
-    # @markersForEachScene(@collection)
+    @markersForEachScene(@collection)
     @attachSearchHandler()
     @linkMagnifyClickGcf() # make clicking magnifying glass icon press enter in search box
     mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
     @gmap.setCenter(mapcenter)
     # console.log('zoom', @gmap.getZoom())
-    @gmap.setZoom(@settings.zoomLevel.tight)
+    @gmap.setZoom(@settings.zoomLevel.close)
     $('#addscenebutton').on('click', @handleAddSceneButtonClick)
     $('#addscenebutton').show()
 

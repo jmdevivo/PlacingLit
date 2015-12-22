@@ -196,7 +196,17 @@
       this.suggestAuthors();
       this.attachNewSceneHandler();
       this.attachSearchHandler();
-      return this.linkMagnifyClickGcf();
+      this.linkMagnifyClickGcf();
+      return this.isShareLink();
+    };
+
+    MapCanvasView.prototype.isShareLink = function() {
+      var mapcenter, pathname;
+      pathname = window.location.pathname;
+      if (pathname.indexOf("map") > -1 && pathname.indexOf("filter") > -1 && pathname.indexOf("id") > -1) {
+        mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
+        return this.gmap.setCenter(mapcenter);
+      }
     };
 
     MapCanvasView.prototype.getPlacesNearController = function(position) {
@@ -1140,7 +1150,6 @@
 
     MapCanvasView.prototype.openInfowindowForPlace = function(place_key, windowOptions) {
       var tracking, url;
-      console.log('open', windowOptions);
       $('#info-overlay').animate({
         left: '-=1000'
       }, 700, function() {
@@ -1166,21 +1175,36 @@
         };
         this.mapEventTracking(tracking);
       }
-      return $.getJSON(url, (function(_this) {
-        return function(data) {
-          if (_this.placeInfowindow != null) {
-            _this.placeInfowindow.close();
-          }
-          _this.buildInfowindow(data, true);
-          console.log("openInfowindowForPlace() Location Data: " + JSON.stringify(data));
-          if (windowOptions.position) {
-            iw.setPosition(windowOptions.position);
-            iw.open(_this.gmap);
-            _this.gmap.setCenter(windowOptions.position);
-          }
-          return _this.handleCheckinButtonClick;
-        };
-      })(this));
+      console.log("GET /places/info/" + place_key);
+      '$.getJSON url, (data) =>\n  @placeInfowindow.close() if @placeInfowindow?\n  #iw = @infowindow()\n  #console.log(windowOptions.marker.position)\n\n  console.log(\'buildInfoWindow:  data: \' + JSON.stringify(data));\n  @buildInfowindow(data, true)\n  console.log("openInfowindowForPlace() Location Data: " + JSON.stringify(data))\n  if windowOptions.position\n    #console.log(typeof windowOptions.position)\n    #console.log(windowOptions.position)\n    iw.setPosition(windowOptions.position)\n    iw.open(@gmap)\n    @gmap.setCenter(windowOptions.position)\n  #else\n    #iw.open(@gmap, windowOptions.marker)\n  #@placeInfowindow = iw\n(error) =>\n  console.log("info place window error: " + error);\n  @handleCheckinButtonClick';
+      return $.ajax({
+        url: "/places/info/" + place_key,
+        dataType: "json",
+        success: (function(_this) {
+          return function(data) {
+            var iw;
+            if (_this.placeInfowindow != null) {
+              _this.placeInfowindow.close();
+            }
+            iw = _this.infowindow();
+            console.log('build info window success:' + _this.url);
+            console.log('buildInfoWindow:  data: ' + JSON.stringify(data));
+            _this.buildInfowindow(data, true);
+            console.log("openInfowindowForPlace() Location Data: " + JSON.stringify(data));
+            if (windowOptions.position) {
+              iw.setPosition(windowOptions.position);
+              iw.open(_this.gmap);
+              return _this.gmap.setCenter(windowOptions.position);
+            }
+          };
+        })(this),
+        error: (function(_this) {
+          return function(err) {
+            console.log('build info window error:' + url);
+            return console.log("err: " + JSON.stringify(err));
+          };
+        })(this)
+      });
     };
 
     MapCanvasView.prototype.mapEventTracking = function(data) {
@@ -1256,11 +1280,13 @@
     MapCanvasView.prototype.locationMarkerEventHandler = function(location, marker) {
       return google.maps.event.addListener(marker, 'click', (function(_this) {
         return function(event) {
-          var windowOptions;
+          var placeInfo, windowOptions;
           windowOptions = {
             marker: marker,
             scene: location
           };
+          placeInfo = location.get('db_key');
+          console.log("locMarkEventHandl: placeInfo: " + JSON.stringify(placeInfo));
           return _this.openInfowindowForPlace(location.get('db_key'), windowOptions);
         };
       })(this));
@@ -1540,11 +1566,12 @@
       }
       this.allMarkers = this.markerArrayFromCollection(this.collection);
       this.markerClustersForScenes(this.allMarkers);
+      this.markersForEachScene(this.collection);
       this.attachSearchHandler();
       this.linkMagnifyClickGcf();
       mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
       this.gmap.setCenter(mapcenter);
-      this.gmap.setZoom(this.settings.zoomLevel.tight);
+      this.gmap.setZoom(this.settings.zoomLevel.close);
       $('#addscenebutton').on('click', this.handleAddSceneButtonClick);
       return $('#addscenebutton').show();
     };

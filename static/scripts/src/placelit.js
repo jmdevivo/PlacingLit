@@ -20,7 +20,7 @@
     };
 
     PLMap.prototype.isFiltered = function() {
-      if ((this.path.indexOf('collections') === -1) && (this.path.indexOf('author') === -1) && (this.path.indexOf('title') === -1) && (this.path.indexOf('coords') === -1)) {
+      if ((this.path.indexOf('collections') === -1) && (this.path.indexOf('author') === -1) && (this.path.indexOf('title') === -1) && (this.path.indexOf('coords') === -1) && (this.path.indexOf('filter') === -1)) {
         console.log('isFiltered false');
         return false;
       }
@@ -39,6 +39,15 @@
       }
       console.log("this is a default view ===============");
       return new PlacingLit.Views.MapCanvasView;
+    };
+
+    PLMap.prototype.isShareLink = function() {
+      var pathname;
+      pathname = window.location.pathname;
+      if (pathname.indexOf("map") > -1 && pathname.indexOf("filter") > -1 && pathname.indexOf("id") > -1) {
+        console.log("is share link");
+        return true;
+      }
     };
 
     PLMap.prototype.closeFeatContent = function() {
@@ -68,6 +77,12 @@
       return console.log('parseQuery result: ' + JSON.stringify(result));
     };
 
+    PLMap.prototype.parseURI = function(URI) {
+      var split;
+      split = URI.split('/');
+      return split;
+    };
+
     return PLMap;
 
   })();
@@ -76,6 +91,7 @@
     var plmap, view;
     plmap = new PLMap();
     view = plmap.selectMapView();
+    'if plmap.isShareLink() == true\n  uri = plmap.parseURI(window.location.pathname)\n  #view.openInfowindowForPlace(uri[4], )';
     console.log('view created: ' + view.constructor.name);
     if (location.search === '?modal=1') {
       plmap.showModal(plmap.elements.modals.mapmodal);
@@ -117,17 +133,20 @@
     })(this)
   });
 
+  '$.ajax\n  url: "/places/recent",\n  dataType: "json",\n  success: (data) =>\n    #console.log("/places/recent: " + JSON.stringify(data[0]))\n    $(\'#newest_scene\').html("<b>" + data[0][\'location\'] + "</b> from <i> " + data[0][\'title\'] + "</i> by " + data[0][\'author\'])\n  error: (err) =>\n    console.log("error: /places/recent - " + err )';
+
   $.ajax({
-    url: "/places/recent",
+    url: "/places/info/6547073193213952",
     dataType: "json",
     success: (function(_this) {
       return function(data) {
-        return $('#newest_scene').html("<b>" + data[0]['location'] + "</b> from <i> " + data[0]['title'] + "</i> by " + data[0]['author']);
+        console.log("places/info test: ");
+        return console.log(JSON.stringify(data));
       };
     })(this),
     error: (function(_this) {
       return function(err) {
-        return console.log("error: /places/recent - " + err);
+        return console.log("error: /places/info - " + JSON.stringify(err));
       };
     })(this)
   });

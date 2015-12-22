@@ -74,7 +74,10 @@
       <h4>To see all available places for every author click 'see all places'</h4>
     </div>
   </div>
-   <img class='placing-lit-logo' src='/img/logo@2x.png' onclick="home_redirect()"/>
+   <a href="/" >
+     <img class='placing-lit-logo' src='/img/logo@2x.png'</>
+   </a>
+
   <div id="mapsearchcontainer" class="navbar">
 
     <div id="maponly">
@@ -514,7 +517,7 @@ in the window namespace -->
     var startBtn = document.getElementById("get-started-button");
     startBtn.addEventListener("click", hideOverlay);
 
-    
+
     $('#mapcontainer').click(function(){
       $('.geosearchResults').hide();
     });
