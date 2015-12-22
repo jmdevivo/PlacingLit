@@ -619,7 +619,8 @@ solid #666}.leaflet-label{background:#333;border-color:#333;border-radius:4px;bo
 }
 
 #contact_form .row .input {
-	padding: 2px 5px;
+    padding: 2px 5px;
+    width: 100%;
 }
 
 #contact_form #submit_button {
