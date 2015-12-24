@@ -1,3 +1,134 @@
+@media screen and (max-width: 701px) {
+  #map-page-container {
+    max-width: 701px; }
 
+  .overlay {
+    min-width: 300px;
+    padding-left: 7%; }
+
+  .tall-map-window {
+    height: 500px;
+    width: 94%;
+    min-width: 180px;
+    position: relative;
+    top: 13px;
+    left: 12px;
+    padding: 30px; }
+
+  .vanishing-col {
+    width: 446px;
+    margin-top: 540px;
+    margin-left: 20px; }
+
+  .wide-map-window {
+    margin-left: 18px;
+    width: 96%; }
+
+  .wide-map-window:first-child {
+    margin-top: -15px; }
+
+  .left-map-window-div {
+    left: 14%; }
+
+  #mapsearchcontainer {
+    min-height: 0px;
+    left: 0px;
+    margin: 0px;
+    top: 100px;
+    width: 431px;
+    position: absolute; }
+
+  #mapcontainer {
+    margin-top: 55px; }
+
+  #allscenes-text {
+    display: none; }
+
+  #maplinks {
+    margin-left: 19px; }
+
+  #loginlink {
+    top: 51px;
+    position: absolute;
+    right: 0px; }
+
+  /*HAMBURGER*/
+  .hamburger {
+    top: 8px;
+    position: absolute;
+    display: block;
+    right: 14px; }
+
+  .ham_dropdown {
+    display: block; }
+
+  .ham_dropdown img {
+    width: 40px; }
+
+  .drop_off {
+    display: none; }
+
+  .dropmenu {
+    display: none;
+    position: absolute;
+    padding: 10px 0px;
+    background: #222 none repeat scroll 0% 0%;
+    right: 3px;
+    top: 53px;
+    width: 300px;
+    color: #FFF;
+    z-index: 999; }
+
+  .hamburger ul {
+    padding: 10px 0px 3px;
+    background: #222 none repeat scroll 0% 0%;
+    right: 3px;
+    top: 53px;
+    width: 300px;
+    color: #FFF;
+    z-index: 999;
+    position: absolute;
+    text-align: center; }
+
+  .hamburger ul li {
+    border-top: 1px solid #333;
+    padding: 16px 0px 12px;
+    list-style-type: none; }
+
+  .hamburger ul li:hover {
+    background: #333; }
+
+  .hamburger a {
+    color: #fff;
+    font-weight: 500; }
+
+  .hamburger a:hover {
+    font-weight: 500;
+    color: #fff;
+    text-decoration: underline; } }
+@media screen and (max-width: 500px) {
+  .vanishing-col {
+    display: none; }
+
+  .tall-map-window {
+    width: 300px;
+    left: 0px; }
+
+  #mapsearchcontainer {
+    width: 300px; }
+
+  .window-container {
+    min-width: 300px; }
+
+  .placing-lit-logo {
+    margin-top: 11px;
+    width: 259px; } }
+@media screen and (max-width: 400px) {
+  .left-map-window-div {
+    left: 4% !important; }
+
+  .hamburger ul {
+    right: -14px;
+    width: 321px; } }
 
 /*# sourceMappingURL=media_queries.css.map */

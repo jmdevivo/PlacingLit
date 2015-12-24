@@ -74,10 +74,29 @@
       <h4>To see all available places for every author click 'see all places'</h4>
     </div>
   </div>
+  	
+<script type="text/javascript">
+ jQuery(function($){
+    	     $( '.ham_dropdown' ).click(function(){
+    	     $('.dropmenu').toggle('drop_off')
+    	     })
+        })
+</script>
+  
    <a href="/" >
      <img class='placing-lit-logo' src='/img/logo@2x.png'</>
    </a>
-
+   <nav class='hamburger'>
+     <a href='#' class='ham_dropdown'><img src='/img/med_hamburger_icon.png'></a>
+     <ul class='dropmenu drop_off'>
+       <li><a href="/" class="current">Home</a> </li>
+       <li><a href="/about">About</a> </li>
+       <li><a href="https://placingliterature.wordpress.com/" target="_blank">Blog </a> </li>
+       <li><a href="https://soundcloud.com/placingliterature/" target="_blank">Podcasts</a> </li>
+	   <li><a href="/authorspotlight">Author Spotlight</a> </li>
+	   <li><a href="/collections">Collections</a> </li>
+     </ul>
+   </nav>
   <div id="mapsearchcontainer" class="navbar">
 
     <div id="maponly">
