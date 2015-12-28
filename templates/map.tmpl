@@ -74,9 +74,75 @@
       <h4>To see all available places for every author click 'see all places'</h4>
     </div>
   </div>
+
    <a href="/" >
      <img class='placing-lit-logo' src='/img/logo@2x.png'</>
    </a>
+
+   <!-- <a href="#" id="hamburger">
+     Hey this is a test
+   </a> -->
+
+   <nav id="hamburger_nav_wrap">
+
+     <ul id="hamburger_nav_ul">
+       <li class="hamburger_content">
+         <a class="navLink" href="/" class ="current">Home</a>
+       </li>
+       <li class="hamburger_content">
+         <a class="navLink" href="about">About</a>
+       </li>
+       <li class="hamburger_content">
+         <a class="navLink" href="/authorspotlight">Author Spotlight</a>
+       </li>
+       <li class="hamburger_content">
+         <a class="navLink" href="/collections">Collections</a>
+       </li>
+       <li class="hamburger_content">
+         <a class="navLink" href="https://placingliterature.wordpress.com/">Blog </a>
+       </li>
+       <li class="hamburger_content">
+         <a class="navLink" target="_blank" href="https://soundcloud.com/placingliterature/">Podcasts</a>
+       </li>
+    </ul>
+
+   </nav>
+
+   <script>
+      $(document).ready(function($){
+          // prepend menu icon
+          $("#hamburger_nav_wrap").prepend('<div id="hamburger-icon"><img src="/img/hamburger_icon.png"></div>');
+          // todo: add hamburger icon to menu-icon
+
+          /* toggle nav */
+        	$("#hamburger-icon").on("click", function(){
+        		$("#hamburger_nav_ul").slideToggle();
+        		$(this).toggleClass("active");
+        	});
+      });
+   </script>
+
+  <!-- <ul id="hamburger_ul" >
+      <li class="hamburger_content">
+        <a class="navLink" href="/" class ="current">Home</a>
+      </li>
+      <li class="hamburger_content">
+        <a class="navLink" href="about">About</a>
+      </li>
+      <li class="hamburger_content">
+        <a class="navLink" href="/authorspotlight">Author Spotlight</a>
+      </li>
+      <li class="hamburger_content">
+        <a class="navLink" href="/collections">Collections</a>
+      </li>
+      <li class="hamburger_content">
+        <a href="https://placingliterature.wordpress.com/">Blog </a>
+      </li>
+      <li class="hamburger_content">
+        <a class="navLink" target="_blank" href="https://soundcloud.com/placingliterature/">Podcasts</a>
+      </li>
+  </ul> -->
+
 
   <div id="mapsearchcontainer" class="navbar">
 

@@ -5387,7 +5387,7 @@ body {
   cursor: pointer; }
 
 #geocodersearch {
-  width: 300px; }
+  width: 230px; }
 
 #loginlink {
   float: right;
@@ -5508,5 +5508,35 @@ input[type="checkbox"], input[type="radio"] {
 
 .googleImage {
   height: 11px !important; }
+
+#hamburger-icon {
+  display: none; }
+
+#hamburger_nav_wrap {
+  display: inline;
+  float: right; }
+
+#hamburger_content {
+  border: solid 1px #ccc; }
+
+@media screen and (max-width: 1000px) {
+  #hamburger-icon {
+    display: inline;
+    float: right;
+    width: 42px;
+    height: 30px;
+    margin-top: 12px;
+    cursor: pointer; }
+
+  #hamburger_nav_ul {
+    clear: both;
+    position: absolute;
+    top: 38px;
+    width: 160px;
+    z-index: 10000;
+    padding: 5px;
+    background: #000000;
+    border: solid 1px #fff;
+    display: none; } }
 
 /*# sourceMappingURL=placelit.css.map */
