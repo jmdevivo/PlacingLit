@@ -226,7 +226,7 @@ body { height: $full; margin:0%; padding:0; }
   width:$full;
   top:0%;
   z-index: 0;
-  border-top: $mapborder;
+  border-top: 0px;
   border-bottom: $mapborder;
   margin-left: auto;
   margin-right: auto;
@@ -1189,6 +1189,16 @@ input[type="checkbox"], input[type="radio"] {
 
 .hamburger {
 	display: none;
+}
+
+#slideshow, img.bgM {
+    min-width: 1300px;
+    height: auto;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    margin-top: 60px;
 }
 
 // This is the hamburger menu code!
