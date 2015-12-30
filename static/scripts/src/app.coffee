@@ -829,20 +829,13 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     $('#entry-visits-body').html(data.visits)
 
     twitterlink = "https://twitter.com/intent/tweet?text=Check%20out%20"+data.title+"%20at%20"+data.place_name+"%20by%20visiting%20placing-literature.appspot.com/map/filter/id/"+data.id+"%20#getlit"
-    $('#twitterActionLink').click((e) =>
-      e.preventDefault()
-      window.open(twitterlink)
-      )
-    $('#facebookActionLink').click((e) =>
-      e.preventDefault()
-      window.open('http://www.facebook.com/share.php?u=http://www.placing-literature.appspot.com/map/filter/id/'+data.id)
-      )
+    $('#twitterActionLink').attr('href', twitterlink);
+    #console.log("twitter link: " + twitterlink);
+    facebooklink = 'http://www.facebook.com/share.php?u=http://www.placing-literature.appspot.com/map/filter/id/'+data.id;
+    $('#facebookActionLink').attr('href', facebooklink);
+    #console.log("fb link: " + facebooklink);
     $('#share_url').val('placing-literature.appspot.com/map/filter/id/'+data.id)
 
-    '''  temprorary comment by Will Acheson
-    if !!data.image_url
-      content += @sceneUserImageTemplate()(image_url: data.image_url)
-    '''
     if !!data.image_data
       content += @sceneAPIImageTemplate()(image_id: data.image_data.photo_id)
 

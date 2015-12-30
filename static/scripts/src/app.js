@@ -1078,7 +1078,7 @@
     };
 
     MapCanvasView.prototype.buildInfowindow = function(data, updateButton) {
-      var content, field, img, label, twitterlink;
+      var content, facebooklink, field, img, label, twitterlink;
       console.log('buildInfowindow');
       $('#tabs').show();
       this.clearInfowindowClickEvents();
@@ -1119,20 +1119,12 @@
       $('#entry-place-body').html(data.notes);
       $('#entry-visits-body').html(data.visits);
       twitterlink = "https://twitter.com/intent/tweet?text=Check%20out%20" + data.title + "%20at%20" + data.place_name + "%20by%20visiting%20placing-literature.appspot.com/map/filter/id/" + data.id + "%20#getlit";
-      $('#twitterActionLink').click((function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return window.open(twitterlink);
-        };
-      })(this));
-      $('#facebookActionLink').click((function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return window.open('http://www.facebook.com/share.php?u=http://www.placing-literature.appspot.com/map/filter/id/' + data.id);
-        };
-      })(this));
+      $('#twitterActionLink').attr('href', twitterlink);
+      console.log("twitter link: " + twitterlink);
+      facebooklink = 'http://www.facebook.com/share.php?u=http://www.placing-literature.appspot.com/map/filter/id/' + data.id;
+      $('#facebookActionLink').attr('href', facebooklink);
+      console.log("fb link: " + facebooklink);
       $('#share_url').val('placing-literature.appspot.com/map/filter/id/' + data.id);
-      '  temprorary comment by Will Acheson\nif !!data.image_url\n  content += @sceneUserImageTemplate()(image_url: data.image_url)';
       if (!!data.image_data) {
         content += this.sceneAPIImageTemplate()({
           image_id: data.image_data.photo_id
