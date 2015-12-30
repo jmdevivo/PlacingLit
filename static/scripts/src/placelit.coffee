@@ -19,9 +19,9 @@ class PLMap
   isFiltered: ->
     #if (@path.indexOf('collections') == -1) and (@path.indexOf('author') == -1) and (@path.indexOf('title') == -1) and (@path.indexOf('coordinates') == -1)
     if (@path.indexOf('collections') == -1) and (@path.indexOf('author') == -1) and (@path.indexOf('title') == -1) and (@path.indexOf('coords') == -1) and (@path.indexOf('filter') == -1)
-      console.log('isFiltered false');
+      #console.log('isFiltered false');
       return false
-    console.log('isFiltered true');
+    #console.log('isFiltered true');
     return true
 
   hasScenes: ->
@@ -60,7 +60,7 @@ class PLMap
       vals = param.split '='
       result[vals[0]] = vals[1]
     result
-    console.log('parseQuery result: ' + JSON.stringify(result));
+    #console.log('parseQuery result: ' + JSON.stringify(result));
 
   parseURI: (URI) ->
     split = URI.split '/'
@@ -69,12 +69,7 @@ class PLMap
 $ ->
   plmap = new PLMap()
   view = plmap.selectMapView()
-  '''
-  if plmap.isShareLink() == true
-    uri = plmap.parseURI(window.location.pathname)
-    #view.openInfowindowForPlace(uri[4], )
-  '''
-  console.log('view created: ' + view.constructor.name )
+  #console.log('view created: ' + view.constructor.name )
   if location.search is '?modal=1'
     plmap.showModal(plmap.elements.modals.mapmodal)
   else if plmap.isFiltered()
@@ -94,47 +89,13 @@ $ ->
 
 
 
-# TODO: move to app.coffe function, call in initalization
-$.ajax
-  url: "/blog/latest",
-  success: (data) =>
-    data = JSON.parse(data)
-    $('#recent-blog-post-summary').html(data['newest_post_description']);
-    $('#recent-blog-post-link').attr('href', data['newest_post_link']);
-    $('#recent-blog-post-title').html(data['newest_post_title']);
-    $('#recent-blog-post-published-date').html(data["newest_post_pub_date"]);
-    console.log();
-  error: (err) =>
-    console.log("error requesting newest blog from server")
-    console.log(err)
 
-'''
-$.ajax
-  url: "/places/recent",
-  dataType: "json",
-  success: (data) =>
-    #console.log("/places/recent: " + JSON.stringify(data[0]))
-    $('#newest_scene').html("<b>" + data[0]['location'] + "</b> from <i> " + data[0]['title'] + "</i> by " + data[0]['author'])
-  error: (err) =>
-    console.log("error: /places/recent - " + err )
-'''
 
-$.ajax
-  url: "/places/info/6547073193213952",
-  dataType: "json",
-  success: (data)=>
-    console.log("places/info test: ")
-    console.log(JSON.stringify(data));
-  error: (err) =>
-    console.log("error: /places/info - " + JSON.stringify(err) )
-
-'''
-$.ajax
-  url:"/collections/slq",
-  success: (data) =>
-    console.log("slq collection: ");
-    console.log(data);
-  error: (err) =>
-    console.log("error: /collections/slq - " + JSON.stringify(err) )
-
-'''
+# $.ajax
+#   url: "/places/info/6547073193213952",
+#   dataType: "json",
+#   success: (data)=>
+#     console.log("places/info test: ")
+#     console.log(JSON.stringify(data));
+#   error: (err) =>
+#     console.log("error: /places/info - " + JSON.stringify(err) )

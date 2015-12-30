@@ -113,6 +113,7 @@
       this.showMarkers = bind(this.showMarkers, this);
       this.hideMarkers = bind(this.hideMarkers, this);
       this.handleViewportChange = bind(this.handleViewportChange, this);
+      this.getRecentBlog = bind(this.getRecentBlog, this);
       this.getPlacesNearController = bind(this.getPlacesNearController, this);
       return MapCanvasView.__super__.constructor.apply(this, arguments);
     }
@@ -185,6 +186,7 @@
 
     MapCanvasView.prototype.initialize = function(scenes) {
       var position;
+      this.getRecentBlog();
       if (this.collection == null) {
         this.collection = new PlacingLit.Collections.Locations();
       }
@@ -224,6 +226,28 @@
           return function(err) {
             console.log("call to /places/near failed");
             return console.log("error: " + err);
+          };
+        })(this)
+      });
+    };
+
+    MapCanvasView.prototype.getRecentBlog = function() {
+      return $.ajax({
+        url: "/blog/latest",
+        success: (function(_this) {
+          return function(data) {
+            data = JSON.parse(data);
+            $('#recent-blog-post-summary').html(data['newest_post_description']);
+            $('#recent-blog-post-link').attr('href', data['newest_post_link']);
+            $('#recent-blog-post-title').html(data['newest_post_title']);
+            $('#recent-blog-post-published-date').html(data["newest_post_pub_date"]);
+            return console.log();
+          };
+        })(this),
+        error: (function(_this) {
+          return function(err) {
+            console.log("error requesting newest blog from server");
+            return console.log(err);
           };
         })(this)
       });
@@ -449,7 +473,6 @@
 
     MapCanvasView.prototype.suggestAuthors = function(author_data) {
       var author, j, len, li, parent, searchTxt;
-      console.log("suggestAuthors");
       parent = document.getElementById('authorsSearchList');
       $(parent).empty();
       $(parent).show();
@@ -971,8 +994,6 @@
                     $.each(titles, function(key, value) {
                       return title_data.push(value.title.toString());
                     });
-                    console.log("author data: " + author_data);
-                    console.log("title data " + title_data);
                     _this.hideOverlay();
                     $('.geosearchResults').attr('style', 'display: block !important;');
                     $('#mapcontainer').click(function() {
@@ -1065,7 +1086,7 @@
       content = '<div class="plinfowindow">';
       $('#entry-image').show();
       if (!data.image_data || !data.image_data.photo_id) {
-        img = '<img src="img/placingLitNoImageFound.png" />';
+        img = '<img src="' + window.location.origin + '/img/placingLitNoImageFound.png" />';
         $('#entry-image').html(img);
       }
       if (!!data.image_data) {
@@ -1094,8 +1115,6 @@
       $("#googleActionLinkMoz2").attr('href', "https://www.google.com/search?q=" + data.place_name);
       $('#ibActionLink').attr('href', "http://www.rjjulia.com/book/" + data.isbn);
       $('#grActionLink').attr('href', "https://www.goodreads.com/book/isbn/" + data.isbn);
-      '$("#ibActionLink").click((e) =>\n  e.preventDefault()\n  window.open("http://www.rjjulia.com/book/"+ data.isbn)\n  )\n$("#grActionLink").click((e) =>\n  e.preventDefault()\n  window.open("https://www.goodreads.com/book/isbn/"+ data.isbn)\n  )\n#console.log "setting google action listener"\n\n\n$("#googleActionLink").click((e) =>\n  e.preventDefault()\n  window.open("https://www.google.com/search?q="+ data.place_name)\n  console.log(\'-------------------------buildInfowindow placename: \' + data.place_name)\n  )\n\n$("#googleActionLink2").click((e) =>\n  e.preventDefault()\n  window.open("https://www.google.com/search?q="+ data.place_name)\n  )\n\n$(\'.searchGoogle\').click((e) =>\n  e.preventDefault()\n  window.open("https://www.google.com/search?q="+ data.place_name)\n  )';
-      '$("#wikiActionLink").click((e) =>\n  e.preventDefault()\n  window.open("https://en.wikipedia.org/w/index.php?search="+ data.place_name)\n  )\n$("#wikiActionLink2").click((e) =>\n  e.preventDefault()\n  window.open("https://en.wikipedia.org/w/index.php?search="+ data.place_name)\n  )\n$("#ibActionLink").click((e) =>\n  e.preventDefault()\n  window.open("http://www.rjjulia.com/book/"+ data.isbn)\n  )';
       $('#entry-symbols-body').html(data.symbols);
       $('#entry-place-body').html(data.notes);
       $('#entry-visits-body').html(data.visits);
@@ -1145,11 +1164,15 @@
         this.handleInfowindowButtonEvents();
       }
       content += '</div>';
+      if ($('#entry-image').html === '') {
+        console.log('entry-image is empty, insert default image');
+      }
       return content;
     };
 
     MapCanvasView.prototype.openInfowindowForPlace = function(place_key, windowOptions) {
       var tracking, url;
+      console.log('open', windowOptions);
       $('#info-overlay').animate({
         left: '-=1000'
       }, 700, function() {
@@ -1176,7 +1199,6 @@
         this.mapEventTracking(tracking);
       }
       console.log("GET /places/info/" + place_key);
-      '$.getJSON url, (data) =>\n  @placeInfowindow.close() if @placeInfowindow?\n  #iw = @infowindow()\n  #console.log(windowOptions.marker.position)\n\n  console.log(\'buildInfoWindow:  data: \' + JSON.stringify(data));\n  @buildInfowindow(data, true)\n  console.log("openInfowindowForPlace() Location Data: " + JSON.stringify(data))\n  if windowOptions.position\n    #console.log(typeof windowOptions.position)\n    #console.log(windowOptions.position)\n    iw.setPosition(windowOptions.position)\n    iw.open(@gmap)\n    @gmap.setCenter(windowOptions.position)\n  #else\n    #iw.open(@gmap, windowOptions.marker)\n  #@placeInfowindow = iw\n(error) =>\n  console.log("info place window error: " + error);\n  @handleCheckinButtonClick';
       return $.ajax({
         url: "/places/info/" + place_key,
         dataType: "json",
@@ -1201,7 +1223,8 @@
         error: (function(_this) {
           return function(err) {
             console.log('build info window error:' + url);
-            return console.log("err: " + JSON.stringify(err));
+            console.log("err: " + JSON.stringify(err));
+            return console.log('buildInfoWindow:  data: ' + JSON.stringify(data));
           };
         })(this)
       });
@@ -1492,6 +1515,7 @@
     extend(MapFilterView, superClass);
 
     function MapFilterView() {
+      this.openInfoWindowForShareLink = bind(this.openInfoWindowForShareLink, this);
       return MapFilterView.__super__.constructor.apply(this, arguments);
     }
 
@@ -1548,15 +1572,63 @@
     };
 
     MapFilterView.prototype.initialize = function(scenes) {
+      var pathname;
       console.log("map filter view:  scenes ");
       console.log("scenes: " + JSON.stringify(scenes));
       console.log(scenes);
+      this.getRecentBlog();
       if (this.collection == null) {
         this.collection = new PlacingLit.Collections.Locations();
       }
       this.listenTo(this.collection, 'all', this.render);
       this.collection.reset(scenes);
-      return this.authors = this.suggestAuthors();
+      this.authors = this.suggestAuthors();
+      pathname = window.location.pathname;
+      if (pathname.indexOf("map") > -1 && pathname.indexOf("filter") > -1 && pathname.indexOf("id") > -1) {
+        return this.openInfoWindowForShareLink(scenes);
+      }
+    };
+
+    MapFilterView.prototype.openInfoWindowForShareLink = function(scene) {
+      var db_key, url;
+      db_key = scene[0].db_key;
+      $('#info-overlay').animate({
+        left: '-=1000'
+      }, 700, function() {
+        $('.entry').hide();
+        $('#info-overlay').show();
+        $('#scene_entry').show();
+        $('#tabs').show();
+        $('.tab').removeClass('activeTab');
+        $('#scene_tab').addClass('activeTab');
+        return $('#info-overlay').animate({
+          left: '+=1000'
+        }, 700);
+      });
+      url = '/places/info/' + db_key;
+      return $.ajax({
+        url: "/places/info/" + db_key,
+        dataType: "json",
+        success: (function(_this) {
+          return function(data) {
+            var iw;
+            if (_this.placeInfowindow != null) {
+              _this.placeInfowindow.close();
+            }
+            iw = _this.infowindow();
+            _this.buildInfowindow(data, true);
+            console.log("openInfowindowForPlace() Location Data: " + JSON.stringify(data));
+            iw.open(_this.gmap, windowOptions.marker);
+            return _this.placeInfowindow = iw;
+          };
+        })(this),
+        error: (function(_this) {
+          return function(err) {
+            console.log('build info window error:' + url);
+            return console.log("err: " + JSON.stringify(err));
+          };
+        })(this)
+      });
     };
 
     MapFilterView.prototype.render = function(event) {
@@ -1571,7 +1643,11 @@
       this.linkMagnifyClickGcf();
       mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
       this.gmap.setCenter(mapcenter);
-      this.gmap.setZoom(this.settings.zoomLevel.close);
+      if (window.location.pathname.indexOf("collections") !== -1) {
+        this.gmap.setZoom(this.settings.zoomLevel.wide);
+      } else {
+        this.gmap.setZoom(this.settings.zoomLevel.close);
+      }
       $('#addscenebutton').on('click', this.handleAddSceneButtonClick);
       return $('#addscenebutton').show();
     };

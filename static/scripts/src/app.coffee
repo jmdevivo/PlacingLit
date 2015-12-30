@@ -103,6 +103,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
 
   initialize: (scenes) ->
+    @getRecentBlog();
     @collection ?= new PlacingLit.Collections.Locations()
     @listenTo @collection, 'all', @render
 
@@ -127,6 +128,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
 
 
+      # dbkey and window options are inparam
+      #@openInfowindowForPlace(window.)
+
+
   getPlacesNearController: (position) =>
 
     console.log("requesting: " + '/places/near?lat=' + -19.155320 + "&lon=" + 30.013956)
@@ -141,6 +146,23 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       error: (err) =>
         console.log("call to /places/near failed")
         console.log("error: " + err)
+
+
+  getRecentBlog: () =>
+    # TODO: move to app.coffe function, call in initalization
+    $.ajax
+      url: "/blog/latest",
+      success: (data) =>
+        data = JSON.parse(data)
+        $('#recent-blog-post-summary').html(data['newest_post_description']);
+        $('#recent-blog-post-link').attr('href', data['newest_post_link']);
+        $('#recent-blog-post-title').html(data['newest_post_title']);
+        $('#recent-blog-post-published-date').html(data["newest_post_pub_date"]);
+        console.log();
+      error: (err) =>
+        console.log("error requesting newest blog from server")
+        console.log(err)
+
 
   render: (event) ->
     @mapWithMarkers() if event is 'sync'
@@ -295,7 +317,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         )
 
   suggestAuthors: (author_data) ->
-    console.log("suggestAuthors")
+    #console.log("suggestAuthors")
     parent = document.getElementById('authorsSearchList')
     $(parent).empty()
     $(parent).show()
@@ -683,8 +705,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
                   author_data.push(value.author.toString())
                 $.each titles, (key, value) =>
                   title_data.push(value.title.toString())
-                console.log("author data: " + author_data);
-                console.log("title data " + title_data );
+                #console.log("author data: " + author_data);
+                #console.log("title data " + title_data );
                 @hideOverlay()
                 #$('.geosearchResults').show() # this is the search suggestsion dropdown
                 $('.geosearchResults').attr('style','display: block !important;')
@@ -765,7 +787,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
     # image not found default image
     if !data.image_data or !data.image_data.photo_id
-      img = '<img src="img/placingLitNoImageFound.png" />'
+      img = '<img src="' + window.location.origin + '/img/placingLitNoImageFound.png" />'
       $('#entry-image').html(img)
 
     if !!data.image_data
@@ -802,53 +824,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     $('#ibActionLink').attr('href', "http://www.rjjulia.com/book/"+ data.isbn);
     $('#grActionLink').attr('href', "https://www.goodreads.com/book/isbn/"+ data.isbn);
 
-    '''
-    $("#ibActionLink").click((e) =>
-      e.preventDefault()
-      window.open("http://www.rjjulia.com/book/"+ data.isbn)
-      )
-    $("#grActionLink").click((e) =>
-      e.preventDefault()
-      window.open("https://www.goodreads.com/book/isbn/"+ data.isbn)
-      )
-    #console.log "setting google action listener"
-
-
-    $("#googleActionLink").click((e) =>
-      e.preventDefault()
-      window.open("https://www.google.com/search?q="+ data.place_name)
-      console.log('-------------------------buildInfowindow placename: ' + data.place_name)
-      )
-
-    $("#googleActionLink2").click((e) =>
-      e.preventDefault()
-      window.open("https://www.google.com/search?q="+ data.place_name)
-      )
-
-    $('.searchGoogle').click((e) =>
-      e.preventDefault()
-      window.open("https://www.google.com/search?q="+ data.place_name)
-      )'''
-    # TODO: this is where the wiki link is built, make sure it works right
-    # On scene cards when u click the wiki link, if you have visited multiple
-    # scene cards, the wiki link will only take you to the first scene card
-    # you clicked on.
-
-    '''$("#wikiActionLink").click((e) =>
-      e.preventDefault()
-      window.open("https://en.wikipedia.org/w/index.php?search="+ data.place_name)
-      )
-    $("#wikiActionLink2").click((e) =>
-      e.preventDefault()
-      window.open("https://en.wikipedia.org/w/index.php?search="+ data.place_name)
-      )
-    $("#ibActionLink").click((e) =>
-      e.preventDefault()
-      window.open("http://www.rjjulia.com/book/"+ data.isbn)
-      )
-      '''
-
-    #$('#entry-image').attr("src", "//mw2.google.com/mw-panoramio/photos/small/" +data.id +".jpg")
     $('#entry-symbols-body').html(data.symbols)
     $('#entry-place-body').html(data.notes)
     $('#entry-visits-body').html(data.visits)
@@ -883,11 +858,14 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       content += @sceneButtonTemplate()(gr_isbn: data.isbn, buy_isbn: data.isbn)
       @handleInfowindowButtonEvents()
     content += '</div>'
+
+    if $('#entry-image').html == ''
+      console.log('entry-image is empty, insert default image');
     return content
 
 
   openInfowindowForPlace: (place_key, windowOptions) ->
-    #console.log('open', windowOptions)
+    console.log('open', windowOptions)
     $('#info-overlay').animate {
         left: '-=1000'
       },700, () ->
@@ -914,28 +892,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         'value' : 1
       @mapEventTracking(tracking)
     console.log("GET /places/info/" + place_key);
-    '''
-    $.getJSON url, (data) =>
-      @placeInfowindow.close() if @placeInfowindow?
-      #iw = @infowindow()
-      #console.log(windowOptions.marker.position)
-
-      console.log('buildInfoWindow:  data: ' + JSON.stringify(data));
-      @buildInfowindow(data, true)
-      console.log("openInfowindowForPlace() Location Data: " + JSON.stringify(data))
-      if windowOptions.position
-        #console.log(typeof windowOptions.position)
-        #console.log(windowOptions.position)
-        iw.setPosition(windowOptions.position)
-        iw.open(@gmap)
-        @gmap.setCenter(windowOptions.position)
-      #else
-        #iw.open(@gmap, windowOptions.marker)
-      #@placeInfowindow = iw
-    (error) =>
-      console.log("info place window error: " + error);
-      @handleCheckinButtonClick
-    '''
     $.ajax
       url: "/places/info/" + place_key,
       dataType: "json",
@@ -962,9 +918,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         console.log('build info window error:' + url)
         console.log("err: " + JSON.stringify(err));
         console.log('buildInfoWindow:  data: ' + JSON.stringify(data));
-
-
-
 
 
   mapEventTracking: (data)->
@@ -1028,6 +981,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       placeInfo = location.get('db_key');
       console.log("locMarkEventHandl: placeInfo: " + JSON.stringify(placeInfo));
       @openInfowindowForPlace(location.get('db_key'), windowOptions)
+
 
   dropMarkerForStoredLocation: (location) ->
     console.log("dropMarkerForStoredLocation")
@@ -1180,11 +1134,58 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     console.log("map filter view:  scenes ")
     console.log("scenes: " + JSON.stringify(scenes) )
     console.log(scenes)
+
+    @getRecentBlog();
+
     # console.log('filtered view', scenes)
     @collection ?= new PlacingLit.Collections.Locations()
     @listenTo @collection, 'all', @render
     @collection.reset(scenes)
     @authors = @suggestAuthors()
+
+    # is a map/filter/id share link style link
+    pathname = window.location.pathname;
+    if (pathname.indexOf("map") > -1 and pathname.indexOf("filter") > -1 and pathname.indexOf("id") > -1)
+      # opens the scene card for this place share link by default
+      @openInfoWindowForShareLink(scenes);
+
+  openInfoWindowForShareLink: (scene) =>
+    #console.log("openInfoWindowForShareLink: " + JSON.stringify(scene[0]));
+    db_key = scene[0].db_key;
+
+    $('#info-overlay').animate {
+        left: '-=1000'
+      },700, () ->
+        $('.entry').hide()
+        $('#info-overlay').show()
+        $('#scene_entry').show()
+        $('#tabs').show()
+        $('.tab').removeClass('activeTab')
+        $('#scene_tab').addClass('activeTab')
+        $('#info-overlay').animate {
+          left: '+=1000'
+        },700
+
+    url = '/places/info/' + db_key
+    #console.log("openInfowindowForShareLinl");
+    #window.PLACEKEY = null
+    #console.log("GET /places/info/" + db_key);
+    $.ajax
+      url: "/places/info/" + db_key,
+      dataType: "json",
+      success: (data) =>
+        @placeInfowindow.close() if @placeInfowindow?
+        iw = @infowindow()
+        #console.log('build info window success:' + this.url)
+        #console.log('buildInfoWindow:  data: ' + JSON.stringify(data));
+        @buildInfowindow(data, true)
+        console.log("openInfowindowForPlace() Location Data: " + JSON.stringify(data))
+        iw.open(@gmap, windowOptions.marker)
+        @placeInfowindow = iw
+      error: (err) =>
+        console.log('build info window error:' + url)
+        console.log("err: " + JSON.stringify(err));
+        #console.log('buildInfoWindow:  data: ' + JSON.stringify(data));
 
   render: (event) ->
     @gmap ?= @googlemap()
@@ -1195,8 +1196,13 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     @linkMagnifyClickGcf() # make clicking magnifying glass icon press enter in search box
     mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
     @gmap.setCenter(mapcenter)
-    # console.log('zoom', @gmap.getZoom())
-    @gmap.setZoom(@settings.zoomLevel.close)
+
+    # if this is a collection map, set the zoom level to wide
+    if (window.location.pathname.indexOf("collections") != -1)
+      @gmap.setZoom(@settings.zoomLevel.wide)
+    else
+      @gmap.setZoom(@settings.zoomLevel.close)
+
     $('#addscenebutton').on('click', @handleAddSceneButtonClick)
     $('#addscenebutton').show()
 

@@ -21,10 +21,8 @@
 
     PLMap.prototype.isFiltered = function() {
       if ((this.path.indexOf('collections') === -1) && (this.path.indexOf('author') === -1) && (this.path.indexOf('title') === -1) && (this.path.indexOf('coords') === -1) && (this.path.indexOf('filter') === -1)) {
-        console.log('isFiltered false');
         return false;
       }
-      console.log('isFiltered true');
       return true;
     };
 
@@ -73,8 +71,7 @@
         vals = param.split('=');
         result[vals[0]] = vals[1];
       }
-      result;
-      return console.log('parseQuery result: ' + JSON.stringify(result));
+      return result;
     };
 
     PLMap.prototype.parseURI = function(URI) {
@@ -91,8 +88,6 @@
     var plmap, view;
     plmap = new PLMap();
     view = plmap.selectMapView();
-    'if plmap.isShareLink() == true\n  uri = plmap.parseURI(window.location.pathname)\n  #view.openInfowindowForPlace(uri[4], )';
-    console.log('view created: ' + view.constructor.name);
     if (location.search === '?modal=1') {
       plmap.showModal(plmap.elements.modals.mapmodal);
     } else if (plmap.isFiltered()) {
@@ -112,45 +107,5 @@
     }
     return view.showInfowindowFormAtLocation();
   });
-
-  $.ajax({
-    url: "/blog/latest",
-    success: (function(_this) {
-      return function(data) {
-        data = JSON.parse(data);
-        $('#recent-blog-post-summary').html(data['newest_post_description']);
-        $('#recent-blog-post-link').attr('href', data['newest_post_link']);
-        $('#recent-blog-post-title').html(data['newest_post_title']);
-        $('#recent-blog-post-published-date').html(data["newest_post_pub_date"]);
-        return console.log();
-      };
-    })(this),
-    error: (function(_this) {
-      return function(err) {
-        console.log("error requesting newest blog from server");
-        return console.log(err);
-      };
-    })(this)
-  });
-
-  '$.ajax\n  url: "/places/recent",\n  dataType: "json",\n  success: (data) =>\n    #console.log("/places/recent: " + JSON.stringify(data[0]))\n    $(\'#newest_scene\').html("<b>" + data[0][\'location\'] + "</b> from <i> " + data[0][\'title\'] + "</i> by " + data[0][\'author\'])\n  error: (err) =>\n    console.log("error: /places/recent - " + err )';
-
-  $.ajax({
-    url: "/places/info/6547073193213952",
-    dataType: "json",
-    success: (function(_this) {
-      return function(data) {
-        console.log("places/info test: ");
-        return console.log(JSON.stringify(data));
-      };
-    })(this),
-    error: (function(_this) {
-      return function(err) {
-        return console.log("error: /places/info - " + JSON.stringify(err));
-      };
-    })(this)
-  });
-
-  '$.ajax\n  url:"/collections/slq",\n  success: (data) =>\n    console.log("slq collection: ");\n    console.log(data);\n  error: (err) =>\n    console.log("error: /collections/slq - " + JSON.stringify(err) )\n';
 
 }).call(this);
