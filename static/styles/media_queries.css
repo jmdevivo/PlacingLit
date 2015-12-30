@@ -1,4 +1,7 @@
 @media screen and (max-width: 701px) {
+  .homeNav {
+    height: 102px; }
+
   #map-page-container {
     max-width: 701px; }
 
@@ -129,6 +132,12 @@
 
   .hamburger ul {
     right: -14px;
-    width: 321px; } }
+    width: 321px; }
+
+  #info-overlay {
+    width: 300px; }
+
+  .actionAnchor {
+    margin-top: 10px; } }
 
 /*# sourceMappingURL=media_queries.css.map */
