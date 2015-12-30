@@ -66,7 +66,7 @@
   
   #loginlink {
       top: 51px;
-      position: absolute;
+      position: fixed;
       right: 0px;
   }
   
@@ -174,6 +174,7 @@
 	
 	#info-overlay {
 	    width: 300px;
+		margin-top: 30px;
 	}
 	
 	.actionAnchor {

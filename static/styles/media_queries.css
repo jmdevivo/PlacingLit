@@ -52,7 +52,7 @@
 
   #loginlink {
     top: 51px;
-    position: absolute;
+    position: fixed;
     right: 0px; }
 
   /*HAMBURGER*/
@@ -135,7 +135,8 @@
     width: 321px; }
 
   #info-overlay {
-    width: 300px; }
+    width: 300px;
+    margin-top: 30px; }
 
   .actionAnchor {
     margin-top: 10px; } }
