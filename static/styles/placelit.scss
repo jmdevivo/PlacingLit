@@ -829,9 +829,9 @@ body { height: $full; margin:0%; padding:0; }
 .tall-map-window{
   @extend .map-window;
   height: 500px;
-  width: 45%;
+  width: 44%;
   min-width: 180px;
-  right: 18%;
+  right: 4%;
   position: absolute;
 }
 
@@ -1124,7 +1124,7 @@ input[type="checkbox"], input[type="radio"] {
 
 .fluid-container {
     min-height: 540px;
-    width: 77% !important;
+    width: 85% !important;
 }
 
 .map-window, .tall-map-window, .wide-map-window {
