@@ -221,15 +221,16 @@ body { height: $full; margin:0%; padding:0; }
   margin-bottom: 0px;
 }
 #map_canvas {
-  text-align: center;
-  height:100%;
-  width:$full;
-  top:0%;
-  z-index: 0;
-  border-top: 0px;
-  border-bottom: $mapborder;
-  margin-left: auto;
-  margin-right: auto;
+    border-top: 0px none;
+    border-bottom: 1px solid #AAA;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 9;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+	background-color: transparent !important;
+}
   #thankswindow {
     text-align: left;
   }
@@ -242,7 +243,7 @@ body { height: $full; margin:0%; padding:0; }
   // img {
   //   top: 5em;
   // }
-}
+
 #iwcontainer {
   display:none;
   z-index: 0;
@@ -456,10 +457,10 @@ body { height: $full; margin:0%; padding:0; }
   @extend .btn;
   @extend .btn-primary;
   position: absolute;
-  top: 12px;
+  top: 65px;
   right: 5px;
   width: 8em;
-  z-index: 8;
+  z-index: 20;
 }
 #map-page-container {
   background-color: #222222;
@@ -706,7 +707,7 @@ body { height: $full; margin:0%; padding:0; }
 }
 .overlay {
   position: absolute;
-  top: 14px;
+  top: 69px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -1054,9 +1055,12 @@ body { height: $full; margin:0%; padding:0; }
 #geocodersearch {
   width: 210px;
 }
-#loginlink{
-  float: right;
-  padding: 20px;
+#loginlink {
+    float: right;
+    padding: 20px;
+    z-index: 9999999;
+    position: absolute;
+    right: 0;
 }
 .searchResultSection {
   border-top: solid 1px rgba(0,0,0,.3);
@@ -1198,7 +1202,16 @@ input[type="checkbox"], input[type="radio"] {
     top: 0px;
     left: 0px;
     z-index: 1;
-    margin-top: 60px;
+    margin-top: 30px;
+}
+
+.homeNav {
+    position: fixed;
+    top: 0px;
+    background-color: #222;
+    width: 100%;
+    height: 60px;
+    z-index: 99;
 }
 
 // This is the hamburger menu code!
