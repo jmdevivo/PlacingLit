@@ -303,8 +303,21 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     $(parent).show()
     searchTxt = $('#gcf').val()
     if searchTxt != ""
+      console.log('searchTxt: ' + searchTxt);
+      upcase_searchTxt = searchTxt.split(' ');
+      console.log('inital upcase search txt: ' + upcase_searchTxt);
+      new_search = "";
+      for i in upcase_searchTxt
+        console.log("word iteration: "  +  i);
+        i_1st_char =   i.substr(0,1).toUpperCase();
+        console.log("first char: " + i_1st_char);
+        new_searchTxt = i_1st_char + i.substr(1);
+        console.log("new search term: " + new_searchTxt)
+        new_search = new_search + " " + new_searchTxt;
+      new_search = new_search.trim();
+      console.log('Upcase search just in case:' + new_search);
       for title in title_data
-        if title.indexOf(searchTxt) > -1
+        if title.indexOf(searchTxt) > -1 or title.indexOf(new_search) > -1
           li = document.createElement('li')
           li.className = 'searchResultText searchResultTitleText'
           li.innerHTML = title
@@ -323,8 +336,22 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     $(parent).show()
     searchTxt = $('#gcf').val()
     if searchTxt != ""
+      console.log('searchTxt: ' + searchTxt);
+      upcase_searchTxt = searchTxt.split(' ');
+      console.log('inital upcase search txt: ' + upcase_searchTxt);
+      new_search = "";
+      for i in upcase_searchTxt
+        console.log("word iteration: "  +  i);
+        i_1st_char =   i.substr(0,1).toUpperCase();
+        console.log("first char: " + i_1st_char);
+        new_searchTxt = i_1st_char + i.substr(1);
+        console.log("new search term: " + new_searchTxt)
+        new_search = new_search + " " + new_searchTxt;
+      new_search = new_search.trim();
+      console.log('Upcase search just in case:' + new_search);
+
       for author in author_data
-        if author.indexOf(searchTxt) > -1
+        if author.indexOf(searchTxt) > -1 or author.indexOf(new_search) > -1
           li = document.createElement('li')
           li.className = 'searchResultText'
           li.innerHTML = author

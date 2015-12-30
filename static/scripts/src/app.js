@@ -444,16 +444,31 @@
     };
 
     MapCanvasView.prototype.suggestTitles = function(title_data) {
-      var j, len, li, parent, searchTxt, title;
+      var i, i_1st_char, j, k, len, len1, li, new_search, new_searchTxt, parent, searchTxt, title, upcase_searchTxt;
       console.log("suggestTitles");
       parent = document.getElementById('bookSearchList');
       $(parent).empty();
       $(parent).show();
       searchTxt = $('#gcf').val();
       if (searchTxt !== "") {
-        for (j = 0, len = title_data.length; j < len; j++) {
-          title = title_data[j];
-          if (title.indexOf(searchTxt) > -1) {
+        console.log('searchTxt: ' + searchTxt);
+        upcase_searchTxt = searchTxt.split(' ');
+        console.log('inital upcase search txt: ' + upcase_searchTxt);
+        new_search = "";
+        for (j = 0, len = upcase_searchTxt.length; j < len; j++) {
+          i = upcase_searchTxt[j];
+          console.log("word iteration: " + i);
+          i_1st_char = i.substr(0, 1).toUpperCase();
+          console.log("first char: " + i_1st_char);
+          new_searchTxt = i_1st_char + i.substr(1);
+          console.log("new search term: " + new_searchTxt);
+          new_search = new_search + " " + new_searchTxt;
+        }
+        new_search = new_search.trim();
+        console.log('Upcase search just in case:' + new_search);
+        for (k = 0, len1 = title_data.length; k < len1; k++) {
+          title = title_data[k];
+          if (title.indexOf(searchTxt) > -1 || title.indexOf(new_search) > -1) {
             li = document.createElement('li');
             li.className = 'searchResultText searchResultTitleText';
             li.innerHTML = title;
@@ -472,15 +487,30 @@
     };
 
     MapCanvasView.prototype.suggestAuthors = function(author_data) {
-      var author, j, len, li, parent, searchTxt;
+      var author, i, i_1st_char, j, k, len, len1, li, new_search, new_searchTxt, parent, searchTxt, upcase_searchTxt;
       parent = document.getElementById('authorsSearchList');
       $(parent).empty();
       $(parent).show();
       searchTxt = $('#gcf').val();
       if (searchTxt !== "") {
-        for (j = 0, len = author_data.length; j < len; j++) {
-          author = author_data[j];
-          if (author.indexOf(searchTxt) > -1) {
+        console.log('searchTxt: ' + searchTxt);
+        upcase_searchTxt = searchTxt.split(' ');
+        console.log('inital upcase search txt: ' + upcase_searchTxt);
+        new_search = "";
+        for (j = 0, len = upcase_searchTxt.length; j < len; j++) {
+          i = upcase_searchTxt[j];
+          console.log("word iteration: " + i);
+          i_1st_char = i.substr(0, 1).toUpperCase();
+          console.log("first char: " + i_1st_char);
+          new_searchTxt = i_1st_char + i.substr(1);
+          console.log("new search term: " + new_searchTxt);
+          new_search = new_search + " " + new_searchTxt;
+        }
+        new_search = new_search.trim();
+        console.log('Upcase search just in case:' + new_search);
+        for (k = 0, len1 = author_data.length; k < len1; k++) {
+          author = author_data[k];
+          if (author.indexOf(searchTxt) > -1 || author.indexOf(new_search) > -1) {
             li = document.createElement('li');
             li.className = 'searchResultText';
             li.innerHTML = author;
@@ -1120,10 +1150,8 @@
       $('#entry-visits-body').html(data.visits);
       twitterlink = "https://twitter.com/intent/tweet?text=Check%20out%20" + data.title + "%20at%20" + data.place_name + "%20by%20visiting%20placing-literature.appspot.com/map/filter/id/" + data.id + "%20#getlit";
       $('#twitterActionLink').attr('href', twitterlink);
-      console.log("twitter link: " + twitterlink);
       facebooklink = 'http://www.facebook.com/share.php?u=http://www.placing-literature.appspot.com/map/filter/id/' + data.id;
       $('#facebookActionLink').attr('href', facebooklink);
-      console.log("fb link: " + facebooklink);
       $('#share_url').val('placing-literature.appspot.com/map/filter/id/' + data.id);
       if (!!data.image_data) {
         content += this.sceneAPIImageTemplate()({
@@ -1641,7 +1669,8 @@
         this.gmap.setZoom(this.settings.zoomLevel.close);
       }
       $('#addscenebutton').on('click', this.handleAddSceneButtonClick);
-      return $('#addscenebutton').show();
+      $('#addscenebutton').show();
+      return $('#featContentText').text("View Featured Content");
     };
 
     MapFilterView.prototype.updateCollection = function(event) {
