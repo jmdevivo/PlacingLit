@@ -1198,6 +1198,7 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
 
     $('#addscenebutton').on('click', @handleAddSceneButtonClick)
     $('#addscenebutton').show()
+    $('#featContentText').text("View Featured Content");
 
   updateCollection: (event) ->
     center = @gmap.getCenter()
