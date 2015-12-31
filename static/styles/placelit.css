@@ -5184,7 +5184,7 @@ body {
   text-align: center; }
 
 .tall-map-window {
-  height: 500px;
+  height: 463px;
   width: 44%;
   min-width: 180px;
   right: 4%;
@@ -5242,7 +5242,7 @@ body {
   color: white;
   position: absolute;
   z-index: 11;
-  margin-top: -5px;
+  margin-top: 0px;
   background-color: #5a5a5a;
   width: 206px;
   display: none; }
@@ -5459,9 +5459,10 @@ input[type="checkbox"], input[type="radio"] {
   float: left; }
 
 .tall-map-window {
-  height: 500px;
+  height: 463px;
   width: 45%;
-  min-width: 180px; }
+  min-width: 180px;
+  padding-top: 20px; }
 
 .window-container {
   width: 33.3333%;
@@ -5520,5 +5521,10 @@ input[type="checkbox"], input[type="radio"] {
   width: 100%;
   height: 60px;
   z-index: 99; }
+
+.allfields {
+  text-align: center;
+  font-size: .8em;
+  font-weight: bold; }
 
 /*# sourceMappingURL=placelit.css.map */
