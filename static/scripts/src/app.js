@@ -199,7 +199,11 @@
       this.attachNewSceneHandler();
       this.attachSearchHandler();
       this.linkMagnifyClickGcf();
-      return this.isShareLink();
+      this.isShareLink();
+      return setTimeout(function() {
+        console.log('slideshow made invisible');
+        return $('#slideshow').css('display', 'none');
+      }, 20000);
     };
 
     MapCanvasView.prototype.isShareLink = function() {

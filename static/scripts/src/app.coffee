@@ -119,6 +119,12 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     # crazy idea to make share links load to the scene card
     @isShareLink();
 
+    setTimeout ->
+      console.log('slideshow made invisible');
+      $('#slideshow').css('display', 'none');
+    , 20000
+
+
   # if true, then map should load right to this scene card
   isShareLink: () ->
     pathname = window.location.pathname;
