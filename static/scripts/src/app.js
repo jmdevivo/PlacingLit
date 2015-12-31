@@ -1605,7 +1605,10 @@
       this.authors = this.suggestAuthors();
       pathname = window.location.pathname;
       if (pathname.indexOf("map") > -1 && pathname.indexOf("filter") > -1 && pathname.indexOf("id") > -1) {
-        return this.openInfoWindowForShareLink(scenes);
+        this.openInfoWindowForShareLink(scenes);
+      }
+      if (pathname.indexOf("collections") > -1) {
+        return console.log("Collection link");
       }
     };
 

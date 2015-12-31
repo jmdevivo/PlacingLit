@@ -694,8 +694,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
             );
             parent.appendChild(li)
             i++
-
-
         error: (err) ->
           console.log err
 
@@ -1168,6 +1166,9 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     if (pathname.indexOf("map") > -1 and pathname.indexOf("filter") > -1 and pathname.indexOf("id") > -1)
       # opens the scene card for this place share link by default
       @openInfoWindowForShareLink(scenes);
+    if pathname.indexOf("collections") > -1
+      console.log("Collection link");
+      # this should close the featured content boxes
 
   openInfoWindowForShareLink: (scene) =>
     #console.log("openInfoWindowForShareLink: " + JSON.stringify(scene[0]));

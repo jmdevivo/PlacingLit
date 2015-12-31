@@ -715,10 +715,10 @@ body { height: $full; margin:0%; padding:0; }
 
 #info-overlay{
   position: absolute;
-  top: 20px;
+  top: 80px;
   left: 20px;
   background-color: white;
-  z-index: 9;
+  z-index: 99;
   width: 400px;
   display: none;
   min-height: 100px;

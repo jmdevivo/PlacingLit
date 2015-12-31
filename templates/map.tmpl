@@ -1,9 +1,6 @@
 <script src="/js/libs/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="http://www.panoramio.com/wapi/wapi.js?v=1&amp;hl=fr"></script>
 
-
-
-
 {% extends 'base.tmpl' %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
@@ -143,6 +140,11 @@
 	  	timeout:  3500
 	  	});
 	  });
+
+    setTimeout(function(){
+      $('#slideshow').css("display") = "none";
+    }, 20000);
+
 	  </script>
 	  <div id="slideshow">
 	    <img src="/img/NewHaven.jpg" class="bgM"/>
