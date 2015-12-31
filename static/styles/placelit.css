@@ -5523,7 +5523,7 @@ input[type="checkbox"], input[type="radio"] {
   z-index: 99; }
 
 .allfields {
-  text-align: center;
+  text-align: left;
   font-size: .8em;
   font-weight: bold; }
 

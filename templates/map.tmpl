@@ -299,26 +299,25 @@
             <p class='leave_new_scene_form'>&#x2715;</p>
             <div class='new_scene_section' id='new_scene_book_info'>
               <div><div class='new_scene_field_text'>What is the title of the book?</div><input id='new_scene_title' name='title' type='text'></input></div>
-              <div><div class='new_scene_field_text'>Who is the author of the book?</div><input id='new_scene_author' name='author' type='text'></input></div>
+              <div><div class='new_scene_field_text'>Who is the author of the book?</div><input id='new_scene_author' name='author' type='text'></input>			  <p class="allfields">*All Fields Required</p></div>
               <button class='nextSceneFieldBtn nextSceneButton' data-next='#new_scene_descrip'>Continue</button>
             </div>
             <div class='new_scene_section' id='new_scene_descrip'>
-              <div><div class='new_scene_field_text'>What happens in this particular scene?</div><textarea  rows='4' cols='40'  id='new_scene_notes'name='notes' type='text'></textarea></div>
+              <div><div class='new_scene_field_text'>What happens in this particular scene?</div><textarea  rows='4' cols='40'  id='new_scene_notes'name='notes' type='text'></textarea><br><div><p class="allfields">*All Fields Required</p></div></div>
               <button class='nextSceneFieldBtn nextSceneButton' data-next='#new_scene_place_info'>Continue</button>
             </div>
             <div class='new_scene_section' id='new_scene_place_info'>
               <div><div class='new_scene_field_text'>What is the name of this place?</div><input id='new_scene_place_name' name='place_name' type='text'></input></div>
-              <div><div class='new_scene_field_text'>Tell us something about this place. Can’t think of anything to say? <a id='new_scene_wiki_link' href='https://en.wikipedia.org/w/index.php?search='>Try Wikipedia </a></div><textarea rows='4' cols='40' id='new_scene_scene' name='scene' type='text'></textarea></div>
+              <div><div class='new_scene_field_text'>Tell us something about this place. Can’t think of anything to say? <a id='new_scene_wiki_link' href='https://en.wikipedia.org/w/index.php?search='>Try Wikipedia </a></div><textarea rows='4' cols='40' id='new_scene_scene' name='scene' type='text'></textarea><br><div><p class="allfields">*All Fields Required</div></p></div>
               <button class='nextSceneFieldBtn nextSceneButton' data-next='#new_scene_personal_info'>Continue</button>
             </div>
             <div class='new_scene_section' id='new_scene_personal_info'>
               <div><span class='new_scene_span'>Have you ever been to this location?</span><input id='new_scene_check_in' class='new_scene_checkbox' name='check_in' type='checkbox'></input></div>
-              <div><span class='new_scene_span'>Would you recommend other people visit this place?</span><input class='new_scene_checkbox' name='recommend' type='checkbox'></input></div>
-              <button class='nextSceneFieldBtn nextSceneButton' data-next='#new_scene_submit'>Continue</button>
-            </div>
+              <div><span class='new_scene_span'>Would you recommend other people visit this place?</span><input class='new_scene_checkbox' name='recommend' type='checkbox'></input>
+</div><br><div><p class="allfields" style="text-align:left;">*All Fields Required</p></div>
+              <button class='nextSceneFieldBtn nextSceneButton' data-next='#new_scene_submit'>Continue</button>            </div>
             <div class='new_scene_section' id='new_scene_submit'>
               <button id='new_scene_submit_btn' class="nextSceneButton">Submit</button>
-			  <p class="allfields">*All Fields Required</p>
             </div>
           </div>
           <ul class='new_entry_nav'>
