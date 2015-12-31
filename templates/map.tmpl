@@ -100,6 +100,26 @@
      </ul>
    </nav>
 
+
+    <p id="loading_indicator">Loading</p>
+
+
+  <script>
+  // TODO: Move this into app.coffee
+    setInterval(function(){
+      //console.log("timeoutcalled")
+      var cur_loading_state = $('#loading_indicator').html();
+      if (cur_loading_state.length < 10) {
+        //console.log('short');
+        var cur_loading_state = $('#loading_indicator').html(cur_loading_state + ".");
+      }
+      else {
+        var cur_loading_state = $('#loading_indicator').html('Loading');
+      }
+    }, 500);
+    </script>
+
+
   <div id="mapsearchcontainer" class="navbar">
 
     <div id="maponly">

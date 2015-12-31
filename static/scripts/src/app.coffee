@@ -439,17 +439,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         @gmap.setCenter(usacenter)
       @gmap.setZoom(8)
 
-      #console.log(JSON.stringify(@gmap));
-
-      # What is this doing?  seems to hav ea global PLACEKEY which could be causing
-      # our problem with non-refreshing scene windows
-    '''
-    if window.PLACEKEY?
-      windowOptions = position: mapcenter
-      @openInfowindowForPlace(window.PLACEKEY, windowOptions)
-    @initialMapView = false
-    '''
-
   handleMapClick: (event) ->
     @setUserMapMarker(@gmap, event.latLng)
 
@@ -981,9 +970,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       )
 
   buildMarkerFromLocation: (location) ->
-    
+
     console.log('slideshow made invisible');
     $('#slideshow').css('display', 'none');
+    $('#loading_indicator').css('display', 'none');
 
     console.log("buildMarkerFromLocation")
     #console.log("location type: " + typeof(location));

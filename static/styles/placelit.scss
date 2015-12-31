@@ -1220,6 +1220,14 @@ input[type="checkbox"], input[type="radio"] {
 	font-weight: bold;
 }
 
+#loading_indicator {
+    display: block;
+    float: right;
+    position: relative;
+    right: 20px;
+    color: white;
+}
+
 // This is the hamburger menu code!
 //
 //#hamburger-icon {
