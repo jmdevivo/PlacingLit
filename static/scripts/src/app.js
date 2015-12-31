@@ -199,11 +199,7 @@
       this.attachNewSceneHandler();
       this.attachSearchHandler();
       this.linkMagnifyClickGcf();
-      this.isShareLink();
-      return setTimeout(function() {
-        console.log('slideshow made invisible');
-        return $('#slideshow').css('display', 'none');
-      }, 20000);
+      return this.isShareLink();
     };
 
     MapCanvasView.prototype.isShareLink = function() {
@@ -1311,6 +1307,8 @@
 
     MapCanvasView.prototype.buildMarkerFromLocation = function(location) {
       var author, lat, lng, marker, markerParams, title;
+      console.log('slideshow made invisible');
+      $('#slideshow').css('display', 'none');
       console.log("buildMarkerFromLocation");
       lat = location.get('latitude');
       lng = location.get('longitude');

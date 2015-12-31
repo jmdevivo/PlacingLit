@@ -119,10 +119,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     # crazy idea to make share links load to the scene card
     @isShareLink();
 
-    setTimeout ->
-      console.log('slideshow made invisible');
-      $('#slideshow').css('display', 'none');
-    , 20000
+    # setTimeout ->
+    #   console.log('slideshow made invisible');
+    #   $('#slideshow').css('display', 'none');
+    # , 20000
 
 
   # if true, then map should load right to this scene card
@@ -981,6 +981,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       )
 
   buildMarkerFromLocation: (location) ->
+    
+    console.log('slideshow made invisible');
+    $('#slideshow').css('display', 'none');
+
     console.log("buildMarkerFromLocation")
     #console.log("location type: " + typeof(location));
     #console.log("location: " + JSON.stringify(location));
