@@ -113,6 +113,7 @@
       this.showMarkers = bind(this.showMarkers, this);
       this.hideMarkers = bind(this.hideMarkers, this);
       this.handleViewportChange = bind(this.handleViewportChange, this);
+      this.getRecentPlace = bind(this.getRecentPlace, this);
       this.getRecentBlog = bind(this.getRecentBlog, this);
       this.getPlacesNearController = bind(this.getPlacesNearController, this);
       return MapCanvasView.__super__.constructor.apply(this, arguments);
@@ -185,15 +186,12 @@
     };
 
     MapCanvasView.prototype.initialize = function(scenes) {
-      var position;
       this.getRecentBlog();
       if (this.collection == null) {
         this.collection = new PlacingLit.Collections.Locations();
       }
       this.listenTo(this.collection, 'all', this.render);
-      if (navigator.geolocation) {
-        position = navigator.geolocation.getCurrentPosition(this.getPlacesNearController);
-      }
+      this.getRecentPlace();
       this.collection.fetch();
       this.suggestAuthors();
       this.attachNewSceneHandler();
@@ -212,23 +210,7 @@
     };
 
     MapCanvasView.prototype.getPlacesNearController = function(position) {
-      console.log("requesting: " + '/places/near?lat=' + -19.155320 + "&lon=" + 30.013956);
-      return $.ajax({
-        url: '/places/near?lat=' + -19.155320 + "&lon=" + 30.013956,
-        dataType: "json",
-        success: (function(_this) {
-          return function(data) {
-            console.log("call to /places/near successful");
-            return console.log("near places " + JSON.stringify(data));
-          };
-        })(this),
-        error: (function(_this) {
-          return function(err) {
-            console.log("call to /places/near failed");
-            return console.log("error: " + err);
-          };
-        })(this)
-      });
+      return console.log("requesting: " + '/places/near?lat=' + -19.155320 + "&lon=" + 30.013956);
     };
 
     MapCanvasView.prototype.getRecentBlog = function() {
@@ -248,6 +230,28 @@
           return function(err) {
             console.log("error requesting newest blog from server");
             return console.log(err);
+          };
+        })(this)
+      });
+    };
+
+    MapCanvasView.prototype.getRecentPlace = function() {
+      return $.ajax({
+        url: window.location.origin + "/places/recent",
+        dataType: "json",
+        success: (function(_this) {
+          return function(data) {
+            var mostRecentPlace, mrpString;
+            mostRecentPlace = data[0];
+            console.log("most recent place: " + JSON.stringify(mostRecentPlace));
+            mrpString = "<b>" + mostRecentPlace['location'] + "</b> from <i>" + mostRecentPlace['title'] + "</i> by  <b>" + mostRecentPlace['author'] + "</b>";
+            $('#newest_scene').html(mrpString);
+            return console.log("--------mrpString: " + mrpString);
+          };
+        })(this),
+        error: (function(_this) {
+          return function(err) {
+            return console.log("places recent error: " + JSONG.stringify(err));
           };
         })(this)
       });
@@ -609,7 +613,7 @@
           this.gmap.setZoom(this.settings.zoomLevel["default"]);
         }
         if (window.location.pathname.indexOf('author') !== -1) {
-          this.gmap.setZoom(this.settings.zoomLevel.wide);
+          return this.gmap.setZoom(this.settings.zoomLevel.wide);
         }
       } else {
         usaCoords = {
@@ -631,9 +635,8 @@
         } else {
           this.gmap.setCenter(usacenter);
         }
-        this.gmap.setZoom(8);
+        return this.gmap.setZoom(8);
       }
-      return 'if window.PLACEKEY?\n  windowOptions = position: mapcenter\n  @openInfowindowForPlace(window.PLACEKEY, windowOptions)\n@initialMapView = false';
     };
 
     MapCanvasView.prototype.handleMapClick = function(event) {
@@ -1307,8 +1310,8 @@
 
     MapCanvasView.prototype.buildMarkerFromLocation = function(location) {
       var author, lat, lng, marker, markerParams, title;
-      console.log('slideshow made invisible');
       $('#slideshow').css('display', 'none');
+      $('#loading_indicator').css('display', 'none');
       console.log("buildMarkerFromLocation");
       lat = location.get('latitude');
       lng = location.get('longitude');

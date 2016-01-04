@@ -85,9 +85,6 @@ $ ->
 
   view.handleInputAttributes() if not Modernizr.input.placeholder
   view.showInfowindowFormAtLocation()
-  # testing /blog/latest URI
-
-
 
 
 

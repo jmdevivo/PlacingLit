@@ -107,9 +107,13 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @collection ?= new PlacingLit.Collections.Locations()
     @listenTo @collection, 'all', @render
 
-    # testing placesNear
-    if navigator.geolocation
-      position = navigator.geolocation.getCurrentPosition(@getPlacesNearController)
+    # # testing placesNear
+    # if navigator.geolocation
+    #   position = navigator.geolocation.getCurrentPosition(@getPlacesNearController)
+
+    # get most recent place and put it on the featured content overlay
+    @getRecentPlace();
+
     @collection.fetch()
     # setup handler for geocoder searches
     @suggestAuthors()
@@ -142,16 +146,16 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
     console.log("requesting: " + '/places/near?lat=' + -19.155320 + "&lon=" + 30.013956)
     #-19.155320 30.013956
-    $.ajax
-      #url:'/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude
-      url:'/places/near?lat=' + -19.155320 + "&lon=" + 30.013956
-      dataType:"json"
-      success: (data) =>
-        console.log("call to /places/near successful")
-        console.log("near places "  + JSON.stringify(data))
-      error: (err) =>
-        console.log("call to /places/near failed")
-        console.log("error: " + err)
+    # $.ajax
+    #   #url:'/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude
+    #   url:'/places/near?lat=' + -19.155320 + "&lon=" + 30.013956
+    #   dataType:"json"
+    #   success: (data) =>
+    #     console.log("call to /places/near successful")
+    #     console.log("near places "  + JSON.stringify(data))
+    #   error: (err) =>
+    #     console.log("call to /places/near failed")
+    #     console.log("error: " + err)
 
 
   getRecentBlog: () =>
@@ -168,6 +172,31 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       error: (err) =>
         console.log("error requesting newest blog from server")
         console.log(err)
+
+  getRecentPlace: () =>
+    $.ajax
+      url: window.location.origin + "/places/recent"
+      dataType: "json",
+
+      success: (data) =>
+
+        mostRecentPlace = data[0]
+        console.log("most recent place: " + JSON.stringify(mostRecentPlace));
+
+        mrpString =  "<b>" + mostRecentPlace['location'] +
+        "</b> from <i>" + mostRecentPlace['title'] +
+        "</i> by  <b>" + mostRecentPlace['author'] + "</b>";
+
+        $('#newest_scene').html(mrpString);
+
+
+        console.log("--------mrpString: " + mrpString);
+
+
+      error: (err) =>
+
+        console.log("places recent error: " + JSONG.stringify(err));
+
 
 
   render: (event) ->
@@ -971,7 +1000,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
   buildMarkerFromLocation: (location) ->
 
-    console.log('slideshow made invisible');
+    #console.log('slideshow made invisible');
     $('#slideshow').css('display', 'none');
     $('#loading_indicator').css('display', 'none');
 
