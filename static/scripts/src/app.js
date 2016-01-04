@@ -613,7 +613,10 @@
           this.gmap.setZoom(this.settings.zoomLevel["default"]);
         }
         if (window.location.pathname.indexOf('author') !== -1) {
-          return this.gmap.setZoom(this.settings.zoomLevel.wide);
+          this.gmap.setZoom(this.settings.zoomLevel.wide);
+        }
+        if ((window.location.pathname.indexOf('map') > -1) && (window.location.pathname.indexOf('collections') !== -1) && (window.location.pathname.indexOf('filter') !== -1)) {
+          return this.gmap.setZoom(this.settings.zoomLevel.close);
         }
       } else {
         usaCoords = {

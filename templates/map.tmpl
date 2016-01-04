@@ -631,13 +631,16 @@ in the window namespace -->
       var artist_name = document.getElementById('bottom-left-artist-name').innerHTML;
       console.log("clicked: " + artist_name + '\'s featured box.');
 
-      if (typeof artist_name == 'string'){
-        artist_name = artist_name.replace('[!.,/:;-_|\\]', ''); // repalce any punctuation with nothing
-        artist_name = artist_name.replace(' ', '%20'); // replace space with %20
-        artist_name = artist_name.replace(':','');
-        var redirect_uri = '/map/filter/author/' + artist_name
-        window.location.href = redirect_uri
-      }
+      // if (typeof artist_name == 'string'){
+      //   artist_name = artist_name.replace('[!.,/:;-_|\\]', ''); // repalce any punctuation with nothing
+      //   artist_name = artist_name.replace(' ', '%20'); // replace space with %20
+      //   artist_name = artist_name.replace(':','');
+      //   var redirect_uri = '/map/filter/author/' + artist_name
+      //   window.location.href = redirect_uri
+      // }
+      // if collection's name is not an author name...
+      window.location.href = window.location.origin + '/map/40.770180,-73.965711';  // coodinates of NYC
+
     }
 
     function featured_map_redirect_BR(){

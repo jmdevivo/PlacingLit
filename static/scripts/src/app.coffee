@@ -107,10 +107,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @collection ?= new PlacingLit.Collections.Locations()
     @listenTo @collection, 'all', @render
 
-    # # testing placesNear
-    # if navigator.geolocation
-    #   position = navigator.geolocation.getCurrentPosition(@getPlacesNearController)
-
     # get most recent place and put it on the featured content overlay
     @getRecentPlace();
 
@@ -120,13 +116,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @attachNewSceneHandler()
     @attachSearchHandler()
     @linkMagnifyClickGcf() # make clicking #search (magnifying glass) press enter in #gcf (search bar)
-    # crazy idea to make share links load to the scene card
+
+
     @isShareLink();
 
-    # setTimeout ->
-    #   console.log('slideshow made invisible');
-    #   $('#slideshow').css('display', 'none');
-    # , 20000
 
 
   # if true, then map should load right to this scene card
@@ -197,10 +190,11 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
         console.log("places recent error: " + JSONG.stringify(err));
 
-
+        
 
   render: (event) ->
     @mapWithMarkers() if event is 'sync'
+
 
   googlemap: ()->
     # GoogleMaps API documentation:  Very helpful
@@ -448,6 +442,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         @gmap.setZoom(@settings.zoomLevel.default)
       if (window.location.pathname.indexOf('author') != -1)
         @gmap.setZoom(@settings.zoomLevel.wide)
+      if ( (window.location.pathname.indexOf('map') > -1) and (window.location.pathname.indexOf('collections') != -1) and (window.location.pathname.indexOf('filter') != -1) )
+        @gmap.setZoom(@settings.zoomLevel.close);
     else
       usaCoords =
         lat: 39.8282
