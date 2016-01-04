@@ -4508,7 +4508,7 @@ body {
     margin: 0 0; }
 
 .vanishing-col {
-  width: 446px !important; }
+  width: 441px !important; }
 
 .left-map-window-div {
   position: absolute !important;
@@ -4655,7 +4655,6 @@ body {
 
 #map_canvas {
   border-top: 0px none;
-  border-bottom: 1px solid #AAA;
   margin-left: auto;
   margin-right: auto;
   z-index: 9;
@@ -5465,12 +5464,11 @@ input[type="checkbox"], input[type="radio"] {
   padding-top: 20px; }
 
 .window-container {
-  width: 33.3333%;
-  min-width: 425px; }
+  width: 33.3333%; }
 
 .wide-map-window {
-  width: 100%;
-  min-width: 366px !important;
+  width: 90%;
+  min-width: 351px !important;
   float: left; }
 
 .artist_name {
@@ -5529,13 +5527,12 @@ input[type="checkbox"], input[type="radio"] {
   font-weight: bold; }
 
 #loading_indicator {
-  display: block;
   position: absolute;
-  margin: auto;
   color: #FFF;
   top: 0px;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 42% 50% 100%;
-  font-size: 21px; }
+  padding: 40% 45% 43%;
+  font-size: 21px;
+  float: left;
+  z-index: 10; }
 
 /*# sourceMappingURL=placelit.css.map */

@@ -49,7 +49,7 @@ body { height: $full; margin:0%; padding:0; }
 }
 
 .vanishing-col {
-    width: 446px !important;
+    width: 441px !important;
 }
 
 .left-map-window-div{
@@ -222,7 +222,6 @@ body { height: $full; margin:0%; padding:0; }
 }
 #map_canvas {
     border-top: 0px none;
-    border-bottom: 1px solid #AAA;
     margin-left: auto;
     margin-right: auto;
     z-index: 9;
@@ -1145,12 +1144,11 @@ input[type="checkbox"], input[type="radio"] {
 
 .window-container {
     width: 33.3333%;
-    min-width: 425px;
 }
 
 .wide-map-window {
-    width: 100%;
-    min-width: 366px !important;
+    width: 90%;
+    min-width: 351px !important;
     float: left;
 }
 
@@ -1222,14 +1220,13 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 #loading_indicator {
-    display: block;
     position: absolute;
-    margin: auto;
     color: #FFF;
     top: 0px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 42% 50% 100%;
+    padding: 40% 45% 43%;
     font-size: 21px;
+    float: left;
+    z-index: 10;
 }
 
 // This is the hamburger menu code!
