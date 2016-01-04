@@ -5530,7 +5530,7 @@ input[type="checkbox"], input[type="radio"] {
   position: absolute;
   color: #FFF;
   top: 0px;
-  padding: 40% 45% 43%;
+  padding: 40% 45% 35%;
   font-size: 21px;
   float: left;
   z-index: 10; }

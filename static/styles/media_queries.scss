@@ -1,3 +1,78 @@
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  
+  .vanishing-col {
+      width: 409px !important;
+  }
+  
+  #mapcontainer {
+      height: 112%;
+  }
+  
+  .hamburger {
+      top: 8px;
+      position: absolute;
+      display: block;
+      right: 14px;
+  }
+  
+  .ham_dropdown {
+    display: block;
+}
+
+.ham_dropdown img {
+	width: 40px;
+}
+
+.drop_off {
+    display: none;
+}
+
+.dropmenu {
+    display: none;
+    position: absolute;
+    padding: 10px 0px;
+    background: #222 none repeat scroll 0% 0%;
+    right: 3px;
+    top: 35px;
+    width: 300px;
+    color: #FFF;
+    z-index: 999;
+}
+
+.hamburger ul {
+    padding: 10px 0px 3px;
+    background: #222 none repeat scroll 0% 0%;
+    right: 3px;
+    top: 53px;
+    width: 300px;
+    color: #FFF;
+    z-index: 999;
+    position: absolute;
+    text-align: center;
+}
+
+.hamburger ul li {
+    border-top: 1px solid #333;
+    padding: 16px 0px 12px;
+	list-style-type: none;
+}
+
+.hamburger ul li:hover {
+	background: #333;
+};
+
+.hamburger a {
+	color: #fff;
+	font-weight: 500;
+}
+
+.hamburger a:hover {
+	font-weight: 500;
+	color: #fff;
+	text-decoration: underline;
+} 
+}
+
 @media screen and (max-width: 701px) {
 	
 	.homeNav {
@@ -6,6 +81,7 @@
 
 	#map-page-container {
 		max-width: 701px;
+		height: 112%;
 	}
 
   .overlay {
@@ -66,7 +142,7 @@
   
   #loginlink {
       top: 51px;
-      position: fixed;
+      position: absolute;
       right: 0px;
   }
   
@@ -97,7 +173,7 @@
     padding: 10px 0px;
     background: #222 none repeat scroll 0% 0%;
     right: 3px;
-    top: 53px;
+    top: 35px;
     width: 300px;
     color: #FFF;
     z-index: 999;
