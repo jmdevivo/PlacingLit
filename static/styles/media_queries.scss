@@ -7,6 +7,7 @@
   #mapcontainer {
       height: 112%;
   }
+
   
   .hamburger {
       top: 8px;
@@ -73,7 +74,31 @@
 } 
 }
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+
+#mapsearchcontainer {
+    min-height: 0px;
+    left: 0px;
+    margin: 0px;
+    top: 100px;
+    width: 431px;
+    position: absolute;
+}
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+	
+	#loginlink {
+		right: 50px;
+	}
+
+
 @media screen and (max-width: 701px) {
+	
+	.geosearchResults {
+	    max-height: 400px;
+	    overflow: scroll;
+	}
 	
 	.homeNav {
 		height: 102px;

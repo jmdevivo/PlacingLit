@@ -1,210 +1,39 @@
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  .vanishing-col {
-    width: 409px !important; }
+/*
+Error: Invalid CSS after "}": expected "}", was ""
+        on line 294 of static/styles/media_queries.scss
 
-  #mapcontainer {
-    height: 112%; }
+289: #mapcontainer {
+290:     height: 100%;
+291:     position: relative;
+292:     overflow: scroll;
+293: }
+294: }
 
-  .hamburger {
-    top: 8px;
-    position: absolute;
-    display: block;
-    right: 14px; }
-
-  .ham_dropdown {
-    display: block; }
-
-  .ham_dropdown img {
-    width: 40px; }
-
-  .drop_off {
-    display: none; }
-
-  .dropmenu {
-    display: none;
-    position: absolute;
-    padding: 10px 0px;
-    background: #222 none repeat scroll 0% 0%;
-    right: 3px;
-    top: 35px;
-    width: 300px;
-    color: #FFF;
-    z-index: 999; }
-
-  .hamburger ul {
-    padding: 10px 0px 3px;
-    background: #222 none repeat scroll 0% 0%;
-    right: 3px;
-    top: 53px;
-    width: 300px;
-    color: #FFF;
-    z-index: 999;
-    position: absolute;
-    text-align: center; }
-
-  .hamburger ul li {
-    border-top: 1px solid #333;
-    padding: 16px 0px 12px;
-    list-style-type: none; }
-
-  .hamburger ul li:hover {
-    background: #333; }
-
-  .hamburger a {
-    color: #fff;
-    font-weight: 500; }
-
-  .hamburger a:hover {
-    font-weight: 500;
-    color: #fff;
-    text-decoration: underline; } }
-@media screen and (max-width: 701px) {
-  .homeNav {
-    height: 102px; }
-
-  #map-page-container {
-    max-width: 701px;
-    height: 112%; }
-
-  .overlay {
-    min-width: 300px;
-    padding-left: 7%; }
-
-  .tall-map-window {
-    height: 500px;
-    width: 94%;
-    min-width: 180px;
-    position: relative;
-    top: 13px;
-    left: 12px;
-    padding: 30px; }
-
-  .vanishing-col {
-    width: 446px;
-    margin-top: 540px;
-    margin-left: 20px; }
-
-  .wide-map-window {
-    margin-left: 18px;
-    width: 96%; }
-
-  .wide-map-window:first-child {
-    margin-top: -15px; }
-
-  .left-map-window-div {
-    left: 14%; }
-
-  #mapsearchcontainer {
-    min-height: 0px;
-    left: 0px;
-    margin: 0px;
-    top: 100px;
-    width: 431px;
-    position: absolute; }
-
-  #mapcontainer {
-    margin-top: 55px; }
-
-  #allscenes-text {
-    display: none; }
-
-  #maplinks {
-    margin-left: 19px; }
-
-  #loginlink {
-    top: 51px;
-    position: absolute;
-    right: 0px; }
-
-  /*HAMBURGER*/
-  .hamburger {
-    top: 8px;
-    position: absolute;
-    display: block;
-    right: 14px; }
-
-  .ham_dropdown {
-    display: block; }
-
-  .ham_dropdown img {
-    width: 40px; }
-
-  .drop_off {
-    display: none; }
-
-  .dropmenu {
-    display: none;
-    position: absolute;
-    padding: 10px 0px;
-    background: #222 none repeat scroll 0% 0%;
-    right: 3px;
-    top: 35px;
-    width: 300px;
-    color: #FFF;
-    z-index: 999; }
-
-  .hamburger ul {
-    padding: 10px 0px 3px;
-    background: #222 none repeat scroll 0% 0%;
-    right: 3px;
-    top: 53px;
-    width: 300px;
-    color: #FFF;
-    z-index: 999;
-    position: absolute;
-    text-align: center; }
-
-  .hamburger ul li {
-    border-top: 1px solid #333;
-    padding: 16px 0px 12px;
-    list-style-type: none; }
-
-  .hamburger ul li:hover {
-    background: #333; }
-
-  .hamburger a {
-    color: #fff;
-    font-weight: 500; }
-
-  .hamburger a:hover {
-    font-weight: 500;
-    color: #fff;
-    text-decoration: underline; } }
-@media screen and (max-width: 500px) {
-  .vanishing-col {
-    display: none; }
-
-  .tall-map-window {
-    width: 300px;
-    left: 0px; }
-
-  #mapsearchcontainer {
-    width: 300px; }
-
-  .window-container {
-    min-width: 300px; }
-
-  .placing-lit-logo {
-    margin-top: 11px;
-    width: 259px; } }
-@media screen and (max-width: 400px) {
-  .left-map-window-div {
-    left: 4% !important; }
-
-  .hamburger ul {
-    right: -14px;
-    width: 321px; }
-
-  #info-overlay {
-    width: 300px;
-    margin-top: 30px; }
-
-  .actionAnchor {
-    margin-top: 10px; } }
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
-  #mapcontainer {
-    height: 100%;
-    position: relative;
-    overflow: scroll; } }
-
-/*# sourceMappingURL=media_queries.css.map */
+Backtrace:
+static/styles/media_queries.scss:294
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:1179:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:1115:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:1110:in `tok!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:657:in `block'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:409:in `media_directive'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:223:in `special_directive'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:198:in `directive'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:674:in `block_child'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:667:in `block_contents'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:126:in `stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:42:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/engine.rb:403:in `_to_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/engine.rb:378:in `_render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/engine.rb:295:in `render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/exec/sass_scss.rb:412:in `run'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/exec/base.rb:52:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/lib/sass/exec/base.rb:19:in `parse!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.20/bin/sass:13:in `<top (required)>'
+/usr/bin/sass:23:in `load'
+/usr/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"}\": expected \"}\", was \"\"\A         on line 294 of static/styles/media_queries.scss\A \A 289: #mapcontainer {\A 290:     height: 100%;\A 291:     position: relative;\A 292:     overflow: scroll;\A 293: }\A 294: }"; }
