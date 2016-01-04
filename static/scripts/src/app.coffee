@@ -169,27 +169,16 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     $.ajax
       url: window.location.origin + "/places/recent"
       dataType: "json",
-
       success: (data) =>
-
         mostRecentPlace = data[0]
-        console.log("most recent place: " + JSON.stringify(mostRecentPlace));
-
+        #console.log("most recent place: " + JSON.stringify(mostRecentPlace));
         mrpString =  "<b>" + mostRecentPlace['location'] +
         "</b> from <i>" + mostRecentPlace['title'] +
         "</i> by  <b>" + mostRecentPlace['author'] + "</b>";
-
         $('#newest_scene').html(mrpString);
-
-
-        console.log("--------mrpString: " + mrpString);
-
-
+        #console.log("--------mrpString: " + mrpString);
       error: (err) =>
-
         console.log("places recent error: " + JSONG.stringify(err));
-
-
 
   render: (event) ->
     @mapWithMarkers() if event is 'sync'

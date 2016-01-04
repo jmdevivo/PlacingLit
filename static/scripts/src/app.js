@@ -248,10 +248,8 @@
           return function(data) {
             var mostRecentPlace, mrpString;
             mostRecentPlace = data[0];
-            console.log("most recent place: " + JSON.stringify(mostRecentPlace));
             mrpString = "<b>" + mostRecentPlace['location'] + "</b> from <i>" + mostRecentPlace['title'] + "</i> by  <b>" + mostRecentPlace['author'] + "</b>";
-            $('#newest_scene').html(mrpString);
-            return console.log("--------mrpString: " + mrpString);
+            return $('#newest_scene').html(mrpString);
           };
         })(this),
         error: (function(_this) {
