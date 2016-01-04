@@ -577,7 +577,13 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     form_data.latitude = markerLat;
     form_data.longitude = markerLng;
     console.log form_data
-    return form_data
+
+    if (form_data.title != '') and (form_data.author != '') and (form_data.place_name != '') and
+    (form_data.scene != '') and (form_data.notes != '') and (form_data.latitude != '') and
+    (form_data.longitude != '')
+      return form_data
+    else
+      alert("All fields must be filled to add a  new Scene! ");
 
   isFormComplete: (form_data) ->
     required_fields = ['title', 'author', 'place_name', 'scene', 'notes']

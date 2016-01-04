@@ -1229,6 +1229,37 @@ input[type="checkbox"], input[type="radio"] {
     z-index: 10;
 }
 
+#new_scene_notes:focus {
+  box-shadow: 0 0 1em;
+}
+
+// #new_scene_title:focus {
+//   box-shadow: 0 0 1em;
+// }
+//
+// #new_scene_author:focus {
+//   box-shadow: 0 0 1em;
+// }
+//
+// #new_scene_place_name:focus {
+//   box-shadow: 0 0 1em;
+// }
+//
+// #new_scene_scene:focus {
+//   box-shadow: 0 0 1em;
+// }
+//
+// #new_scene_checkbox:focus {
+//   box-shadow: 0 0 1em;
+// }
+// #new_scene_check_in:focus {
+//   box-shadow: 0 0 1em;
+// }
+//
+// #nextSceneFieldBtn:focus {
+//   box-shadow: 0 0 1em;
+// }
+
 // This is the hamburger menu code!
 //
 //#hamburger-icon {

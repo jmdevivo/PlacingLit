@@ -802,7 +802,11 @@
       form_data.latitude = markerLat;
       form_data.longitude = markerLng;
       console.log(form_data);
-      return form_data;
+      if ((form_data.title !== '') && (form_data.author !== '') && (form_data.place_name !== '') && (form_data.scene !== '') && (form_data.notes !== '') && (form_data.latitude !== '') && (form_data.longitude !== '')) {
+        return form_data;
+      } else {
+        return alert("All fields must be filled to add a  new Scene! ");
+      }
     };
 
     MapCanvasView.prototype.isFormComplete = function(form_data) {

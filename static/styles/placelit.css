@@ -5535,4 +5535,7 @@ input[type="checkbox"], input[type="radio"] {
   float: left;
   z-index: 10; }
 
+#new_scene_notes:focus {
+  box-shadow: 0 0 1em; }
+
 /*# sourceMappingURL=placelit.css.map */

@@ -1,21 +1,21 @@
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  
+
   .vanishing-col {
       width: 409px !important;
   }
-  
+
   #mapcontainer {
       height: 112%;
   }
 
-  
+
   .hamburger {
       top: 8px;
       position: absolute;
       display: block;
       right: 14px;
   }
-  
+
   .ham_dropdown {
     display: block;
 }
@@ -71,7 +71,8 @@
 	font-weight: 500;
 	color: #fff;
 	text-decoration: underline;
-} 
+}
+
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
@@ -84,22 +85,24 @@
     width: 431px;
     position: absolute;
 }
+
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-	
+
 	#loginlink {
 		right: 50px;
 	}
+}
 
 
 @media screen and (max-width: 701px) {
-	
+
 	.geosearchResults {
 	    max-height: 400px;
 	    overflow: scroll;
 	}
-	
+
 	.homeNav {
 		height: 102px;
 	}
@@ -134,15 +137,15 @@
       margin-left: 18px;
       width: 96%;
   }
-  
+
   .wide-map-window:first-child {
 	  margin-top: -15px;
   }
-  
+
   .left-map-window-div {
       left: 14%;
   }
-  
+
 
   #mapsearchcontainer {
       min-height: 0px;
@@ -152,34 +155,34 @@
       width: 431px;
       position: absolute;
   }
-  
+
   #mapcontainer {
       margin-top: 55px;
   }
-  
+
   #allscenes-text {
       display: none;
   }
-  
+
   #maplinks {
 	  margin-left: 19px;
   }
-  
+
   #loginlink {
       top: 51px;
       position: absolute;
       right: 0px;
   }
-  
+
   /*HAMBURGER*/
-  
+
   .hamburger {
       top: 8px;
       position: absolute;
       display: block;
       right: 14px;
   }
-  
+
   .ham_dropdown {
     display: block;
 }
@@ -235,53 +238,53 @@
 	font-weight: 500;
 	color: #fff;
 	text-decoration: underline;
-} 
+}
 }
 
 @media screen and (max-width: 500px) {
 	.vanishing-col {
 	    display: none;
 	}
-	
+
 	.tall-map-window {
 	    width: 300px;
 	    left: 0px;
 	}
-	
+
 	#mapsearchcontainer {
 	    width: 300px;
 	}
-	
+
 	.window-container {
 	    min-width: 300px;
 	}
-	
+
 	.placing-lit-logo {
 	    margin-top: 11px;
 	    width: 259px;
 	}
-	
+
 }
 
 @media screen and (max-width: 400px) {
     .left-map-window-div {
         left: 4% !important;
     }
-	
+
 	.hamburger ul {
 	    right: -14px;
 	    width: 321px;
 	}
-	
+
 	#info-overlay {
 	    width: 300px;
 		margin-top: 30px;
 	}
-	
+
 	.actionAnchor {
 	    margin-top: 10px;
 	}
-	
+
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
