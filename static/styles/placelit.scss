@@ -1196,13 +1196,14 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 #slideshow, img.bgM {
-    min-width: 1300px;
-    height: auto;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-    margin-top: 30px;
+	min-width: 1300px;
+	width: 100%;
+	height: auto !important;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+	margin-top: 30px;
 }
 
 .homeNav {
@@ -1222,10 +1223,13 @@ input[type="checkbox"], input[type="radio"] {
 
 #loading_indicator {
     display: block;
-    float: right;
-    position: relative;
-    right: 20px;
-    color: white;
+    position: absolute;
+    margin: auto;
+    color: #FFF;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 42% 50% 100%;
+    font-size: 21px;
 }
 
 // This is the hamburger menu code!

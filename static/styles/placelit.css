@@ -5507,7 +5507,8 @@ input[type="checkbox"], input[type="radio"] {
 
 #slideshow, img.bgM {
   min-width: 1300px;
-  height: auto;
+  width: 100%;
+  height: auto !important;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -5529,9 +5530,12 @@ input[type="checkbox"], input[type="radio"] {
 
 #loading_indicator {
   display: block;
-  float: right;
-  position: relative;
-  right: 20px;
-  color: white; }
+  position: absolute;
+  margin: auto;
+  color: #FFF;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 42% 50% 100%;
+  font-size: 21px; }
 
 /*# sourceMappingURL=placelit.css.map */
