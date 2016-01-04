@@ -197,7 +197,12 @@
       this.attachNewSceneHandler();
       this.attachSearchHandler();
       this.linkMagnifyClickGcf();
-      return this.isShareLink();
+      this.isShareLink();
+      return this.isUserLoggedIn((function(_this) {
+        return function() {
+          return console.log();
+        };
+      })(this));
     };
 
     MapCanvasView.prototype.isShareLink = function() {
@@ -616,6 +621,7 @@
           this.gmap.setZoom(this.settings.zoomLevel.wide);
         }
         if ((window.location.pathname.indexOf('map') > -1) && (window.location.pathname.indexOf('collections') !== -1) && (window.location.pathname.indexOf('filter') !== -1)) {
+          console.log("this is a coordinate map");
           return this.gmap.setZoom(this.settings.zoomLevel.close);
         }
       } else {
@@ -690,11 +696,12 @@
         this.userInfowindow.setContent(content);
         this.userInfowindow.setPosition(loginWindowPosition);
         this.userInfowindow.open(this.gmap, this.userMapsMarker);
-        return google.maps.event.addListenerOnce(this.userInfowindow, 'closeclick', (function(_this) {
+        google.maps.event.addListenerOnce(this.userInfowindow, 'closeclick', (function(_this) {
           return function() {
             return _this.userMapsMarker.setMap(null);
           };
         })(this));
+        return console.log('showuserMapMarkerHelp - addscene marker position: ' + this.userMapsMarker.getPosition());
       }
     };
 
@@ -705,11 +712,12 @@
         success: (function(_this) {
           return function(data) {
             if (data.status === 'logged in') {
-              return callback.call(_this);
+              return callback();
             } else {
-              return $('#addscenebutton').click(function() {
+              $('#addscenebutton').click(function() {
                 return window.location.href = $('#loginlink').attr('href');
               });
+              return console.log("User is not logged in");
             }
           };
         })(this)
@@ -779,7 +787,7 @@
     };
 
     MapCanvasView.prototype.getFormValues = function() {
-      var $form, form_data;
+      var $form, form_data, markerLat, markerLng;
       $form = $('#new_scene_form');
       form_data = {
         title: $form.find('#new_scene_title').val(),
@@ -790,8 +798,12 @@
         image_url: $form.find('#image_url').val(),
         check_in: $form.find('#new_scene_check_in').prop('checked')
       };
-      form_data.latitude = this.userPlace.lat();
-      form_data.longitude = this.userPlace.lng();
+      markerLat = this.userMapsMarker.getPosition().lat();
+      markerLng = this.userMapsMarker.getPosition().lng();
+      console.log(" user map marker lat - lng: " + markerLat + " - " + markerLng);
+      form_data.latitude = markerLat;
+      form_data.longitude = markerLng;
+      console.log(form_data);
       return form_data;
     };
 

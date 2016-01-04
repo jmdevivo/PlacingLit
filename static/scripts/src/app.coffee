@@ -120,6 +120,10 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
     @isShareLink();
 
+    @isUserLoggedIn( =>
+      console.log()
+    );
+
 
 
   # if true, then map should load right to this scene card
@@ -128,11 +132,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     if (pathname.indexOf("map") > -1 and pathname.indexOf("filter") > -1 and pathname.indexOf("id") > -1)
       mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
       @gmap.setCenter(mapcenter);
-
-
-
-      # dbkey and window options are inparam
-      #@openInfowindowForPlace(window.)
 
 
   getPlacesNearController: (position) =>
@@ -190,7 +189,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
         console.log("places recent error: " + JSONG.stringify(err));
 
-        
+
 
   render: (event) ->
     @mapWithMarkers() if event is 'sync'
@@ -443,6 +442,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       if (window.location.pathname.indexOf('author') != -1)
         @gmap.setZoom(@settings.zoomLevel.wide)
       if ( (window.location.pathname.indexOf('map') > -1) and (window.location.pathname.indexOf('collections') != -1) and (window.location.pathname.indexOf('filter') != -1) )
+        console.log("this is a coordinate map");
         @gmap.setZoom(@settings.zoomLevel.close);
     else
       usaCoords =
@@ -506,6 +506,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @userInfowindow.open(@gmap, @userMapsMarker)
       google.maps.event.addListenerOnce @userInfowindow, 'closeclick', () =>
         @userMapsMarker.setMap(null)
+      console.log('showuserMapMarkerHelp - addscene marker position: ' +  @userMapsMarker.getPosition())
 
   isUserLoggedIn: (callback) ->
     $.ajax
@@ -513,9 +514,13 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       url: '/user/status',
       success: (data) =>
         if data.status == 'logged in'
-          callback.call(this)
+          #callback.call(this)
+          #console.log("User is logged in");
+          return callback();
         else
+          # this is whats causing the add scene button strange behavior
           $('#addscenebutton').click(() -> window.location.href = $('#loginlink').attr('href'))
+          console.log("User is not logged in");
 
   showLoginInfoWindow: () ->
     if @userMapsMarker
@@ -576,9 +581,13 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       notes: $form.find('#new_scene_notes').val()
       image_url: $form.find('#image_url').val()
       check_in: $form.find('#new_scene_check_in').prop('checked')
-    form_data.latitude = @userPlace.lat()
-    form_data.longitude = @userPlace.lng()
-    #console.log form_data
+    #console.log(JSON.stringify(form_data));
+    markerLat = @userMapsMarker.getPosition().lat();
+    markerLng = @userMapsMarker.getPosition().lng();
+    console.log(" user map marker lat - lng: "  + markerLat +  " - " + markerLng);
+    form_data.latitude = markerLat;
+    form_data.longitude = markerLng;
+    console.log form_data
     return form_data
 
   isFormComplete: (form_data) ->
