@@ -121,7 +121,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @isShareLink();
 
     @isUserLoggedIn( =>
-      console.log()
+      console.log('User is logged in!')
+      $('#loginlink').html("Log Out");
     );
 
 
@@ -1129,6 +1130,66 @@ class PlacingLit.Views.Allscenes extends Backbone.View
 
 
 class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
+
+  #  Hide mapOverlay as early as possible when loading a filter link
+  href  = window.location.href
+  console.log(pathname);
+
+  if (href.indexOf("map") > -1 and
+  (href.indexOf("filter") > -1 or
+  href.indexOf("id") > -1 or
+  href.indexOf("collections") > -1 or
+  href.indexOf('nyc') > -1 ))
+    $('#mapOverlay').css('display', 'none');
+    console.log('FILETERD!!!!!')
+
+  initialize: (scenes) ->
+    # console.log("map filter view:  scenes ")
+    # console.log("scenes: " + JSON.stringify(scenes) )
+    # console.log(scenes)
+
+    @getRecentBlog();
+    # console.log('filtered view', scenes)
+    @collection ?= new PlacingLit.Collections.Locations()
+    @listenTo @collection, 'all', @render
+    @collection.reset(scenes)
+    @authors = @suggestAuthors()
+
+    # is a map/filter/id share link style link
+    pathname = window.location.pathname;
+    if (pathname.indexOf("map") > -1 and pathname.indexOf("filter") > -1 and pathname.indexOf("id") > -1)
+      # opens the scene card for this place share link by default
+      @openInfoWindowForShareLink(scenes);
+    if pathname.indexOf("collections") > -1
+      console.log("Collection link");
+      # this should close the featured content boxes
+
+    @isUserLoggedIn( =>
+      console.log('User is logged in!')
+      $('#loginlink').html("Log Out");
+    );
+
+  render: (event) ->
+    @gmap ?= @googlemap()
+    @allMarkers = @markerArrayFromCollection(@collection)
+    @markerClustersForScenes(@allMarkers)
+    @markersForEachScene(@collection)
+    @attachSearchHandler()
+    @linkMagnifyClickGcf() # make clicking magnifying glass icon press enter in search box
+    mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
+    @gmap.setCenter(mapcenter)
+
+    # if this is a collection map, set the zoom level to wide
+    if (window.location.pathname.indexOf("collections") != -1)
+      @gmap.setZoom(@settings.zoomLevel.wide)
+    else
+      @gmap.setZoom(@settings.zoomLevel.close)
+
+    $('#addscenebutton').on('click', @handleAddSceneButtonClick)
+    $('#addscenebutton').show()
+    $('#featContentText').text("View Featured Content");
+
+
   #TODO - FIX THIS MONSTROSITY!!!
   filteredViewGeocoderSearch: () ->
     console.log("filteredViewGeocoderSearch ")
@@ -1165,29 +1226,6 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     enter_press.which = 13;
     $('#search').click ->
       $('#gcf').trigger(enter_press);
-
-
-  initialize: (scenes) ->
-    console.log("map filter view:  scenes ")
-    console.log("scenes: " + JSON.stringify(scenes) )
-    console.log(scenes)
-
-    @getRecentBlog();
-
-    # console.log('filtered view', scenes)
-    @collection ?= new PlacingLit.Collections.Locations()
-    @listenTo @collection, 'all', @render
-    @collection.reset(scenes)
-    @authors = @suggestAuthors()
-
-    # is a map/filter/id share link style link
-    pathname = window.location.pathname;
-    if (pathname.indexOf("map") > -1 and pathname.indexOf("filter") > -1 and pathname.indexOf("id") > -1)
-      # opens the scene card for this place share link by default
-      @openInfoWindowForShareLink(scenes);
-    if pathname.indexOf("collections") > -1
-      console.log("Collection link");
-      # this should close the featured content boxes
 
   openInfoWindowForShareLink: (scene) =>
     #console.log("openInfoWindowForShareLink: " + JSON.stringify(scene[0]));
@@ -1227,25 +1265,7 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
         console.log("err: " + JSON.stringify(err));
         #console.log('buildInfoWindow:  data: ' + JSON.stringify(data));
 
-  render: (event) ->
-    @gmap ?= @googlemap()
-    @allMarkers = @markerArrayFromCollection(@collection)
-    @markerClustersForScenes(@allMarkers)
-    @markersForEachScene(@collection)
-    @attachSearchHandler()
-    @linkMagnifyClickGcf() # make clicking magnifying glass icon press enter in search box
-    mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng)
-    @gmap.setCenter(mapcenter)
 
-    # if this is a collection map, set the zoom level to wide
-    if (window.location.pathname.indexOf("collections") != -1)
-      @gmap.setZoom(@settings.zoomLevel.wide)
-    else
-      @gmap.setZoom(@settings.zoomLevel.close)
-
-    $('#addscenebutton').on('click', @handleAddSceneButtonClick)
-    $('#addscenebutton').show()
-    $('#featContentText').text("View Featured Content");
 
   updateCollection: (event) ->
     center = @gmap.getCenter()

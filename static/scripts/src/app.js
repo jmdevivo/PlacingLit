@@ -201,7 +201,8 @@
       this.isShareLink();
       return this.isUserLoggedIn((function(_this) {
         return function() {
-          return console.log();
+          console.log('User is logged in!');
+          return $('#loginlink').html("Log Out");
         };
       })(this));
     };
@@ -1559,12 +1560,69 @@
   })(Backbone.View);
 
   PlacingLit.Views.MapFilterView = (function(superClass) {
+    var href;
+
     extend(MapFilterView, superClass);
 
     function MapFilterView() {
       this.openInfoWindowForShareLink = bind(this.openInfoWindowForShareLink, this);
       return MapFilterView.__super__.constructor.apply(this, arguments);
     }
+
+    href = window.location.href;
+
+    console.log(pathname);
+
+    if (href.indexOf("map") > -1 && (href.indexOf("filter") > -1 || href.indexOf("id") > -1 || href.indexOf("collections") > -1 || href.indexOf('nyc') > -1)) {
+      $('#mapOverlay').css('display', 'none');
+      console.log('FILETERD!!!!!');
+    }
+
+    MapFilterView.prototype.initialize = function(scenes) {
+      var pathname;
+      this.getRecentBlog();
+      if (this.collection == null) {
+        this.collection = new PlacingLit.Collections.Locations();
+      }
+      this.listenTo(this.collection, 'all', this.render);
+      this.collection.reset(scenes);
+      this.authors = this.suggestAuthors();
+      pathname = window.location.pathname;
+      if (pathname.indexOf("map") > -1 && pathname.indexOf("filter") > -1 && pathname.indexOf("id") > -1) {
+        this.openInfoWindowForShareLink(scenes);
+      }
+      if (pathname.indexOf("collections") > -1) {
+        console.log("Collection link");
+      }
+      return this.isUserLoggedIn((function(_this) {
+        return function() {
+          console.log('User is logged in!');
+          return $('#loginlink').html("Log Out");
+        };
+      })(this));
+    };
+
+    MapFilterView.prototype.render = function(event) {
+      var mapcenter;
+      if (this.gmap == null) {
+        this.gmap = this.googlemap();
+      }
+      this.allMarkers = this.markerArrayFromCollection(this.collection);
+      this.markerClustersForScenes(this.allMarkers);
+      this.markersForEachScene(this.collection);
+      this.attachSearchHandler();
+      this.linkMagnifyClickGcf();
+      mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
+      this.gmap.setCenter(mapcenter);
+      if (window.location.pathname.indexOf("collections") !== -1) {
+        this.gmap.setZoom(this.settings.zoomLevel.wide);
+      } else {
+        this.gmap.setZoom(this.settings.zoomLevel.close);
+      }
+      $('#addscenebutton').on('click', this.handleAddSceneButtonClick);
+      $('#addscenebutton').show();
+      return $('#featContentText').text("View Featured Content");
+    };
 
     MapFilterView.prototype.filteredViewGeocoderSearch = function() {
       var address, geocoder;
@@ -1618,27 +1676,6 @@
       });
     };
 
-    MapFilterView.prototype.initialize = function(scenes) {
-      var pathname;
-      console.log("map filter view:  scenes ");
-      console.log("scenes: " + JSON.stringify(scenes));
-      console.log(scenes);
-      this.getRecentBlog();
-      if (this.collection == null) {
-        this.collection = new PlacingLit.Collections.Locations();
-      }
-      this.listenTo(this.collection, 'all', this.render);
-      this.collection.reset(scenes);
-      this.authors = this.suggestAuthors();
-      pathname = window.location.pathname;
-      if (pathname.indexOf("map") > -1 && pathname.indexOf("filter") > -1 && pathname.indexOf("id") > -1) {
-        this.openInfoWindowForShareLink(scenes);
-      }
-      if (pathname.indexOf("collections") > -1) {
-        return console.log("Collection link");
-      }
-    };
-
     MapFilterView.prototype.openInfoWindowForShareLink = function(scene) {
       var db_key, url;
       db_key = scene[0].db_key;
@@ -1679,28 +1716,6 @@
           };
         })(this)
       });
-    };
-
-    MapFilterView.prototype.render = function(event) {
-      var mapcenter;
-      if (this.gmap == null) {
-        this.gmap = this.googlemap();
-      }
-      this.allMarkers = this.markerArrayFromCollection(this.collection);
-      this.markerClustersForScenes(this.allMarkers);
-      this.markersForEachScene(this.collection);
-      this.attachSearchHandler();
-      this.linkMagnifyClickGcf();
-      mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
-      this.gmap.setCenter(mapcenter);
-      if (window.location.pathname.indexOf("collections") !== -1) {
-        this.gmap.setZoom(this.settings.zoomLevel.wide);
-      } else {
-        this.gmap.setZoom(this.settings.zoomLevel.close);
-      }
-      $('#addscenebutton').on('click', this.handleAddSceneButtonClick);
-      $('#addscenebutton').show();
-      return $('#featContentText').text("View Featured Content");
     };
 
     MapFilterView.prototype.updateCollection = function(event) {
