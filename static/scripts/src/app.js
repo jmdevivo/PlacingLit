@@ -107,6 +107,7 @@
     extend(MapCanvasView, superClass);
 
     function MapCanvasView() {
+      this.closeSceneCard = bind(this.closeSceneCard, this);
       this.null_function = bind(this.null_function, this);
       this.addPlace = bind(this.addPlace, this);
       this.handleAddSceneButtonClick = bind(this.handleAddSceneButtonClick, this);
@@ -1208,6 +1209,10 @@
         console.log('entry-image is empty, insert default image');
       }
       return content;
+    };
+
+    MapCanvasView.prototype.closeSceneCard = function() {
+      return $('#info-overlay').css('display', 'none');
     };
 
     MapCanvasView.prototype.openInfowindowForPlace = function(place_key, windowOptions) {

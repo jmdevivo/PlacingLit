@@ -102,7 +102,7 @@
    </nav>
 
 
-    
+
 
   <script>
   // TODO: Move this into app.coffee
@@ -263,10 +263,12 @@
         <div id='entry-image'></div>
         <div class='entry' id='scene_entry'>
 
+          <button type="reset" id="sceneCloseButton" onclick="closeSceneCard()">X</button>
           <h2 class="entry-title" id='entry-scene-title'>Places</h2>
           <div class="entry-body" id='entry-scene-place-name'></div>
           <div class="entry-body" id='entry-scene-description'></div>
         </div>
+
         <div class='entry' id='place_entry'>
           <h2 class="entry-title" id='entry-place-title'>Place</h2>
           <div class="entry-body" id='entry-place-place-name'></div>
@@ -685,6 +687,9 @@ in the window namespace -->
 
     console.log({{newest_post_pub_date}});
 
+    function closeSceneCard() {
+      $('#info-overlay').css('display', 'none');
+    }
 
   </script>
 {% endblock %}

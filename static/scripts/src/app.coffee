@@ -828,12 +828,9 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     console.log('buildInfowindow')
     $('#tabs').show()
     @clearInfowindowClickEvents()
-
     console.log "The database key is:" + data.id
-
     content = '<div class="plinfowindow">'
     $('#entry-image').show()
-
     # image not found default image
     if !data.image_data or !data.image_data.photo_id
       img = '<img src="' + window.location.origin + '/img/placingLitNoImageFound.png" />'
@@ -855,21 +852,12 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     $('#entry-place-body').html(data.notes)
     $('#entry-visits-body').html(data.visits)
 
-
-
-    # test by Will Acheson to make Wikipedia link correct
     $('#wikiActionLink').attr('href',"https://en.wikipedia.org/w/index.php?search="+ data.place_name);
     $('#wikiActionLink2').attr('href',"https://en.wikipedia.org/w/index.php?search="+ data.place_name);
-
     $("#googleActionLink").attr('href', "https://www.google.com/search?q="+ data.place_name);
     $("#googleActionLink2").attr('href', "https://www.google.com/search?q="+ data.place_name);
-
-    # getting the google search button to work on mozilla
-    #https://stackoverflow.com/questions/16280684/nesting-a-inside-button-doesnt-work-in-firefox
-
     $("#googleActionLinkMoz").attr('href', "https://www.google.com/search?q="+ data.place_name);
     $("#googleActionLinkMoz2").attr('href', "https://www.google.com/search?q="+ data.place_name);
-
     $('#ibActionLink').attr('href', "http://www.rjjulia.com/book/"+ data.isbn);
     $('#grActionLink').attr('href', "https://www.goodreads.com/book/isbn/"+ data.isbn);
 
@@ -905,6 +893,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       console.log('entry-image is empty, insert default image');
     return content
 
+  closeSceneCard: () =>
+    $('#info-overlay').css('display', 'none');
 
   openInfowindowForPlace: (place_key, windowOptions) ->
     console.log('open', windowOptions)
