@@ -2,6 +2,9 @@
   .vanishing-col {
     width: 409px !important; }
 
+  #loginlink {
+    right: 50px; }
+
   #mapcontainer {
     height: 112%; }
 
@@ -66,9 +69,6 @@
     top: 100px;
     width: 431px;
     position: absolute; } }
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  #loginlink {
-    right: 50px; } }
 @media screen and (max-width: 701px) {
   .geosearchResults {
     max-height: 400px;
@@ -221,5 +221,23 @@
     height: 100%;
     position: relative;
     overflow: scroll; } }
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+  .placing-lit-logo {
+    margin-top: 12px;
+    padding-left: 20px;
+    width: 259px; }
+
+  #maplinks {
+    margin-left: 19px;
+    top: -51px;
+    left: 271px; }
+
+  #loginlink {
+    top: 0px;
+    position: fixed;
+    right: 74px; }
+
+  .homeNav {
+    height: 61px; } }
 
 /*# sourceMappingURL=media_queries.css.map */

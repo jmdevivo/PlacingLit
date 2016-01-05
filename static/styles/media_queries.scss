@@ -1,34 +1,36 @@
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-
   .vanishing-col {
-      width: 409px !important;
+    width: 409px !important;
+  }
+
+  #loginlink {
+    right: 50px;
   }
 
   #mapcontainer {
-      height: 112%;
+    height: 112%;
   }
 
-
   .hamburger {
-      top: 8px;
-      position: absolute;
-      display: block;
-      right: 14px;
+    top: 8px;
+    position: absolute;
+    display: block;
+    right: 14px;
   }
 
   .ham_dropdown {
     display: block;
-}
+  }
 
-.ham_dropdown img {
-	width: 40px;
-}
+  .ham_dropdown img {
+    width: 40px;
+  }
 
-.drop_off {
+  .drop_off {
     display: none;
-}
+  }
 
-.dropmenu {
+  .dropmenu {
     display: none;
     position: absolute;
     padding: 10px 0px;
@@ -38,9 +40,9 @@
     width: 300px;
     color: #FFF;
     z-index: 999;
-}
+  }
 
-.hamburger ul {
+  .hamburger ul {
     padding: 10px 0px 3px;
     background: #222 none repeat scroll 0% 0%;
     right: 3px;
@@ -50,152 +52,139 @@
     z-index: 999;
     position: absolute;
     text-align: center;
-}
+  }
 
-.hamburger ul li {
+  .hamburger ul li {
     border-top: 1px solid #333;
     padding: 16px 0px 12px;
-	list-style-type: none;
-}
+    list-style-type: none;
+  }
 
-.hamburger ul li:hover {
-	background: #333;
-};
+  .hamburger ul li:hover {
+    background: #333;
+  }
 
-.hamburger a {
-	color: #fff;
-	font-weight: 500;
-}
+  .hamburger a {
+    color: #fff;
+    font-weight: 500;
+  }
 
-.hamburger a:hover {
-	font-weight: 500;
-	color: #fff;
-	text-decoration: underline;
-}
-
+  .hamburger a:hover {
+    font-weight: 500;
+    color: #fff;
+    text-decoration: underline;
+  }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-
-#mapsearchcontainer {
+  #mapsearchcontainer {
     min-height: 0px;
     left: 0px;
     margin: 0px;
     top: 100px;
     width: 431px;
     position: absolute;
+  }
 }
-
-}
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-
-	#loginlink {
-		right: 50px;
-	}
-}
-
 
 @media screen and (max-width: 701px) {
+  .geosearchResults {
+    max-height: 400px;
+    overflow: scroll;
+  }
 
-	.geosearchResults {
-	    max-height: 400px;
-	    overflow: scroll;
-	}
+  .homeNav {
+    height: 102px;
+  }
 
-	.homeNav {
-		height: 102px;
-	}
-
-	#map-page-container {
-		max-width: 701px;
-		height: 112%;
-	}
+  #map-page-container {
+    max-width: 701px;
+    height: 112%;
+  }
 
   .overlay {
-      min-width: 300px;
-	  padding-left: 7%;
+    min-width: 300px;
+    padding-left: 7%;
   }
 
   .tall-map-window {
-      height: 500px;
-      width: 94%;
-      min-width: 180px;
-      position: relative;
-      top: 13px;
-      left: 12px;
-	  padding: 30px;
+    height: 500px;
+    width: 94%;
+    min-width: 180px;
+    position: relative;
+    top: 13px;
+    left: 12px;
+    padding: 30px;
   }
 
   .vanishing-col {
-      width: 446px;
-      margin-top: 540px;
-      margin-left: 20px;
+    width: 446px;
+    margin-top: 540px;
+    margin-left: 20px;
   }
 
   .wide-map-window {
-      margin-left: 18px;
-      width: 96%;
+    margin-left: 18px;
+    width: 96%;
   }
 
   .wide-map-window:first-child {
-	  margin-top: -15px;
+    margin-top: -15px;
   }
 
   .left-map-window-div {
-      left: 14%;
+    left: 14%;
   }
 
-
   #mapsearchcontainer {
-      min-height: 0px;
-      left: 0px;
-      margin: 0px;
-      top: 100px;
-      width: 431px;
-      position: absolute;
+    min-height: 0px;
+    left: 0px;
+    margin: 0px;
+    top: 100px;
+    width: 431px;
+    position: absolute;
   }
 
   #mapcontainer {
-      margin-top: 55px;
+    margin-top: 55px;
   }
 
   #allscenes-text {
-      display: none;
+    display: none;
   }
 
   #maplinks {
-	  margin-left: 19px;
+    margin-left: 19px;
   }
 
   #loginlink {
-      top: 51px;
-      position: fixed;
-      right: 0px;
+    top: 51px;
+    position: fixed;
+    right: 0px;
   }
 
   /*HAMBURGER*/
 
   .hamburger {
-      top: 8px;
-      position: absolute;
-      display: block;
-      right: 14px;
+    top: 8px;
+    position: absolute;
+    display: block;
+    right: 14px;
   }
 
   .ham_dropdown {
     display: block;
-}
+  }
 
-.ham_dropdown img {
-	width: 40px;
-}
+  .ham_dropdown img {
+    width: 40px;
+  }
 
-.drop_off {
+  .drop_off {
     display: none;
-}
+  }
 
-.dropmenu {
+  .dropmenu {
     display: none;
     position: absolute;
     padding: 10px 0px;
@@ -205,9 +194,9 @@
     width: 300px;
     color: #FFF;
     z-index: 999;
-}
+  }
 
-.hamburger ul {
+  .hamburger ul {
     padding: 10px 0px 3px;
     background: #222 none repeat scroll 0% 0%;
     right: 3px;
@@ -217,81 +206,102 @@
     z-index: 999;
     position: absolute;
     text-align: center;
-}
+  }
 
-.hamburger ul li {
+  .hamburger ul li {
     border-top: 1px solid #333;
     padding: 16px 0px 12px;
-	list-style-type: none;
-}
+    list-style-type: none;
+  }
 
-.hamburger ul li:hover {
-	background: #333;
-};
+  .hamburger ul li:hover {
+    background: #333;
+  }
 
-.hamburger a {
-	color: #fff;
-	font-weight: 500;
-}
+  .hamburger a {
+    color: #fff;
+    font-weight: 500;
+  }
 
-.hamburger a:hover {
-	font-weight: 500;
-	color: #fff;
-	text-decoration: underline;
-}
+  .hamburger a:hover {
+    font-weight: 500;
+    color: #fff;
+    text-decoration: underline;
+  }
 }
 
 @media screen and (max-width: 500px) {
-	.vanishing-col {
-	    display: none;
-	}
+  .vanishing-col {
+    display: none;
+  }
 
-	.tall-map-window {
-	    width: 300px;
-	    left: 0px;
-	}
+  .tall-map-window {
+    width: 300px;
+    left: 0px;
+  }
 
-	#mapsearchcontainer {
-	    width: 300px;
-	}
+  #mapsearchcontainer {
+    width: 300px;
+  }
 
-	.window-container {
-	    min-width: 300px;
-	}
+  .window-container {
+    min-width: 300px;
+  }
 
-	.placing-lit-logo {
-	    margin-top: 11px;
-	    width: 259px;
-	}
-
+  .placing-lit-logo {
+    margin-top: 11px;
+    width: 259px;
+  }
 }
 
 @media screen and (max-width: 400px) {
-    .left-map-window-div {
-        left: 4% !important;
-    }
+  .left-map-window-div {
+    left: 4% !important;
+  }
 
-	.hamburger ul {
-	    right: -14px;
-	    width: 321px;
-	}
+  .hamburger ul {
+    right: -14px;
+    width: 321px;
+  }
 
-	#info-overlay {
-	    width: 300px;
-		margin-top: 30px;
-	}
+  #info-overlay {
+    width: 300px;
+    margin-top: 30px;
+  }
 
-	.actionAnchor {
-	    margin-top: 10px;
-	}
-
+  .actionAnchor {
+    margin-top: 10px;
+  }
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
-
-#mapcontainer {
+  #mapcontainer {
     height: 100%;
     position: relative;
     overflow: scroll;
+  }
 }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+  .placing-lit-logo {
+    margin-top: 12px;
+    padding-left: 20px;
+    width: 259px;
+  }
+
+  #maplinks {
+    margin-left: 19px;
+    top: -51px;
+    left: 271px;
+  }
+
+  #loginlink {
+    top: 0px;
+    position: fixed;
+    right: 74px;
+  }
+
+  .homeNav {
+    height: 61px;
+  }
 }

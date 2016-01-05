@@ -5078,7 +5078,7 @@ body {
   top: 80px;
   left: 20px;
   background-color: white;
-  z-index: 99;
+  z-index: 95;
   width: 400px;
   display: none;
   min-height: 100px; }
