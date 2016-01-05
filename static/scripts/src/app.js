@@ -1571,8 +1571,6 @@
 
     href = window.location.href;
 
-    console.log(pathname);
-
     if (href.indexOf("map") > -1 && (href.indexOf("filter") > -1 || href.indexOf("id") > -1 || href.indexOf("collections") > -1 || href.indexOf('nyc') > -1)) {
       $('#mapOverlay').css('display', 'none');
       console.log('FILETERD!!!!!');

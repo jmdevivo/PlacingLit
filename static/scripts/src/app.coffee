@@ -1133,7 +1133,6 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
 
   #  Hide mapOverlay as early as possible when loading a filter link
   href  = window.location.href
-  console.log(pathname);
 
   if (href.indexOf("map") > -1 and
   (href.indexOf("filter") > -1 or
