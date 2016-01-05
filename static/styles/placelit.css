@@ -4834,7 +4834,7 @@ body {
   top: 65px;
   right: 5px;
   width: 8em;
-  z-index: 20; }
+  z-index: 200; }
 
 #map-page-container {
   background-color: #222222;

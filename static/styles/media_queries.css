@@ -3,7 +3,10 @@
     width: 409px !important; }
 
   #loginlink {
-    right: 50px; }
+    right: 130px; }
+
+  .navbar-profile #loginlink {
+    margin-right: 114px; }
 
   #mapcontainer {
     height: 112%; }
@@ -70,6 +73,16 @@
     width: 431px;
     position: absolute; }
 
+  #loginLink {
+    right: 106px; }
+
+  .navbar-profile #loginlink {
+    margin-right: 91px; }
+
+  .wide-map-window {
+    min-width: 395px !important;
+    margin-left: 16px; }
+
   #maplinks {
     margin-top: -91px;
     margin-left: 320px;
@@ -78,8 +91,65 @@
     background-image: none;
     border: none; }
 
+  #mapcontainer {
+    height: 108%; }
+
   #allscenes-text {
-    display: none; } }
+    display: none; }
+
+  .hamburger {
+    top: 8px;
+    position: absolute;
+    display: block;
+    right: 14px; }
+
+  .ham_dropdown {
+    display: block; }
+
+  .ham_dropdown img {
+    width: 40px; }
+
+  .drop_off {
+    display: none; }
+
+  .dropmenu {
+    display: none;
+    position: absolute;
+    padding: 10px 0px;
+    background: #222 none repeat scroll 0% 0%;
+    right: 3px;
+    top: 35px;
+    width: 300px;
+    color: #FFF;
+    z-index: 999; }
+
+  .hamburger ul {
+    padding: 10px 0px 3px;
+    background: #222 none repeat scroll 0% 0%;
+    right: 3px;
+    top: 53px;
+    width: 300px;
+    color: #FFF;
+    z-index: 999;
+    position: absolute;
+    text-align: center; }
+
+  .hamburger ul li {
+    border-top: 1px solid #333;
+    padding: 16px 0px 12px;
+    list-style-type: none; }
+
+  .hamburger ul li:hover {
+    background: #333; }
+
+  .hamburger a {
+    color: #fff;
+    font-weight: 500; }
+
+  .hamburger a:hover {
+    font-weight: 500;
+    color: #fff;
+    text-decoration: underline; } }
 @media screen and (max-width: 701px) {
   .geosearchResults {
     max-height: 400px;
