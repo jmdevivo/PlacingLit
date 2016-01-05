@@ -85,6 +85,19 @@
     width: 431px;
     position: absolute;
   }
+  
+  #maplinks {
+      margin-top: -91px;
+      margin-left: 320px;
+      font-size: 20px;
+      background-color: #222222;
+      background-image: none;
+      border: none;
+  }
+  
+  #allscenes-text {
+	  display:none;
+  }
 }
 
 @media screen and (max-width: 701px) {
