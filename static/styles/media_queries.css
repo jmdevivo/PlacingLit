@@ -128,7 +128,7 @@
 
   #loginlink {
     top: 51px;
-    position: absolute;
+    position: fixed;
     right: 0px; }
 
   /*HAMBURGER*/

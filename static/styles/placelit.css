@@ -5394,7 +5394,7 @@ body {
 #loginlink {
   float: right;
   padding: 20px;
-  z-index: 9999999;
+  z-index: 990;
   position: fixed;
   right: 0; }
 
@@ -5530,7 +5530,7 @@ input[type="checkbox"], input[type="radio"] {
   position: absolute;
   color: #FFF;
   top: 0px;
-  padding: 40% 45% 35%;
+  padding: 44% 6% 35% 42%;
   font-size: 21px;
   float: left;
   z-index: 10; }
