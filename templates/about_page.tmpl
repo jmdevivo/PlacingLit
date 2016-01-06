@@ -37,13 +37,39 @@
         <script type="text/javascript" src="/js/libs/backbone-min.js"></script>
         <script type="text/javascript" src="/js/libs/bootstrap.min.js"></script>
         <script type="text/javascript" src="/js/libs/jquery_cycle_plugin.js"></script>
-        
+
+
 <script type="text/javascript">
+
+   // hamburger menu controls for mobile
 	 jQuery(function($){
 	    	     $( '.ham_dropdown' ).click(function(){
 	    	     $('.dropmenu').slideToggle('drop_off')
 	    	     })
-	        })
+	        });
+
+  /// Log In dynamic text controls
+  function isUserLoggedIn(callback){
+    $.ajax({
+      datatype: 'json',
+      url: '/user/status',
+    }).done(function(data) {
+      if (data.status == "logged in"){
+        return callback();
+      }
+      else {
+        console.log("User is not logged in");
+      }
+    });
+  }
+
+
+    isUserLoggedIn(function(){
+      // if callback is called, it means the user was logged in
+      console.log('User is logged in!')
+      $('#loginlink').html("Log Out");
+    });
+
 </script>
     </head>
 

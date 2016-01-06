@@ -110,7 +110,11 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     # get most recent place and put it on the featured content overlay
     @getRecentPlace();
 
+
+
     @collection.fetch()
+
+
     # setup handler for geocoder searches
     @suggestAuthors()
     @attachNewSceneHandler()
@@ -124,6 +128,20 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       console.log('User is logged in!')
       $('#loginlink').html("Log Out");
     );
+
+
+    #@getPlacesByAuthor("Richard Wright"); # The author of Native Son
+    #@getPlacesByAuthor("Ann Petry");
+
+  getPlacesByAuthor: (author_name) =>
+    console.log('get places by author');
+    authors_places = @collection.where({author: author_name})
+    console.log(author_name + "\'s places: " + JSON.stringify(authors_places));
+
+  getPlacesByTitle: (title_name) =>
+    console.log('get places by title');
+    title_places = @collection.where({title: title_name})
+    console.log(title_name + "\'s places: " + JSON.stringify(title_places));
 
 
 
@@ -183,6 +201,15 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
   render: (event) ->
     @mapWithMarkers() if event is 'sync'
+
+    if (window.location.href.indexOf('armistad') > -1)
+        richardWright = @collection.where({author: "Richard Wright"});
+        annPetry = @collection.where({author: "Ann Petry"});
+        console.log("richard Wright: " + JSON.stringify(richardWright))
+        console.log("Ann Petry: " + JSON.stringify(annPetry));
+
+        # if this works, I can probably use collection.reset(array of scenes) to
+        # load only the scenes from these two authors
 
 
   googlemap: ()->
@@ -991,6 +1018,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
   buildMarkerFromLocation: (location) ->
 
+    console.log("buildMarkerFromLocation location: " + JSON.stringify(location));
+
     #console.log('slideshow made invisible');
     $('#slideshow').css('display', 'none');
     $('#loading_indicator').css('display', 'none');
@@ -1168,6 +1197,10 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
       $('#loginlink').html("Log Out");
     );
 
+    @getPlacesByAuthor("Richard Wright"); # The author of Native Son
+    @getPlacesByAuthor("The%20Street"); # The author of Native Son
+    @getPlacesByAuthor("Ann Petry");
+
   render: (event) ->
     @gmap ?= @googlemap()
     @allMarkers = @markerArrayFromCollection(@collection)
@@ -1187,6 +1220,17 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     $('#addscenebutton').on('click', @handleAddSceneButtonClick)
     $('#addscenebutton').show()
     $('#featContentText').text("View Featured Content");
+
+
+  getPlacesByAuthor: (author_name) =>
+    console.log('get places by author');
+    authors_places = @collection.where({author: author_name})
+    console.log(author_name + "\'s places: " + JSON.stringify(authors_places));
+
+  getPlacesByTitle: (title_name) =>
+    console.log('get places by title');
+    title_places = @collection.where({title: title_name})
+    console.log(title_name + "\'s places: " + JSON.stringify(title_places));
 
 
   #TODO - FIX THIS MONSTROSITY!!!

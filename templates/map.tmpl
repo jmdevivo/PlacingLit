@@ -151,14 +151,16 @@
   </div>
 </div>
   <div id="mapcontainer">
+
 	  <script>
 	  $(document).ready(function() {
 	  	$('#slideshow').cycle({
-	  	fx: 'fade',
-	  	pause:   1,
-	  	speed: 500,
-	  	timeout:  3500
-	  	});
+  	  	fx: 'fade',
+  	  	pause:   1,
+  	  	speed: 1000000000,
+  	  	timeout:  3500,
+        random: 1
+  	  });
 	  });
 
 	  </script>
@@ -601,7 +603,7 @@ in the window namespace -->
     //   console.log("Artist name: "  + document.getElementById('top-left-artist-name').innerHTML );
     //
     //   var artist_name = document.getElementById('top-left-artist-name').innerHTML;
-    // 
+    //
     //   console.log("clicked: " + artist_name + '\'s featured box.');
     //
     //   if (typeof artist_name == 'string'){
