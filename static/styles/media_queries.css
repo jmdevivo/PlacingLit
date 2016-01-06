@@ -306,37 +306,41 @@
   .placing-lit-logo-collection {
     width: 200px;
     margin-top: -5px; } }
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
+  .navbar-profile #loginlink {
+    right: 20px; } }
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
   .placing-lit-logo {
-    margin-top: 12px;
+    margin-top: 17px;
     padding-left: 20px;
-    width: 259px; }
+    width: 184px; }
 
   .navbar-profile #loginlink {
-    right: 19px; }
+    right: 80px;
+    top: 20px; }
 
   #maplinks {
     margin-left: 19px;
     top: -51px;
-    left: 271px; }
+    left: 188px; }
 
   #loginlink {
     top: 0px;
     position: fixed;
-    right: 74px; }
+    right: 56px; }
 
   .homeNav {
     height: 61px; }
 
   #mapcontainer {
-    height: 374%; }
+    height: 424%; }
 
   .hamburger ul {
     padding: 0px 0px 3px;
     top: 34px; }
 
   .hamburger ul li {
-    padding: 12px 0px 10px; }
+    padding: 10px 0px 8px; }
 
   .geosearchResults {
     max-height: 200px; } }
