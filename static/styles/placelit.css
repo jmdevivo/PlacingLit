@@ -4587,7 +4587,9 @@ body {
 #mapsearchcontainer {
   margin: 0% 0% 0% 44%;
   width: 431px;
-  position: absolute; }
+  position: absolute;
+  z-index: 0;
+  top: 0px; }
 
 #geocodersearch, #plauthorsearch {
   margin-bottom: 1%; }
@@ -4921,11 +4923,11 @@ body {
   cursor: pointer; }
 
 #maplinks {
-  margin-top: -41px;
+  margin-top: 9px;
   font-size: 20px;
-  background-color: #222222;
+  background-color: #222;
   background-image: none;
-  border: none; }
+  border: medium none; }
 
 #allscenes-text {
   color: #d5d7d6;
