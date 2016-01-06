@@ -116,7 +116,7 @@
   }
   
   #mapcontainer {
-    height: 108%;
+    height: 120%;
   }
   
   #allscenes-text {
@@ -380,6 +380,12 @@
     position: relative;
     overflow: scroll;
   }
+  
+  .placing-lit-logo-collection {
+	  width:200px;
+	  margin-top: -5px;
+  }
+  
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
@@ -387,6 +393,10 @@
     margin-top: 12px;
     padding-left: 20px;
     width: 259px;
+  }
+  
+  .navbar-profile #loginlink {
+	  right: 19px;
   }
 
   #maplinks {
@@ -404,4 +414,22 @@
   .homeNav {
     height: 61px;
   }
+  
+  #mapcontainer {
+	  height: 374%;
+  }
+  
+  .hamburger ul {
+	  padding: 0px 0px 3px;
+	  top: 34px;
+  }
+  
+  .hamburger ul li {
+  	padding: 12px 0px 10px;
+  }
+  
+  .geosearchResults {
+	  max-height: 200px;
+  }
+  
 }
