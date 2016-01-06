@@ -5529,11 +5529,11 @@ input[type="checkbox"], input[type="radio"] {
 #loading_indicator {
   position: absolute;
   color: #FFF;
-  top: 0px;
-  padding: 44% 6% 35% 42%;
   font-size: 21px;
   float: left;
-  z-index: 10; }
+  z-index: 10;
+  left: 31px;
+  top: 63px; }
 
 #new_scene_notes:focus {
   box-shadow: 0 0 1em; }
