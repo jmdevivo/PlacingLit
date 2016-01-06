@@ -117,6 +117,8 @@
       this.getRecentPlace = bind(this.getRecentPlace, this);
       this.getRecentBlog = bind(this.getRecentBlog, this);
       this.getPlacesNearController = bind(this.getPlacesNearController, this);
+      this.getPlacesByTitle = bind(this.getPlacesByTitle, this);
+      this.getPlacesByAuthor = bind(this.getPlacesByAuthor, this);
       return MapCanvasView.__super__.constructor.apply(this, arguments);
     }
 
@@ -207,6 +209,24 @@
       })(this));
     };
 
+    MapCanvasView.prototype.getPlacesByAuthor = function(author_name) {
+      var authors_places;
+      console.log('get places by author');
+      authors_places = this.collection.where({
+        author: author_name
+      });
+      return console.log(author_name + "\'s places: " + JSON.stringify(authors_places));
+    };
+
+    MapCanvasView.prototype.getPlacesByTitle = function(title_name) {
+      var title_places;
+      console.log('get places by title');
+      title_places = this.collection.where({
+        title: title_name
+      });
+      return console.log(title_name + "\'s places: " + JSON.stringify(title_places));
+    };
+
     MapCanvasView.prototype.isShareLink = function() {
       var mapcenter, pathname;
       pathname = window.location.pathname;
@@ -263,8 +283,19 @@
     };
 
     MapCanvasView.prototype.render = function(event) {
+      var annPetry, richardWright;
       if (event === 'sync') {
-        return this.mapWithMarkers();
+        this.mapWithMarkers();
+      }
+      if (window.location.href.indexOf('armistad') > -1) {
+        richardWright = this.collection.where({
+          author: "Richard Wright"
+        });
+        annPetry = this.collection.where({
+          author: "Ann Petry"
+        });
+        console.log("richard Wright: " + JSON.stringify(richardWright));
+        return console.log("Ann Petry: " + JSON.stringify(annPetry));
       }
     };
 
@@ -1333,6 +1364,7 @@
 
     MapCanvasView.prototype.buildMarkerFromLocation = function(location) {
       var author, lat, lng, marker, markerParams, title;
+      console.log("buildMarkerFromLocation location: " + JSON.stringify(location));
       $('#slideshow').css('display', 'none');
       $('#loading_indicator').css('display', 'none');
       console.log("buildMarkerFromLocation");
@@ -1566,6 +1598,8 @@
 
     function MapFilterView() {
       this.openInfoWindowForShareLink = bind(this.openInfoWindowForShareLink, this);
+      this.getPlacesByTitle = bind(this.getPlacesByTitle, this);
+      this.getPlacesByAuthor = bind(this.getPlacesByAuthor, this);
       return MapFilterView.__super__.constructor.apply(this, arguments);
     }
 
@@ -1592,12 +1626,15 @@
       if (pathname.indexOf("collections") > -1) {
         console.log("Collection link");
       }
-      return this.isUserLoggedIn((function(_this) {
+      this.isUserLoggedIn((function(_this) {
         return function() {
           console.log('User is logged in!');
           return $('#loginlink').html("Log Out");
         };
       })(this));
+      this.getPlacesByAuthor("Richard Wright");
+      this.getPlacesByAuthor("The%20Street");
+      return this.getPlacesByAuthor("Ann Petry");
     };
 
     MapFilterView.prototype.render = function(event) {
@@ -1620,6 +1657,24 @@
       $('#addscenebutton').on('click', this.handleAddSceneButtonClick);
       $('#addscenebutton').show();
       return $('#featContentText').text("View Featured Content");
+    };
+
+    MapFilterView.prototype.getPlacesByAuthor = function(author_name) {
+      var authors_places;
+      console.log('get places by author');
+      authors_places = this.collection.where({
+        author: author_name
+      });
+      return console.log(author_name + "\'s places: " + JSON.stringify(authors_places));
+    };
+
+    MapFilterView.prototype.getPlacesByTitle = function(title_name) {
+      var title_places;
+      console.log('get places by title');
+      title_places = this.collection.where({
+        title: title_name
+      });
+      return console.log(title_name + "\'s places: " + JSON.stringify(title_places));
     };
 
     MapFilterView.prototype.filteredViewGeocoderSearch = function() {
