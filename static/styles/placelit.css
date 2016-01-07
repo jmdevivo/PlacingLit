@@ -4833,10 +4833,19 @@ body {
 
 #addscenebutton {
   position: absolute;
-  top: 65px;
+  top: 62px;
   right: 5px;
   width: 8em;
-  z-index: 198; }
+  z-index: 198;
+  background-color: #3E6FE3 !important;
+  background-image: none;
+  border: none;
+  padding: 6px 0px 8px;
+  box-shadow: none; }
+
+#addscenebutton:hover {
+  background-color: #2A56BF !important;
+  background-image: none; }
 
 #map-page-container {
   background-color: #222222;
@@ -5229,6 +5238,9 @@ body {
   font-weight: 200;
   cursor: pointer; }
 
+.get-started-button:hover {
+  background-color: #E65141; }
+
 .tall-entry-text-center {
   text-align: center; }
 
@@ -5305,6 +5317,9 @@ body {
   border: none;
   border-radius: 5px;
   margin-top: 10px !important; }
+
+.nextSceneButton:hover {
+  background-color: #3C3B3B; }
 
 #entry-place-place-name {
   font-weight: bold;
@@ -5507,7 +5522,7 @@ input[type="checkbox"], input[type="radio"] {
 
 #slideshow, img.bgM {
   min-width: 1300px;
-  width: 100%;
+  width: 110% !important;
   height: auto !important;
   position: fixed;
   top: 0px;
