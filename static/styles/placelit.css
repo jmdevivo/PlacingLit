@@ -4564,7 +4564,8 @@ body {
   color: #fff; }
 
 .navLink:hover {
-  color: #fff; }
+  color: #fff;
+  text-decoration: none; }
 
 .reportSceneError {
   font-size: 10px; }
