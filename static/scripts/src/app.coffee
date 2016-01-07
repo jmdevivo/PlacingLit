@@ -110,10 +110,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     # get most recent place and put it on the featured content overlay
     @getRecentPlace();
 
-
-
     @collection.fetch()
-
 
     # setup handler for geocoder searches
     @suggestAuthors()
@@ -121,14 +118,12 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     @attachSearchHandler()
     @linkMagnifyClickGcf() # make clicking #search (magnifying glass) press enter in #gcf (search bar)
 
-
     @isShareLink();
 
     @isUserLoggedIn( =>
       console.log('User is logged in!')
       $('#loginlink').html("Log Out");
     );
-
 
     #@getPlacesByAuthor("Richard Wright"); # The author of Native Son
     #@getPlacesByAuthor("Ann Petry");
@@ -144,7 +139,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     console.log(title_name + "\'s places: " + JSON.stringify(title_places));
 
 
-
   # if true, then map should load right to this scene card
   isShareLink: () ->
     pathname = window.location.pathname;
@@ -155,7 +149,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
   getPlacesNearController: (position) =>
 
-    console.log("requesting: " + '/places/near?lat=' + -19.155320 + "&lon=" + 30.013956)
+    #console.log("requesting: " + '/places/near?lat=' + -19.155320 + "&lon=" + 30.013956)
     #-19.155320 30.013956
     # $.ajax
     #   #url:'/places/near?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude
@@ -211,7 +205,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         # if this works, I can probably use collection.reset(array of scenes) to
         # load only the scenes from these two authors
 
-
   googlemap: ()->
     # GoogleMaps API documentation:  Very helpful
     # https://developers.google.com/maps/documentation/javascript/reference
@@ -265,6 +258,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @collection.reset(collection_url)
 
   marker: ->
+    console.log('marker, p anonymous function tbh')
     @placeInfowindow.close() if @placeInfowindow?
     return new google.maps.Marker()
 
@@ -291,7 +285,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       position: location
       map: map
       animation: google.maps.Animation.DROP
-      draggable: true
+      draggable: true,
+      icon: window.location.origin + '/img/newplacepin.png'
     return new google.maps.Marker(markerSettings)
 
   updateInfoWindow: (text, location, @map = @googlemap('hpmap')) ->
@@ -408,8 +403,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
         window.location.href = (windowLoc + "/map/filter/author/" + @innerHTML)
         )
 
-    #$('#map_canvas').find('#author').typeahead({source: author_data})
-
   markersForEachScene: (markers) ->
     console.log("markersForEachScene")
     markers.each (model) => @dropMarkerForStoredLocation(model)
@@ -435,9 +428,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
   mapWithMarkers: () ->
     @gmap ?= @googlemap()
     @allMarkers = @markerArrayFromCollection(@collection)
-
-    #console.log("all markers!!!!!"  + @allMarkers)
-    # @markersForEachScene(@collection)
     @markerClustersForScenes(@allMarkers)
     @positionMap()
     @isUserLoggedIn( =>
@@ -445,8 +435,11 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       $('#addscenebutton').show()
     )
 
-    # $('#hidemarkers').on('click', @hideMarkers)
-    # $('#showmarkers').on('click', @showMarkers)
+    # zoom in on nyc if map is nyc collection
+    if (window.location.href.indexOf("nyc") > -1)
+      console.log("nyc collection");
+      @gmap.setZoom(14)
+      $('#mapOverlay').css("display", "none");
 
   positionMap: () ->
     if window.CENTER?
@@ -469,16 +462,21 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
       if navigator.geolocation
         navigator.geolocation.getCurrentPosition((position) =>
-
           userCoords =
             lat: position.coords.latitude
             lng: position.coords.longitude
           @gmap.setCenter(userCoords)
-          #console.log("app.coffee :: positionMap() User coordinates!!  ")
-          #console.log('lat: ' + position.coords.latitude + ' long: ' + position.coords.longitude)
+        , (error) =>
+          defaultCoords =
+            lat: 41.3068858,
+            lng: -72.9260839
+          @gmap.setCenter(defaultCoords)
         )
       else
-        @gmap.setCenter(usacenter)
+        defaultCoords =
+          lat: 41.3068858,
+          lng: -72.9260839
+        @gmap.setCenter(defaultCoords)
       @gmap.setZoom(8)
 
   handleMapClick: (event) ->
@@ -558,7 +556,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @userMapsMarker.setMap(null)
 
   dropMarkerForNewLocation: () ->
-    location = @userMapsMarker.getPosition()
+    #location = @userMapsMarker.getPosition()
     @showInfowindowFormAtLocation(@gmap, @userMapsMarker, location)
     @setUserPlaceFromLocation(location)
     @handleInfowindowButtonClick()
@@ -1018,7 +1016,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
   buildMarkerFromLocation: (location) ->
 
-    console.log("buildMarkerFromLocation location: " + JSON.stringify(location));
+    #console.log("buildMarkerFromLocation location: " + JSON.stringify(location));
 
     #console.log('slideshow made invisible');
     $('#slideshow').css('display', 'none');
@@ -1166,15 +1164,12 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
   if (href.indexOf("map") > -1 and
   (href.indexOf("filter") > -1 or
   href.indexOf("id") > -1 or
-  href.indexOf("collections") > -1 or
-  href.indexOf('nyc') > -1 ))
+  href.indexOf("collections") > -1or
+  href.indexOf("nyc") > -1 ))
     $('#mapOverlay').css('display', 'none');
     console.log('FILETERD!!!!!')
 
   initialize: (scenes) ->
-    # console.log("map filter view:  scenes ")
-    # console.log("scenes: " + JSON.stringify(scenes) )
-    # console.log(scenes)
 
     @getRecentBlog();
     # console.log('filtered view', scenes)
@@ -1188,18 +1183,11 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     if (pathname.indexOf("map") > -1 and pathname.indexOf("filter") > -1 and pathname.indexOf("id") > -1)
       # opens the scene card for this place share link by default
       @openInfoWindowForShareLink(scenes);
-    if pathname.indexOf("collections") > -1
-      console.log("Collection link");
-      # this should close the featured content boxes
 
     @isUserLoggedIn( =>
       console.log('User is logged in!')
       $('#loginlink').html("Log Out");
     );
-
-    @getPlacesByAuthor("Richard Wright"); # The author of Native Son
-    @getPlacesByAuthor("The%20Street"); # The author of Native Son
-    @getPlacesByAuthor("Ann Petry");
 
   render: (event) ->
     @gmap ?= @googlemap()
@@ -1212,7 +1200,7 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     @gmap.setCenter(mapcenter)
 
     # if this is a collection map, set the zoom level to wide
-    if (window.location.pathname.indexOf("collections") != -1)
+    if (window.location.pathname.indexOf("collections") > -1)
       @gmap.setZoom(@settings.zoomLevel.wide)
     else
       @gmap.setZoom(@settings.zoomLevel.close)

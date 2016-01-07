@@ -236,9 +236,7 @@
       }
     };
 
-    MapCanvasView.prototype.getPlacesNearController = function(position) {
-      return console.log("requesting: " + '/places/near?lat=' + -19.155320 + "&lon=" + 30.013956);
-    };
+    MapCanvasView.prototype.getPlacesNearController = function(position) {};
 
     MapCanvasView.prototype.getRecentBlog = function() {
       return $.ajax({
@@ -361,6 +359,7 @@
     };
 
     MapCanvasView.prototype.marker = function() {
+      console.log('marker, p anonymous function tbh');
       if (this.placeInfowindow != null) {
         this.placeInfowindow.close();
       }
@@ -402,7 +401,8 @@
         position: location,
         map: map,
         animation: google.maps.Animation.DROP,
-        draggable: true
+        draggable: true,
+        icon: window.location.origin + '/img/newplacepin.png'
       };
       return new google.maps.Marker(markerSettings);
     };
@@ -630,16 +630,21 @@
       this.allMarkers = this.markerArrayFromCollection(this.collection);
       this.markerClustersForScenes(this.allMarkers);
       this.positionMap();
-      return this.isUserLoggedIn((function(_this) {
+      this.isUserLoggedIn((function(_this) {
         return function() {
           $('#addscenebutton').on('click', _this.handleAddSceneButtonClick);
           return $('#addscenebutton').show();
         };
       })(this));
+      if (window.location.href.indexOf("nyc") > -1) {
+        console.log("nyc collection");
+        this.gmap.setZoom(14);
+        return $('#mapOverlay').css("display", "none");
+      }
     };
 
     MapCanvasView.prototype.positionMap = function() {
-      var mapcenter, usaCoords, usacenter;
+      var defaultCoords, mapcenter, usaCoords, usacenter;
       if (window.CENTER != null) {
         mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
         this.gmap.setCenter(mapcenter);
@@ -671,9 +676,22 @@
               };
               return _this.gmap.setCenter(userCoords);
             };
+          })(this), (function(_this) {
+            return function(error) {
+              var defaultCoords;
+              defaultCoords = {
+                lat: 41.3068858,
+                lng: -72.9260839
+              };
+              return _this.gmap.setCenter(defaultCoords);
+            };
           })(this));
         } else {
-          this.gmap.setCenter(usacenter);
+          defaultCoords = {
+            lat: 41.3068858,
+            lng: -72.9260839
+          };
+          this.gmap.setCenter(defaultCoords);
         }
         return this.gmap.setZoom(8);
       }
@@ -780,8 +798,6 @@
     };
 
     MapCanvasView.prototype.dropMarkerForNewLocation = function() {
-      var location;
-      location = this.userMapsMarker.getPosition();
       this.showInfowindowFormAtLocation(this.gmap, this.userMapsMarker, location);
       this.setUserPlaceFromLocation(location);
       return this.handleInfowindowButtonClick();
@@ -1364,7 +1380,6 @@
 
     MapCanvasView.prototype.buildMarkerFromLocation = function(location) {
       var author, lat, lng, marker, markerParams, title;
-      console.log("buildMarkerFromLocation location: " + JSON.stringify(location));
       $('#slideshow').css('display', 'none');
       $('#loading_indicator').css('display', 'none');
       console.log("buildMarkerFromLocation");
@@ -1605,7 +1620,7 @@
 
     href = window.location.href;
 
-    if (href.indexOf("map") > -1 && (href.indexOf("filter") > -1 || href.indexOf("id") > -1 || href.indexOf("collections") > -1 || href.indexOf('nyc') > -1)) {
+    if (href.indexOf("map") > -1 && (href.indexOf("filter") > -1 || href.indexOf("id") > -1 || href.indexOf("collections") > -1 || href.indexOf("nyc") > -1)) {
       $('#mapOverlay').css('display', 'none');
       console.log('FILETERD!!!!!');
     }
@@ -1623,18 +1638,12 @@
       if (pathname.indexOf("map") > -1 && pathname.indexOf("filter") > -1 && pathname.indexOf("id") > -1) {
         this.openInfoWindowForShareLink(scenes);
       }
-      if (pathname.indexOf("collections") > -1) {
-        console.log("Collection link");
-      }
-      this.isUserLoggedIn((function(_this) {
+      return this.isUserLoggedIn((function(_this) {
         return function() {
           console.log('User is logged in!');
           return $('#loginlink').html("Log Out");
         };
       })(this));
-      this.getPlacesByAuthor("Richard Wright");
-      this.getPlacesByAuthor("The%20Street");
-      return this.getPlacesByAuthor("Ann Petry");
     };
 
     MapFilterView.prototype.render = function(event) {
@@ -1649,7 +1658,7 @@
       this.linkMagnifyClickGcf();
       mapcenter = new google.maps.LatLng(window.CENTER.lat, window.CENTER.lng);
       this.gmap.setCenter(mapcenter);
-      if (window.location.pathname.indexOf("collections") !== -1) {
+      if (window.location.pathname.indexOf("collections") > -1) {
         this.gmap.setZoom(this.settings.zoomLevel.wide);
       } else {
         this.gmap.setZoom(this.settings.zoomLevel.close);
