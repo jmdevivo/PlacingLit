@@ -101,25 +101,6 @@
      </ul>
    </nav>
 
-
-
-
-  <script>
-  // TODO: Move this into app.coffee
-    setInterval(function(){
-      //console.log("timeoutcalled")
-      var cur_loading_state = $('#loading_indicator').html();
-      if (cur_loading_state.length < 10) {
-        //console.log('short');
-        var cur_loading_state = $('#loading_indicator').html(cur_loading_state + ".");
-      }
-      else {
-        var cur_loading_state = $('#loading_indicator').html('Loading');
-      }
-    }, 500);
-    </script>
-
-
   <div id="mapsearchcontainer" class="navbar">
 
     <div id="maponly">
@@ -151,7 +132,6 @@
   </div>
 </div>
   <div id="mapcontainer">
-
 	  <script>
 	  $(document).ready(function() {
 	  	$('#slideshow').cycle({
@@ -229,11 +209,6 @@
               <div class='long-entry-header'>Recent Podcasts</div>
               <div class='window-info'>
                 <div class='long-entry-podcast'>
-                  <!--  OLD PODCAST
-                  <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/187336082&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false" scrolling="auto" frameborder="0"
-                  height="100px" allowtransparency="no"
-                  ></iframe>
-                -->
                 <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/196373015&amp" scrolling="auto" frameborder="0"
                 height="100px" allowtransparency="no"
                 ></iframe>
@@ -279,14 +254,6 @@
           <div class='entry-body learn-more'>Learn more about <span id='entry-place-location-name'></span>:</div>
           <div class='actionContainer'>
               <a id='wikiActionLink' class='actionAnchor' target="_blank" href='#'><img src='/img/wikipedia.jpg'/></a>
-              <!-- Test 2 <a> styled like a button
-              <a id="googleActionAnchor" href="#" class="linkButton" target="_blank"> Search  </a>
-               Successful!
-              <button class='searchGoogle'>
-                 <a id='googleActionLink' target="_blank"  href='#' style="text-decoration:none; color: black;">Search <img class='actionAnchor searchGoogleImage' src='/img/google.png'/></a>
-                <a id='googleActionLink' target="_blank"  href='#' >Search <img class='actionAnchor searchGoogleImage' src='/img/google.png'/></a>
-              </button> -->
-
               <a id='googleActionLinkMoz' target="_blank"  href='#' class='btn googleButton'>Search <img src='/img/google.png' class="googleImage"/></a>
 
             </div>
@@ -301,10 +268,6 @@
               <a id='ibActionLink' class='actionAnchor' target="_blank" href='#'><img src="/img/ib.png"/></a>
               <a id='grActionLink' class='actionAnchor' target="_blank" href='#'><img src='/img/goodrd.png'/></a>
               <a id='wikiActionLink2' class='actionAnchor' target="_blank" href='#'><img src='/img/wikipedia.jpg'/></a>
-
-              <!-- <button class="searchGoogle" id="searchGoogleAlt">
-                <a id='googleActionLink2' target="_blank"  href='#' style="text-decoration:none; color: black;">Search<img class='actionAnchor searchGoogleImage2' src='/img/google.png'/></a>
-              </button> -->
               <a id='googleActionLinkMoz2' target="_blank"  href='#' class='btn googleButton'>Search <img src='/img/google.png' class="googleImage"/></a>
               <a id='shareActionLink' class='actionAnchor' href='#'><img src='/img/share.jpg'/></a>
 
@@ -365,18 +328,6 @@
 
     </div>
   </div>
-  <!--
-  <div id="lowernav">
-    <span id="hidemarkers">hide</span>
-    <span> | </span>
-    <span id="showmarkers">show</span>
-    <span> | </span>
-
-    <span>
-      <a href="mailto:info@placingliterature.com">contact us</a> | <a href="/funding">funding provided by the Arts Council of Greater New Haven</a> | </span>
-    <span>&copy; 2014. all rights reserved</span>
-  </div>
--->
 
 <div id="footer">
   <div class='pull-left'>
@@ -419,73 +370,6 @@
         <a class="navLink lastLink" href="http://www.google.com">Mobile</a>
       </div>
   </div>
-
-
-  <!--
-  <div class='row'>
-    <div class='col-md-1 map-activator-btn'>+Buttons</div>
-    <div class='col-md-3 footer-section'>Placing Literature &copy; 2012-2015. All Rights Reserved.</div>
-    <div class='col-md-1 footer-section'><a>About</a></div>
-    <div class='col-md-1 footer-section'><a>Featured Content</a></div>
-
-    <div class='col-md-1 footer-section'><a>Blog</a></div>
-
-    <div class='col-md-1 footer-section'><a>Podcasts</a></div>
-
-    <div class='col-md-1 footer-section'><a>Author Spotlight</a></div>
-
-    <div class='col-md-1 footer-section'><a>Collections</a></div>
-
-    <div class='col-md-1 footer-section'><a>Report a Map Error</a></div>
-
-  </div>
-  <div class="pull-left">
-
-    <div id="footer-social">
-      <a class="socialicon rss" href="https://soundcloud.com/interviewingauthors"  title="RSS Feed" rel="nofollow" target="_blank"><i class="fa fa-rss-square"></i></a>
-      <a class="socialicon facebook" href="https://www.facebook.com/PlacingLiterature"  title="Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook-square"></i></a>
-      <a class="socialicon twitter" href="https://twitter.com/placinglit" title="Twitter"  rel="nofollow" target="_blank"><i class="fa fa-twitter-square"></i></a>
-    </div>
-    <div id='overlayMinimizeBtn'>
-      +Buttons
-    </div>
-    <div id="copyright">
-     Placing Literature &copy; 2012-2015. All Rights Reserved.
-    </div>
-
-
-  </div>
-
-    <div class="pull-right">
-      <div class="navContainer">
-
-      </div>
-      <div class="linkSurround">
-        <a class="navLink" href="about">About</a>
-      </div>
-      <div class="linkSurround">
-        <a class="navLink" href="#">Featured Content</a>
-      </div>
-      <div class="linkSurround">
-        <a class="navLink" target="_blank" href="https://placingliterature.wordpress.com/">Blog</a>
-      </div>
-      <div class="linkSurround">
-        <a class="navLink" href="podcasts.html">Podcasts</a>
-      </div>
-      <div class="linkSurround">
-        <a class="navLink" href="authorspotlight">Author Spotlight</a>
-      </div>
-      <div class="linkSurround">
-        <a class="navLink" href="collections">Collections</a>
-      </div>
-    This section will be used to create a link to the contact page
-    <div class="linkSurround">
-    <a class="navLink lastLink" href="contact.html">Contact Us</a>
-    </div>
-
-    </div>
-    -->
-
   </div>
 </div>
 
@@ -497,26 +381,29 @@
 {% if key %}
   <script type="text/javascript">var PLACEKEY = {{key}};</script>
 {% endif %}
-<!-- this makes the scenes from MapFilterHandler available
-in the window namespace -->
 
 {% if scenes %}
   <script>
+    // this is where scenes returned from a /map/filter/field/term URI go into as a JSON array
     window.SCENES = {{scenes|safe}};
-    // window.PLACESNEAR = {{places_near}};
-    // window.LOCJSON = {{loc_json}};
   </script>
 {% endif %}
-
-
 
 <script type="text/javascript" src="/js/src/app.js"></script>
 <script type="text/javascript" src="/js/src/placelit.js"></script>
 
 <script>
  'use strict';
-
-// this is frontend controlling javascript code!!
+    // this jquery runs the loading indicator animation
+     setInterval(function(){
+       var cur_loading_state = $('#loading_indicator').html();
+       if (cur_loading_state.length < 10) {
+         var cur_loading_state = $('#loading_indicator').html(cur_loading_state + ".");
+       }
+       else {
+         var cur_loading_state = $('#loading_indicator').html('Loading');
+       }
+     }, 500);
 
     var hideOverlay = function(){
       var overlay = document.getElementById("mapOverlay");
@@ -536,7 +423,6 @@ in the window namespace -->
         $('#featContentText').text("View Featured Content");
       }
     })
-
 
     var hideEntries = function(el){
       $('.entry').each(function(e){
@@ -589,7 +475,6 @@ in the window namespace -->
     });
 
 
-
     $('.geosearchResults').click(function(event){
       event.stopPropagation();
     });
@@ -597,102 +482,6 @@ in the window namespace -->
     function home_redirect(){
       window.location.assign("/")
     }
-
-    // function featured_map_redirect_TL(clickType){
-    //
-    //   console.log("Artist name: "  + document.getElementById('top-left-artist-name').innerHTML );
-    //
-    //   var artist_name = document.getElementById('top-left-artist-name').innerHTML;
-    //
-    //   console.log("clicked: " + artist_name + '\'s featured box.');
-    //
-    //   if (typeof artist_name == 'string'){
-    //     artist_name = artist_name.replace('[!.,/:;-_|\\]', ''); // repalce any punctuation with nothing
-    //     artist_name = artist_name.replace(' ', '%20'); // replace space with %20
-    //     artist_name = artist_name.replace(',','');
-    //     var redirect_uri = '/map/filter/author/' + artist_name
-    //     //window.location.href = redirect_uri
-    //     window.open(redirect_uri, '_blank')
-    //   }
-    // }
-    //
-    // function featured_map_redirect_TR(clickType){
-    //
-    //   console.log("Artist name: "  + document.getElementById('top-right-artist-name').innerHTML );
-    //
-    //   var artist_name = document.getElementById('top-right-artist-name').innerHTML;
-    //
-    //   console.log("clicked: " + artist_name + '\'s featured box.');
-    //
-    //   if (typeof artist_name == 'string'){
-    //     artist_name = artist_name.replace('[!.,/:;-_|\\]', ''); // repalce any punctuation with nothing
-    //     artist_name = artist_name.replace(' ', '%20'); // replace space with %20
-    //     artist_name = artist_name.replace(',','');
-    //     var redirect_uri = '/map/filter/author/' + artist_name
-    //     //window.location.href = redirect_uri
-    //     window.open(redirect_uri, '_blank')
-    //   }
-    // }
-    //
-    // function featured_map_redirect_BL(clickType){
-    //
-    //   var artist_name = document.getElementById('bottom-left-artist-name').innerHTML;
-    //   console.log("clicked: " + artist_name + '\'s featured box.');
-    //
-    //   // if (typeof artist_name == 'string'){
-    //   //   artist_name = artist_name.replace('[!.,/:;-_|\\]', ''); // repalce any punctuation with nothing
-    //   //   artist_name = artist_name.replace(' ', '%20'); // replace space with %20
-    //   //   artist_name = artist_name.replace(':','');
-    //   //   var redirect_uri = '/map/filter/author/' + artist_name
-    //   //   window.location.href = redirect_uri
-    //   // }
-    //   // if collection's name is not an author name...
-    //   //window.location.href = window.location.origin + '/map/40.770180,-73.965711?nyc';  // coodinates of NYC
-    //   window.open(redirect_uri, '_blank')
-    // }
-    //
-    // function featured_map_redirect_BR(clickType){
-    //
-    //   var artist_name = document.getElementById('bottom-right-artist-name').innerHTML;
-    //   console.log("clicked: " + artist_name + '\'s featured box.');
-    //
-    //   if (typeof artist_name == 'string'){
-    //     artist_name = artist_name.replace('[!.,/:;-_|\\]', ''); // repalce any punctuation with nothing
-    //     artist_name = artist_name.replace(' ', '%20'); // replace space with %20
-    //     artist_name = artist_name.replace(':','');
-    //     var redirect_uri = '/map/filter/author/' + artist_name
-    //     window.open(redirect_uri, '_blank')
-    //   }
-    // }
-
-    // set up all the EventListeners on the featured author boxes
-
-    // // TL Author Spotlight
-    // var tl_redirect = document.getElementById("top-left-artist-name");
-    // tl_redirect.addEventListener("click", featured_map_redirect_TL);
-    // var tl_img_redirect = document.getElementById("top-left-artist-img");
-    // tl_img_redirect.addEventListener("click", featured_map_redirect_TL);
-    // $('#top-left-artist-img').mousedown(featured_map_redirect_TL
-    //
-    // // TR Author Spotlight
-    // var tr_redirect = document.getElementById("top-right-artist-name");
-    // tr_redirect.addEventListener("click", featured_map_redirect_TR);
-    // var tr_img_redirect = document.getElementById("top-right-artist-img");
-    // tr_img_redirect.addEventListener("click", featured_map_redirect_TR);
-    //
-    // // BL  Collection
-    // var bl_redirect = document.getElementById("bottom-left-artist-name");
-    // bl_redirect.addEventListener("click", featured_map_redirect_BL);
-    // var bl_img_redirect = document.getElementById("bottom-left-artist-img");
-    // bl_img_redirect.addEventListener("click", featured_map_redirect_BL);
-    //
-    // // BR Featured Author
-    // var br_redirect = document.getElementById("bottom-right-artist-name");
-    // br_redirect.addEventListener("click", featured_map_redirect_BR);
-    // var br_img_redirect = document.getElementById("bottom-right-artist-img");
-    // br_img_redirect.addEventListener("click", featured_map_redirect_BR);
-
-    console.log({{newest_post_pub_date}});
 
     function closeSceneCard() {
       $('#info-overlay').css('display', 'none');
