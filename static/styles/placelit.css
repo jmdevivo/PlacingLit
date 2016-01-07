@@ -4539,15 +4539,32 @@ body {
   border-left: 1px solid #000;
   background: transparent linear-gradient(to right, #373737 0%, #333 25%, #333 50%, #333 75%, #373737 100%) repeat scroll 0% 0%; }
 
+.linkSurround:hover {
+  transition: background 2s;
+  background: #404040;
+  background: -moz-linear-gradient(left, #404040 0%, #393939 25%, #393939 50%, #383838 75%, #404040 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, #404040), color-stop(25%, #393939), color-stop(50%, #393939), color-stop(75%, #383838), color-stop(100%, #404040));
+  background: -webkit-linear-gradient(left, #404040 0%, #393939 25%, #393939 50%, #383838 75%, #404040 100%);
+  background: -o-linear-gradient(left, #404040 0%, #393939 25%, #393939 50%, #383838 75%, #404040 100%);
+  background: -ms-linear-gradient(left, #404040 0%, #393939 25%, #393939 50%, #383838 75%, #404040 100%);
+  background: linear-gradient(to right, #404040 0%, #393939 25%, #393939 50%, #383838 75%, #404040 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#404040', endColorstr='#404040', GradientType=1 ); }
+
 .navLink {
-  color: #FFF;
+  color: #fff;
   cursor: pointer;
   z-index: 1;
   position: relative;
-  padding: 0px 10px;
+  padding: 0 13px;
   height: 40px;
   display: block;
-  outline: 0px none; }
+  outline: 0; }
+
+.navLink:visited {
+  color: #fff; }
+
+.navLink:hover {
+  color: #fff; }
 
 .reportSceneError {
   font-size: 10px; }
@@ -5439,7 +5456,8 @@ body {
 
 #featContentText {
   display: inline-block;
-  font-size: 12px; }
+  font-size: 12px;
+  line-height: 19px; }
 
 #footer > p {
   margin: 0px 0px 0ox 0px; }
