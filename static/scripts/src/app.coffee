@@ -687,6 +687,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
           for i in [0 .. numRes]
             child = @createSearchElement(results[i])
             parent.appendChild(child)
+          parent.appendChild()
         else if(status == google.maps.GeocoderStatus.ZERO_RESULTS)
           console.log "No Locations found, try rephrasing search"
         else
@@ -770,6 +771,19 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     )
     li
 
+  createSearchHide: () ->
+    console.log("createSearchHide");
+    hide = document.createElement('li')
+    hide.innerHTML = "Hide Search Results"
+    hide.id = "hideSearch"
+    hide.addEventListener('click', () =>
+      $('#geosearchResults').css("display", "none");
+      );
+    return hide
+
+  # hideSearch: () =>
+  #   $('locationsSearchList').css('display', 'none');
+
   # initial function that handles author / place searches
   attachSearchHandler: ->
     $.ajax
@@ -793,6 +807,8 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
                 #$('.geosearchResults').show() # this is the search suggestsion dropdown
                 $('.geosearchResults').attr('style','display: block !important;')
                 $('#mapcontainer').click ->
+                  $('.geosearchResults').hide();
+                $('#hideSearchButton').click ->
                   $('.geosearchResults').hide();
                 @suggestAuthors(author_data)
                 @suggestTitles(title_data)
