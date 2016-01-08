@@ -641,9 +641,14 @@
         this.gmap.setZoom(12);
         $('#mapOverlay').css("display", "none");
       }
-      if (window.location.href.indexOf("zimbabwe")) {
+      if (window.location.href.indexOf("zimbabwe") > -1) {
         console.log("zimbabwe collection zoom level 12");
-        this.gmap.setZoom(5);
+        this.gmap.setZoom(6);
+        $('#mapOverlay').css("display", "none");
+      }
+      if (window.location.href.indexOf("trudeau") > -1) {
+        console.log("trudeau collection zoom level 4 ");
+        this.gmap.setZoom(4);
         return $('#mapOverlay').css("display", "none");
       }
     };

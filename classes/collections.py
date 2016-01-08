@@ -16,6 +16,13 @@ FEATURED['slq'] = {
   'user': 'webmanager@slq.qld.gov.au',
   'center': {'lat': '-25.0246396949', 'lng': '136.142578125'}}
 
+FEATURED['christianlit'] = {'url': 'http://www.placingliterature.com',
+                            'user': 'info@placingliterature.com',
+                            'center': {'lat': '41.8297953655', 'lng': '-87.6234490632'}}
+FEATURED['amistad'] = {'url': 'http://www.placingliterature.com',
+                       'user': 'info@placingliterature.com',
+                       'center': {'lat': '41.8297953655', 'lng': '-87.6234490632'}}
+
 
 class Collection(db.Model):
   """ Collections of scenes. Collections are keyed by name """

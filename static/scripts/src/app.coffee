@@ -440,9 +440,13 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       console.log("nyc collection zoom level 12");
       @gmap.setZoom(12)
       $('#mapOverlay').css("display", "none");
-    if (window.location.href.indexOf("zimbabwe"))
+    if (window.location.href.indexOf("zimbabwe") > -1)
       console.log("zimbabwe collection zoom level 12");
-      @gmap.setZoom(5)
+      @gmap.setZoom(6)
+      $('#mapOverlay').css("display", "none");
+    if (window.location.href.indexOf("trudeau") > -1 )
+      console.log("trudeau collection zoom level 4 ")
+      @gmap.setZoom(4);
       $('#mapOverlay').css("display", "none");
 
   positionMap: () ->
