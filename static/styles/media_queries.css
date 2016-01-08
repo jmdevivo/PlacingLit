@@ -315,10 +315,7 @@
 
   .placing-lit-logo-collection {
     width: 200px;
-    margin-top: -5px; }
-
-  .homeNav {
-    position: absolute; } }
+    margin-top: -5px; } }
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
   .navbar-profile #loginlink {
     right: 20px; } }
