@@ -444,10 +444,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       console.log("zimbabwe collection zoom level 12");
       @gmap.setZoom(6)
       $('#mapOverlay').css("display", "none");
-    if (window.location.href.indexOf("trudeau") > -1 )
-      console.log("trudeau collection zoom level 4 ")
-      @gmap.setZoom(4);
-      $('#mapOverlay').css("display", "none");
+
 
   positionMap: () ->
     if window.CENTER?
@@ -1179,6 +1176,8 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
     $('#mapOverlay').css('display', 'none');
     console.log('FILETERD!!!!!')
 
+
+
   initialize: (scenes) ->
 
     @getRecentBlog();
@@ -1214,6 +1213,13 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
       @gmap.setZoom(@settings.zoomLevel.wide)
     else
       @gmap.setZoom(@settings.zoomLevel.close)
+
+    # this is a workaround for when we are using a /map/filter/author search as a collection
+    # for example, for the twain collection and the doonsbury collection
+    if (window.location.href.indexOf("colct"))
+      console.log("map filter colct collection zoom level 4 ")
+      @gmap.setZoom(4);
+      $('#mapOverlay').css("display", "none");
 
     $('#addscenebutton').on('click', @handleAddSceneButtonClick)
     $('#addscenebutton').show()
