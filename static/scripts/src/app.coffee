@@ -437,8 +437,12 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
 
     # zoom in on nyc if map is nyc collection
     if (window.location.href.indexOf("nyc") > -1)
-      console.log("nyc collection");
-      @gmap.setZoom(14)
+      console.log("nyc collection zoom level 12");
+      @gmap.setZoom(12)
+      $('#mapOverlay').css("display", "none");
+    if (window.location.href.indexOf("zimbabwe"))
+      console.log("zimbabwe collection zoom level 12");
+      @gmap.setZoom(5)
       $('#mapOverlay').css("display", "none");
 
   positionMap: () ->
@@ -637,6 +641,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
             console.log('add place error', model, xhr, options)
           success: (model, response, options) =>
             @updateInfowindowWithMessage(@userInfowindow, response, true)
+            window.location.reload();
       )
     else
       error_msg = '<p>Close this window and click the marker to start over. <br>
@@ -645,6 +650,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       response =
         message: @missing_fields + error_msg
       @updateInfowindowWithMessage(@userInfowindow, response, false)
+
       return false
 
   geocoderSearch: () ->
@@ -1160,12 +1166,12 @@ class PlacingLit.Views.MapFilterView extends PlacingLit.Views.MapCanvasView
 
   #  Hide mapOverlay as early as possible when loading a filter link
   href  = window.location.href
-
   if (href.indexOf("map") > -1 and
   (href.indexOf("filter") > -1 or
   href.indexOf("id") > -1 or
-  href.indexOf("collections") > -1or
-  href.indexOf("nyc") > -1 ))
+  href.indexOf("collections") > -1 or
+  href.indexOf("nyc") > -1 or
+  href.indexOf("zimbabwe") > -1 ))
     $('#mapOverlay').css('display', 'none');
     console.log('FILETERD!!!!!')
 

@@ -637,8 +637,13 @@
         };
       })(this));
       if (window.location.href.indexOf("nyc") > -1) {
-        console.log("nyc collection");
-        this.gmap.setZoom(14);
+        console.log("nyc collection zoom level 12");
+        this.gmap.setZoom(12);
+        $('#mapOverlay').css("display", "none");
+      }
+      if (window.location.href.indexOf("zimbabwe")) {
+        console.log("zimbabwe collection zoom level 12");
+        this.gmap.setZoom(5);
         return $('#mapOverlay').css("display", "none");
       }
     };
@@ -892,7 +897,8 @@
           })(this),
           success: (function(_this) {
             return function(model, response, options) {
-              return _this.updateInfowindowWithMessage(_this.userInfowindow, response, true);
+              _this.updateInfowindowWithMessage(_this.userInfowindow, response, true);
+              return window.location.reload();
             };
           })(this)
         });
@@ -1620,7 +1626,7 @@
 
     href = window.location.href;
 
-    if (href.indexOf("map") > -1 && (href.indexOf("filter") > -1 || href.indexOf("id") > -1 || href.indexOf("collections") > -1 || href.indexOf("nyc") > -1)) {
+    if (href.indexOf("map") > -1 && (href.indexOf("filter") > -1 || href.indexOf("id") > -1 || href.indexOf("collections") > -1 || href.indexOf("nyc") > -1 || href.indexOf("zimbabwe") > -1)) {
       $('#mapOverlay').css('display', 'none');
       console.log('FILETERD!!!!!');
     }
