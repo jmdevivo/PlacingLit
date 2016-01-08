@@ -3,7 +3,7 @@
     right: 50px !important; }
 
   .geosearchResults {
-    max-height: 400px;
+    max-height: 300px;
     overflow: scroll; } }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   .vanishing-col {
@@ -163,7 +163,7 @@
     min-width: 1600px; } }
 @media screen and (max-width: 701px) {
   .geosearchResults {
-    max-height: 400px;
+    max-height: 300px;
     overflow: scroll; }
 
   .homeNav {
@@ -348,7 +348,8 @@
     height: 61px; }
 
   #mapcontainer {
-    height: 424%; }
+    height: 424%;
+    margin-top: 35px; }
 
   .hamburger ul {
     padding: 0px 0px 3px;

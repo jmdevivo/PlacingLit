@@ -5,7 +5,7 @@
 	  }
 	  
 	  .geosearchResults {
-	    max-height: 400px;
+	    max-height: 300px;
 	    overflow: scroll;
 	  }
 
@@ -208,7 +208,7 @@
 
 @media screen and (max-width: 701px) {
   .geosearchResults {
-    max-height: 400px;
+    max-height: 300px;
     overflow: scroll;
   }
 
@@ -450,6 +450,7 @@
   
   #mapcontainer {
 	  height: 424%;
+	  margin-top: 35px;
   }
   
   .hamburger ul {

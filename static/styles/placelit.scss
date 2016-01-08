@@ -1291,6 +1291,15 @@ input[type="checkbox"], input[type="radio"] {
     text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
 }
 
+#hideSearchButton {
+    background-color: transparent;
+    border: none;
+    font-size: .65em;
+    border-top: 1px solid #303030;
+    width: 100%;
+    text-align: left;
+    padding: 6px 9px;
+}
 
 // #new_scene_title:focus {
 //   box-shadow: 0 0 1em;
