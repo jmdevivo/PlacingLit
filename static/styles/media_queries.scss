@@ -2,6 +2,10 @@
   .vanishing-col {
     width: 409px !important;
   }
+  
+  .homeNav {
+	  position: absolute;
+  }
 
   #loginlink {
     right: 130px;
@@ -95,6 +99,10 @@
   
   #loginLink {
 	  right: 106px;
+  }
+  
+  .homeNav {
+	  position: fixed;
   }
   
   .navbar-profile #loginlink {
@@ -385,6 +393,10 @@
   .placing-lit-logo-collection {
 	  width:200px;
 	  margin-top: -5px;
+  }
+  
+  .homeNav {
+	  position: absolute;
   }
   
 }
