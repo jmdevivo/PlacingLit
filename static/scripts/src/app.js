@@ -1114,14 +1114,16 @@
                       return title_data.push(value.title.toString());
                     });
                     _this.hideOverlay();
-                    $('.geosearchResults').attr('style', 'display: block !important;');
+                    $('.geosearchResults').attr('style', 'display: block;');
                     $('#mapcontainer').click(function() {
                       return $('.geosearchResults').hide();
                     });
                     $('#hideSearchButton').click(function() {
+                      console.log("hide search button");
                       return $('.geosearchResults').hide();
                     });
                     $('#hideSearchButton').bind('touchstart', function() {
+                      console.log("hide search button");
                       return $('.geosearchResults').hide();
                     });
                     _this.suggestAuthors(author_data);

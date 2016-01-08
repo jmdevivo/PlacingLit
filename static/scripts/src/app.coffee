@@ -804,12 +804,14 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
                 #console.log("title data " + title_data );
                 @hideOverlay()
                 #$('.geosearchResults').show() # this is the search suggestsion dropdown
-                $('.geosearchResults').attr('style','display: block !important;')
+                $('.geosearchResults').attr('style','display: block;')
                 $('#mapcontainer').click ->
                   $('.geosearchResults').hide();
                 $('#hideSearchButton').click ->
+                  console.log("hide search button");
                   $('.geosearchResults').hide();
                 $('#hideSearchButton').bind('touchstart',  () ->
+                  console.log("hide search button");
                   $('.geosearchResults').hide();
                 )
                 @suggestAuthors(author_data)
