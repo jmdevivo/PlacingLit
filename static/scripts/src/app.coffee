@@ -687,7 +687,6 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
           for i in [0 .. numRes]
             child = @createSearchElement(results[i])
             parent.appendChild(child)
-          parent.appendChild()
         else if(status == google.maps.GeocoderStatus.ZERO_RESULTS)
           console.log "No Locations found, try rephrasing search"
         else
@@ -810,6 +809,9 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
                   $('.geosearchResults').hide();
                 $('#hideSearchButton').click ->
                   $('.geosearchResults').hide();
+                $('#hideSearchButton').bind('touchstart',  () ->
+                  $('.geosearchResults').hide();
+                )
                 @suggestAuthors(author_data)
                 @suggestTitles(title_data)
                 @populateSuggestedSearches(authors, titles)

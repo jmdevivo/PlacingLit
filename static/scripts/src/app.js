@@ -945,7 +945,7 @@
           'address': searchTxt
         }, (function(_this) {
           return function(results, status) {
-            var child, i, j, numRes, parent, ref;
+            var child, i, j, numRes, parent, ref, results1;
             if (status === google.maps.GeocoderStatus.OK) {
               console.log("how many results are returned? ");
               console.log("results type: " + typeof results);
@@ -953,11 +953,12 @@
               parent = document.getElementById('locationsSearchList');
               $(parent).empty();
               numRes = results.length > 5 ? 4 : results.length;
+              results1 = [];
               for (i = j = 0, ref = numRes; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
                 child = _this.createSearchElement(results[i]);
-                parent.appendChild(child);
+                results1.push(parent.appendChild(child));
               }
-              return parent.appendChild();
+              return results1;
             } else if (status === google.maps.GeocoderStatus.ZERO_RESULTS) {
               return console.log("No Locations found, try rephrasing search");
             } else {
@@ -1118,6 +1119,9 @@
                       return $('.geosearchResults').hide();
                     });
                     $('#hideSearchButton').click(function() {
+                      return $('.geosearchResults').hide();
+                    });
+                    $('#hideSearchButton').bind('touchstart', function() {
                       return $('.geosearchResults').hide();
                     });
                     _this.suggestAuthors(author_data);
