@@ -193,6 +193,11 @@
     color: #fff;
     text-decoration: underline;
   }
+  
+  #slideshow, img.bgM {
+	  min-width: 1600px;
+  }
+  
 }
 
 @media screen and (max-width: 701px) {

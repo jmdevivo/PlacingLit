@@ -155,7 +155,10 @@
   .hamburger a:hover {
     font-weight: 500;
     color: #fff;
-    text-decoration: underline; } }
+    text-decoration: underline; }
+
+  #slideshow, img.bgM {
+    min-width: 1600px; } }
 @media screen and (max-width: 701px) {
   .geosearchResults {
     max-height: 400px;
