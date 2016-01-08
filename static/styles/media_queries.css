@@ -2,9 +2,6 @@
   .vanishing-col {
     width: 409px !important; }
 
-  .homeNav {
-    position: absolute; }
-
   #loginlink {
     right: 130px; }
 
@@ -78,9 +75,6 @@
 
   #loginLink {
     right: 106px; }
-
-  .homeNav {
-    position: fixed; }
 
   .navbar-profile #loginlink {
     margin-right: 91px; }
@@ -318,7 +312,10 @@
     margin-top: -5px; } }
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
   .navbar-profile #loginlink {
-    right: 20px; } }
+    right: 20px; }
+
+  #loading_indicator {
+    top: 63px; } }
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
   .placing-lit-logo {
     margin-top: 17px;
