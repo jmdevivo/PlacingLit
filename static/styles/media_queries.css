@@ -295,6 +295,10 @@
   .placing-lit-logo {
     margin-top: 11px;
     width: 259px; } }
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  #info-overlay {
+    top: 96px;
+    width: 372px; } }
 @media screen and (max-width: 400px) {
   .left-map-window-div {
     left: 4% !important; }
@@ -317,7 +321,12 @@
 
   .placing-lit-logo-collection {
     width: 200px;
-    margin-top: -5px; } }
+    margin-top: -5px; }
+
+  #info-overlay {
+    position: absolute;
+    top: 96px;
+    width: 282px; } }
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
   .navbar-profile #loginlink {
     right: 20px; }
