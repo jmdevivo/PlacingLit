@@ -110,6 +110,7 @@
       this.closeSceneCard = bind(this.closeSceneCard, this);
       this.null_function = bind(this.null_function, this);
       this.addPlace = bind(this.addPlace, this);
+      this.hideAddSceneMarker = bind(this.hideAddSceneMarker, this);
       this.handleAddSceneButtonClick = bind(this.handleAddSceneButtonClick, this);
       this.showMarkers = bind(this.showMarkers, this);
       this.hideMarkers = bind(this.hideMarkers, this);
@@ -707,6 +708,7 @@
     };
 
     MapCanvasView.prototype.handleAddSceneButtonClick = function() {
+      $('#mapOverlay').hide();
       $('#entry-image').hide();
       $('.entry').hide();
       $('#tabs').hide();
@@ -715,10 +717,12 @@
       this.setUserMapMarker(this.gmap, this.gmap.getCenter());
       $('#info-overlay').show();
       $('#new_entry').show();
-      return $('.leave_new_scene_form').click(function() {
+      $('.leave_new_scene_form').click(function() {
         $('#info-overlay').hide();
-        return $('.entry').hide();
+        $('.entry').hide();
+        return $('#usermarker').hide();
       });
+      return console.log(this.userMapsMarker);
     };
 
     MapCanvasView.prototype.setUserMapMarker = function(map, location) {
@@ -746,17 +750,26 @@
         this.userInfowindow = this.infowindow();
         content = '<div id="usermarker">';
         content += '<div>Drag this marker to place.<br>';
-        content += 'Click the marker to add the scene</div></div>';
         this.userInfowindow.setContent(content);
         this.userInfowindow.setPosition(loginWindowPosition);
         this.userInfowindow.open(this.gmap, this.userMapsMarker);
         google.maps.event.addListenerOnce(this.userInfowindow, 'closeclick', (function(_this) {
           return function() {
-            return _this.userMapsMarker.setMap(null);
+            _this.userMapsMarker.setMap(null);
+            $('#info-overlay').hide();
+            return $('.entry').hide();
           };
         })(this));
-        return console.log('showuserMapMarkerHelp - addscene marker position: ' + this.userMapsMarker.getPosition());
+        return this.hideAddSceneMarker(this.userMapsMarker);
       }
+    };
+
+    MapCanvasView.prototype.hideAddSceneMarker = function(userMapsMarker) {
+      return $('.leave_new_scene_form').click(function() {
+        console.log("leave scene clicked!");
+        userMapsMarker.setMap(null);
+        return $('#usermarker').hide();
+      });
     };
 
     MapCanvasView.prototype.isUserLoggedIn = function(callback) {

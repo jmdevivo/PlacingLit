@@ -490,6 +490,9 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
   handleAddSceneButtonClick: =>
     #@closeInfowindows() if @infowindows.length
 
+    # hide featured content mapOverlay
+    $('#mapOverlay').hide();
+
     $('#entry-image').hide()
     $('.entry').hide()
     $('#tabs').hide()
@@ -500,7 +503,13 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     $('#new_entry').show()
     $('.leave_new_scene_form').click(()->
       $('#info-overlay').hide()
-      $('.entry').hide())
+      $('.entry').hide()
+      #@userMapsMarker.setMap(null)
+      $('#usermarker').hide())
+    console.log(@userMapsMarker);
+
+
+
     # $('#addscenebutton').hide()
     # marker.setMap(null) for marker in @allMarkers
 
@@ -512,6 +521,7 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
     google.maps.event.addListenerOnce @userMapsMarker, 'click', (event) =>
       @isUserLoggedIn(@dropMarkerForNewLocation)
     @showUserMarkerHelp()
+    #console.log(@userMapsMarker);
 
   showUserMarkerHelp: ->
     if @userMapsMarker
@@ -520,13 +530,21 @@ class PlacingLit.Views.MapCanvasView extends Backbone.View
       @userInfowindow = @infowindow()
       content = '<div id="usermarker">'
       content += '<div>Drag this marker to place.<br>'
-      content += 'Click the marker to add the scene</div></div>'
       @userInfowindow.setContent(content)
       @userInfowindow.setPosition(loginWindowPosition)
       @userInfowindow.open(@gmap, @userMapsMarker)
       google.maps.event.addListenerOnce @userInfowindow, 'closeclick', () =>
         @userMapsMarker.setMap(null)
-      console.log('showuserMapMarkerHelp - addscene marker position: ' +  @userMapsMarker.getPosition())
+        $('#info-overlay').hide()
+        $('.entry').hide()
+      @hideAddSceneMarker(@userMapsMarker)
+
+
+  hideAddSceneMarker: (userMapsMarker) =>
+    $('.leave_new_scene_form').click(()->
+      console.log("leave scene clicked!")
+      userMapsMarker.setMap(null)
+      $('#usermarker').hide())
 
   isUserLoggedIn: (callback) ->
     $.ajax
