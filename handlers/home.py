@@ -193,71 +193,6 @@ class MapFilterHandler(baseapp.BaseAppHandler):
     template_values['log'] = json.dumps(loc_json)
     self.render_template('map.tmpl', template_values)
 
-# because placedlit.PlacedLit is used in getting "places" in
-# the above method, I think it will be safe to create a new
-# handler that will return nearby places by lng, lat
-# and render a map.
-
-class MapFilterCoordsHandler(baseapp.BaseAppHandler):
-  def get(self, query=None ):
-    template_values = self.basic_template_content()
-    template_values['title'] = 'Map'
-
-    #template_values['count'] = placedlit.PlacedLit.count()
-    '''
-    print "query: " + Query
-
-    lat = self.request.get('lat')
-    lon = self.request.get('lon')
-
-    print lat
-    print lon
-
-
-    places = location_index.sorted_location_query(lat, lon)
-    formatted_results = self.format_location_index_results(places)
-
-    template_values['scenes'] = json.dumps(formatted_results)'''
-
-    template_values['scenes'] = "1234"
-    self.render_template('map.tmpl', template_values)
-
-    '''
-    #lat = self.request.GET['lat']
-    #lon = self.request.GET['lon']
-
-    logging.info("lat ", lat)
-    logging.info("lon ", lon)
-
-    places_near = placedlit.get_nearby_places(lat, lon, False)
-    template_values['scenes'] = json.dumps(places_near)
-
-    location = location.split('&')
-    for loc in location:
-        print "loc: " + loc
-
-    lat = location[0]
-    lng = location[1]
-
-    if lat and lon:
-      places_near = placedlit.get_nearby_places(lat, lon, False)
-      template_values['scenes'] = json.dumps(places_near)
-     loc_json = []
-    #if places_near:
-    loc_json = self.format_location_index_results(places_near)
-    if loc_json:
-      some_scene = random.choice(loc_json)
-      template_values['center'] = '{{lat:{}, lng:{}}}'.format(
-        some_scene['latitude'], some_scene['longitude'])
-      template_values['scenes'] = json.dumps(loc_json)
-        # test purposes
-    logging.info('mapFilterCoords template_values' + type(template_values))
-    self.render_template('map.tmpl', template_values)'''
-
-
-
-
-
 class AdminMenuHandler(baseapp.BaseAppHandler):
   def get(self):
     template_values = self.basic_template_content()
@@ -323,8 +258,6 @@ urls = [
   ('/funding', FundingHandler),
   ('/home', HomeHandler),
   ('/map/filter/(.*)/(.*)', MapFilterHandler),
-  #('/map/coords/(\-?\d*\.\d*\&\-?\d*\.\d*)', MapFilterCoordsHandler),
-  ('/map/coords/(/?.*)', MapFilterCoordsHandler),
   ('/map(/?.*)', MapHandler),
   ('/', MapHandler),
   ('/user/status', UserstatusHandler),
