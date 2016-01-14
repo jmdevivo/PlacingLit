@@ -1218,7 +1218,7 @@
     };
 
     MapCanvasView.prototype.buildInfowindow = function(data, updateButton) {
-      var content, facebooklink, field, img, label, twitterlink;
+      var content, facebooklink, field, img, label, share_url, twitterlink;
       console.log('buildInfowindow');
       $('#tabs').show();
       this.clearInfowindowClickEvents();
@@ -1258,11 +1258,12 @@
       $('#entry-symbols-body').html(data.symbols);
       $('#entry-place-body').html(data.notes);
       $('#entry-visits-body').html(data.visits);
-      twitterlink = "https://twitter.com/intent/tweet?text=Check%20out%20" + data.title + "%20at%20" + data.place_name + "%20by%20visiting%20placing-literature.appspot.com/map/filter/id/" + data.id + "%20#getlit";
+      twitterlink = "https://twitter.com/intent/tweet?text=Check%20out%20" + data.title + "%20at%20" + data.place_name + "%20by%20visiting%20placingliterature.com/map/filter/id/" + data.id + "%20#getlit";
       $('#twitterActionLink').attr('href', twitterlink);
-      facebooklink = 'http://www.facebook.com/share.php?u=http://www.placing-literature.appspot.com/map/filter/id/' + data.id;
+      facebooklink = 'http://www.facebook.com/share.php?u=http://www.placingliterature.com/map/filter/id/' + data.id;
       $('#facebookActionLink').attr('href', facebooklink);
-      $('#share_url').val('placing-literature.appspot.com/map/filter/id/' + data.id);
+      share_url = window.location.href + "map/filter/id/" + data.id;
+      $('#share_url').val(share_url);
       if (!!data.image_data) {
         content += this.sceneAPIImageTemplate()({
           image_id: data.image_data.photo_id
